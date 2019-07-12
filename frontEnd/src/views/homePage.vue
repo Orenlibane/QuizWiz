@@ -3,12 +3,14 @@
     <nav>Nav here</nav>
     <div class="quizes-show">
       <h4>here is the ongoing quizes</h4>
-      <quiz-list :quizes="quizes"></quiz-list>
+      <quiz-list :quizes="liveQuizes"></quiz-list>
     </div>
-    <button to="/quiz/edit">Add quiz</button>
+    <router-link to="/quiz/add">
+      <button>Add quiz</button>
+    </router-link>
     <div class="quizes-show">
       <h4>here is the recomendd quizes</h4>
-      <quiz-list :quizes="quizes"></quiz-list>
+      <quiz-list :quizes="liveQuizes"></quiz-list>
     </div>
     <footer>footer here</footer>
   </section>
@@ -16,43 +18,19 @@
 
 <script>
 // @ is an alias to /src
-import quizList from '../components/quizList'
+import quizList from "../components/quizList";
 export default {
   name: "home",
   components: {
     quizList
+  },
+  computed: {
+    liveQuizes() {
+      return this.$store.getters.getQuizes;
+    }
   }
 };
 </script>
 
-<style scoped>
-section {
-  height: 80vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-button {
-  padding: 20px;
-  margin: 10px 0;
-}
-
-.quizes-show {
-  border: 2px black solid;
-  padding: 10px;
-  width: 80vw;
-}
-
-.cards {
-  text-align: center;
-  display: flex;
-}
-
-.card {
-  border: 1px black solid;
-  padding: 70px 50px;
-  margin: 0 5px;
-}
+<style lang="scss" scoped>
 </style>

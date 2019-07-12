@@ -1,45 +1,29 @@
-.home {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-
-    .hello {
-        flex: 1;
-    }
+section {
+  height: 80vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+button {
+  padding: 20px;
+  margin: 10px 0;
 }
 
-.logo {
-    padding: rem(20px);
-    width: 140px;
-
-    @include for-normal-layout {
-        width: auto;
-    }
-}
-header {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    @include for-normal-layout {
-        height: 86vh;
-    }
+.quizes-show {
+  border: 2px black solid;
+  padding: 10px;
+  width: 80vw;
 }
 
-#nav {
-    a {
-        background: green;
-
-        &:first-child {
-            background-color: red;
-        }
-
-        body.homepage & {
-            color: gold;
-        }
-    }
+.cards {
+  text-align: center;
+  display: flex;
 }
 
-body.homepage #nav a {
-    
+.card {
+  border: 1px black solid;
+  padding: 70px 50px;
+  margin: 0 5px;
 }
