@@ -17,11 +17,11 @@ function getById(id) {
 }
 
 function addQuiz(NewQuiz) {
-  HttpService.ajax(`/`, 'post', quizInfo).then(res => console.log(res));
+  HttpService.ajax(`/`, 'post', NewQuiz).then(res => console.log(res));
 }
 
 function updateQuiz(NewQuiz) {
-  HttpService.ajax(`/`, 'put', quizInfo).then(res => console.log(res));
+  HttpService.ajax(`/`, 'put', NewQuiz).then(res => console.log(res));
 }
 
 function deleteQuiz(id) {

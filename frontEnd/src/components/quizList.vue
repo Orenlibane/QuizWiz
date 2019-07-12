@@ -1,5 +1,5 @@
 <template>
-  <section class="flex">
+  <section class="flex wrap">
     <div v-for="quiz in quizesToShow" :key="quiz._id">
       <quiz-preview :quiz="quiz"></quiz-preview>
     </div>
