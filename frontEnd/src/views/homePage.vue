@@ -1,5 +1,6 @@
 <template>
-  <section class="home">
+  <section class="home-page">
+    <app-header></app-header>
     <nav>Nav here</nav>
     <div class="quizes-show">
       <h4>here is the ongoing quizes</h4>
@@ -19,10 +20,13 @@
 <script>
 // @ is an alias to /src
 import quizList from "../components/quizList";
+import homePage from "@/styles/views/_home-page.scss";
+import appHeader from "@/components/appHeader";
 export default {
   name: "home",
   components: {
-    quizList
+    quizList,
+    appHeader
   },
   computed: {
     liveQuizes() {
@@ -31,6 +35,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

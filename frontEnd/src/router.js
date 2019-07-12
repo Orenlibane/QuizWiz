@@ -20,10 +20,5 @@ export default new Router({
       name: 'addQuiz',
       component: addQuiz
     }
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   component: about
-    // }
   ]
 });
