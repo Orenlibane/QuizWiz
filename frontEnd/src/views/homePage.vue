@@ -12,6 +12,7 @@
       <h4>here is the recomendd quizes</h4>
       <quiz-list :quizes="liveQuizes"></quiz-list>
     </div>
+    <footer>footer here</footer>
   </section>
 </template>
 
