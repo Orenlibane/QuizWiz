@@ -1,5 +1,5 @@
 <template>
-  <section class="home">
+  <section class="add-quiz">
     <router-link to="/">Back to home</router-link>
     <nav>Nav here</nav>
     <div>
