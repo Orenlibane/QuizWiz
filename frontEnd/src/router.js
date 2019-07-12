@@ -4,7 +4,6 @@ import HomePage from './views/homePage';
 import addQuiz from './views/addQuiz';
 import logIn from './views/logIn';
 import signUp from './views/signUp';
-
 import TEST1 from './components/quizLobby.vue';
 // import about from './views/about.vue';
 
@@ -34,6 +33,7 @@ export default new Router({
       name: 'signUp',
       component: signUp
     },
+    {
       path: '/quiz/TESTING',
       name: 'TEST1',
       component: TEST1

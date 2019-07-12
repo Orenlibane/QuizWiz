@@ -20,6 +20,7 @@
 import quizList from "../components/quizList";
 import homePage from "@/styles/views/_home-page.scss";
 export default {
+  name: "home",
   components: {
     quizList,
   },
