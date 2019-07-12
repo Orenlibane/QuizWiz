@@ -1,0 +1,539 @@
+[
+  {
+    "_id": 1,
+    "title": "comic quiz",
+    "tags": "Entertainment, Comics",
+    "createdAt": "Date",
+    "bestScore": "",
+    "likesCount": 0,
+    "questions": [
+      {
+        "question": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
+        "correct_answer": "Robert Kirkman",
+        "incorrect_answers": [
+          "Stan Lee",
+          "Malcolm Wheeler-Nicholson",
+          "Robert Crumb"
+        ]
+      },
+      {
+        "question": "In the Homestuck Series, what is the alternate name for the Kingdom of Lights?",
+        "correct_answer": "Prospit",
+        "incorrect_answers": ["No Name", "Golden City", "Yellow Moon"]
+      },
+      {
+        "question": "Which of the following superheros did Wonder Woman NOT have a love interest in?",
+        "correct_answer": "Green Arrow",
+        "incorrect_answers": ["Superman", "Batman", "Steve Trevor"]
+      },
+      {
+        "question": "This Marvel superhero is often called &quot;The man without fear&quot;.",
+        "correct_answer": "Daredevil",
+        "incorrect_answers": ["Thor", "Wolverine", "Hulk"]
+      },
+      {
+        "question": "When was the Garfield comic first published?",
+        "correct_answer": "1978",
+        "incorrect_answers": ["1982", "1973", "1988"]
+      },
+      {
+        "question": "In the webcomic &quot;Ava&#039;s Demon&quot;, what sin is &quot;Nevy Nervine&quot; based off of? ",
+        "correct_answer": "Envy ",
+        "incorrect_answers": ["Sloth", "Wrath ", "Lust"]
+      },
+      {
+        "question": "In Calvin and Hobbes, what is the name of the principal at Calvin&#039;s school?",
+        "correct_answer": "Mr. Spittle",
+        "incorrect_answers": ["Mr. Boreman", "Mr. Spitling", "Mr. Moe"]
+      }
+    ]
+  },
+  {
+    "_id": 2,
+    "title": "Celebrities",
+    "tags": "Entertainment, Celebrities ",
+    "createdAt": "Date",
+    "bestScore": "",
+    "likesCount": 0,
+    "questions": [
+      {
+        "question": "What was the cause of death for Freddie Mercury?",
+        "correct_answer": "Pneumonia",
+        "incorrect_answers": ["Stomach Cancer", "HIV", "Brain Hemorrhage"]
+      },
+      {
+        "question": "When was Elvis Presley born?",
+        "correct_answer": "January 8, 1935",
+        "incorrect_answers": [
+          "December 13, 1931",
+          "July 18, 1940",
+          "April 17, 1938"
+        ]
+      },
+      {
+        "question": "If he was still alive, in what year would Elvis Presley celebrate his 100th birthday?",
+        "correct_answer": "2035",
+        "incorrect_answers": ["2030", "2040", "2045"]
+      },
+      {
+        "question": "Which radio personality calls himself &quot;The King of All Media&quot;?",
+        "correct_answer": "Howard Stern",
+        "incorrect_answers": ["Rush Limbaugh", "Pete Tong", "Ryan Seacrest"]
+      },
+      {
+        "question": "Nikki Diamond portrayed which Gladiator in the 1992 TV show &quot;Gladiators&quot;?",
+        "correct_answer": "Scorpio",
+        "incorrect_answers": ["Jet", "Nightshade", "Falcon"]
+      },
+      {
+        "question": "Who out of these actresses is the youngest?",
+        "correct_answer": "Kiernan Shipka",
+        "incorrect_answers": ["Ariel Winter", "Emma Watson", "Bonnie Wright"]
+      },
+      {
+        "question": "Tupac Shakur died due to complications from being stabbed in 1996.",
+        "correct_answer": "False",
+        "incorrect_answers": ["True"]
+      }
+    ]
+  },
+  {
+    "_id": 3,
+    "title": "Politics",
+    "tags": "Politics ",
+    "createdAt": "Date",
+    "bestScore": "",
+    "likesCount": 0,
+    "questions": [
+      {
+        "question": "Who was the British Prime Minister at the outbreak of the Second World War?",
+        "correct_answer": "Neville Chamberlain",
+        "incorrect_answers": [
+          "Clement Attlee",
+          "Winston Churchill",
+          "Stanley Baldwin"
+        ]
+      },
+      {
+        "question": "Which Native American tribe/nation requires at least one half blood quantum (equivalent to one parent) to be eligible for membership?",
+        "correct_answer": "Yomba Shoshone Tribe",
+        "incorrect_answers": [
+          "Standing Rock Sioux Tribe",
+          "Kiowa Tribe of Oklahoma",
+          "Pawnee Nation of Oklahoma"
+        ]
+      },
+      {
+        "question": "During the 2016 United States presidential election, the State of California possessed the most electoral votes, having 55.",
+        "correct_answer": "True",
+        "incorrect_answers": ["False"]
+      },
+      {
+        "question": "Who was the 45th President of the United States?",
+        "correct_answer": "Donald Trump",
+        "incorrect_answers": ["Barack Obama", "Bill Clinton", "George Bush"]
+      },
+      {
+        "question": "What is the name of Niccol&ograve; Machiavelli&#039;s work that argued effective leaders needed to crush their opponents at all costs?",
+        "correct_answer": "The Prince",
+        "incorrect_answers": [
+          "The Rape of Lucrece",
+          "Will to Power",
+          "Love&#039;s Labours Lost"
+        ]
+      },
+      {
+        "question": "In United States history, how many vice presidents did Franklin D. Roosevelt have during his time in office as president?",
+        "correct_answer": "3",
+        "incorrect_answers": ["1", "2", "0"]
+      },
+      {
+        "question": "What was the personal nickname of the 40th Governor of the US State Louisiana, Huey Long?",
+        "correct_answer": "The Kingfish",
+        "incorrect_answers": ["The Champ", "The Hoot Owl", "The Oracle"]
+      }
+    ]
+  },
+  {
+    "_id": 4,
+    "title": "History",
+    "tags": "History ",
+    "createdAt": "Date",
+    "bestScore": "",
+    "likesCount": 0,
+    "questions": [
+      {
+        "question": "Who was the first explorer to sail to North America?",
+        "correct_answer": "Leif Erikson",
+        "incorrect_answers": [
+          "Christopher Columbus",
+          "Amerigo Vespucci",
+          "Ferdinand Magellan"
+        ]
+      },
+      {
+        "question": "How old was Lyndon B. Johnson when he assumed the role of President of the United States?",
+        "correct_answer": "55",
+        "incorrect_answers": ["50", "60", "54"]
+      },
+      {
+        "question": "The fourth funnel of the RMS Titanic was fake designed to make the ship look more powerful and symmetrical.",
+        "correct_answer": "True",
+        "incorrect_answers": ["False"]
+      },
+      {
+        "question": "What year were the Marian Reforms instituted in the Roman Republic?",
+        "correct_answer": "107 BCE",
+        "incorrect_answers": ["42 BCE", "264 BCE", "102 CE"]
+      },
+      {
+        "question": "What is the oldest US state?",
+        "correct_answer": "Delaware",
+        "incorrect_answers": ["Rhode Island", "Maine", "Virginia"]
+      },
+      {
+        "question": "What is the mnemonic device for remembering the fates of the wives of Henry VIII?",
+        "correct_answer": "Divorced, Beheaded, Died, Divorced, Beheaded, Survived",
+        "incorrect_answers": [
+          "Beheaded, Died, Divorced, Divorced, Beheaded, Survived",
+          "Died, Beheaded, Divorced, Beheaded, Survived, Divorced",
+          "Survived, Beheaded, Died, Divorced, Divorced, Beheaded"
+        ]
+      },
+      {
+        "question": "What is the historical name of Sri Lanka?",
+        "correct_answer": "Ceylon",
+        "incorrect_answers": ["Myanmar", "Colombo", "Badulla"]
+      }
+    ]
+  },
+  {
+    "_id": 5,
+    "title": "Sports",
+    "tags": "Sports ",
+    "createdAt": "Date",
+    "bestScore": "",
+    "likesCount": 0,
+    "questions": [
+      {
+        "question": "Which German sportswear company&#039;s logo is the &#039;Formstripe&#039;?",
+        "correct_answer": "Puma",
+        "incorrect_answers": ["Nike", "Adidas", "Reebok"]
+      },
+      {
+        "question": "Who won the 2015 Formula 1 World Championship?",
+        "correct_answer": "Lewis Hamilton",
+        "incorrect_answers": [
+          "Nico Rosberg",
+          "Sebastian Vettel",
+          "Jenson Button"
+        ]
+      },
+      {
+        "question": "Skateboarding will be included in the 2020 Summer Olympics in Tokyo.",
+        "correct_answer": "True",
+        "incorrect_answers": ["False"]
+      },
+      {
+        "question": "Which team was the 2015-2016 NBA Champions?",
+        "correct_answer": "Cleveland Cavaliers",
+        "incorrect_answers": [
+          "Golden State Warriors",
+          "Toronto Raptors",
+          "Oklahoma City Thunders"
+        ]
+      },
+      {
+        "question": "Which of the following Grand Slam tennis tournaments occurs LAST?",
+        "correct_answer": "US Open",
+        "incorrect_answers": ["French Open", "Wimbledon", "Australian Open"]
+      },
+      {
+        "question": "This Canadian television sportscaster is known for his &quot;Hockey Night in Canada&quot; role, a commentary show during hockey games.",
+        "correct_answer": "Don Cherry",
+        "incorrect_answers": [
+          "Don McKellar",
+          "Don Taylor ",
+          "Donald Sutherland"
+        ]
+      },
+      {
+        "question": "Which year was the third Super Bowl held?",
+        "correct_answer": "1969",
+        "incorrect_answers": ["1968", "1971", "1970"]
+      }
+    ]
+  },
+  {
+    "_id": 6,
+    "title": "Sports",
+    "tags": "Sports ",
+    "createdAt": "Date",
+    "bestScore": "",
+    "likesCount": 0,
+    "questions": [
+      {
+        "question": "Which German sportswear company&#039;s logo is the &#039;Formstripe&#039;?",
+        "correct_answer": "Puma",
+        "incorrect_answers": ["Nike", "Adidas", "Reebok"]
+      },
+      {
+        "question": "Who won the 2015 Formula 1 World Championship?",
+        "correct_answer": "Lewis Hamilton",
+        "incorrect_answers": [
+          "Nico Rosberg",
+          "Sebastian Vettel",
+          "Jenson Button"
+        ]
+      },
+      {
+        "question": "Skateboarding will be included in the 2020 Summer Olympics in Tokyo.",
+        "correct_answer": "True",
+        "incorrect_answers": ["False"]
+      },
+      {
+        "question": "Which team was the 2015-2016 NBA Champions?",
+        "correct_answer": "Cleveland Cavaliers",
+        "incorrect_answers": [
+          "Golden State Warriors",
+          "Toronto Raptors",
+          "Oklahoma City Thunders"
+        ]
+      },
+      {
+        "question": "Which of the following Grand Slam tennis tournaments occurs LAST?",
+        "correct_answer": "US Open",
+        "incorrect_answers": ["French Open", "Wimbledon", "Australian Open"]
+      },
+      {
+        "question": "This Canadian television sportscaster is known for his &quot;Hockey Night in Canada&quot; role, a commentary show during hockey games.",
+        "correct_answer": "Don Cherry",
+        "incorrect_answers": [
+          "Don McKellar",
+          "Don Taylor ",
+          "Donald Sutherland"
+        ]
+      },
+      {
+        "question": "Which year was the third Super Bowl held?",
+        "correct_answer": "1969",
+        "incorrect_answers": ["1968", "1971", "1970"]
+      }
+    ]
+  },
+  {
+    "_id": 7,
+    "title": "Mythology",
+    "tags": "Mythology ",
+    "createdAt": "Date",
+    "bestScore": "",
+    "likesCount": 0,
+    "questions": [
+      {
+        "question": "The ancient Roman god of war was commonly known as which of the following?",
+        "correct_answer": "Mars",
+        "incorrect_answers": ["Jupiter", "Juno", "Ares"]
+      },
+      {
+        "question": "Neptune&#039;s greek name was...",
+        "correct_answer": "Poseidon",
+        "incorrect_answers": ["Ares", "Zeus", "Apollo"]
+      },
+      {
+        "question": "Which Greek &amp; Roman god was known as the god of music, truth and prophecy, healing, the sun and light, plague, poetry, and more?",
+        "correct_answer": "Apollo",
+        "incorrect_answers": ["Aphrodite", "Artemis", "Athena"]
+      },
+      {
+        "question": "In Greek Mythology, who killed Achilles?",
+        "correct_answer": "Paris",
+        "incorrect_answers": ["Hector", "Helen", "Pericles"]
+      },
+      {
+        "question": "A minotaur is half human half what?",
+        "correct_answer": "Bull",
+        "incorrect_answers": ["Cow", "Horse", "Eagle"]
+      },
+      {
+        "question": "In most traditions, who was the wife of Zeus?",
+        "correct_answer": "Hera",
+        "incorrect_answers": ["Aphrodite", "Athena", "Hestia"]
+      },
+      {
+        "question": "What is the name of the Greek god of blacksmiths?",
+        "correct_answer": "Hephaestus",
+        "incorrect_answers": ["Dyntos", "Vulcan", "Artagatus"]
+      }
+    ]
+  },
+  {
+    "_id": 8,
+    "title": "Mathematics",
+    "tags": "Mathematics,Science ",
+    "createdAt": "Date",
+    "bestScore": "",
+    "likesCount": 0,
+    "questions": [
+      {
+        "question": "How many zeptometres are inside one femtometre?",
+        "correct_answer": "1,000,000",
+        "incorrect_answers": ["10", "1,000,000,000", "1000"]
+      },
+      {
+        "question": "What is the first Mersenne prime over 1000?",
+        "correct_answer": "1279",
+        "incorrect_answers": ["2203", "1009", "1069"]
+      },
+      {
+        "question": "The binary number &quot;101001101&quot; is equivalent to the Decimal number &quot;334&quot;",
+        "correct_answer": "False",
+        "incorrect_answers": ["True"]
+      },
+      {
+        "question": "The decimal number 31 in hexadecimal would be what?",
+        "correct_answer": "1F",
+        "incorrect_answers": ["3D", "2E", "1B"]
+      },
+      {
+        "question": "E = MC3",
+        "correct_answer": "False",
+        "incorrect_answers": ["True"]
+      },
+      {
+        "question": "What is the 100th digit of Pi?",
+        "correct_answer": "9",
+        "incorrect_answers": ["4", "7", "2"]
+      },
+      {
+        "question": "What is the correct order of operations for solving equations?",
+        "correct_answer": "Parentheses, Exponents, Multiplication, Division, Addition, Subtraction",
+        "incorrect_answers": [
+          "Addition, Multiplication, Division, Subtraction, Addition, Parentheses",
+          "Parentheses, Exponents, Addition, Substraction, Multiplication, Division",
+          "The order in which the operations are written."
+        ]
+      },
+      {
+        "question": "What is the derivative of Acceleration with respect to time?",
+        "correct_answer": "Jerk",
+        "incorrect_answers": ["Shift", "Bump", "Slide"]
+      }
+    ]
+  },
+  {
+    "_id": 9,
+    "title": "Computers",
+    "tags": "Computers,Science ",
+    "createdAt": "Date",
+    "bestScore": "",
+    "likesCount": 0,
+    "questions": [
+      {
+        "question": "What does AD stand for in relation to Windows Operating Systems? ",
+        "correct_answer": "Active Directory",
+        "incorrect_answers": [
+          "Alternative Drive",
+          "Automated Database",
+          "Active Department"
+        ]
+      },
+      {
+        "question": "The programming language &#039;Swift&#039; was created to replace what other programming language?",
+        "correct_answer": "Objective-C",
+        "incorrect_answers": ["C#", "Ruby", "C++"]
+      },
+      {
+        "question": "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
+        "correct_answer": "Final",
+        "incorrect_answers": ["Static", "Private", "Public"]
+      },
+      {
+        "question": "In web design, what does CSS stand for?",
+        "correct_answer": "Cascading Style Sheet",
+        "incorrect_answers": [
+          "Counter Strike: Source",
+          "Corrective Style Sheet",
+          "Computer Style Sheet"
+        ]
+      },
+      {
+        "question": "Which one of these is not an official development name for a Ubuntu release?",
+        "correct_answer": "Mystic Mansion",
+        "incorrect_answers": ["Trusty Tahr", "Utopic Unicorn", "Wily Werewolf"]
+      },
+      {
+        "question": "What is the correct term for the metal object in between the CPU and the CPU fan within a computer system?",
+        "correct_answer": "Heat Sink",
+        "incorrect_answers": ["CPU Vent", "Temperature Decipator", "Heat Vent"]
+      },
+      {
+        "question": "Laserjet and inkjet printers are both examples of what type of printer?",
+        "correct_answer": "Non-impact printer",
+        "incorrect_answers": [
+          "Impact printer",
+          "Daisywheel printer",
+          "Dot matrix printer"
+        ]
+      },
+      {
+        "question": "How many values can a single byte represent?",
+        "correct_answer": "256",
+        "incorrect_answers": ["8", "1", "1024"]
+      }
+    ]
+  },
+  {
+    "_id": 10,
+    "title": "Board Games",
+    "tags": "Board Games,Entertainment ",
+    "createdAt": "Date",
+    "bestScore": "",
+    "likesCount": 0,
+    "questions": [
+      {
+        "question": "Carcassonne is based on which French town?",
+        "correct_answer": "Carcassonne",
+        "incorrect_answers": ["Paris", "Marseille", "Clermont-Ferrand"]
+      },
+      {
+        "question": "In a standard game of Monopoly, what colour are the two cheapest properties?",
+        "correct_answer": "Brown",
+        "incorrect_answers": ["Green", "Yellow", "Blue"]
+      },
+      {
+        "question": "How many dice are used in the game of Yahtzee?",
+        "correct_answer": "Five",
+        "incorrect_answers": ["Four", "Six", "Eight"]
+      },
+      {
+        "question": "At the start of a standard game of the Monopoly, if you throw a double six, which square would you land on?",
+        "correct_answer": "Electric Company",
+        "incorrect_answers": ["Water Works", "Chance", "Community Chest"]
+      },
+      {
+        "question": "What special item did the creators of Cards Against Humanity ship for their Black Friday pack?",
+        "correct_answer": "Bull Feces",
+        "incorrect_answers": ["A Card Expansion", "A Racist Toy", "Cat Urine"]
+      },
+      {
+        "question": "Europa Universalis is a strategy video game based on which French board game?",
+        "correct_answer": "Europa Universalis",
+        "incorrect_answers": [
+          "Europe and the Universe",
+          "Europa!",
+          "Power in Europe"
+        ]
+      },
+      {
+        "question": "What Magic: The Gathering card&#039;s flavor text is just &#039;Ribbit.&#039;?",
+        "correct_answer": "Turn to Frog",
+        "incorrect_answers": ["Spore Frog", "Bloated Toad", "Frogmite"]
+      },
+      {
+        "question": "When was the board game Twister, released to the public?",
+        "correct_answer": "April 1966",
+        "incorrect_answers": ["September 1965", "January 1969", "February 1966"]
+      }
+    ]
+  }
+]
