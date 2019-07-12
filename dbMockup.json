@@ -1,0 +1,74 @@
+[
+    {
+        "_id": "3298urj",
+        "nickName": "admin",
+        "userName": "admin@gmail.com",
+        "password": "1234",
+        "playCount": 12,
+        "expCount": 1,
+        "wonCount": 32,
+        "profileImg": "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg"
+    },
+    {
+        "_id": "3298urffgj",
+        "title": "comic quiz",
+        "tags": "Entertainment, Comics",
+        "createdAt": 1562917080939,
+        "createdBy": "3298urj",
+        "bestScore": 57,
+        "likesCount": 2,
+        "quests": [
+            {
+                "quest": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
+                "correct_answer": 2,
+                "answers": [
+                    "1973",
+                    "Stan Lee",
+                    "Malcolm Wheeler-Nicholson",
+                    "Robert Crumb"
+                ]
+            },
+            {
+                "quest": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
+                "correct_answer": 2,
+                "answers": [
+                    "1973",
+                    "Stan Lee",
+                    "Malcolm Wheeler-Nicholson",
+                    "Robert Crumb"
+                ]
+            },
+            {
+                "quest": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
+                "correct_answer": 2,
+                "answers": [
+                    "1973",
+                    "Stan Lee",
+                    "Malcolm Wheeler-Nicholson",
+                    "Robert Crumb"
+                ]
+            },
+            {
+                "quest": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
+                "correct_answer": 2,
+                "answers": [
+                    "1973",
+                    "Stan Lee",
+                    "Malcolm Wheeler-Nicholson",
+                    "Robert Crumb"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "3rwefds",
+        "players": [
+            "xcvxcv",
+            "xcvxcv",
+            "xcvxcv",
+            "xcvxcv"
+        ],
+        "quizId": "irojkgf",
+        "bestScore": 3244
+    }
+]
