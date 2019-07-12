@@ -4,7 +4,7 @@ export default {
   query,
   addQuiz,
   deleteQuiz,
-  updateQuiz,
+  editQuiz,
   getById
 };
 
@@ -13,15 +13,15 @@ function query() {
 }
 
 function getById(id) {
-  return HttpService.ajax('/id').then(res => console.log(res));
+  return HttpService.ajax(`/${id}`).then(res => res);
 }
 
 function addQuiz(NewQuiz) {
   return HttpService.ajax(`/`, 'post', NewQuiz).then(res => console.log(res));
 }
 
-function updateQuiz(NewQuiz) {
-  return HttpService.ajax(`/id`, 'put', NewQuiz).then(res => console.log(res));
+function editQuiz(NewQuiz) {
+  return HttpService.ajax(`/${NewQuiz._id}`, 'put', NewQuiz).then(res => res);
 }
 
 function deleteQuiz(id) {

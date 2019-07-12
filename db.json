@@ -10,46 +10,53 @@
       "questions": [
         {
           "question": "Who was the first explorer to sail to North America?",
-          "correct_answer": "Leif Erikson",
-          "incorrect_answers": [
-            "Christopher Columbus",
+          "answers": [
+            "Christopher Columbus22",
             "Amerigo Vespucci",
-            "Ferdinand Magellan"
-          ]
+            "Ferdinand Magellan",
+            "Leif Erikson"
+          ],
+          "currentAnswerIdx": 3
         },
         {
           "question": "How old was Lyndon B. Johnson when he assumed the role of President of the United States?",
-          "correct_answer": "55",
-          "incorrect_answers": ["50", "60", "54"]
-        },
-        {
-          "question": "The fourth funnel of the RMS Titanic was fake designed to make the ship look more powerful and symmetrical.",
-          "correct_answer": "True",
-          "incorrect_answers": ["False"]
+          "answers": [
+            "50",
+            "60",
+            "55",
+            "54"
+          ],
+          "currentAnswerIdx": 2
         },
         {
           "question": "What year were the Marian Reforms instituted in the Roman Republic?",
-          "correct_answer": "107 BCE",
-          "incorrect_answers": ["42 BCE", "264 BCE", "102 CE"]
+          "answers": [
+            "107 BCE",
+            "42 BCE",
+            "264 BCE",
+            "102 CE"
+          ],
+          "currentAnswerIdx": 0
         },
         {
           "question": "What is the oldest US state?",
-          "correct_answer": "Delaware",
-          "incorrect_answers": ["Rhode Island", "Maine", "Virginia"]
-        },
-        {
-          "question": "What is the mnemonic device for remembering the fates of the wives of Henry VIII?",
-          "correct_answer": "Divorced, Beheaded, Died, Divorced, Beheaded, Survived",
-          "incorrect_answers": [
-            "Beheaded, Died, Divorced, Divorced, Beheaded, Survived",
-            "Died, Beheaded, Divorced, Beheaded, Survived, Divorced",
-            "Survived, Beheaded, Died, Divorced, Divorced, Beheaded"
-          ]
+          "answers": [
+            "Delaware",
+            "Rhode Island",
+            "Maine",
+            "Virginia"
+          ],
+          "currentAnswerIdx": 0
         },
         {
           "question": "What is the historical name of Sri Lanka?",
-          "correct_answer": "Ceylon",
-          "incorrect_answers": ["Myanmar", "Colombo", "Badulla"]
+          "answers": [
+            "Myanmar",
+            "Ceylon",
+            "Colombo",
+            "Badulla"
+          ],
+          "currentAnswerIdx": 1
         }
       ]
     },
@@ -63,50 +70,63 @@
       "questions": [
         {
           "question": "Which German sportswear company&#039;s logo is the &#039;Formstripe&#039;?",
-          "correct_answer": "Puma",
-          "incorrect_answers": ["Nike", "Adidas", "Reebok"]
+          "answers": [
+            "Puma",
+            "Nike",
+            "Adidas",
+            "Reebok"
+          ],
+          "currentAnswerIdx": 0
         },
         {
           "question": "Who won the 2015 Formula 1 World Championship?",
-          "correct_answer": "Lewis Hamilton",
-          "incorrect_answers": [
+          "answers": [
             "Nico Rosberg",
             "Sebastian Vettel",
-            "Jenson Button"
-          ]
-        },
-        {
-          "question": "Skateboarding will be included in the 2020 Summer Olympics in Tokyo.",
-          "correct_answer": "True",
-          "incorrect_answers": ["False"]
+            "Jenson Button",
+            "Lewis Hamilton"
+          ],
+          "currentAnswerIdx": 3
         },
         {
           "question": "Which team was the 2015-2016 NBA Champions?",
-          "correct_answer": "Cleveland Cavaliers",
-          "incorrect_answers": [
+          "answers": [
+            "Cleveland Cavaliers",
             "Golden State Warriors",
             "Toronto Raptors",
             "Oklahoma City Thunders"
-          ]
+          ],
+          "currentAnswerIdx": 0
         },
         {
           "question": "Which of the following Grand Slam tennis tournaments occurs LAST?",
-          "correct_answer": "US Open",
-          "incorrect_answers": ["French Open", "Wimbledon", "Australian Open"]
+          "answers": [
+            "French Open",
+            "Wimbledon",
+            "Australian Open",
+            "US Open"
+          ],
+          "currentAnswerIdx": 3
         },
         {
           "question": "This Canadian television sportscaster is known for his &quot;Hockey Night in Canada&quot; role, a commentary show during hockey games.",
-          "correct_answer": "Don Cherry",
-          "incorrect_answers": [
+          "answers": [
+            "Don Cherry",
             "Don McKellar",
             "Don Taylor ",
             "Donald Sutherland"
-          ]
+          ],
+          "currentAnswerIdx": 0
         },
         {
           "question": "Which year was the third Super Bowl held?",
-          "correct_answer": "1969",
-          "incorrect_answers": ["1968", "1971", "1970"]
+          "answers": [
+            "1968",
+            "1971",
+            "1969",
+            "1970"
+          ],
+          "currentAnswerIdx": 2
         }
       ]
     },
@@ -120,333 +140,63 @@
       "questions": [
         {
           "question": "Which German sportswear company&#039;s logo is the &#039;Formstripe&#039;?",
-          "correct_answer": "Puma",
-          "incorrect_answers": ["Nike", "Adidas", "Reebok"]
+          "answers": [
+            "Adidas",
+            "Puma",
+            "Nike",
+            "Reebok"
+          ],
+          "currentAnswerIdx": 1
         },
         {
           "question": "Who won the 2015 Formula 1 World Championship?",
-          "correct_answer": "Lewis Hamilton",
-          "incorrect_answers": [
+          "answers": [
             "Nico Rosberg",
             "Sebastian Vettel",
-            "Jenson Button"
-          ]
-        },
-        {
-          "question": "Skateboarding will be included in the 2020 Summer Olympics in Tokyo.",
-          "correct_answer": "True",
-          "incorrect_answers": ["False"]
+            "Jenson Button",
+            "Lewis Hamilton"
+          ],
+          "currentAnswerIdx": 3
         },
         {
           "question": "Which team was the 2015-2016 NBA Champions?",
-          "correct_answer": "Cleveland Cavaliers",
-          "incorrect_answers": [
+          "answers": [
             "Golden State Warriors",
             "Toronto Raptors",
-            "Oklahoma City Thunders"
-          ]
+            "Oklahoma City Thunders",
+            "Cleveland Cavaliers"
+          ],
+          "currentAnswerIdx": 3
         },
         {
           "question": "Which of the following Grand Slam tennis tournaments occurs LAST?",
-          "correct_answer": "US Open",
-          "incorrect_answers": ["French Open", "Wimbledon", "Australian Open"]
+          "answers": [
+            "French Open",
+            "US Open",
+            "Wimbledon",
+            "Australian Open"
+          ],
+          "currentAnswerIdx": 1
         },
         {
           "question": "This Canadian television sportscaster is known for his &quot;Hockey Night in Canada&quot; role, a commentary show during hockey games.",
-          "correct_answer": "Don Cherry",
-          "incorrect_answers": [
+          "answers": [
             "Don McKellar",
             "Don Taylor ",
+            "Don Cherry",
             "Donald Sutherland"
-          ]
+          ],
+          "currentAnswerIdx": 2
         },
         {
           "question": "Which year was the third Super Bowl held?",
-          "correct_answer": "1969",
-          "incorrect_answers": ["1968", "1971", "1970"]
-        }
-      ]
-    },
-    {
-      "_id": 7,
-      "title": "Mythology",
-      "tags": "Mythology ",
-      "createdAt": "Date",
-      "bestScore": "",
-      "likesCount": 0,
-      "questions": [
-        {
-          "question": "The ancient Roman god of war was commonly known as which of the following?",
-          "correct_answer": "Mars",
-          "incorrect_answers": ["Jupiter", "Juno", "Ares"]
-        },
-        {
-          "question": "Neptune&#039;s greek name was...",
-          "correct_answer": "Poseidon",
-          "incorrect_answers": ["Ares", "Zeus", "Apollo"]
-        },
-        {
-          "question": "Which Greek &amp; Roman god was known as the god of music, truth and prophecy, healing, the sun and light, plague, poetry, and more?",
-          "correct_answer": "Apollo",
-          "incorrect_answers": ["Aphrodite", "Artemis", "Athena"]
-        },
-        {
-          "question": "In Greek Mythology, who killed Achilles?",
-          "correct_answer": "Paris",
-          "incorrect_answers": ["Hector", "Helen", "Pericles"]
-        },
-        {
-          "question": "A minotaur is half human half what?",
-          "correct_answer": "Bull",
-          "incorrect_answers": ["Cow", "Horse", "Eagle"]
-        },
-        {
-          "question": "In most traditions, who was the wife of Zeus?",
-          "correct_answer": "Hera",
-          "incorrect_answers": ["Aphrodite", "Athena", "Hestia"]
-        },
-        {
-          "question": "What is the name of the Greek god of blacksmiths?",
-          "correct_answer": "Hephaestus",
-          "incorrect_answers": ["Dyntos", "Vulcan", "Artagatus"]
-        }
-      ]
-    },
-    {
-      "_id": 8,
-      "title": "Mathematics",
-      "tags": "Mathematics,Science ",
-      "createdAt": "Date",
-      "bestScore": "",
-      "likesCount": 0,
-      "questions": [
-        {
-          "question": "How many zeptometres are inside one femtometre?",
-          "correct_answer": "1,000,000",
-          "incorrect_answers": ["10", "1,000,000,000", "1000"]
-        },
-        {
-          "question": "What is the first Mersenne prime over 1000?",
-          "correct_answer": "1279",
-          "incorrect_answers": ["2203", "1009", "1069"]
-        },
-        {
-          "question": "The binary number &quot;101001101&quot; is equivalent to the Decimal number &quot;334&quot;",
-          "correct_answer": "False",
-          "incorrect_answers": ["True"]
-        },
-        {
-          "question": "The decimal number 31 in hexadecimal would be what?",
-          "correct_answer": "1F",
-          "incorrect_answers": ["3D", "2E", "1B"]
-        },
-        {
-          "question": "E = MC3",
-          "correct_answer": "False",
-          "incorrect_answers": ["True"]
-        },
-        {
-          "question": "What is the 100th digit of Pi?",
-          "correct_answer": "9",
-          "incorrect_answers": ["4", "7", "2"]
-        },
-        {
-          "question": "What is the correct order of operations for solving equations?",
-          "correct_answer": "Parentheses, Exponents, Multiplication, Division, Addition, Subtraction",
-          "incorrect_answers": [
-            "Addition, Multiplication, Division, Subtraction, Addition, Parentheses",
-            "Parentheses, Exponents, Addition, Substraction, Multiplication, Division",
-            "The order in which the operations are written."
-          ]
-        },
-        {
-          "question": "What is the derivative of Acceleration with respect to time?",
-          "correct_answer": "Jerk",
-          "incorrect_answers": ["Shift", "Bump", "Slide"]
-        }
-      ]
-    },
-    {
-      "_id": 9,
-      "title": "Computers",
-      "tags": "Computers,Science ",
-      "createdAt": "Date",
-      "bestScore": "",
-      "likesCount": 0,
-      "questions": [
-        {
-          "question": "What does AD stand for in relation to Windows Operating Systems? ",
-          "correct_answer": "Active Directory",
-          "incorrect_answers": [
-            "Alternative Drive",
-            "Automated Database",
-            "Active Department"
-          ]
-        },
-        {
-          "question": "The programming language &#039;Swift&#039; was created to replace what other programming language?",
-          "correct_answer": "Objective-C",
-          "incorrect_answers": ["C#", "Ruby", "C++"]
-        },
-        {
-          "question": "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
-          "correct_answer": "Final",
-          "incorrect_answers": ["Static", "Private", "Public"]
-        },
-        {
-          "question": "In web design, what does CSS stand for?",
-          "correct_answer": "Cascading Style Sheet",
-          "incorrect_answers": [
-            "Counter Strike: Source",
-            "Corrective Style Sheet",
-            "Computer Style Sheet"
-          ]
-        },
-        {
-          "question": "Which one of these is not an official development name for a Ubuntu release?",
-          "correct_answer": "Mystic Mansion",
-          "incorrect_answers": [
-            "Trusty Tahr",
-            "Utopic Unicorn",
-            "Wily Werewolf"
-          ]
-        },
-        {
-          "question": "What is the correct term for the metal object in between the CPU and the CPU fan within a computer system?",
-          "correct_answer": "Heat Sink",
-          "incorrect_answers": [
-            "CPU Vent",
-            "Temperature Decipator",
-            "Heat Vent"
-          ]
-        },
-        {
-          "question": "Laserjet and inkjet printers are both examples of what type of printer?",
-          "correct_answer": "Non-impact printer",
-          "incorrect_answers": [
-            "Impact printer",
-            "Daisywheel printer",
-            "Dot matrix printer"
-          ]
-        },
-        {
-          "question": "How many values can a single byte represent?",
-          "correct_answer": "256",
-          "incorrect_answers": ["8", "1", "1024"]
-        }
-      ]
-    }
-  ],
-  "users": [
-    {
-      "_id": "3298urj",
-      "nickName": "admin",
-      "userName": "admin@gmail.com",
-      "password": "1234",
-      "playCount": 12,
-      "expCount": 1,
-      "wonCount": 32,
-      "profileImg": "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg"
-    },
-    {
-      "_id": "3298urffgj",
-      "title": "comic quiz",
-      "tags": "Entertainment, Comics",
-      "createdAt": 1562917080939,
-      "createdBy": "3298urj",
-      "bestScore": 57,
-      "likesCount": 2,
-      "quests": [
-        {
-          "quest": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
-          "correct_answer": 2,
           "answers": [
-            "1973",
-            "Stan Lee",
-            "Malcolm Wheeler-Nicholson",
-            "Robert Crumb"
-          ]
-        },
-        {
-          "quest": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
-          "correct_answer": 2,
-          "answers": [
-            "1973",
-            "Stan Lee",
-            "Malcolm Wheeler-Nicholson",
-            "Robert Crumb"
-          ]
-        },
-        {
-          "quest": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
-          "correct_answer": 2,
-          "answers": [
-            "1973",
-            "Stan Lee",
-            "Malcolm Wheeler-Nicholson",
-            "Robert Crumb"
-          ]
-        },
-        {
-          "quest": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
-          "correct_answer": 2,
-          "answers": [
-            "1973",
-            "Stan Lee",
-            "Malcolm Wheeler-Nicholson",
-            "Robert Crumb"
-          ]
-        }
-      ]
-    },
-    {
-      "_id": "3298urffgj213123",
-      "title": "comic quiz",
-      "tags": "Entertainment, Comics",
-      "createdAt": 1562917080939,
-      "createdBy": "3298urj",
-      "bestScore": 57,
-      "likesCount": 2,
-      "quests": [
-        {
-          "quest": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
-          "correct_answer": 2,
-          "answers": [
-            "1973",
-            "Stan Lee",
-            "Malcolm Wheeler-Nicholson",
-            "Robert Crumb"
-          ]
-        },
-        {
-          "quest": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
-          "correct_answer": 2,
-          "answers": [
-            "1973",
-            "Stan Lee",
-            "Malcolm Wheeler-Nicholson",
-            "Robert Crumb"
-          ]
-        },
-        {
-          "quest": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
-          "correct_answer": 2,
-          "answers": [
-            "1973",
-            "Stan Lee",
-            "Malcolm Wheeler-Nicholson",
-            "Robert Crumb"
-          ]
-        },
-        {
-          "quest": "Who is the creator of the comic series &quot;The Walking Dead&quot;?",
-          "correct_answer": 2,
-          "answers": [
-            "1973",
-            "Stan Lee",
-            "Malcolm Wheeler-Nicholson",
-            "Robert Crumb"
-          ]
+            "1969",
+            "1968",
+            "1971",
+            "1970"
+          ],
+          "currentAnswerIdx": 0
         }
       ]
     }

@@ -1,7 +1,6 @@
 <template>
   <section class="add-quiz">
     <router-link to="/">Back to home</router-link>
-    <nav>Nav here</nav>
     <div>
       <h2>The quiz</h2>
       <div>question array:</div>
@@ -9,7 +8,7 @@
     <h3>Add a new quiz</h3>
     <div class="top-options flex column">
       <h2>
-        <input type="text" placeholder="Quiz Title" v-model="newQuiz.title" />
+        <input type="text" placeholder="Quiz Title" v-model="loadedQuiz.title" />
       </h2>
       <div class="flex">
         <div class="img-container">
@@ -23,14 +22,14 @@
         </div>
       </div>
     </div>
-    <div v-for="(quest,questIdx) in questNum" :key="questIdx">
+    <div v-for="(quest,questIdx) in loadedQuiz.questions" :key="questIdx">
       <h4>Question {{questIdx+1}}</h4>
       <hr />
-      <input type="text" v-model="newQuiz.questions[questIdx].question" />
+      <input type="text" v-model="loadedQuiz.questions[questIdx].question" />
       <span>
         <h5>Answers:</h5>
         <input
-          v-model="newQuiz.questions[questIdx].answers[answerIdx]"
+          v-model="loadedQuiz.questions[questIdx].answers[answerIdx]"
           v-for="(n,answerIdx) in 4"
           :key="answerIdx"
           type="text"
@@ -50,10 +49,8 @@
     </div>
     <div class="flex add-btns">
       <button @click="addQuest">Add question</button>
-      <button @click="addQuiz">Submit Quiz</button>
+      <button @click="editQuiz(loadedQuiz)">Update Quiz</button>
     </div>
-
-    <footer>footer here</footer>
   </section>
 </template>
 
@@ -65,60 +62,40 @@ import utilService from "@/service/utilService.js";
 export default {
   name: "home",
   components: {},
-  computed: {
-    // questNumUpdated() {
-    //   return this.questNum;
-    // }
-  },
+  computed: {},
   data() {
     return {
       questNum: 4,
-      newQuiz: {
-        title: "",
-        tags: "",
-        createdAt: "",
-        bestScore: "",
-        likesCount: 0,
-        currectAnswer: 0,
-        questions: [
-          {
-            question: "",
-            answers: ["", "", "", ""]
-          },
-          {
-            question: "",
-            answers: ["", "", "", ""]
-          },
-          {
-            question: "",
-            answers: ["", "", "", ""]
-          },
-          {
-            question: "",
-            answers: ["", "", "", ""]
-          }
-        ]
-      }
+      loadedQuiz: {}
     };
+  },
+
+  created() {
+    const quizId = this.$route.params.id;
+    this.$store.dispatch({ type: "getQuiz", quizId }).then(quiz => {
+      this.loadedQuiz = quiz;
+      console.log(this.loadedQuiz);
+    });
   },
   methods: {
     addQuest() {
       var quest = ["", "", "", ""];
       this.questNum++;
-      this.newQuiz.questions.push(quest);
+      this.loadedQuiz.quests.push(quest);
     },
     deleteQuest(questIdx) {
-      this.newQuiz.questions.splice(questIdx, 1);
+      this.loadedQuiz.quests.splice(questIdx, 1);
       this.questNum--;
     },
     setCurrectAnswer(questIdx, ev) {
       var value = ev.target.value;
-      this.newQuiz.questions[questIdx].currectAnswer = parseInt(value - 1);
+      this.loadedQuiz.quests[questIdx].currectAnswer = value;
     },
-    addQuiz() {
-      this.newQuiz._id = utilService.makeId();
-      quizService.addQuiz(this.newQuiz);
-      this.$router.push("/");
+    editQuiz(loadedQuiz) {
+      this.$store.dispatch({ type: "editQuiz", loadedQuiz }).then(() => {
+        quizService.editQuiz(this.loadedQuiz);
+        this.$router.push("/");
+      });
     }
   }
 };

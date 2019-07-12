@@ -19,5 +19,7 @@ export default {
   background: teal;
   padding: 10px;
   border-top: 2px black solid;
+  position: fixed;
+  bottom: 0;
 }
 </style>
