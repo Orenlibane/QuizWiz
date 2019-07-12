@@ -3,16 +3,12 @@
     <nav>Nav here</nav>
     <div class="quizes-show">
       <h4>here is the ongoing quizes</h4>
-      <div class="cards">
-        <div v-for="(n,idx) in 8" :key="idx" class="card">quiz {{idx+1}}</div>
-      </div>
+      <quiz-list :quizes="quizes"></quiz-list>
     </div>
     <button to="/quiz/edit">Add quiz</button>
     <div class="quizes-show">
       <h4>here is the recomendd quizes</h4>
-      <div class="cards">
-        <div v-for="(n,idx) in 8" :key="idx" class="card">quiz {{idx+1}}</div>
-      </div>
+      <quiz-list :quizes="quizes"></quiz-list>
     </div>
     <footer>footer here</footer>
   </section>
@@ -20,12 +16,11 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
+import quizList from '../components/quizList'
 export default {
   name: "home",
   components: {
-    HelloWorld
+    quizList
   }
 };
 </script>
