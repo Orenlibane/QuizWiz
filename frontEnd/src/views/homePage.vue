@@ -12,7 +12,6 @@
       <h4>here is the recomendd quizes</h4>
       <quiz-list :quizes="liveQuizes"></quiz-list>
     </div>
-    <footer>footer here</footer>
   </section>
 </template>
 
@@ -23,7 +22,7 @@ import homePage from "@/styles/views/_home-page.scss";
 export default {
   name: "home",
   components: {
-    quizList,
+    quizList
   },
   computed: {
     liveQuizes() {

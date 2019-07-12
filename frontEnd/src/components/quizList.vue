@@ -18,7 +18,6 @@ export default {
   },
   computed: {
     quizesToShow() {
-      console.log(this.$store.getters.getQuizes);
       return this.$store.getters.getQuizes;
     }
   },
