@@ -1,5 +1,6 @@
 <template>
-  <section class="home">
+  <section class="add-quiz">
+    <router-link to="/">Back to home</router-link>
     <nav>Nav here</nav>
     <div>
       <h2>The quiz</h2>
@@ -29,8 +30,18 @@
           :key="answerIdx"
           type="text"
         />
-        <button @click="deleteQuest">X</button>
+
+        <button @click="deleteQuest">🗑️</button>
       </span>
+      <div>
+        <h5>Currect Answer</h5>
+        <select @change="setCurrectAnswer(questIdx,$event)">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
     </div>
     <button @click="addQuest">Add question</button>
 
@@ -52,6 +63,12 @@ export default {
     return {
       questNum: 4,
       quiz: {
+        title: "",
+        tags: "",
+        createdAt: "",
+        bestScore: "",
+        likesCount: 0,
+        currectAnswer: 0,
         quests: [
           {
             title: "",
@@ -82,6 +99,13 @@ export default {
     deleteQuest(questIdx) {
       this.quiz.quests.splice(questIdx, 1);
       this.questNum--;
+    },
+    setCurrectAnswer(questIdx, ev) {
+      console.log(ev.target.value);
+      console.log("questIdx", questIdx);
+      console.log("the quiz", this.quiz);
+      var value = ev.target.value;
+      this.quiz.quests[questIdx].currectAnswer = value;
     }
   }
 };
