@@ -6,7 +6,7 @@
       <quiz-list :quizes="liveQuizes"></quiz-list>
     </div>
     <router-link to="/quiz/add">
-      <button>Add quiz</button>
+      <button class="addQuizBtn">Add quiz</button>
     </router-link>
     <div class="quizes-show">
       <h4>here is the recomendd quizes</h4>

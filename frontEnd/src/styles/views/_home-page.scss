@@ -6,9 +6,19 @@
   justify-content: space-between;
   align-items: center;
 }
-button {
-  padding: 20px;
+.addQuizBtn {
+  padding: 50px;
+  font-size: 2rem;
   margin: 10px 0;
+  border-radius: 15px;
+  transition: all 0.3s ease-out;
+  cursor: pointer;
+}
+
+.addQuizBtn:hover {
+  border: 2px black solid;
+  background: black;
+  color: white;
 }
 
 .quizes-show {
