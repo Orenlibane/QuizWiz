@@ -1,0 +1,17 @@
+<template>
+  <section>
+      <div class="flex" v-for="quiz in quizes" :key="quiz._id">
+          <quiz-preview :quiz="quiz"></quiz-preview>          
+      </div>
+  </section>
+</template>
+
+<script>
+import quizPreview from './quizPreview'
+export default {
+    props:['quizes'],
+    components:{
+        quizPreview
+    }
+};
+</script>
