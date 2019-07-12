@@ -14,10 +14,5 @@ export default new Router({
       name: 'homePage',
       component: HomePage
     }
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   component: about
-    // }
   ]
 });
