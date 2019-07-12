@@ -1,6 +1,29 @@
-.main-lobby-container {
-  width: 50vw;
-  height: 80vh;
+.lobby-img img {
+  width: 200px;
+  height: 250px;
+}
+
+.lobby {
   border: 2px black solid;
-  margin: 50px 0;
+  padding: 100px;
+}
+
+// .main-lobby-container {
+//   width: 50vw;
+//   height: 80vh;
+//   border: 2px black solid;
+//   margin: 50px 0;
+// }
+
+.chat li {
+  border-top: 1px black solid;
+  border-bottom: 1px black solid;
+  padding: 0 0 3px 0;
+  width: 100%;
+}
+
+.chat {
+  background: white;
+  padding: 0;
+  margin: 0;
 }

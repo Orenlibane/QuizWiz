@@ -29,3 +29,40 @@
 .wrap {
   flex-wrap: wrap;
 }
+
+.clean-list {
+  list-style: none;
+}
+
+.both-align-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+.space-around {
+  justify-content: space-around;
+}
+
+.center {
+  text-align: center;
+}
