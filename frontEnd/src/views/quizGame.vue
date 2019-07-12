@@ -1,29 +1,48 @@
 <template>
   <section>
-    <component :is="this.cmp.type" :info="this.cmpinfo" @inform="this.cmp.imform" />
+    <component :is="cmp.type" />
   </section>
 </template>
 
 <script>
+import quizDetails from "../components/quizGameScreens/quizDetails";
+import quizEnd from "../components/quizGameScreens/quizEnd";
+import quizLobby from "../components/quizGameScreens/quizLobby";
+import quizResult from "../components/quizGameScreens/quizResult";
+import quizReady from "../components/quizGameScreens/quizReady";
+import quizQueast from "../components/quizGameScreens/quizQuest";
+
 export default {
   data() {
     return {
       cmp: {
-        type: "",
+        type: "quizLobby",
         info: "",
-        inform:"func"
+        inform: "func"
       },
-      cmpArr:[
-        'detailsScreen',
-        'LobbyScreen',
-        'questScreen',
-        'endScreen',
-        'readyScreen',
-        'resultScreen'
+      cmpArr: [
+        "quizDetails",
+        "quizLobby",
+        "questScreen",
+        "quizEnd",
+        "quizReady",
+        "quizResult"
       ]
     };
   },
-  methods:{
+  components: {
+    quizDetails,
+    quizEnd,
+    quizLobby,
+    quizResult,
+    quizReady,
+    quizQueast
+  },
+  methods: {},
+  computed: {
+    gameState() {
+      return this.cmpArr[this.gameState];
+    }
   }
 };
 </script>
