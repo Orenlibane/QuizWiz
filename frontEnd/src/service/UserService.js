@@ -9,8 +9,8 @@ export default {
 
 function login(userCred) {
     console.log('we got:', userCred);
-    // return HttpService.ajax('api/auth/login', 'post', userCred)
-    //     .then(res => console.log('result is:', res))
+    return HttpService.ajax('api/auth/login', 'post', userCred)
+        .then(res => console.log('result is:', res))
 }
 function signup(userCred) {
     HttpService.ajax('api/auth/signup', 'post', userCred)
