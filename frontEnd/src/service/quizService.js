@@ -13,17 +13,17 @@ function query() {
 }
 
 function getById(id) {
-  HttpService.ajax('/id').then(res => console.log(res));
+  return HttpService.ajax('/id').then(res => console.log(res));
 }
 
 function addQuiz(NewQuiz) {
-  HttpService.ajax(`/`, 'post', NewQuiz).then(res => console.log(res));
+  return HttpService.ajax(`/`, 'post', NewQuiz).then(res => console.log(res));
 }
 
 function updateQuiz(NewQuiz) {
-  HttpService.ajax(`/`, 'put', NewQuiz).then(res => console.log(res));
+  return HttpService.ajax(`/id`, 'put', NewQuiz).then(res => console.log(res));
 }
 
 function deleteQuiz(id) {
-  HttpService.ajax(`/`, 'delete', quizInfo).then(res => console.log(res));
+  return HttpService.ajax(`/${id}`, 'delete', id).then(res => res);
 }

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import quizService from './service/quizService.js';
+import quizService from '@/service/quizService.js';
 import userStore from './userStore.js';
 
 Vue.use(Vuex);
@@ -17,6 +17,10 @@ export default new Vuex.Store({
   mutations: {
     setQuizes(state, { quizes }) {
       state.quizes = quizes;
+    },
+    deleteQuiz(state, { quizId }) {
+      var idxToDelete = state.quizes.findIndex(quiz => quiz._id === quizId);
+      state.quizes.splice(idxToDelete, 1);
     }
   },
   actions: {
@@ -24,6 +28,9 @@ export default new Vuex.Store({
       return quizService.query().then(quizes => {
         context.commit({ type: 'setQuizes', quizes });
       });
+    },
+    deleteQuiz(context, { quizId }) {
+      context.commit({ type: 'deleteQuiz', quizId });
     }
   },
   getters: {
