@@ -1,0 +1,26 @@
+section {
+  height: 80vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+li {
+  margin: 0;
+}
+
+.addimg {
+  padding: 20px;
+  border: 1px black solid;
+}
+
+.top-options {
+  display: flex;
+  justify-content: space-around;
+  width: 20vw;
+}
+
+button {
+  padding: 0;
+}
