@@ -1,6 +1,5 @@
 <template>
   <section class="home-page">
-    <app-header></app-header>
     <nav>Nav here</nav>
     <div class="quizes-show">
       <h4>here is the ongoing quizes</h4>
@@ -17,17 +16,14 @@
         <div v-for="(n,idx) in 8" :key="idx" class="card">quiz {{idx+1}}</div>
       </div>
     </div>
-    <footer>footer here</footer>
   </section>
 </template>
 
 <script>
 // @ is an alias to /src
 import homePage from "@/styles/views/_home-page.scss";
-
 export default {
   name: "home",
-  components: {}
 };
 </script>
 
