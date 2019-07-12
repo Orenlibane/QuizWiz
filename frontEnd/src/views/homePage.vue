@@ -8,7 +8,9 @@
         <div v-for="(n,idx) in 8" :key="idx" class="card">quiz {{idx+1}}</div>
       </div>
     </div>
-    <button to="/quiz/edit">Add quiz</button>
+    <router-link to="/quiz/add">
+      <button>Add quiz</button>
+    </router-link>
     <div class="quizes-show">
       <h4>here is the recomendd quizes</h4>
       <div class="cards">
@@ -21,6 +23,7 @@
 
 <script>
 // @ is an alias to /src
+<<<<<<< HEAD
 import HelloWorld from "@/components/HelloWorld.vue";
 import appHeader from "@/components/appHeader";
 
@@ -63,4 +66,15 @@ button {
   padding: 70px 50px;
   margin: 0 5px;
 }
+=======
+import homePage from "@/styles/views/_home-page.scss";
+
+export default {
+  name: "home",
+  components: {}
+};
+</script>
+
+<style lang="scss" scoped>
+>>>>>>> 63a93ed4e6316e83ef815ecfbb78fa50176bd453
 </style>
