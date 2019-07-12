@@ -15,10 +15,7 @@ export default {
 
 <style scoped>
 .app-footer {
-  display: flex;
-  justify-content: space-between;
   width: 100vw;
-  align-items: center;
   background: teal;
   padding: 10px;
   border-top: 2px black solid;
