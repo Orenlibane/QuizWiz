@@ -22,12 +22,12 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import homePage from "@/styles/views/_home-page.scss";
+import appHeader from "@/components/appHeader";
 
 export default {
   name: "home",
-  components: {}
+  components: { appHeader }
 };
 </script>
 
