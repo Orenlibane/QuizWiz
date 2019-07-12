@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import quizService from '@/service/quizService.js';
 import userStore from './userStore.js';
+import quizStore from './quizStore.js'
 
 Vue.use(Vuex);
 
