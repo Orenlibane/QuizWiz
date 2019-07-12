@@ -1,39 +1,9 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import quizService from '@/service/quizService.js';
 import userStore from './userStore.js';
-let test = [
-  {
-    _id: "3d298urffgj",
-    title: "comic quiz",
-    tags: "Entertainment, Comics",
-    createdAt: 1562917080939,
-    createdBy: "3298urj",
-    bestScore: 57,
-    likesCount: 2,
-  },
-  {
-    _id: "3298urffdgj",
-    title: "comic quiz",
-    tags: "Entertainment, Comics",
-    createdAt: 1562917080939,
-    createdBy: "3298urj",
-    bestScore: 57,
-    likesCount: 2,
-  },
-  {
-    _id: "329d8urffgj",
-    title: "comic quiz",
-    tags: "Entertainment, Comics",
-    createdAt: 1562917080939,
-    createdBy: "3298urj",
-    bestScore: 57,
-    likesCount: 2,
-  }
-]
 
-
-
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   strict: true,
@@ -41,20 +11,31 @@ export default new Vuex.Store({
     userStore
   },
 
-
   state: {
-    quizes: test
+    quizes: ''
   },
   mutations: {
-
+    setQuizes(state, { quizes }) {
+      state.quizes = quizes;
+    },
+    deleteQuiz(state, { quizId }) {
+      var idxToDelete = state.quizes.findIndex(quiz => quiz._id === quizId);
+      state.quizes.splice(idxToDelete, 1);
+    }
   },
   actions: {
-
+    loadQuizes(context) {
+      return quizService.query().then(quizes => {
+        context.commit({ type: 'setQuizes', quizes });
+      });
+    },
+    deleteQuiz(context, { quizId }) {
+      context.commit({ type: 'deleteQuiz', quizId });
+    }
   },
   getters: {
     getQuizes(state) {
-      let quizesToShow = state.quizes;
-      return quizesToShow;
+      return state.quizes;
     }
   }
-})
+});

@@ -1,6 +1,6 @@
 <template>
-  <section class="flex">
-    <div v-for="quiz in quizes" :key="quiz._id">
+  <section class="flex wrap">
+    <div v-for="quiz in quizesToShow" :key="quiz._id">
       <quiz-preview :quiz="quiz"></quiz-preview>
     </div>
   </section>
@@ -9,9 +9,22 @@
 <script>
 import quizPreview from "./quizPreview";
 export default {
-  props: ["quizes"],
+  props: [],
   components: {
     quizPreview
+  },
+  created() {
+    this.$store.dispatch({ type: "loadQuizes" });
+  },
+  computed: {
+    quizesToShow() {
+      return this.$store.getters.getQuizes;
+    }
+  },
+  data() {
+    return {
+      quizes: ""
+    };
   }
 };
 </script>

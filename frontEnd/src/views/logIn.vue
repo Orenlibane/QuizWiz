@@ -28,20 +28,20 @@ export default {
     return {
       user: {
         userName: "",
-        password: "",
-      },
-    //   currUser: userService.getLoggedinUser()
+        password: ""
+      }
+      //   currUser: userService.getLoggedinUser()
     };
   },
   methods: {
     async login() {
       try {
-        const user = await userService.login(this.user)
+        const user = await userService.login(this.user);
         this.$router.push("/");
-      } catch(err) {
-          console.log('CANNOT CONNECT');
+      } catch (err) {
+        console.log("CANNOT CONNECT");
       }
-    console.log('logging in!');
+      console.log("logging in!");
     }
   },
   components: {}

@@ -21,11 +21,11 @@
     <div v-for="(quest,questIdx) in questNum" :key="questIdx">
       <h4>Question {{questIdx+1}}</h4>
       <hr />
-      <input type="text" v-model="quiz.quests[questIdx].title" />
+      <input type="text" v-model="newQuiz.quests[questIdx].title" />
       <span>
         <h5>Answers:</h5>
         <input
-          v-model="quiz.quests[questIdx][answerIdx]"
+          v-model="newQuiz.quests[questIdx][answerIdx]"
           v-for="(n,answerIdx) in 4"
           :key="answerIdx"
           type="text"
@@ -44,6 +44,7 @@
       </div>
     </div>
     <button @click="addQuest">Add question</button>
+    <button @click="addQuiz">Submit Quiz</button>
 
     <footer>footer here</footer>
   </section>
@@ -51,6 +52,9 @@
 
 <script>
 import addQuiz from "@/styles/views/_add-quiz.scss";
+import quizService from "@/service/quizService.js";
+import utilService from "@/service/utilService.js";
+
 export default {
   name: "home",
   components: {},
@@ -62,7 +66,7 @@ export default {
   data() {
     return {
       questNum: 4,
-      quiz: {
+      newQuiz: {
         title: "",
         tags: "",
         createdAt: "",
@@ -94,18 +98,20 @@ export default {
     addQuest() {
       var quest = ["", "", "", ""];
       this.questNum++;
-      this.quiz.quests.push(quest);
+      this.newQuiz.quests.push(quest);
     },
     deleteQuest(questIdx) {
-      this.quiz.quests.splice(questIdx, 1);
+      this.newQuiz.quests.splice(questIdx, 1);
       this.questNum--;
     },
     setCurrectAnswer(questIdx, ev) {
-      console.log(ev.target.value);
-      console.log("questIdx", questIdx);
-      console.log("the quiz", this.quiz);
       var value = ev.target.value;
-      this.quiz.quests[questIdx].currectAnswer = value;
+      this.newQuiz.quests[questIdx].currectAnswer = value;
+    },
+    addQuiz() {
+      this.newQuiz._id = utilService.makeId();
+      quizService.addQuiz(this.newQuiz);
+      this.$router.push("/");
     }
   }
 };
