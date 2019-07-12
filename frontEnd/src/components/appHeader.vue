@@ -1,17 +1,21 @@
 <template>
   <header class="app-header">
+    <router-link to="/">
     <app-logo></app-logo>
-    <log-in></log-in>
+    </router-link>
+    
+    <nav-bar></nav-bar>
+    
   </header>
 </template>
 
 <script>
 import appLogo from "@/components/appLogo";
-import logIn from "@/components/logIn";
+import navBar from "@/components/navBar";
 export default {
   components: {
     appLogo,
-    logIn
+    navBar
   }
 };
 </script>
