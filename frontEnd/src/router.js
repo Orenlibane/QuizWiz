@@ -5,6 +5,7 @@ import addQuiz from './views/addQuiz';
 import logIn from './views/logIn';
 import signUp from './views/signUp';
 import TEST1 from './components/quizLobby.vue';
+import quizGame from './views/quizGame.vue';
 // import about from './views/about.vue';
 
 Vue.use(Router);
@@ -37,6 +38,12 @@ export default new Router({
       path: '/quiz/TESTING',
       name: 'TEST1',
       component: TEST1
+    },
+    {
+      path: '/quizGame',
+      name: 'quizGame',
+      component: quizGame
     }
+
   ]
 });

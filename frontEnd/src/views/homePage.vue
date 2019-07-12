@@ -1,6 +1,6 @@
 <template>
   <section class="home-page">
-    <nav>Nav here</nav>
+    <router-link to="/quizGame">DEMO GAME</router-link>
     <div class="quizes-show">
       <h4>here is the ongoing quizes</h4>
       <quiz-list :quizes="liveQuizes"></quiz-list>
