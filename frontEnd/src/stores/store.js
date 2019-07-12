@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-
+import userStore from './userStore.js';
 let test = [
   {
     _id: "3d298urffgj",
@@ -36,6 +36,12 @@ let test = [
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  strict: true,
+  modules: {
+    userStore
+  },
+
+
   state: {
     quizes: test
   },
