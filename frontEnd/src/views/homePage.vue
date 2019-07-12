@@ -1,5 +1,6 @@
 <template>
-  <section class="home">
+  <section class="home-page">
+    <app-header></app-header>
     <nav>Nav here</nav>
     <div class="quizes-show">
       <h4>here is the ongoing quizes</h4>
@@ -21,16 +22,18 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
+import appHeader from "@/components/appHeader";
 
 export default {
   name: "home",
   components: {
+    appHeader,
     HelloWorld
   }
 };
 </script>
 
-<style scoped>
+<style lang:"scss" scoped>
 section {
   height: 80vh;
   width: 100vw;
