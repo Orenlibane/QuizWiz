@@ -1,8 +1,11 @@
 <template>
-  <section class="login">
+  <section class="login flex column align-center">
     <h1>Login</h1>
-    <form @submit.prevent="login">
+    <form class="flex column" @submit.prevent="login">
+        <div><span>Username:</span>
       <input v-model="user.userName" type="text" placeholder="enter username" required autofocus />
+      </div>
+              <div><span>Password:</span>
       <input
         type="password"
         v-model="user.password"
@@ -10,7 +13,7 @@
         required
         @keyup.enter="login"
       />
-      <br />
+      </div>
       <button>Login</button>
     </form>
   </section>
