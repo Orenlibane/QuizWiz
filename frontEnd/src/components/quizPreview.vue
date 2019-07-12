@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="card">
         <p>{{quiz.title}}</p>
         <p>{{quiz.tags}}</p>
         <p>{{quiz.createdAt}}</p>

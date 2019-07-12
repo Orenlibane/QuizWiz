@@ -1,6 +1,6 @@
 <template>
   <section>
-      <div v-for="quiz in quizes" :key="quiz._id">
+      <div class="flex" v-for="quiz in quizes" :key="quiz._id">
           <quiz-preview :quiz="quiz"></quiz-preview>          
       </div>
   </section>
