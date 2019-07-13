@@ -1,6 +1,6 @@
 <template>
   <section>
-    <component @gameStage="gameSequnce" :info="cmp.info" :is="cmp.type" />
+    <component @gameStage="gameSequence" :info="cmp.info" :is="cmp.type" />
   </section>
 </template>
 
@@ -10,7 +10,7 @@ import quizEnd from "../components/quizGameScreens/quizEnd";
 import quizLobby from "../components/quizGameScreens/quizLobby";
 import quizResult from "../components/quizGameScreens/quizResult";
 import quizReady from "../components/quizGameScreens/quizReady";
-import quizQueast from "../components/quizGameScreens/quizQuest";
+import quizQuest from "../components/quizGameScreens/quizQuest";
 
 export default {
   data() {
@@ -24,7 +24,7 @@ export default {
         "quizDetails",
         "quizLobby",
         "quizReady",
-        "quizQueast",
+        "quizQuest",
         "quizEnd",
         "quizResult"
       ]
@@ -36,10 +36,10 @@ export default {
     quizLobby,
     quizResult,
     quizReady,
-    quizQueast
+    quizQuest
   },
   methods: {
-    gameSequnce(gameStage) {
+    gameSequence(gameStage) {
       this.cmp.type = gameStage;
     }
   },
