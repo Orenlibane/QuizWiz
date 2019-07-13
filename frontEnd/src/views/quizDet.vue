@@ -23,7 +23,8 @@ export default {
     return {};
   },
 
-  created() {},
+  created() {
+  },
   methods: {}
 };
 </script>
