@@ -1,14 +1,11 @@
 <template>
-    <h1>quest</h1>
-    
-
-
+  <section></section>
 </template>
 
 
 <script>
 
 export default {
-    
-}
+  props: ["info"]
+};
 </script>
