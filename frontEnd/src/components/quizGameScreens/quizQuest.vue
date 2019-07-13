@@ -8,7 +8,7 @@
         :key="idx"
         @click="chooseAnswer(idx)"
       >
-        <button>{{answer}}</button>
+        <button :class="ansStyle(idx)">{{answer}}</button>
       </div>
     </div>
     <div>correct answer idx: {{correctAnsIdx}}</div>
@@ -45,23 +45,33 @@ export default {
     chooseAnswer(idx) {
       if (this.isAnswered) return;
       this.isAnswered = true;
-      if (idx === this.correctAnsIdx) {
-        console.log("Correct!");
-      } else {
-        console.log("wrong");
-      }
+      let ans = idx === this.correctAnsIdx;
+      
+      console.log("ans:", ans);
 
-      console.log("info", this.info);
-      console.log("questions length", this.info.quiz.questions.length);
-      if (this.info.currentQuestion + 1 === this.info.quiz.questions.length) {
-        console.log("last quesetion");
-      } else {
-        setTimeout(() => {
-          this.isAnswered = false;
-          this.$emit("gameStage", "quizQuest");
-        }, 1000);
-      }
+      setTimeout(() => {
+        if (this.info.currentQuestion + 1 === this.info.quiz.questions.length)
+          return this.$emit("gameStage", {cmp: "quizEnd", answer: ans});
+        this.isAnswered = false;
+        // this.$emit("ans")
+        this.$emit("gameStage", {cmp: "quizQuest", answer: ''+ans});
+      }, 1000);
+    },
+    ansStyle(idx) {
+      if (!this.isAnswered) return "";
+      if (idx === this.correctAnsIdx) return "correctAnsStyle";
+      return "wrongAnsStyle";
     }
   }
 };
 </script>
+
+<style scoped>
+.wrongAnsStyle {
+  background: red;
+}
+
+.correctAnsStyle {
+  background: green;
+}
+</style>

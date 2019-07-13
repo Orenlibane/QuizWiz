@@ -14,7 +14,7 @@ import global from "@/styles/global.scss";
 export default {
   created() {
     this.timeOut = setTimeout(() => {
-      this.$emit("gameStage", "quizQuest");
+      this.$emit("gameStage", {cmp: "quizQuest"});
     }, 4000);
     setTimeout(() => {
       this.showMsg = true;

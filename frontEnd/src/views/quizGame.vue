@@ -15,8 +15,7 @@ import quizReady from "../components/quizGameScreens/quizReady";
 import quizQuest from "../components/quizGameScreens/quizQuest";
 
 export default {
-  name: 'quizGame'
-  ,
+  name: "quizGame",
   data() {
     return {
       cmp: {
@@ -31,7 +30,8 @@ export default {
         "quizQuest",
         "quizEnd",
         "quizResult"
-      ]
+      ],
+      gameAns: []
     };
   },
   components: {
@@ -44,8 +44,16 @@ export default {
   },
   methods: {
     gameSequence(gameStage) {
-      this.cmp.type = gameStage;
-      if (gameStage === "quizQuest") {
+      if (gameStage.answer) {
+        console.log("There is an answer! it is:", gameStage.answer);
+        this.gameAns.push({
+          questIdx: this.gameAns.length,
+          result: gameStage.answer
+        });
+        console.log("game answers so far:", this.gameAns);
+      }
+      this.cmp.type = gameStage.cmp;
+      if (gameStage.cmp === "quizQuest") {
         this.cmp.info.currentQuestion++;
       }
     }
