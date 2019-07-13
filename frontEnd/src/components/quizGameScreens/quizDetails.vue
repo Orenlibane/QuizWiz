@@ -1,20 +1,29 @@
 <template>
-  <section class="flex">
-    <section class="quiz-details align-both column">
-      <router-link to="/">
+  <section class="flex both-align-center column">
+    <div class="quiz-details">
+      <!-- <router-link to="/">
         <button class="btn-quiz">back</button>
-      </router-link>
+      </router-link>-->
       <img
         class="quiz-details-img"
-        src="https://i.dailymail.co.uk/i/pix/2014/12/05/23C714C900000578-0-image-m-21_1417800566578.jpg"
+        src="https://catspro.com/wp-content/uploads/2018/11/ugly-sphynx-695x599.jpg"
         alt
       />
-      <div class="flex add-btns">
-        <button>Join Game</button>
+      <div class="flex add-btns column both-align-center">
         <button @click="startSinglePlayer">Start Game</button>
-        <button>Back</button>
+        <button>Join Game</button>
       </div>
-    </section>
+      <div v-if="info.quiz" class="flex space-around">
+        <div class="tags-show flex">
+          tags:
+          <div v-for="(tag, idx) in info.quiz.tags" :key="idx">{{tag}}-</div>
+        </div>
+        <div class="like-show flex flex-start">
+          <button>Like</button>
+          <div>{{info.quiz.likesCount}}</div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -31,7 +40,9 @@ export default {
     return {};
   },
 
-  created() {},
+  created() {
+    console.log(this.info);
+  },
   methods: {
     startSinglePlayer() {
       this.$emit("gameStage", { cmp: "quizReady" });
