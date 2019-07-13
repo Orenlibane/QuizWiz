@@ -1,48 +1,56 @@
 <template>
   <section class="flex container column both-align-center">
-    <p class="message">game ended</p>
-    <p>succseded {{correct}}/{{total}}</p>
-    <li class="clean-list" v-for="(answer,idx) in info.answers" :key="idx">
-      <ul>{{answer.questIdx}}-{{answer.result}}</ul>
-    </li>
-    <p>score={{score}}</p>
-    <button>like</button>
-    <button>X</button>
+    <h2>Game Ended</h2>
+    <p>Correct Answers: {{correctAnsCount}}</p>
+        <p>Wrong Answers: {{wrongAnsCount}}</p>
+        <p>Total Score: {{score}}</p>
+      <ul v-for="(question, idx) in questions" :key="idx">
+        <li>Question #{{idx+1}} : {{question.question}} 
+        </li>
+      </ul>
+
+
   </section>
 </template>
 
 <script>
 import global from "@/styles/global.scss";
 export default {
-  data() {
-    return {
-      info: {
-        answers: [
-          { questIdx: 1, result: false },
-          { questIdx: 2, result: true },
-          { questIdx: 3, result: false },
-          { questIdx: 4, result: true },
-          { questIdx: 5, result: false },
-          { questIdx: 6, result: true }
-        ],
-        userScore: 200
-      }
-    };
+  props: {
+    gameRes: {
+      type: Array
+    },
+    info: {
+      type: Object
+    }
   },
   computed: {
-    score() {
-      return this.info.userScore;
+    questions() {
+      return this.info.quiz.questions
     },
-    correct() {
+    score() {
+      // return this.info.userScore;
+      return "נעים לי :)"
+    },
+    correctAnsCount() {
       let correctAnsCount;
-      return this.info.answers.reduce((accumulator, answer) => {
-        if (answer.result) accumulator++;
-        return accumulator;
+      return this.gameRes.reduce((acc, ans) => {
+        if (ans.result === 'true') acc++;
+        return acc;
+      }, 0);
+    },
+    wrongAnsCount() {
+            let wrongAnsCount;
+      return this.gameRes.reduce((acc, ans) => {
+        if (ans.result === 'false') acc++;
+        return acc;
       }, 0);
     },
     total() {
-      return this.info.answers.length;
+      return this.gameRes.length;
     }
+    
   }
 };
 </script>
+

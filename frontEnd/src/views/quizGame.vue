@@ -1,12 +1,12 @@
 <template>
   <section>
-    <h1>question Number: {{cmp.info.currentQuestion +1}}</h1>
-
-    <component @gameStage="gameSequence" :info="cmp.info" :is="cmp.type" />
+    <quiz-gameboard v-if="isPlaying" :info="cmp.info"></quiz-gameboard>
+    <component @gameStage="gameSequence" :info="cmp.info" :gameRes="cmp.gameRes" :is="cmp.type" />
   </section>
 </template>
 
 <script>
+import quizGameboard from "../components/quizGameboard";
 import quizDetails from "../components/quizGameScreens/quizDetails";
 import quizEnd from "../components/quizGameScreens/quizEnd";
 import quizLobby from "../components/quizGameScreens/quizLobby";
@@ -20,7 +20,11 @@ export default {
     return {
       cmp: {
         type: "quizDetails",
-        info: {},
+        info: {
+          quiz: Object,
+          currentQuestion: Number
+        },
+        gameRes: [],
         inform: "func"
       },
       cmpArr: [
@@ -30,8 +34,7 @@ export default {
         "quizQuest",
         "quizEnd",
         "quizResult"
-      ],
-      gameAns: []
+      ]
     };
   },
   components: {
@@ -40,17 +43,19 @@ export default {
     quizLobby,
     quizResult,
     quizReady,
-    quizQuest
+    quizQuest,
+    quizGameboard
   },
   methods: {
     gameSequence(gameStage) {
       if (gameStage.answer) {
         console.log("There is an answer! it is:", gameStage.answer);
-        this.gameAns.push({
-          questIdx: this.gameAns.length,
+        console.log("game res is:", this.cmp.gameRes);
+        this.cmp.gameRes.push({
+          questIdx: this.cmp.gameRes.length,
           result: gameStage.answer
         });
-        console.log("game answers so far:", this.gameAns);
+        console.log("game answers so far:", this.cmp.gameRes);
       }
       this.cmp.type = gameStage.cmp;
       if (gameStage.cmp === "quizQuest") {
@@ -61,6 +66,9 @@ export default {
   computed: {
     gameState() {
       return this.cmpArr[this.gameState];
+    },
+    isPlaying() {
+      return this.cmp.type === "quizQuest";
     }
   },
   created() {
