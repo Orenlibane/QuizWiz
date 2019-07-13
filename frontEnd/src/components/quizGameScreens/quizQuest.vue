@@ -11,7 +11,6 @@
         <button :class="ansStyle(idx)">{{answer}}</button>
       </div>
     </div>
-    <div class="quest-time">10 sec</div>
   </section>
 </template>
 
@@ -46,9 +45,6 @@ export default {
       if (this.isAnswered) return;
       this.isAnswered = true;
       let ans = idx === this.correctAnsIdx;
-
-      console.log("ans:", ans);
-
       setTimeout(() => {
         if (this.info.currentQuestion + 1 === this.info.quiz.questions.length)
           return this.$emit("gameStage", { cmp: "quizEnd", answer: "" + ans });

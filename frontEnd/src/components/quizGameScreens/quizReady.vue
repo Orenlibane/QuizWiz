@@ -22,8 +22,6 @@ export default {
     }, 3000);
     this.countDown = setInterval(() => {
       this.timer--;
-      console.log("interval");
-      console.log(this.countDown);
     }, 1000);
   },
   destroyed() {

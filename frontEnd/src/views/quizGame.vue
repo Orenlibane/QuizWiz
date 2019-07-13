@@ -1,12 +1,22 @@
 <template>
   <section>
     <quiz-gameboard v-if="isPlaying" :info="cmp.info"></quiz-gameboard>
-    <component @gameStage="gameSequence" :info="cmp.info" :gameRes="cmp.gameRes" :is="cmp.type" />
+    <component :is="cmp.type" @gameStage="gameSequence" :info="cmp.info" :gameRes="cmp.gameRes"  />
+        <quest-timer v-if="isPlaying"
+        :info="cmp.info" 
+        :gameRes="cmp.gameRes" 
+        @gameStage="gameSequence"
+        @emitTime="getQuestTimer"
+        ></quest-timer>
   </section>
 </template>
 
 <script>
+// quizGameboard and questTimer give feedback to the user about his game state
 import quizGameboard from "../components/quizGameboard";
+import questTimer from '../components/questTimer';
+
+//the Dynamic game screens
 import quizDetails from "../components/quizGameScreens/quizDetails";
 import quizEnd from "../components/quizGameScreens/quizEnd";
 import quizLobby from "../components/quizGameScreens/quizLobby";
@@ -22,7 +32,8 @@ export default {
         type: "quizDetails",
         info: {
           quiz: Object,
-          currentQuestion: Number
+          currentQuestion: Number,
+          timer: Number
         },
         gameRes: [],
         inform: "func"
@@ -44,23 +55,26 @@ export default {
     quizResult,
     quizReady,
     quizQuest,
-    quizGameboard
+    quizGameboard,
+    questTimer
   },
   methods: {
     gameSequence(gameStage) {
       if (gameStage.answer) {
-        console.log("There is an answer! it is:", gameStage.answer);
-        console.log("game res is:", this.cmp.gameRes);
         this.cmp.gameRes.push({
           questIdx: this.cmp.gameRes.length,
-          result: gameStage.answer
+          result: gameStage.answer,
+          score: (gameStage.answer === 'false') ? 0 : Math.abs(this.cmp.info.timer-10) * 10
         });
-        console.log("game answers so far:", this.cmp.gameRes);
       }
       this.cmp.type = gameStage.cmp;
       if (gameStage.cmp === "quizQuest") {
         this.cmp.info.currentQuestion++;
       }
+    },
+
+    getQuestTimer(gottenTime){
+      this.cmp.info.timer = gottenTime
     }
   },
   computed: {
@@ -72,12 +86,12 @@ export default {
     }
   },
   created() {
-    console.log("here");
     const quizId = this.$route.params.id;
     this.$store.dispatch({ type: "getQuiz", quizId }).then(quiz => {
-      this.cmp.info = { quiz, currentQuestion: -1 };
+      this.cmp.info = { quiz, currentQuestion: -1, timer: null };
     });
-  }
+  },
+  
 };
 </script>
 
