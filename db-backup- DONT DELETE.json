@@ -20,42 +20,22 @@
         },
         {
           "question": "How old was Lyndon B. Johnson when he assumed the role of President of the United States?",
-          "answers": [
-            "50",
-            "60",
-            "55",
-            "54"
-          ],
+          "answers": ["50", "60", "55", "54"],
           "currentAnswerIdx": 2
         },
         {
           "question": "What year were the Marian Reforms instituted in the Roman Republic?",
-          "answers": [
-            "107 BCE",
-            "42 BCE",
-            "264 BCE",
-            "102 CE"
-          ],
+          "answers": ["107 BCE", "42 BCE", "264 BCE", "102 CE"],
           "currentAnswerIdx": 0
         },
         {
           "question": "What is the oldest US state?",
-          "answers": [
-            "Delaware",
-            "Rhode Island",
-            "Maine",
-            "Virginia"
-          ],
+          "answers": ["Delaware", "Rhode Island", "Maine", "Virginia"],
           "currentAnswerIdx": 0
         },
         {
           "question": "What is the historical name of Sri Lanka?",
-          "answers": [
-            "Myanmar",
-            "Ceylon",
-            "Colombo",
-            "Badulla"
-          ],
+          "answers": ["Myanmar", "Ceylon", "Colombo", "Badulla"],
           "currentAnswerIdx": 1
         }
       ]
@@ -70,12 +50,7 @@
       "questions": [
         {
           "question": "Which German sportswear company&#039;s logo is the &#039;Formstripe&#039;?",
-          "answers": [
-            "Puma",
-            "Nike",
-            "Adidas",
-            "Reebok"
-          ],
+          "answers": ["Puma", "Nike", "Adidas", "Reebok"],
           "currentAnswerIdx": 0
         },
         {
@@ -100,12 +75,7 @@
         },
         {
           "question": "Which of the following Grand Slam tennis tournaments occurs LAST?",
-          "answers": [
-            "French Open",
-            "Wimbledon",
-            "Australian Open",
-            "US Open"
-          ],
+          "answers": ["French Open", "Wimbledon", "Australian Open", "US Open"],
           "currentAnswerIdx": 3
         },
         {
@@ -120,12 +90,7 @@
         },
         {
           "question": "Which year was the third Super Bowl held?",
-          "answers": [
-            "1968",
-            "1971",
-            "1969",
-            "1970"
-          ],
+          "answers": ["1968", "1971", "1969", "1970"],
           "currentAnswerIdx": 2
         }
       ]
@@ -140,12 +105,7 @@
       "questions": [
         {
           "question": "Which German sportswear company&#039;s logo is the &#039;Formstripe&#039;?",
-          "answers": [
-            "Adidas",
-            "Puma",
-            "Nike",
-            "Reebok"
-          ],
+          "answers": ["Adidas", "Puma", "Nike", "Reebok"],
           "currentAnswerIdx": 1
         },
         {
@@ -170,12 +130,7 @@
         },
         {
           "question": "Which of the following Grand Slam tennis tournaments occurs LAST?",
-          "answers": [
-            "French Open",
-            "US Open",
-            "Wimbledon",
-            "Australian Open"
-          ],
+          "answers": ["French Open", "US Open", "Wimbledon", "Australian Open"],
           "currentAnswerIdx": 1
         },
         {
@@ -190,44 +145,10 @@
         },
         {
           "question": "Which year was the third Super Bowl held?",
-          "answers": [
-            "1969",
-            "1968",
-            "1971",
-            "1970"
-          ],
+          "answers": ["1969", "1968", "1971", "1970"],
           "currentAnswerIdx": 0
         }
       ]
-    },
-    {
-      "title": "3r2r",
-      "tags": "",
-      "createdAt": "",
-      "bestScore": "",
-      "likesCount": 0,
-      "currectAnswer": 0,
-      "questions": [
-        {
-          "question": "dfdbd",
-          "answers": [
-            "",
-            "bdfbd",
-            "fdbdb",
-            ""
-          ]
-        },
-        {
-          "question": "",
-          "answers": [
-            "",
-            "",
-            "",
-            ""
-          ]
-        }
-      ],
-      "_id": "gDd"
     }
   ]
 }

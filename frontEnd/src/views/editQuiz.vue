@@ -79,17 +79,17 @@ export default {
   },
   methods: {
     addQuest() {
-      var quest = ["", "", "", ""];
+      var quest = { question: "", answers: ["", "", "", ""] };
       this.questNum++;
-      this.loadedQuiz.quests.push(quest);
+      this.loadedQuiz.questions.push(quest);
     },
     deleteQuest(questIdx) {
-      this.loadedQuiz.quests.splice(questIdx, 1);
+      this.loadedQuiz.questions.splice(questIdx, 1);
       this.questNum--;
     },
     setCurrectAnswer(questIdx, ev) {
       var value = ev.target.value;
-      this.loadedQuiz.quests[questIdx].currectAnswer = value;
+      this.loadedQuiz.questions[questIdx].currectAnswer = value;
     },
     editQuiz(loadedQuiz) {
       this.$store.dispatch({ type: "editQuiz", loadedQuiz }).then(() => {

@@ -103,7 +103,7 @@ export default {
   },
   methods: {
     addQuest() {
-      var quest = ["", "", "", ""];
+      var quest = { question: "", answers: ["", "", "", ""] };
       this.questNum++;
       this.newQuiz.questions.push(quest);
     },
