@@ -1,7 +1,7 @@
 <template>
-  <section class="quizQuest flex both-align-center column">
-    <h1>Question #{{currQuestionNum}}: {{currQuestion}}</h1>
-    <div class="answers flex wrap">
+  <section class="quizQuest flex layout-container both-align-center column">
+    <h1 class="question-render">{{currQuestion}}</h1>
+    <div class="answers">
       <div
         class="possible-answers"
         v-for="(answer,idx) in currAnswers"
@@ -11,7 +11,7 @@
         <button :class="ansStyle(idx)">{{answer}}</button>
       </div>
     </div>
-    <div>correct answer idx: {{correctAnsIdx}}</div>
+    <div class="quest-time">10 sec</div>
   </section>
 </template>
 
