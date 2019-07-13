@@ -1,6 +1,5 @@
 <template>
   <section class="home-page">
-    <router-link to="/quizGame">DEMO GAME</router-link>
     <div class="quizes-show">
       <h4>here is the ongoing quizes</h4>
       <quiz-list :quizes="liveQuizes"></quiz-list>
@@ -16,7 +15,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import quizList from "../components/quizList";
 import homePage from "@/styles/views/_home-page.scss";
 export default {

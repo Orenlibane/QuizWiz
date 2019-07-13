@@ -1,26 +1,54 @@
 <template>
-  <section>
-    <h1>GET SET</h1>
-    <h1>3</h1>
-    <h1>2</h1>
-    <h1>1</h1>
+  <section class="countDown container flex column both-align-center">
+    <h1 v-if="showMsg">GAME STARTED</h1>
+    <div v-if="timerShow" class="flex column both-align-center">
+      <h1>GET SET</h1>
+      <h1>{{timer}}</h1>
+    </div>
   </section>
 </template>
 
 <script>
+import global from "@/styles/global.scss";
+
 export default {
   created() {
     this.timeOut = setTimeout(() => {
       this.$emit("gameStage", "quizQuest");
+    }, 4000);
+    setTimeout(() => {
+      this.showMsg = true;
+      this.timerShow = false;
     }, 3000);
+    this.countDown = setInterval(() => {
+      this.timer--;
+      console.log("interval");
+      console.log(this.countDown);
+    }, 1000);
   },
   destroyed() {
+    clearInterval(this.countDown);
     clearTimeout(this.timeOut);
   },
   data() {
     return {
-      timeOut: null
+      timeOut: null,
+      countDown: null,
+      timer: 3,
+      timerShow: true,
+      showMsg: false
     };
+  },
+  methods: {
+    clearTimers() {}
   }
 };
 </script>
+
+
+<style scoped>
+.countDown {
+  font-size: 4rem;
+}
+</style>
+

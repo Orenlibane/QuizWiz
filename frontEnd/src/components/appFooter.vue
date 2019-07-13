@@ -1,5 +1,11 @@
 <template>
-  <footer class="app-footer center">OPEN SOURCE RULES!</footer>
+  <footer class="app-footer center">
+    <button>User</button>
+    <button>Other1</button>
+    <button>Home</button>
+    <button>Other2</button>
+    <button>Other3</button>
+  </footer>
 </template>
 
 <script>
@@ -20,6 +26,8 @@ export default {
   padding: 10px;
   border-top: 2px black solid;
   position: fixed;
+  display: flex;
+  justify-content: space-around;
   bottom: 0;
 }
 </style>
