@@ -1,5 +1,5 @@
-quiz-details{
-
+.tags-show {
+  margin-bottom: 100px;
 }
 
 .btn-quiz {
@@ -10,5 +10,11 @@ quiz-details{
 .quiz-details-img {
   width: 295px;
   height: 295px;
-  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  // object-fit: cover;
+}
+
+.quiz-details {
+  width: 100vw;
 }

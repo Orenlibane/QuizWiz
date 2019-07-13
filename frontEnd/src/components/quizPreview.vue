@@ -17,8 +17,8 @@
       <div class="flex column center space-between card-info">
         <!-- <p>{{quiz.tags}}</p> -->
         <div class="tags-prev flex space-between">
-          <p>tag1</p>
-          <p>tag2</p>
+          <p>{{quiz.tags[0]}}</p>
+          <p>{{quiz.tags[1]}}</p>
         </div>
         <h3>{{quiz.title}}</h3>
         <p>creator Name:</p>

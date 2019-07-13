@@ -198,7 +198,7 @@
     {
       "_id": 8,
       "title": "Mathematics",
-      "tags": ["Mathematics,Science"],
+      "tags": ["Mathematics", "Science"],
       "createdAt": "Date",
       "bestScore": "",
       "likesCount": 0,
@@ -234,7 +234,7 @@
     {
       "_id": 9,
       "title": "Computers",
-      "tags": ["Computers,Science"],
+      "tags": ["Computers", "Science"],
       "createdAt": "Date",
       "bestScore": "",
       "likesCount": 0,
