@@ -1,19 +1,21 @@
 <template>
   <div class="quiz-libary">
     <h1>This is quiz libary page</h1>
+    <quiz-filter></quiz-filter>
+    <quiz-list :quizes="liveQuizes"></quiz-list>
   </div>
 </template>
 
 <script>
 import global from "@/styles/global.scss";
+import quizList from "../components/quizList";
+import quizFilter from "@/components/quizFilter";
+
 export default {
   props: [],
-  components: {},
-  created() {
-    this.$store.dispatch({ type: "loadQuizes" });
-  },
+  components: { quizList, quizFilter },
   computed: {
-    quizesToShow() {
+    liveQuizes() {
       return this.$store.getters.getQuizes;
     }
   }

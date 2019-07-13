@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "_id": "3298urj",
+      "nickName": "admin",
+      "userName": "admin@gmail.com",
+      "password": "1234",
+      "playCount": 12,
+      "expCount": 1,
+      "wonCount": 32,
+      "profileImg": "https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg"
+    }
+  ]
+}
