@@ -34,7 +34,7 @@ export default {
   created() {},
   methods: {
     startSinglePlayer() {
-      this.$emit("gameStage", "quizReady");
+      this.$emit("gameStage", {cmp: "quizReady"});
     }
   }
 };

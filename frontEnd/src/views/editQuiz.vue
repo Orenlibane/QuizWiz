@@ -12,9 +12,13 @@
       </h2>
       <div class="flex">
         <div class="img-container">
-          <h5>select tags</h5>
-          <input type="text" placeholder="Add tags" />
-          <button>+</button>
+          <h5>Add tags</h5>
+          <input type="text" v-model="tagToAdd  " placeholder="Add tags" />
+          <button @click="addTag">+</button>
+          <div class="flex space-between" v-for="(tag,idx) in loadedQuiz.tags" :key="idx">
+            {{tag}}
+            <button @click="removeTag(idx)">X</button>
+          </div>
         </div>
         <div class="img-container">
           <h5>Add image</h5>
@@ -66,6 +70,8 @@ export default {
   data() {
     return {
       questNum: 4,
+      tagToAdd: "",
+
       loadedQuiz: {}
     };
   },
@@ -96,6 +102,16 @@ export default {
         quizService.editQuiz(this.loadedQuiz);
         this.$router.push("/");
       });
+    },
+    addTag() {
+      console.log(this.newQuiz.tags);
+      console.log(this.tagToAdd);
+      this.loadedQuiz.tags.push(this.tagToAdd);
+      console.log(this.newQuiz.tags);
+      this.tagToAdd = "";
+    },
+    removeTag(idx) {
+      this.loadedQuiz.tags.splice(idx, 1);
     }
   }
 };
