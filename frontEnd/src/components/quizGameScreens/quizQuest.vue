@@ -50,10 +50,17 @@ export default {
       } else {
         console.log("wrong");
       }
-      setTimeout(() => {
-        this.isAnswered = false;
-        this.$emit("gameStage", "quizQuest");
-      }, 1000);
+
+      console.log("info", this.info);
+      console.log("questions length", this.info.quiz.questions.length);
+      if (this.info.currentQuestion + 1 === this.info.quiz.questions.length) {
+        console.log("last quesetion");
+      } else {
+        setTimeout(() => {
+          this.isAnswered = false;
+          this.$emit("gameStage", "quizQuest");
+        }, 1000);
+      }
     }
   }
 };
