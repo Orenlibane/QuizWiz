@@ -46,7 +46,7 @@ export default new Router({
       component: TEST1
     },
     {
-      path: '/quizGame',
+      path: '/quiz/:id/game',
       name: 'quizGame',
       component: quizGame
     }

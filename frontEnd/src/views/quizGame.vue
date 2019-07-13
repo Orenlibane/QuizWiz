@@ -1,6 +1,6 @@
 <template>
   <section>
-    <component :is="cmp.type" />
+    <component @gameStage="gameSequnce" :info="cmp.info" :is="cmp.type" />
   </section>
 </template>
 
@@ -16,16 +16,16 @@ export default {
   data() {
     return {
       cmp: {
-        type: "quizLobby",
-        info: "",
+        type: "quizDetails",
+        info: {},
         inform: "func"
       },
       cmpArr: [
         "quizDetails",
         "quizLobby",
-        "questScreen",
-        "quizEnd",
         "quizReady",
+        "quizQueast",
+        "quizEnd",
         "quizResult"
       ]
     };
@@ -38,11 +38,23 @@ export default {
     quizReady,
     quizQueast
   },
-  methods: {},
+  methods: {
+    gameSequnce(gameStage) {
+      this.cmp.type = gameStage;
+    }
+  },
   computed: {
     gameState() {
       return this.cmpArr[this.gameState];
     }
+  },
+  created() {
+    console.log("here");
+    const quizId = this.$route.params.id;
+    this.$store.dispatch({ type: "getQuiz", quizId }).then(quiz => {
+      this.cmp.info = { quiz };
+      console.log(this.cmp);
+    });
   }
 };
 </script>

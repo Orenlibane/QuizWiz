@@ -13,7 +13,9 @@
       <router-link :to="editUrl">
         <button>Edit</button>
       </router-link>
-      <button>Enter</button>
+      <router-link :to="enterGameUrl">
+        <button>Enter</button>
+      </router-link>
     </div>
   </div>
 </template>
@@ -34,6 +36,9 @@ export default {
   computed: {
     editUrl() {
       return `quiz/edit/${this.quiz._id}`;
+    },
+    enterGameUrl() {
+      return `quiz/${this.quiz._id}/game`;
     }
   }
 };
