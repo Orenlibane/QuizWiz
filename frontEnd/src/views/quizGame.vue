@@ -1,5 +1,7 @@
 <template>
   <section>
+    <h1>question Number: {{cmp.info.currentQuestion +1}}</h1>
+
     <component @gameStage="gameSequnce" :info="cmp.info" :is="cmp.type" />
   </section>
 </template>
@@ -10,7 +12,7 @@ import quizEnd from "../components/quizGameScreens/quizEnd";
 import quizLobby from "../components/quizGameScreens/quizLobby";
 import quizResult from "../components/quizGameScreens/quizResult";
 import quizReady from "../components/quizGameScreens/quizReady";
-import quizQueast from "../components/quizGameScreens/quizQuest";
+import quizQuest from "../components/quizGameScreens/quizQuest";
 
 export default {
   data() {
@@ -24,7 +26,7 @@ export default {
         "quizDetails",
         "quizLobby",
         "quizReady",
-        "quizQueast",
+        "quizQuest",
         "quizEnd",
         "quizResult"
       ]
@@ -36,11 +38,14 @@ export default {
     quizLobby,
     quizResult,
     quizReady,
-    quizQueast
+    quizQuest
   },
   methods: {
     gameSequnce(gameStage) {
       this.cmp.type = gameStage;
+      if (gameStage === "quizQuest") {
+        this.cmp.info.currentQuestion++;
+      }
     }
   },
   computed: {
@@ -52,8 +57,8 @@ export default {
     console.log("here");
     const quizId = this.$route.params.id;
     this.$store.dispatch({ type: "getQuiz", quizId }).then(quiz => {
-      this.cmp.info = { quiz };
-      console.log(this.cmp);
+      this.cmp.info = { quiz, currentQuestion: -1 };
+      console.log(this.cmp.info);
     });
   }
 };

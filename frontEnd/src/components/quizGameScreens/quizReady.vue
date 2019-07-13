@@ -11,7 +11,7 @@
 export default {
   created() {
     this.timeOut = setTimeout(() => {
-      this.$emit("gameStage", "quizQueast");
+      this.$emit("gameStage", "quizQuest");
     }, 3000);
   },
   destroyed() {
