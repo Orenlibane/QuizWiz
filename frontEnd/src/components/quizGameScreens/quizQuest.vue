@@ -46,15 +46,15 @@ export default {
       if (this.isAnswered) return;
       this.isAnswered = true;
       let ans = idx === this.correctAnsIdx;
-      
+
       console.log("ans:", ans);
 
       setTimeout(() => {
         if (this.info.currentQuestion + 1 === this.info.quiz.questions.length)
-          return this.$emit("gameStage", {cmp: "quizEnd", answer: ans});
+          return this.$emit("gameStage", { cmp: "quizEnd", answer: "" + ans });
         this.isAnswered = false;
         // this.$emit("ans")
-        this.$emit("gameStage", {cmp: "quizQuest", answer: ''+ans});
+        this.$emit("gameStage", { cmp: "quizQuest", answer: "" + ans });
       }, 1000);
     },
     ansStyle(idx) {
