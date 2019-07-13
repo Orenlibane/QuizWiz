@@ -1,12 +1,14 @@
 <template>
   <footer class="app-footer align-center space-around flex">
-    <button>User</button>
-    <button>Other1</button>
-    <router-link to="/">
-      <button>Home</button>
+    <span>User</span>
+    <router-link to="/quiz/libary">
+      <span>Quizes</span>
     </router-link>
-    <button>Other2</button>
-    <button>Other3</button>
+    <router-link to="/">
+      <span>Home</span>
+    </router-link>
+    <span>Other2</span>
+    <span>Other3</span>
   </footer>
 </template>
 
