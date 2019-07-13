@@ -9,7 +9,6 @@
         </li>
       </ul>
 
-
   </section>
 </template>
 

@@ -38,9 +38,6 @@ export default {
       timerShow: true,
       showMsg: false
     };
-  },
-  methods: {
-    clearTimers() {}
   }
 };
 </script>
