@@ -1,7 +1,7 @@
 <template>
   <footer class="app-footer align-center space-around flex">
     <span>User</span>
-    <router-link to="/quiz/libary">
+    <router-link to="/libary">
       <span>Quizes</span>
     </router-link>
     <router-link to="/">
