@@ -1,5 +1,5 @@
 <template>
-  <footer class="app-footer center">
+  <footer class="app-footer align-center space-around flex">
     <button>User</button>
     <button>Other1</button>
     <router-link to="/">
@@ -13,6 +13,7 @@
 <script>
 import appLogo from "@/components/appLogo";
 import navBar from "@/components/navBar";
+import global from "@/styles/global.scss";
 export default {
   components: {
     appLogo,
@@ -24,12 +25,15 @@ export default {
 <style scoped>
 .app-footer {
   width: 100vw;
+  height: 5vh;
   background: teal;
-  padding: 10px;
+  padding: 5px;
   border-top: 2px black solid;
   position: fixed;
-  display: flex;
-  justify-content: space-around;
+
   bottom: 0;
+}
+button {
+  height: 20px;
 }
 </style>
