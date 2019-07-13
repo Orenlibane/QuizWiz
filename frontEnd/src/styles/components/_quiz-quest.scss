@@ -1,0 +1,16 @@
+.answers {
+  max-width: 240px;
+}
+
+.possible-answers button {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease-out transform;
+}
+
+.possible-answers button:hover {
+  transform: scale(1.1);
+}
