@@ -1,6 +1,5 @@
 <template>
   <section class="add-quiz">
-    <router-link to="/">Back to home</router-link>
     <nav>Nav here</nav>
     <div>
       <h2>The quiz</h2>
@@ -13,9 +12,13 @@
       </h2>
       <div class="flex">
         <div class="img-container">
-          <h5>select tags</h5>
-          <input type="text" placeholder="Add tags" />
-          <button>+</button>
+          <h5>Add tags</h5>
+          <input type="text" v-model="tagToAdd  " placeholder="Add tags" />
+          <button @click="addTag">+</button>
+          <div class="flex space-between" v-for="(tag,idx) in newQuiz.tags" :key="idx">
+            {{tag}}
+            <button @click="removeTag(idx)">X</button>
+          </div>
         </div>
         <div class="img-container">
           <h5>Add image</h5>
@@ -73,9 +76,10 @@ export default {
   data() {
     return {
       questNum: 4,
+      tagToAdd: "",
       newQuiz: {
         title: "",
-        tags: "",
+        tags: [],
         createdAt: "",
         bestScore: "",
         likesCount: 0,
@@ -119,6 +123,16 @@ export default {
       this.newQuiz._id = utilService.makeId();
       quizService.addQuiz(this.newQuiz);
       this.$router.push("/");
+    },
+    addTag() {
+      console.log(this.newQuiz.tags);
+      console.log(this.tagToAdd);
+      this.newQuiz.tags.push(this.tagToAdd);
+      console.log(this.newQuiz.tags);
+      this.tagToAdd = "";
+    },
+    removeTag(idx) {
+      this.newQuiz.tags.splice(idx, 1);
     }
   }
 };
