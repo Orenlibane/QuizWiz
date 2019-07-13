@@ -7,6 +7,10 @@
   display: flex;
   flex-direction: column;
 }
+.question-render{
+  padding: 0;
+  padding-bottom: 21px;
+}
 
 .possible-answers button {
   justify-content: center;
@@ -19,6 +23,7 @@
   transition: 0.3s ease-out transform;
 }
 
-.possible-answers button:hover {
-  // transform: scale(1.1);
+.quest-time{
+  font-weight: bold;
+  font-size: 24px;
 }

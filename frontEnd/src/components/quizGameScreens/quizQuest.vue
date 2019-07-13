@@ -1,6 +1,6 @@
 <template>
-  <section class="quizQuest flex container both-align-center column">
-    <h1>{{currQuestion}}</h1>
+  <section class="quizQuest flex layout-container both-align-center column">
+    <h1 class="question-render">{{currQuestion}}</h1>
     <div class="answers">
       <div
         class="possible-answers"
@@ -11,7 +11,7 @@
         <button :class="ansStyle(idx)">{{answer}}</button>
       </div>
     </div>
-    <div>correct answer idx: {{correctAnsIdx}}</div>
+    <div class="quest-time">10 sec</div>
   </section>
 </template>
 
