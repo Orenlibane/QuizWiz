@@ -2,7 +2,9 @@
   <footer class="app-footer center">
     <button>User</button>
     <button>Other1</button>
-    <button>Home</button>
+    <router-link to="/">
+      <button>Home</button>
+    </router-link>
     <button>Other2</button>
     <button>Other3</button>
   </footer>

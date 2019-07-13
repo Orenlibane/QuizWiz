@@ -2,3 +2,33 @@
   padding: 0;
   height: 20px;
 }
+
+.card img {
+  // height: 50%;
+  margin: 20px 0 0 10px;
+}
+
+.likes-count {
+  position: relative;
+  bottom: 0;
+  left: 6%;
+  background: white;
+  width: 50%;
+}
+
+.img-container-card {
+  position: relative;
+}
+
+.card {
+  border: 1px black solid;
+  width: 250px;
+  height: 150px;
+  margin: 0 5px;
+  font-size: 0.7rem;
+  border-radius: 10px;
+}
+
+.card-info {
+  width: 100px;
+}
