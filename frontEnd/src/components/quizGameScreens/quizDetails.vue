@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import quizdet from "@/styles/components/_quiz-det.scss";
 import quizService from "@/service/quizService.js";
 import utilService from "@/service/utilService.js";
 
