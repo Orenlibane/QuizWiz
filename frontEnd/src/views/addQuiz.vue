@@ -1,6 +1,5 @@
 <template>
   <section class="add-quiz">
-    <nav>Nav here</nav>
     <div>
       <h2>The quiz</h2>
       <div>question array:</div>
@@ -26,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div v-for="(quest,questIdx) in questNum" :key="questIdx">
+    <div v-for="(quest,questIdx) in newQuiz.questions" :key="questIdx">
       <h4>Question {{questIdx+1}}</h4>
       <hr />
       <input type="text" v-model="newQuiz.questions[questIdx].question" />
@@ -44,6 +43,7 @@
       <div>
         <h5>Currect Answer</h5>
         <select @change="setCurrectAnswer(questIdx,$event)">
+          <option>Answer</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -83,20 +83,7 @@ export default {
         createdAt: "",
         bestScore: "",
         likesCount: 0,
-        currectAnswer: 0,
         questions: [
-          {
-            question: "",
-            answers: ["", "", "", ""]
-          },
-          {
-            question: "",
-            answers: ["", "", "", ""]
-          },
-          {
-            question: "",
-            answers: ["", "", "", ""]
-          },
           {
             question: "",
             answers: ["", "", "", ""]
@@ -117,7 +104,7 @@ export default {
     },
     setCurrectAnswer(questIdx, ev) {
       var value = ev.target.value;
-      this.newQuiz.questions[questIdx].currectAnswer = parseInt(value - 1);
+      this.newQuiz.questions[questIdx].currentAnswerIdx = parseInt(value - 1);
     },
     addQuiz() {
       this.newQuiz._id = utilService.makeId();

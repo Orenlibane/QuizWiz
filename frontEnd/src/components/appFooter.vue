@@ -1,18 +1,21 @@
 <template>
-  <footer class="app-footer center">
-    <button>User</button>
-    <button>Other1</button>
-    <router-link to="/">
-      <button>Home</button>
+  <footer class="app-footer align-center space-around flex">
+    <span>User</span>
+    <router-link to="/quiz/libary">
+      <span>Quizes</span>
     </router-link>
-    <button>Other2</button>
-    <button>Other3</button>
+    <router-link to="/">
+      <span>Home</span>
+    </router-link>
+    <span>Other2</span>
+    <span>Other3</span>
   </footer>
 </template>
 
 <script>
 import appLogo from "@/components/appLogo";
 import navBar from "@/components/navBar";
+import global from "@/styles/global.scss";
 export default {
   components: {
     appLogo,
@@ -24,12 +27,15 @@ export default {
 <style scoped>
 .app-footer {
   width: 100vw;
+  height: 5vh;
   background: teal;
-  padding: 10px;
+  padding: 5px;
   border-top: 2px black solid;
   position: fixed;
-  display: flex;
-  justify-content: space-around;
+
   bottom: 0;
+}
+button {
+  height: 20px;
 }
 </style>

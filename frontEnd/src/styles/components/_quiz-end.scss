@@ -1,3 +1,20 @@
-.message{
-    text-transform: uppercase;
+.message {
+  text-transform: uppercase;
+}
+
+.questions-sum span {
+  padding: 5px;
+}
+
+.questions-sum li {
+  border: 0.5px black solid;
+}
+
+.score-prec {
+  font-size: 5rem;
+  margin: 0;
+}
+
+.quiz-end button.big-btn {
+  margin-bottom: 100px;
 }

@@ -1,16 +1,31 @@
 .answers {
-  max-width: 240px;
+  width: 100%;
+}
+
+
+.possible-answers{
+  display: flex;
+  flex-direction: column;
+}
+.question-render{
+  padding: 0;
+  padding-bottom: 21px;
 }
 
 .possible-answers button {
-  width: 100px;
-  height: 100px;
-  margin: 10px;
-  border-radius: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+  outline: none;
+  padding-top:10px;
+  padding-bottom: 10px;
+  align-items: center;
+  background-color: white;
   cursor: pointer;
   transition: 0.3s ease-out transform;
 }
 
-.possible-answers button:hover {
-  transform: scale(1.1);
+.quest-time{
+  font-weight: bold;
+  font-size: 24px;
 }

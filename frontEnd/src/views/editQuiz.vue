@@ -1,6 +1,5 @@
 <template>
   <section class="add-quiz">
-    <router-link to="/">Back to home</router-link>
     <div>
       <h2>The quiz</h2>
       <div>question array:</div>
@@ -44,6 +43,7 @@
       <div>
         <h5>Currect Answer</h5>
         <select @change="setCurrectAnswer(questIdx,$event)">
+          <option>Answer</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>

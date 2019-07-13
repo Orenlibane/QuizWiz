@@ -1,7 +1,7 @@
 <template>
-  <section class="quizQuest flex both-align-center column">
-    <h1>Question #{{currQuestionNum}}: {{currQuestion}}</h1>
-    <div class="answers flex wrap">
+  <section class="quizQuest flex layout-container both-align-center column">
+    <h1 class="question-render">{{currQuestion}}</h1>
+    <div class="answers">
       <div
         class="possible-answers"
         v-for="(answer,idx) in currAnswers"
@@ -11,7 +11,7 @@
         <button :class="ansStyle(idx)">{{answer}}</button>
       </div>
     </div>
-    <div>correct answer idx: {{correctAnsIdx}}</div>
+    <div class="quest-time">10 sec</div>
   </section>
 </template>
 
@@ -46,15 +46,15 @@ export default {
       if (this.isAnswered) return;
       this.isAnswered = true;
       let ans = idx === this.correctAnsIdx;
-      
+
       console.log("ans:", ans);
 
       setTimeout(() => {
         if (this.info.currentQuestion + 1 === this.info.quiz.questions.length)
-          return this.$emit("gameStage", {cmp: "quizEnd", answer: ans});
+          return this.$emit("gameStage", { cmp: "quizEnd", answer: "" + ans });
         this.isAnswered = false;
         // this.$emit("ans")
-        this.$emit("gameStage", {cmp: "quizQuest", answer: ''+ans});
+        this.$emit("gameStage", { cmp: "quizQuest", answer: "" + ans });
       }, 1000);
     },
     ansStyle(idx) {
