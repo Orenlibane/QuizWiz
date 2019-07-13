@@ -1,16 +1,24 @@
 .answers {
-  max-width: 240px;
+  width: 100%;
+}
+
+
+.possible-answers{
+  display: flex;
+  flex-direction: column;
 }
 
 .possible-answers button {
-  width: 100px;
-  height: 100px;
-  margin: 10px;
-  border-radius: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding-top:10px;
+  padding-bottom: 10px;
+  align-items: center;
+  background-color: white;
   cursor: pointer;
   transition: 0.3s ease-out transform;
 }
 
 .possible-answers button:hover {
-  transform: scale(1.1);
+  // transform: scale(1.1);
 }

@@ -1,7 +1,7 @@
 <template>
-  <section class="quizQuest flex both-align-center column">
-    <h1>Question #{{currQuestionNum}}: {{currQuestion}}</h1>
-    <div class="answers flex wrap">
+  <section class="quizQuest flex container both-align-center column">
+    <h1>{{currQuestion}}</h1>
+    <div class="answers">
       <div
         class="possible-answers"
         v-for="(answer,idx) in currAnswers"
