@@ -8,9 +8,7 @@
 import global from "@/styles/global.scss";
 export default {
   props: [],
-  components: {
-    quizPreview
-  },
+  components: {},
   created() {
     this.$store.dispatch({ type: "loadQuizes" });
   },
