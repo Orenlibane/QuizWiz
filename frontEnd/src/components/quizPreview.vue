@@ -2,7 +2,10 @@
   <div class="card flex space-around">
     <div class="img-container-card">
       <img src="https://api.adorable.io/avatars/80/1" alt />
-      <div class="likes-count">Likes:{{quiz.likesCount}}</div>
+      <div class="likes-count">
+        <i class="fas fa-thumbs-up"></i>
+        :{{quiz.likesCount}}
+      </div>
       <div class="flex both-align-center">
         <button @click="deleteQuiz(quiz._id)">🗑️</button>
         <router-link :to="editUrl">

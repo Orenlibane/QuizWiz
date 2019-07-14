@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import quizService from '@/service/quizService.js';
 import userStore from './userStore.js';
-import quizStore from './quizStore.js'
+import quizStore from './quizStore.js';
 
 Vue.use(Vuex);
 
@@ -13,7 +13,8 @@ export default new Vuex.Store({
   },
 
   state: {
-    quizes: ''
+    quizes: '',
+    isGame: false
   },
   mutations: {
     setQuizes(state, { quizes }) {

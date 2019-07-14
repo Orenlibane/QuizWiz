@@ -1,20 +1,21 @@
 <template>
   <section>
     <quiz-gameboard v-if="isPlaying" :info="cmp.info"></quiz-gameboard>
-    <component :is="cmp.type" @gameStage="gameSequence" :info="cmp.info" :gameRes="cmp.gameRes"  />
-        <quest-timer v-if="isPlaying"
-        :info="cmp.info" 
-        :gameRes="cmp.gameRes" 
-        @gameStage="gameSequence"
-        @emitTime="getQuestTimer"
-        ></quest-timer>
+    <component :is="cmp.type" @gameStage="gameSequence" :info="cmp.info" :gameRes="cmp.gameRes" />
+    <quest-timer
+      v-if="isPlaying"
+      :info="cmp.info"
+      :gameRes="cmp.gameRes"
+      @gameStage="gameSequence"
+      @emitTime="getQuestTimer"
+    ></quest-timer>
   </section>
 </template>
 
 <script>
 // quizGameboard and questTimer give feedback to the user about his game state
 import quizGameboard from "../components/quizGameboard";
-import questTimer from '../components/questTimer';
+import questTimer from "../components/questTimer";
 
 //the Dynamic game screens
 import quizDetails from "../components/quizGameScreens/quizDetails";
@@ -23,6 +24,9 @@ import quizLobby from "../components/quizGameScreens/quizLobby";
 import quizResult from "../components/quizGameScreens/quizResult";
 import quizReady from "../components/quizGameScreens/quizReady";
 import quizQuest from "../components/quizGameScreens/quizQuest";
+
+//Event bus
+import eventBus, { GAME_ON } from "@/event-bus.js";
 
 export default {
   name: "quizGame",
@@ -64,7 +68,10 @@ export default {
         this.cmp.gameRes.push({
           questIdx: this.cmp.gameRes.length,
           result: gameStage.answer,
-          score: (gameStage.answer === 'false') ? 0 : Math.abs(this.cmp.info.timer-10) * 10
+          score:
+            gameStage.answer === "false"
+              ? 0
+              : Math.abs(this.cmp.info.timer - 10) * 10
         });
       }
       this.cmp.type = gameStage.cmp;
@@ -73,8 +80,8 @@ export default {
       }
     },
 
-    getQuestTimer(gottenTime){
-      this.cmp.info.timer = gottenTime
+    getQuestTimer(gottenTime) {
+      this.cmp.info.timer = gottenTime;
     }
   },
   computed: {
@@ -90,8 +97,10 @@ export default {
     this.$store.dispatch({ type: "getQuiz", quizId }).then(quiz => {
       this.cmp.info = { quiz, currentQuestion: -1, timer: null };
     });
-  },
-  
+    //EVENT BUS EMIT HERE
+    var game = true;
+    eventBus.$emit(GAME_ON, game);
+  }
 };
 </script>
 

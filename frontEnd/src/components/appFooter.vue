@@ -20,7 +20,8 @@ export default {
   components: {
     appLogo,
     navBar
-  }
+  },
+  created() {}
 };
 </script>
 
@@ -32,7 +33,6 @@ export default {
   padding: 5px;
   border-top: 2px black solid;
   position: fixed;
-
   bottom: 0;
 }
 button {

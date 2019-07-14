@@ -1,9 +1,11 @@
 <template>
   <section class="flex both-align-center column">
     <div class="quiz-details">
-      <!-- <router-link to="/">
-        <button class="btn-quiz">back</button>
-      </router-link>-->
+      <router-link to="/">
+        <button class="btn-quiz">
+          <i class="fas fa-backward"></i>
+        </button>
+      </router-link>
       <img
         class="quiz-details-img"
         src="https://catspro.com/wp-content/uploads/2018/11/ugly-sphynx-695x599.jpg"
@@ -15,12 +17,12 @@
       </div>
       <div v-if="info.quiz" class="flex space-around">
         <div class="tags-show flex">
-          tags:
+          Tags:
           <div v-for="(tag, idx) in info.quiz.tags" :key="idx">{{tag}}-</div>
         </div>
         <div class="like-show flex flex-start">
-          <button>Like</button>
           <div>{{info.quiz.likesCount}}</div>
+          <i class="fas fa-thumbs-up"></i>
         </div>
       </div>
     </div>

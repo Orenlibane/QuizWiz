@@ -22,6 +22,10 @@
   font-size: rem(30px);
 }
 
+.caps {
+  text-transform: uppercase;
+}
+
 .flex {
   display: flex;
 }
@@ -51,10 +55,12 @@
   flex-direction: column;
 }
 
-.container {
-  width: 100vw;
-  height: 80vh;
-}
+// .container {
+//   width: 100vw;
+//   height: 80vh;
+//   padding: 0 50px;
+//   border: 2px black solid;
+// }
 
 .space-between {
   justify-content: space-between;

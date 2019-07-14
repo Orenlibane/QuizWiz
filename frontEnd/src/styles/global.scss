@@ -19,5 +19,8 @@
 @import 'basics/buttons.scss';
 
 // Cmps
-@import "components/_quiz-det.scss";
+@import 'components/_quiz-det.scss';
 @import 'components/_quiz-end.scss';
+
+// Views
+@import 'views/_home-page.scss';
