@@ -50,7 +50,9 @@ const quizStore = {
     async addQuiz(context, { addedQuiz }) {
       try {
         addedQuiz._id = utilService.makeId();
+        addedQuiz.createdAt = Date.now()
         await quizService.addQuiz(addedQuiz);
+        console.log('pushed', addedQuiz);
         context.commit({ type: 'addQuiz', addedQuiz });
       } catch (err) {
         console.log('err in adding in store', err);

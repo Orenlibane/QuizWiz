@@ -1,14 +1,14 @@
 <template>
   <section class="quizQuest flex both-align-center column">
-    <h1 class="question-render">{{currQuestion}}</h1>
+    <h1 class="question-render">{{currQuest}}</h1>
     <div class="answers">
       <div
         class="possible-answers"
-        v-for="(answer,idx) in currAnswers"
+        v-for="(opt,idx) in currOpts"
         :key="idx"
-        @click="chooseAnswer(idx)"
+        @click="chooseAns(idx)"
       >
-        <button :class="ansStyle(idx)">{{answer}}</button>
+        <button :class="ansStyle(idx)">{{opt}}</button>
       </div>
     </div>
   </section>
@@ -19,49 +19,58 @@
 import global from "@/styles/global.scss";
 export default {
   name: "quizQuest",
-  props: ["info"],
+  props: {
+    info: {
+      type: Object
+    }
+  },
   data() {
     return {
       isAnswered: false
     };
   },
   computed: {
-    currQuestionNum() {
-      return this.info.currentQuestion + 1;
+    currQuestNum() {
+      return this.info.currQuest + 1;
     },
-    currQuestion() {
-      return this.info.quiz.questions[this.info.currentQuestion].question;
+    currQuest() {
+      return this.info.quiz.quests[this.info.currQuest].txt;
     },
-    currAnswers() {
-      return this.info.quiz.questions[this.info.currentQuestion].answers;
+    currOpts() {
+      return this.info.quiz.quests[this.info.currQuest].opts;
     },
-    correctAnsIdx() {
-      return this.info.quiz.questions[this.info.currentQuestion]
-        .currentAnswerIdx;
+    correctOptIdx() {
+      return this.info.quiz.quests[this.info.currQuest].correctOptIdx;
     }
   },
   methods: {
-    chooseAnswer(idx) {
+    chooseAns(idx) {
       if (this.isAnswered) return;
       this.isAnswered = true;
-      let ans = idx === this.correctAnsIdx;
+      let currAns = idx === this.correctOptIdx;
       setTimeout(() => {
-        if (this.info.currentQuestion + 1 === this.info.quiz.questions.length)
-          return this.$emit("gameStage", { cmp: "quizEnd", answer: "" + ans });
+        if (this.info.currQuest + 1 === this.info.quiz.quests.length)
+          return this.$emit("gameStage", { cmp: "quizEnd", ans: "" + currAns });
         this.isAnswered = false;
         // this.$emit("ans")
-        this.$emit("gameStage", { cmp: "quizQuest", answer: "" + ans });
+        this.$emit("gameStage", { cmp: "quizQuest", ans: "" + currAns });
       }, 1000);
     },
     ansStyle(idx) {
       if (!this.isAnswered) return "";
-      if (idx === this.correctAnsIdx) return "correctAnsStyle";
+      if (idx === this.correctOptIdx) return "correctAnsStyle";
       return "wrongAnsStyle";
     }
   },
+  mounted() {
+    console.log("the info:", this.info);
+  },
   destroyed() {
     console.log("Quiz Game got destroyed");
-  }
+  },
+  // updated(){
+
+  // }
 };
 </script>
 
@@ -73,6 +82,4 @@ export default {
 .correctAnsStyle {
   background: green;
 }
-
-
 </style>

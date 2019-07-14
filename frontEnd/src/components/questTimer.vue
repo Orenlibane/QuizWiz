@@ -22,35 +22,40 @@ export default {
     return {
       timer: null,
       countDown: null,
-      questIdx: this.info.currentQuestion
+      questIdx: this.info.currQuest
     };
   },
   created() {
     this.timer = 10;
+
     this.countDown = setInterval(() => {
+      console.log("time ticking", this.timer);
       this.$emit("emitTime", this.timer);
       this.timer--;
     }, 1000);
   },
   updated() {
+    //If game ended
+    if (this.info.currQuest + 1 === this.info.quiz.quests.length) {
+      clearInterval(this.countDown);
+    }
     //Timer Case #1: Time is up and the user did not pick an answer
     if (this.timer === 0) {
       //If its the last question: goodbye :)
-      if (this.info.currentQuestion + 1 === this.info.quiz.questions.length) {
-        this.$emit("gameStage", { cmp: "quizEnd", answer: "false" });
+      if (this.info.currQuest + 1 === this.info.quiz.quests.length) {
+        this.$emit("gameStage", { cmp: "quizEnd", ans: "false" });
       }
       //else, we keep on with the current game session
       else {
-        this.$emit("gameStage", { cmp: "quizQuest", answer: "false" });
+        this.$emit("gameStage", { cmp: "quizQuest", ans: "false" });
         this.timer = 10;
       }
       //Timer Case #2: The user picked an answer
     }
-    if (this.questIdx !== this.info.currentQuestion) {
+    if (this.questIdx !== this.info.currQuest) {
       this.questIdx++;
       this.timer = 10;
     }
   }
 };
-
 </script>

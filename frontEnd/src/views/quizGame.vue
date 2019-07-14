@@ -36,7 +36,7 @@ export default {
         type: "quizDetails",
         info: {
           quiz: Object,
-          currentQuestion: Number,
+          currQuest: Number,
           timer: Number
         },
         gameRes: [],
@@ -64,16 +64,16 @@ export default {
   },
   methods: {
     gameSequence(gameStage) {
-      if (gameStage.answer) {
+      if (gameStage.ans) {
         this.cmp.gameRes.push({
           questIdx: this.cmp.gameRes.length,
-          result: gameStage.answer,
-          score: gameStage.answer === "false" ? 0 : this.cmp.info.timer * 10
+          result: gameStage.ans,
+          score: gameStage.ans === "false" ? 0 : this.cmp.info.timer * 10
         });
       }
       this.cmp.type = gameStage.cmp;
       if (gameStage.cmp === "quizQuest") {
-        this.cmp.info.currentQuestion++;
+        this.cmp.info.currQuest++;
       }
     },
 
@@ -92,7 +92,7 @@ export default {
   async created() {
     const quizId = this.$route.params.id;
     var quiz = await this.$store.dispatch({ type: "getQuiz", quizId });
-    this.cmp.info = { quiz, currentQuestion: -1, timer: null };
+    this.cmp.info = { quiz, currQuest: -1, timer: null };
     eventBus.$emit(GAME_ON);
   }
 };
