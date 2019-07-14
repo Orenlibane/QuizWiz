@@ -1,4 +1,4 @@
-import HttpService from './HttpService';
+import HttpService from './httpService';
 
 export default {
   login,

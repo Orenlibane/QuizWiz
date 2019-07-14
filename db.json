@@ -1,3 +1,32 @@
 {
-  "quizes": []
+  "quizes": [
+    {
+      "title": "",
+      "tags": [],
+      "createdAt": "",
+      "bestScore": "",
+      "likesCount": 0,
+      "questions": [
+        {
+          "question": "",
+          "answers": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        },
+        {
+          "question": "",
+          "answers": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "_id": "1lG"
+    }
+  ]
 }
