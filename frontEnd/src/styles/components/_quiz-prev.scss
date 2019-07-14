@@ -21,15 +21,15 @@
 }
 
 .card {
-  border: 1px black solid;
-  width: 250px;
-  height: 150px;
-  margin: 0 5px;
+  width: 100%;
   font-size: 0.7rem;
-  border-radius: 10px;
-  margin: 10px;
+  background-color: lightgrey;
+  border:1px solid black;
 }
-
+.quiz-img-preview {
+  width: rem(90px);
+  height: rem(90px);
+}
 .card-info {
   width: 100px;
 }
