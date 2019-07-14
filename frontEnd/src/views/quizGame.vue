@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="layout-container">
     <quiz-gameboard v-if="isPlaying" :info="cmp.info"></quiz-gameboard>
     <component :is="cmp.type" @gameStage="gameSequence" :info="cmp.info" :gameRes="cmp.gameRes" />
     <quest-timer

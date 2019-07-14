@@ -2,12 +2,11 @@
   width: 100%;
 }
 
-
-.possible-answers{
+.possible-answers {
   display: flex;
   flex-direction: column;
 }
-.question-render{
+.question-render {
   padding: 0;
   padding-bottom: 21px;
 }
@@ -17,15 +16,17 @@
   margin-bottom: 10px;
   font-size: 20px;
   outline: none;
-  padding-top:10px;
+  border: none;
+  padding-top: 10px;
   padding-bottom: 10px;
   align-items: center;
-  background-color: white;
+  background-color: grey;
+  color:white;
   cursor: pointer;
   transition: 0.3s ease-out transform;
 }
 
-.quest-time{
+.quest-time {
   font-weight: bold;
   font-size: 24px;
 }
