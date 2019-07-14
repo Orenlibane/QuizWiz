@@ -1,6 +1,6 @@
 <template>
   <section class="countDown container flex column both-align-center">
-    <h1 v-if="showMsg">GAME STARTED</h1>
+    <h1 v-if="showMsg" class="center">GAME STARTED</h1>
     <div v-if="timerShow" class="flex column both-align-center">
       <h1>GET SET</h1>
       <h1>{{timer}}</h1>
@@ -14,7 +14,7 @@ import global from "@/styles/global.scss";
 export default {
   created() {
     this.timeOut = setTimeout(() => {
-      this.$emit("gameStage", {cmp: "quizQuest"});
+      this.$emit("gameStage", { cmp: "quizQuest" });
     }, 4000);
     setTimeout(() => {
       this.showMsg = true;

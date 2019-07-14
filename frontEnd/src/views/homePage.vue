@@ -1,22 +1,20 @@
 <template>
   <section class="home-page">
     <div class="quizes-show">
-      <h4>Here are the ongoing quizes</h4>
+      <h1 class="center caps">Ongoing Quizes</h1>
       <quiz-list :quizes="liveQuizes"></quiz-list>
     </div>
     <router-link to="/quiz/add">
       <button class="addQuizBtn">Add quiz</button>
     </router-link>
-    <div class="quizes-show">
-      <h4>Recommended quizes:</h4>
-      <quiz-list :quizes="liveQuizes"></quiz-list>
-    </div>
   </section>
 </template>
 
 <script>
 import quizList from "../components/quizList";
-import homePage from "@/styles/views/_home-page.scss";
+import global from "@/styles/global.scss";
+import eventBus, { GAME_OFF } from "@/event-bus.js";
+
 export default {
   name: "home",
   components: {
@@ -26,6 +24,15 @@ export default {
     liveQuizes() {
       return this.$store.getters.getQuizes;
     }
+  },
+  data() {
+    return {
+      sentFrom: "homePage"
+    };
+  },
+  created() {
+    var game = false;
+    eventBus.$emit(GAME_OFF, game);
   }
 };
 </script>

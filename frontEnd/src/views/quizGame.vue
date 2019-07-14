@@ -25,6 +25,9 @@ import quizResult from "../components/quizGameScreens/quizResult";
 import quizReady from "../components/quizGameScreens/quizReady";
 import quizQuest from "../components/quizGameScreens/quizQuest";
 
+//Event bus
+import eventBus, { GAME_ON } from "@/event-bus.js";
+
 export default {
   name: "quizGame",
   data() {

@@ -2,6 +2,9 @@
   text-transform: uppercase;
 }
 
+.questions-sum {
+  margin-bottom: 100px;
+}
 .questions-sum span {
   padding: 5px;
 }
@@ -16,5 +19,12 @@
 }
 
 .quiz-end button.big-btn {
-  margin-bottom: 100px;
+  margin-bottom: 20px;
+}
+
+.show-questions-btn {
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
 }

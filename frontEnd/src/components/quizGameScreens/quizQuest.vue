@@ -58,6 +58,9 @@ export default {
       if (idx === this.correctAnsIdx) return "correctAnsStyle";
       return "wrongAnsStyle";
     }
+  },
+  destroyed() {
+    console.log("Quiz Game got destroyed");
   }
 };
 </script>

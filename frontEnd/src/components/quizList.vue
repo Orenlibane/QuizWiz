@@ -9,7 +9,7 @@
 <script>
 import quizPreview from "./quizPreview";
 export default {
-  props: [],
+  props: ["quizes"],
   components: {
     quizPreview
   },

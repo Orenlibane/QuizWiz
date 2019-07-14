@@ -1,13 +1,23 @@
 <template>
-  <section class="flex container column both-align-center quiz-end">
-    <h1 class="score-prec">{{correctAnsPercentage}}%</h1>
-    <h3>you had {{correctAnsCount}} correct Answers</h3>
-    <h3>{{correctAnsPercentage | grade}}</h3>
-    <h3>Your Score: {{score}}</h3>
-    <h3>Game Ended</h3>
-    <h3>Quiz by: Creator of the game</h3>
-    <button @click="toggleQuestions">show Questions:</button>
-    <div v-if="showQuestions" class="questions-sum">
+  <section>
+    <router-link to="/">
+      <button class="btn-quiz">
+        <i class="fas fa-backward"></i>
+      </button>
+    </router-link>
+    <div v-if="!showQuestions" class="flex container column both-align-center quiz-end">
+      <h1 class="score-prec">{{correctAnsPercentage}}%</h1>
+      <h3>you had {{correctAnsCount}} correct Answers</h3>
+      <h3>{{correctAnsPercentage | grade}}</h3>
+      <h3>Your Score: {{score}}</h3>
+      <h3>Game Ended</h3>
+      <h3>Quiz by: Creator of the game</h3>
+      <button class="big-btn">Like</button>
+    </div>
+    <button @click="toggleQuestions" class="show-questions-btn">show Questions:</button>
+
+    <div v-if="showQuestions" class="questions-sum flex column">
+      <button @click="toggleQuestions" class="show-questions-btn">show Questions:</button>
       <ul class="clean-list" v-for="(question, idx) in questions" :key="idx">
         <li class="flex space-between">
           <span>Question #{{idx+1}} : {{question.question}}</span>
@@ -15,7 +25,6 @@
         </li>
       </ul>
     </div>
-    <button class="big-btn">Like</button>
   </section>
 </template>
 
@@ -43,13 +52,11 @@ export default {
 
     score() {
       return this.gameRes.reduce((acc, ans) => {
-        acc+= ans.score;
+        acc += ans.score;
         return acc;
       }, 0);
     },
     correctAnsPercentage() {
-      // return this.info.userScore;
-
       return Math.round((this.correctAnsCount / this.questions.length) * 100);
     },
     correctAnsCount() {
