@@ -2,382 +2,85 @@
   "quizes": [
     {
       "_id": 4,
-      "title": "History",
+      "name": "History",
       "tags": [
         "History"
       ],
-      "createdAt": "Date",
-      "bestScore": "",
-      "likesCount": 0,
-      "questions": [
+      "createdAt": 1563108182475,
+      "bestScore": 777,
+      "likesCount": 4,
+      "quests": [
         {
-          "question": "Who was the first explorer to sail to North America?",
+          "txt": "How important is it give variables the right name?",
           "answers": [
-            "Christopher Columbus22",
-            "Amerigo Vespucci",
-            "Ferdinand Magellan",
-            "Leif Erikson"
+            "Very important",
+            "It is a matter of life and death",
+            "More important than naming your children right",
+            "Chillax man..."
           ],
-          "currentAnswerIdx": 3
+          "correctOptIdx": 2
         },
         {
-          "question": "How old was Lyndon B. Johnson when he assumed the role of President of the United States?",
+          "txt": "How important is it give variables the right name?",
           "answers": [
-            "50",
-            "60",
-            "55",
-            "54"
+            "Very important",
+            "It is a matter of life and death",
+            "More important than naming your children right",
+            "Chillax man..."
           ],
-          "currentAnswerIdx": 2
+          "correctOptIdx": 2
         },
         {
-          "question": "What year were the Marian Reforms instituted in the Roman Republic?",
+          "txt": "How important is it give variables the right name?",
           "answers": [
-            "107 BCE",
-            "42 BCE",
-            "264 BCE",
-            "102 CE"
+            "Very important",
+            "It is a matter of life and death",
+            "More important than naming your children right",
+            "Chillax man..."
           ],
-          "currentAnswerIdx": 0
+          "correctOptIdx": 2
         },
         {
-          "question": "What is the oldest US state?",
+          "txt": "How important is it give variables the right name?",
           "answers": [
-            "Delaware",
-            "Rhode Island",
-            "Maine",
-            "Virginia"
+            "Very important",
+            "It is a matter of life and death",
+            "More important than naming your children right",
+            "Chillax man..."
           ],
-          "currentAnswerIdx": 0
+          "correctOptIdx": 2
         },
         {
-          "question": "What is the historical name of Sri Lanka?",
+          "txt": "How important is it give variables the right name?",
           "answers": [
-            "Myanmar",
-            "Ceylon",
-            "Colombo",
-            "Badulla"
+            "Very important",
+            "It is a matter of life and death",
+            "More important than naming your children right",
+            "Chillax man..."
           ],
-          "currentAnswerIdx": 1
-        }
+          "correctOptIdx": 2
+        },
+        {
+          "txt": "How important is it give variables the right name?",
+          "answers": [
+            "Very important",
+            "It is a matter of life and death",
+            "More important than naming your children right",
+            "Chillax man..."
+          ],
+          "correctOptIdx": 2
+        },
+        {
+          "txt": "How important is it give variables the right name?",
+          "answers": [
+            "Very important",
+            "It is a matter of life and death",
+            "More important than naming your children right",
+            "Chillax man..."
+          ],
+          "correctOptIdx": 2
+        },
       ]
-    },
-    {
-      "_id": 6,
-      "title": "Sports",
-      "tags": [
-        "Sports"
-      ],
-      "createdAt": "Date",
-      "bestScore": "",
-      "likesCount": 0,
-      "questions": [
-        {
-          "question": "Which German sportswear company&#039;s logo is the &#039;Formstripe&#039;?",
-          "answers": [
-            "Adidas",
-            "Puma",
-            "Nike",
-            "Reebok"
-          ],
-          "currentAnswerIdx": 1
-        },
-        {
-          "question": "Who won the 2015 Formula 1 World Championship?",
-          "answers": [
-            "Nico Rosberg",
-            "Sebastian Vettel",
-            "Jenson Button",
-            "Lewis Hamilton"
-          ],
-          "currentAnswerIdx": 3
-        },
-        {
-          "question": "Which team was the 2015-2016 NBA Champions?",
-          "answers": [
-            "Golden State Warriors",
-            "Toronto Raptors",
-            "Oklahoma City Thunders",
-            "Cleveland Cavaliers"
-          ],
-          "currentAnswerIdx": 3
-        },
-        {
-          "question": "Which of the following Grand Slam tennis tournaments occurs LAST?",
-          "answers": [
-            "French Open",
-            "US Open",
-            "Wimbledon",
-            "Australian Open"
-          ],
-          "currentAnswerIdx": 1
-        },
-        {
-          "question": "This Canadian television sportscaster is known for his &quot;Hockey Night in Canada&quot; role, a commentary show during hockey games.",
-          "answers": [
-            "Don McKellar",
-            "Don Taylor ",
-            "Don Cherry",
-            "Donald Sutherland"
-          ],
-          "currentAnswerIdx": 2
-        },
-        {
-          "question": "Which year was the third Super Bowl held?",
-          "answers": [
-            "1969",
-            "1968",
-            "1971",
-            "1970"
-          ],
-          "currentAnswerIdx": 0
-        }
-      ]
-    },
-    {
-      "_id": 7,
-      "title": "Mythology",
-      "tags": [
-        "Mythology"
-      ],
-      "createdAt": "Date",
-      "bestScore": "",
-      "likesCount": 0,
-      "questions": [
-        {
-          "question": "The ancient Roman god of war was commonly known as which of the following?",
-          "answers": [
-            "Mars",
-            "Jupiter",
-            "Juno",
-            "Ares"
-          ],
-          "currentAnswerIdx": 0
-        },
-        {
-          "question": "Neptune&#039;s greek name was...",
-          "answers": [
-            "Ares",
-            "Poseidon",
-            "Zeus",
-            "Apollo"
-          ],
-          "currentAnswerIdx": 1
-        },
-        {
-          "question": "Which Greek &amp; Roman god was known as the god of music, truth and prophecy, healing, the sun and light, plague, poetry, and more?",
-          "answers": [
-            "Aphrodite",
-            "Artemis",
-            "Apollo",
-            "Athena"
-          ],
-          "currentAnswerIdx": 2
-        },
-        {
-          "question": "In Greek Mythology, who killed Achilles?",
-          "answers": [
-            "Paris",
-            "Hector",
-            "Helen",
-            "Pericles"
-          ],
-          "currentAnswerIdx": 0
-        },
-        {
-          "question": "A minotaur is half human half what?",
-          "answers": [
-            "Cow",
-            "Horse",
-            "Eagle",
-            "Bull"
-          ],
-          "currentAnswerIdx": 3
-        },
-        {
-          "question": "In most traditions, who was the wife of Zeus?",
-          "answers": [
-            "Hera",
-            "Aphrodite",
-            "Athena",
-            "Hestia"
-          ],
-          "currentAnswerIdx": 0
-        },
-        {
-          "question": "What is the name of the Greek god of blacksmiths?",
-          "answers": [
-            "Dyntos",
-            "Vulcan",
-            "Artagatus",
-            "Hephaestus"
-          ],
-          "currentAnswerIdx": 3
-        }
-      ]
-    },
-    {
-      "_id": 8,
-      "title": "Mathematics",
-      "tags": [
-        "Mathematics"
-      ],
-      "createdAt": "Date",
-      "bestScore": "",
-      "likesCount": 0,
-      "questions": [
-        {
-          "question": "How many zeptometres are inside one femtometre?",
-          "answers": [
-            "1,000,000",
-            "10",
-            "1,000,000,000",
-            "1000"
-          ],
-          "currentAnswerIdx": 0
-        },
-        {
-          "question": "What is the first Mersenne prime over 1000?",
-          "answers": [
-            "2203",
-            "1279",
-            "1009",
-            "1069"
-          ],
-          "currentAnswerIdx": 1
-        },
-        {
-          "question": "The decimal number 31 in hexadecimal would be what?",
-          "answers": [
-            "1F",
-            "3D",
-            "2E",
-            "1B"
-          ],
-          "currentAnswerIdx": 0
-        },
-        {
-          "question": "What is the 100th digit of Pi?",
-          "answers": [
-            "9",
-            "4",
-            "7",
-            "2"
-          ],
-          "currentAnswerIdx": 0
-        },
-        {
-          "question": "What is the derivative of Acceleration with respect to time?",
-          "answers": [
-            "Shift",
-            "Bump",
-            "Slide",
-            "Jerk"
-          ],
-          "currentAnswerIdx": 3
-        }
-      ]
-    },
-    {
-      "title": "Test1",
-      "tags": [
-        "bla"
-      ],
-      "createdAt": "",
-      "bestScore": "",
-      "likesCount": 0,
-      "questions": [
-        {
-          "question": "Sergei?",
-          "answers": [
-            "michael",
-            "oren",
-            "yavegeni",
-            "sergei"
-          ],
-          "currentAnswerIdx": 3
-        },
-        {
-          "question": "Boring",
-          "answers": [
-            "ye",
-            "ye",
-            "ye",
-            "no"
-          ],
-          "currentAnswerIdx": 0
-        }
-      ],
-      "_id": "up4"
-    },
-    {
-      "title": "Coding Academy Quiz",
-      "tags": [],
-      "createdAt": "",
-      "bestScore": "",
-      "likesCount": 0,
-      "questions": [
-        {
-          "question": "What is the word that if Yaron says during a lesson, you should worry:",
-          "answers": [
-            "Yes!",
-            "Kowabanga",
-            "Attention",
-            "Simple"
-          ],
-          "currentAnswerIdx": 3
-        },
-        {
-          "question": "Which one of this is not a guide",
-          "answers": [
-            "Sawsan",
-            "Yovel",
-            "Tal",
-            "Muki"
-          ],
-          "currentAnswerIdx": 3
-        },
-        {
-          "question": "Will there be a new assignment today?",
-          "answers": [
-            "Yes",
-            "No",
-            "Life itself is a lesson",
-            "Puki"
-          ],
-          "currentAnswerIdx": 0
-        },
-        {
-          "question": "How many days this bootscamp lasts?",
-          "answers": [
-            "120 Days",
-            "90 Days",
-            "60 Days",
-            "A lifetime"
-          ],
-          "currentAnswerIdx": 1
-        },
-        {
-          "question": "Who gave Yaron a video presentation for the code review?",
-          "answers": [
-            "Ben",
-            "Dima",
-            "Nati",
-            "Nathalie"
-          ]
-        },
-        {
-          "question": "Is this demo nice?",
-          "answers": [
-            "Yes",
-            "Ofcourse",
-            "Its amazing!",
-            "Naim Li!!!!!!!!!!!"
-          ],
-          "currentAnswerIdx": 3
-        }
-      ],
-      "_id": "c4k"
     }
   ]
 }
