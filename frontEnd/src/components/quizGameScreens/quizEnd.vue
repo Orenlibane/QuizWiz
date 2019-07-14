@@ -40,9 +40,9 @@ export default {
       return this.info.quiz.questions;
     },
     score() {
-      // return this.info.userScore;
-
-      return this.correctAnsCount / (this.correctAnsCount + this.wrongAnsCount);
+      return parseFloat(
+        this.correctAnsCount / (this.correctAnsCount + this.wrongAnsCount)
+      ).toFixed(2);
     },
     correctAnsCount() {
       let correctAnsCount;
