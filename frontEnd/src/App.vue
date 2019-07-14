@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    {{checkForFooter}}
     <app-header v-if="!game"></app-header>
     <router-view></router-view>
     <app-footer v-if="!game"></app-footer>
@@ -23,11 +22,7 @@ export default {
       game: false
     };
   },
-  computed: {
-    checkForFooter() {
-      return window.location.pathname;
-    }
-  },
+  computed: {},
   created() {
     eventBus.$on(GAME_ON, game => {
       this.game = game;
