@@ -277,38 +277,6 @@
           "currentAnswerIdx": 3
         }
       ]
-    },
-    {
-      "title": "Test1",
-      "tags": [
-        "bla"
-      ],
-      "createdAt": "",
-      "bestScore": "",
-      "likesCount": 0,
-      "questions": [
-        {
-          "question": "Sergei?",
-          "answers": [
-            "michael",
-            "oren",
-            "yavegeni",
-            "sergei"
-          ],
-          "currentAnswerIdx": 3
-        },
-        {
-          "question": "Boring",
-          "answers": [
-            "ye",
-            "ye",
-            "ye",
-            "no"
-          ],
-          "currentAnswerIdx": 0
-        }
-      ],
-      "_id": "up4"
     }
   ]
 }

@@ -6,6 +6,7 @@
           <i class="fas fa-backward"></i>
         </button>
       </router-link>
+      <h1 class="center">{{info.quiz.title}}</h1>
       <img
         class="quiz-details-img"
         src="https://catspro.com/wp-content/uploads/2018/11/ugly-sphynx-695x599.jpg"
@@ -54,5 +55,9 @@ export default {
 </script>
 
 <style scoped>
+h1 {
+  font-size: 3rem;
+  margin: 0;
+}
 </style>
 
