@@ -68,10 +68,7 @@ export default {
         this.cmp.gameRes.push({
           questIdx: this.cmp.gameRes.length,
           result: gameStage.answer,
-          score:
-            gameStage.answer === "false"
-              ? 0
-              : Math.abs(this.cmp.info.timer - 10) * 10
+          score: gameStage.answer === "false" ? 0 : this.cmp.info.timer * 10
         });
       }
       this.cmp.type = gameStage.cmp;
@@ -80,8 +77,8 @@ export default {
       }
     },
 
-    getQuestTimer(gottenTime) {
-      this.cmp.info.timer = gottenTime;
+    getQuestTimer(time) {
+      this.cmp.info.timer = time;
     }
   },
   computed: {
@@ -97,9 +94,6 @@ export default {
     this.$store.dispatch({ type: "getQuiz", quizId }).then(quiz => {
       this.cmp.info = { quiz, currentQuestion: -1, timer: null };
     });
-    //EVENT BUS EMIT HERE
-    var game = true;
-    eventBus.$emit(GAME_ON, game);
   }
 };
 </script>
