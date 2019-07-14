@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "production ready server",
+  "main": "server.js",
+  "scripts": {
+    "server:dev": "NODE_ENV=development nodemon app.js",
+    "server:prod": "node app.js"
+  },
+  "author": "The coding trio",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "mongodb": "^3.2.7",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.18.10"
+  }
+}

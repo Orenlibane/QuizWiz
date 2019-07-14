@@ -220,8 +220,7 @@
       "_id": 8,
       "title": "Mathematics",
       "tags": [
-        "Mathematics",
-        "Science"
+        "Mathematics"
       ],
       "createdAt": "Date",
       "bestScore": "",
@@ -280,96 +279,36 @@
       ]
     },
     {
-      "_id": 9,
-      "title": "Computers",
+      "title": "Test1",
       "tags": [
-        "Science"
+        "bla"
       ],
-      "createdAt": "Date",
+      "createdAt": "",
       "bestScore": "",
       "likesCount": 0,
       "questions": [
         {
-          "question": "What does AD stand for in relation to Windows Operating Systems? ",
+          "question": "Sergei?",
           "answers": [
-            "Active Department",
-            "Active Directory",
-            "Alternative Drive",
-            "Automated Database"
+            "michael",
+            "oren",
+            "yavegeni",
+            "sergei"
           ],
           "currentAnswerIdx": 3
         },
         {
-          "question": "The programming language &#039;Swift&#039; was created to replace what other programming language?",
+          "question": "Boring",
           "answers": [
-            "Objective-C",
-            "C#",
-            "Ruby",
-            "C++"
+            "ye",
+            "ye",
+            "ye",
+            "no"
           ],
           "currentAnswerIdx": 0
-        },
-        {
-          "question": "In the programming language Java, which of these keywords would you put on a variable to make sure it doesn&#039;t get modified?",
-          "answers": [
-            "Static",
-            "Private",
-            "Public",
-            "Final"
-          ],
-          "currentAnswerIdx": 3
-        },
-        {
-          "question": "In web design, what does CSS stand for?",
-          "answers": [
-            "Computer Style Sheet",
-            "Cascading Style Sheet",
-            "Counter Strike: Source",
-            "Corrective Style Sheet"
-          ],
-          "currentAnswerIdx": 1
-        },
-        {
-          "question": "Which one of these is not an official development name for a Ubuntu release?",
-          "answers": [
-            "Mystic Mansion",
-            "Trusty Tahr",
-            "Utopic Unicorn",
-            "Wily Werewolf"
-          ],
-          "currentAnswerIdx": 0
-        },
-        {
-          "question": "What is the correct term for the metal object in between the CPU and the CPU fan within a computer system?",
-          "answers": [
-            "Heat Sink",
-            "CPU Vent",
-            "Temperature Decipator",
-            "Heat Vent"
-          ],
-          "currentAnswerIdx": 0
-        },
-        {
-          "question": "Laserjet and inkjet printers are both examples of what type of printer?",
-          "answers": [
-            "Impact printer",
-            "Daisywheel printer",
-            "Dot matrix printer",
-            "Non-impact printer"
-          ],
-          "currentAnswerIdx": 3
-        },
-        {
-          "question": "How many values can a single byte represent?",
-          "answers": [
-            "8",
-            "256",
-            "1",
-            "1024"
-          ],
-          "currentAnswerIdx": 1
         }
-      ]
+      ],
+      "_id": "up4"
     }
   ]
 }
