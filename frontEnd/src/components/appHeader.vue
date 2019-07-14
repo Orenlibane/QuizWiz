@@ -1,32 +1,16 @@
 <template>
-  <header class="app-header layout-container">
-    <router-link to="/">
-      <app-logo></app-logo>
-    </router-link>
-
-    <nav-bar></nav-bar>
+  <header class="app-header flex container">
+    <p class="points"></p>
   </header>
 </template>
 
 <script>
-import appLogo from "@/components/appLogo";
-import navBar from "@/components/navBar";
+
 
 export default {
-  components: {
-    appLogo,
-    navBar
-  },
   methods: {}
 };
 </script>
 
 <style scoped>
-.app-header {
-  display: flex;
-  justify-content: space-between;
-  width: 100vw;
-  align-items: center;
-  background: primaryColor;
-}
 </style>

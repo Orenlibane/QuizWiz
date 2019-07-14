@@ -1,20 +1,16 @@
 <template>
   <footer class="app-footer">
-    <button class="footer-btn" @click.stop="navigateTo('score')">score</button>
-    <button class="footer-btn" @click.stop="navigateTo('profile')">profile</button>
-    <button class="footer-btn" @click.stop="navigateTo()">home</button>
-    <button class="footer-btn" @click.stop="navigateTo('library')">explore</button>
+    <router-link exact to="/score" class="footer-btn">score</router-link>
+    <router-link exact to="/" class="footer-btn">home</router-link>
+    <router-link exact to="user" class="footer-btn">user</router-link>
+    <router-link exact to="/library" class="footer-btn">library</router-link>
   </footer>
 </template>
 
 <script>
 import global from "@/styles/global.scss";
 export default {
-  methods: {
-    navigateTo(dest = "") {
-      this.$router.push(`/${dest}`);
-    }
-  }
+  
 };
 </script>
 
