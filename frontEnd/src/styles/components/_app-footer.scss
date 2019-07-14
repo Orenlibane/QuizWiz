@@ -1,0 +1,24 @@
+.app-footer {
+  background-color: grey;
+  z-index: 10;
+  padding-top: rem(5px);
+  padding-bottom: rem(5px);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer-btn {
+  width: rem(47px);
+  height: rem(47px);
+  border: none;
+  text-transform: uppercase;
+  background-color: white;
+  outline: none;
+}
+
+.app-footer .footer-btn:not(:first-child) {
+  margin-left: rem(36px);
+}
