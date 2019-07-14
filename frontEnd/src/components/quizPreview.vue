@@ -41,9 +41,7 @@ export default {
   props: ["quiz"],
   methods: {
     deleteQuiz(quizId) {
-      this.$store.dispatch({ type: "deleteQuiz", quizId }).then(() => {
-        quizService.deleteQuiz(quizId);
-      });
+      this.$store.dispatch({ type: "deleteQuiz", quizId });
     }
   },
   computed: {

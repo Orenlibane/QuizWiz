@@ -76,12 +76,10 @@ export default {
     };
   },
 
-  created() {
+  async created() {
     const quizId = this.$route.params.id;
-    this.$store.dispatch({ type: "getQuiz", quizId }).then(quiz => {
-      this.loadedQuiz = quiz;
-      console.log(this.loadedQuiz);
-    });
+    var quiz = await this.$store.dispatch({ type: "getQuiz", quizId });
+    this.loadedQuiz = quiz;
   },
   methods: {
     addQuest() {
@@ -98,10 +96,8 @@ export default {
       this.loadedQuiz.questions[questIdx].currectAnswer = value;
     },
     editQuiz(loadedQuiz) {
-      this.$store.dispatch({ type: "editQuiz", loadedQuiz }).then(() => {
-        quizService.editQuiz(this.loadedQuiz);
-        this.$router.push("/");
-      });
+      this.$store.dispatch({ type: "editQuiz", loadedQuiz });
+      this.$router.push("/");
     },
     addTag() {
       console.log(this.newQuiz.tags);

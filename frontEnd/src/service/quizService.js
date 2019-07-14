@@ -1,4 +1,4 @@
-import HttpService from './HttpService';
+import httpService from './httpService';
 
 export default {
   query,
@@ -8,22 +8,52 @@ export default {
   getById
 };
 
-function query() {
-  return HttpService.ajax('/').then(res => res);
+// function query() {
+//   return httpService.get('/');
+//   console.log('haaa');
+// }
+
+async function query() {
+  try {
+    return await httpService.get('/');
+  } catch (err) {
+    console.log('error in getting List', err);
+    throw new error();
+  }
 }
 
-function getById(id) {
-  return HttpService.ajax(`/${id}`).then(res => res);
+async function getById(id) {
+  try {
+    return await httpService.get(`/${id}`);
+  } catch (err) {
+    console.log('error in getting single', err);
+    throw new error();
+  }
 }
 
-function addQuiz(NewQuiz) {
-  return HttpService.ajax(`/`, 'post', NewQuiz).then(res => console.log(res));
+async function addQuiz(NewQuiz) {
+  try {
+    return await httpService.post(`/`, NewQuiz);
+  } catch (err) {
+    console.log('error in adding quiz', err);
+    throw new error();
+  }
 }
 
-function editQuiz(NewQuiz) {
-  return HttpService.ajax(`/${NewQuiz._id}`, 'put', NewQuiz).then(res => res);
+async function editQuiz(NewQuiz) {
+  try {
+    return await httpService.put(`/${NewQuiz._id}`, NewQuiz);
+  } catch (err) {
+    console.log('error in editing quiz', err);
+    throw new error();
+  }
 }
 
-function deleteQuiz(id) {
-  return HttpService.ajax(`/${id}`, 'delete', id).then(res => res);
+async function deleteQuiz(id) {
+  try {
+    return await httpService.delete(`/${id}`, id);
+  } catch (err) {
+    console.log('error in deleting quiz', err);
+    throw new error();
+  }
 }

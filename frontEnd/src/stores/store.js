@@ -32,19 +32,28 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getQuiz(context, { quizId }) {
-      return quizService.getById(quizId).then(quiz => quiz);
+    async getQuiz(context, { quizId }) {
+      return await quizService.getById(quizId);
     },
-    loadQuizes(context) {
-      return quizService.query().then(quizes => {
-        context.commit({ type: 'setQuizes', quizes });
-      });
+    async loadQuizes(context) {
+      const quizes = await quizService.query();
+      context.commit({ type: 'setQuizes', quizes });
     },
-    deleteQuiz(context, { quizId }) {
-      context.commit({ type: 'deleteQuiz', quizId });
+    async deleteQuiz(context, { quizId }) {
+      try {
+        await quizService.deleteQuiz(quizId);
+        context.commit({ type: 'deleteQuiz', quizId });
+      } catch (err) {
+        console.log('err in deleting in store', err);
+      }
     },
-    editQuiz(context, { loadedQuiz }) {
-      context.commit({ type: 'editQuiz', loadedQuiz });
+    async editQuiz(context, { loadedQuiz }) {
+      try {
+        context.commit({ type: 'editQuiz', loadedQuiz });
+        quizService.editQuiz(loadedQuiz);
+      } catch (err) {
+        console.log('err in editing in store', err);
+      }
     }
   },
   getters: {
