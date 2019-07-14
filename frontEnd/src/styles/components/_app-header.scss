@@ -1,4 +1,22 @@
-.app-header{
-    height: rem(53px);
-    border: 1px solid black;
+.app-header {
+  height: rem(53px);
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+.app-header .points {
+  color: black;
+}
+.header-btn {
+  width: rem(39px);
+  height: rem(39px);
+  background-color: lightgrey;
+  color: black;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid black;
+}
+.header-btn-container .header-btn:not(:first-child) {
+  margin-left: rem(14px);
 }

@@ -1,11 +1,10 @@
 <template>
   <section class="home-page layout-container">
-    <div class="quizes-show">
-      <h1 class="center caps">Ongoing Quizes</h1>
+      <h1 class="caps">live games</h1>
       <quiz-list v-if="liveGames" :quizes="liveGames"></quiz-list>
       <h1>Recommended for you</h1>
       <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>
-    </div>
+
     <router-link to="/quiz/add">
       <button class="addQuizBtn">Add quiz</button>
     </router-link>
