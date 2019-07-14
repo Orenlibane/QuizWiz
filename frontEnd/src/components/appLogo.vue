@@ -1,5 +1,5 @@
 <template>
-    <h1 class="appLogo">Quizz App</h1>
+  <h1 class="appLogo">QuizzWizz</h1>
 </template>
 
 
