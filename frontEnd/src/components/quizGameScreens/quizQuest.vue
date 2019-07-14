@@ -65,12 +65,3 @@ export default {
 };
 </script>
 
-<style scoped>
-.wrongAnsStyle {
-  background: red;
-}
-
-.correctAnsStyle {
-  background: green;
-}
-</style>
