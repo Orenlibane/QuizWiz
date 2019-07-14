@@ -16,18 +16,6 @@ export default {
   },
   components: {
     quizPreview
-  },
-  // created() {
-  //   this.$store.dispatch({ type: "loadQuizes" });
-  // },
-  // computed: {
-  //   quizesToShow() {
-  //     return this.$store.getters.getQuizes;
-  //   }
-  // },
-  created() {
-    // this.quizes = []
-    console.log('quizes',this.quizes);
   }
 };
 </script>
