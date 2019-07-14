@@ -1,14 +1,14 @@
 <template>
   <section class="home-page">
     <div class="quizes-show">
-      <h4>here is the ongoing quizes</h4>
+      <h4>Here are the ongoing quizes</h4>
       <quiz-list :quizes="liveQuizes"></quiz-list>
     </div>
     <router-link to="/quiz/add">
       <button class="addQuizBtn">Add quiz</button>
     </router-link>
     <div class="quizes-show">
-      <h4>here is the recomendd quizes</h4>
+      <h4>Recommended quizes:</h4>
       <quiz-list :quizes="liveQuizes"></quiz-list>
     </div>
   </section>

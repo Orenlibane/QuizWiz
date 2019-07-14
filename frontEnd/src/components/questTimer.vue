@@ -24,8 +24,9 @@ export default {
     };
   },
   created() {
-    this.timer = 3;
+    this.timer = 10;
     this.countDown = setInterval(() => {
+      this.$emit("emitTime", this.timer);
       this.timer--;
     }, 1000);
   },
@@ -44,7 +45,6 @@ export default {
       //Timer Case #2: The user picked an answer
     }
     if (this.questIdx !== this.info.currentQuestion) {
-        this.$emit("emitTime", this.timer)
       this.questIdx++;
       this.timer = 10;
     }
