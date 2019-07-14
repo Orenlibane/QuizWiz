@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="layout-container">
     <quiz-gameboard v-if="isPlaying" :info="cmp.info"></quiz-gameboard>
     <component :is="cmp.type" @gameStage="gameSequence" :info="cmp.info" :gameRes="cmp.gameRes" />
     <quest-timer
@@ -94,6 +94,7 @@ export default {
     this.$store.dispatch({ type: "getQuiz", quizId }).then(quiz => {
       this.cmp.info = { quiz, currentQuestion: -1, timer: null };
     });
+    eventBus.$emit(GAME_ON);
   }
 };
 </script>

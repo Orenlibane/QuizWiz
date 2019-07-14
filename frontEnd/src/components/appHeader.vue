@@ -1,5 +1,5 @@
 <template>
-  <header class="app-header">
+  <header class="app-header layout-container">
     <router-link to="/">
       <app-logo></app-logo>
     </router-link>

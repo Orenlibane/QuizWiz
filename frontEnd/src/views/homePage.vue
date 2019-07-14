@@ -1,5 +1,5 @@
 <template>
-  <section class="home-page">
+  <section class="home-page layout-container">
     <div class="quizes-show">
       <h1 class="center caps">Ongoing Quizes</h1>
       <quiz-list :quizes="liveQuizes"></quiz-list>
@@ -31,8 +31,7 @@ export default {
     };
   },
   created() {
-    var game = false;
-    eventBus.$emit(GAME_OFF, game);
+    eventBus.$emit(GAME_OFF);
   }
 };
 </script>

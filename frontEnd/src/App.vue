@@ -25,10 +25,10 @@ export default {
   computed: {},
   created() {
     eventBus.$on(GAME_ON, game => {
-      this.game = game;
+      this.game = true;
     });
     eventBus.$on(GAME_OFF, game => {
-      this.game = game;
+      this.game = false;
     });
   }
 };
