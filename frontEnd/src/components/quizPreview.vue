@@ -1,7 +1,7 @@
 <template>
   <div class="card flex space-around">
     <div class="img-container-card">
-      <img src="https://api.adorable.io/avatars/80/1" alt />
+      <img class="quiz-img-preview" src="@/assets/placeholder_600x400_2.jpg" alt />
       <div class="likes-count">
         <i class="fas fa-thumbs-up"></i>
         :{{quiz.likesCount}}
