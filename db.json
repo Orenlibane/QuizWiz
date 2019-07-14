@@ -1,87 +1,42 @@
 {
   "quizes": [
     {
-      "_id": 4,
-      "name": "History",
-      "creatorName": "Oren",
-      "tags": [
-        "History"
-      ],
-      "createdAt": 1563108182475,
-      "bestScore": 777,
-      "likesCount": 4,
-      "quests": [
+      "title": "fewfewf",
+      "tags": [],
+      "createdAt": "",
+      "bestScore": "",
+      "likesCount": 0,
+      "questions": [
         {
-          "txt": "How important is it give variables the right name?",
+          "question": "ewfew",
           "answers": [
-            "Very important",
-            "It is a matter of life and death",
-            "More important than naming your children right",
-            "Chillax man..."
-          ],
-          "correctOptIdx": 2
-        },
-        {
-          "txt": "How important is it give variables the right name?",
-          "answers": [
-            "Very important",
-            "It is a matter of life and death",
-            "More important than naming your children right",
-            "Chillax man..."
-          ],
-          "correctOptIdx": 2
-        },
-        {
-          "txt": "How important is it give variables the right name?",
-          "answers": [
-            "Very important",
-            "It is a matter of life and death",
-            "More important than naming your children right",
-            "Chillax man..."
-          ],
-          "correctOptIdx": 2
-        },
-        {
-          "txt": "How important is it give variables the right name?",
-          "answers": [
-            "Very important",
-            "It is a matter of life and death",
-            "More important than naming your children right",
-            "Chillax man..."
-          ],
-          "correctOptIdx": 2
-        },
-        {
-          "txt": "How important is it give variables the right name?",
-          "answers": [
-            "Very important",
-            "It is a matter of life and death",
-            "More important than naming your children right",
-            "Chillax man..."
-          ],
-          "correctOptIdx": 2
-        },
-        {
-          "txt": "How important is it give variables the right name?",
-          "answers": [
-            "Very important",
-            "It is a matter of life and death",
-            "More important than naming your children right",
-            "Chillax man..."
-          ],
-          "correctOptIdx": 2
-        },
-        {
-          "txt": "How important is it give variables the right name?",
-          "answers": [
-            "Very important",
-            "It is a matter of life and death",
-            "More important than naming your children right",
-            "Chillax man..."
-          ],
-          "correctOptIdx": 2
+            "fewfew",
+            "fewfewfe",
+            "w",
+            ""
+          ]
         }
-      ]
+      ],
+      "_id": "YLA"
+    },
+    {
+      "title": "wefewf",
+      "tags": [],
+      "createdAt": "",
+      "bestScore": "",
+      "likesCount": 0,
+      "questions": [
+        {
+          "question": "",
+          "answers": [
+            "",
+            "",
+            "",
+            ""
+          ]
+        }
+      ],
+      "_id": "49x"
     }
   ]
 }
