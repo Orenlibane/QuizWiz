@@ -5,7 +5,7 @@
         <i class="fas fa-backward"></i>
       </button>
     </router-link>
-    <div v-if="!showQuestions" class="flex container column both-align-center quiz-end">
+    <div v-if="!showQuestions" class="flex column both-align-center quiz-end">
       <h1 class="score-prec">{{correctAnsPercentage}}%</h1>
       <h3>you had {{correctAnsCount}} correct Answers</h3>
       <h3>{{correctAnsPercentage | grade}}</h3>
@@ -13,8 +13,8 @@
       <h3>Game Ended</h3>
       <h3>Quiz by: Creator of the game</h3>
       <button class="big-btn">Like</button>
+      <button @click="toggleQuestions" class="show-questions-btn">show Questions:</button>
     </div>
-    <button @click="toggleQuestions" class="show-questions-btn">show Questions:</button>
 
     <div v-if="showQuestions" class="questions-sum flex column">
       <button @click="toggleQuestions" class="show-questions-btn">show Questions:</button>

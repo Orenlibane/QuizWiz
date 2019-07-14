@@ -69,45 +69,34 @@ export default {
   computed: {},
   data() {
     return {
-      questNum: 4,
       tagToAdd: "",
-
       loadedQuiz: {}
     };
   },
 
-  created() {
+  async created() {
     const quizId = this.$route.params.id;
-    this.$store.dispatch({ type: "getQuiz", quizId }).then(quiz => {
-      this.loadedQuiz = quiz;
-      console.log(this.loadedQuiz);
-    });
+    var quiz = await this.$store.dispatch({ type: "getQuiz", quizId });
+    this.loadedQuiz = quiz;
   },
   methods: {
     addQuest() {
       var quest = { question: "", answers: ["", "", "", ""] };
-      this.questNum++;
       this.loadedQuiz.questions.push(quest);
     },
     deleteQuest(questIdx) {
       this.loadedQuiz.questions.splice(questIdx, 1);
-      this.questNum--;
     },
     setCurrectAnswer(questIdx, ev) {
       var value = ev.target.value;
       this.loadedQuiz.questions[questIdx].currectAnswer = value;
     },
     editQuiz(loadedQuiz) {
-      this.$store.dispatch({ type: "editQuiz", loadedQuiz }).then(() => {
-        quizService.editQuiz(this.loadedQuiz);
-        this.$router.push("/");
-      });
+      this.$store.dispatch({ type: "editQuiz", loadedQuiz });
+      this.$router.push("/");
     },
     addTag() {
-      console.log(this.newQuiz.tags);
-      console.log(this.tagToAdd);
       this.loadedQuiz.tags.push(this.tagToAdd);
-      console.log(this.newQuiz.tags);
       this.tagToAdd = "";
     },
     removeTag(idx) {

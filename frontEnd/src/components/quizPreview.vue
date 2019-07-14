@@ -51,9 +51,8 @@ export default {
   methods: {
     // THOSE OPTIONS ARE ONLY FOR TESTING!!! The user won't really be able to delete games.
     deleteQuiz(quizId) {
-      this.$store.dispatch({ type: "deleteQuiz", quizId }).then(() => {
-        quizService.deleteQuiz(quizId);
-      });
+      console.log(quizId, "in the quiz prev");
+      this.$store.dispatch({ type: "deleteQuiz", quizId });
     }
   },
   computed: {

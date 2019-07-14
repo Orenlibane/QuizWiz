@@ -89,11 +89,10 @@ export default {
       return this.cmp.type === "quizQuest";
     }
   },
-  created() {
+  async created() {
     const quizId = this.$route.params.id;
-    this.$store.dispatch({ type: "getQuiz", quizId }).then(quiz => {
-      this.cmp.info = { quiz, currentQuestion: -1, timer: null };
-    });
+    var quiz = await this.$store.dispatch({ type: "getQuiz", quizId });
+    this.cmp.info = { quiz, currentQuestion: -1, timer: null };
     eventBus.$emit(GAME_ON);
   }
 };

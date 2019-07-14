@@ -11,18 +11,10 @@ export default new Vuex.Store({
     userStore,
     quizStore
   },
-
   state: {
     isGame: false
-
   },
-  mutations: {
-
-  },
-  actions: {
-
-  },
-  getters: {
-
-  }
+  mutations: {},
+  actions: {},
+  getters: {}
 });
