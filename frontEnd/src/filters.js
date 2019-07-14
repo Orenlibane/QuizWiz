@@ -7,8 +7,8 @@ Vue.filter('answerFormat', val => {
 });
 
 Vue.filter('grade', val => {
-  if (val <= 0.3) return 'Too bad, u can do better';
-  else if (val <= 0.6) return 'I guess thats ok...';
-  else if (val <= 0.99) return 'Very Nice!';
+  if (val <= 30) return 'Too bad, u can do better';
+  else if (val <= 60) return 'I guess thats ok...';
+  else if (val <= 85) return 'Very Nice!';
   else return 'Perfect!!';
 });

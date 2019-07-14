@@ -1,8 +1,9 @@
 <template>
   <section class="flex container column both-align-center quiz-end">
-    <h1 class="score-prec">{{score*100}}%</h1>
+    <h1 class="score-prec">{{correctAnsPercentage}}%</h1>
     <h3>you had {{correctAnsCount}} correct Answers</h3>
-    <h3>{{score | grade}}</h3>
+    <h3>{{correctAnsPercentage | grade}}</h3>
+    <h3>Your Score: {{score}}</h3>
     <h3>Game Ended</h3>
     <h3>Quiz by: Creator of the game</h3>
     <button @click="toggleQuestions">show Questions:</button>
@@ -39,10 +40,17 @@ export default {
     questions() {
       return this.info.quiz.questions;
     },
+
     score() {
-      return parseFloat(
-        this.correctAnsCount / (this.correctAnsCount + this.wrongAnsCount)
-      ).toFixed(2);
+      return this.gameRes.reduce((acc, ans) => {
+        acc += ans.score;
+        return acc;
+      }, 0);
+    },
+    correctAnsPercentage() {
+      // return this.info.userScore;
+
+      return Math.round((this.correctAnsCount / this.questions.length) * 100);
     },
     correctAnsCount() {
       let correctAnsCount;
