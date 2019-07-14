@@ -1,42 +1,24 @@
 {
   "quizes": [
     {
-      "title": "fewfewf",
+      "title": "wqfqwf",
       "tags": [],
       "createdAt": "",
       "bestScore": "",
       "likesCount": 0,
       "questions": [
         {
-          "question": "ewfew",
+          "question": "wqf",
           "answers": [
-            "fewfew",
-            "fewfewfe",
-            "w",
-            ""
-          ]
+            "wqfwq",
+            "fwq",
+            "qwfwqf",
+            "fqwf"
+          ],
+          "currentAnswerIdx": 0
         }
       ],
-      "_id": "YLA"
-    },
-    {
-      "title": "wefewf",
-      "tags": [],
-      "createdAt": "",
-      "bestScore": "",
-      "likesCount": 0,
-      "questions": [
-        {
-          "question": "",
-          "answers": [
-            "",
-            "",
-            "",
-            ""
-          ]
-        }
-      ],
-      "_id": "49x"
+      "_id": "BgC"
     }
   ]
 }
