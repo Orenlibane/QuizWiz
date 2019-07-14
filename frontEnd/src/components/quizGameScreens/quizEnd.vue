@@ -5,22 +5,22 @@
         <i class="fas fa-backward"></i>
       </button>
     </router-link>
-    <div v-if="!showQuestions" class="flex column both-align-center quiz-end">
+    <div v-if="!showQuests" class="flex column both-align-center quiz-end">
       <h1 class="score-prec">{{correctAnsPercentage}}%</h1>
-      <h3>you had {{correctAnsCount}} correct Answers</h3>
+      <h3>You had {{correctAnsCount}} correct answers</h3>
       <h3>{{correctAnsPercentage | grade}}</h3>
       <h3>Your Score: {{score}}</h3>
       <h3>Game Ended</h3>
       <h3>Quiz by: Creator of the game</h3>
       <button class="big-btn">Like</button>
-      <button @click="toggleQuestions" class="show-questions-btn">show Questions:</button>
+      <button @click="toggleQuests" class="show-questions-btn">show Questions</button>
     </div>
 
-    <div v-if="showQuestions" class="questions-sum flex column">
-      <button @click="toggleQuestions" class="show-questions-btn">show Questions:</button>
-      <ul class="clean-list" v-for="(question, idx) in questions" :key="idx">
+    <div v-if="showQuests" class="questions-sum flex column">
+      <button @click="toggleQuests" class="show-questions-btn">show Questions:</button>
+      <ul class="clean-list" v-for="(quest, idx) in quests" :key="idx">
         <li class="flex space-between">
-          <span>Question #{{idx+1}} : {{question.question}}</span>
+          <span>Question #{{idx+1}} : {{quest.txt}}</span>
           <span>{{showAnswer(idx) | answerFormat}}</span>
         </li>
       </ul>
@@ -42,12 +42,12 @@ export default {
   },
   data() {
     return {
-      showQuestions: false
+      showQuests: false
     };
   },
   computed: {
-    questions() {
-      return this.info.quiz.questions;
+    quests() {
+      return this.info.quiz.quests;
     },
 
     score() {
@@ -57,7 +57,7 @@ export default {
       }, 0);
     },
     correctAnsPercentage() {
-      return Math.round((this.correctAnsCount / this.questions.length) * 100);
+      return Math.round((this.correctAnsCount / this.quests.length) * 100);
     },
     correctAnsCount() {
       let correctAnsCount;
@@ -81,8 +81,8 @@ export default {
     showAnswer(idx) {
       return this.gameRes[idx].result;
     },
-    toggleQuestions() {
-      this.showQuestions = !this.showQuestions;
+    toggleQuests() {
+      this.showQuests = !this.showQuests;
     }
   }
 };

@@ -1,4 +1,4 @@
-import HttpService from './httpService';
+import httpService from './httpService';
 
 export default {
   login,
@@ -9,17 +9,17 @@ export default {
 
 function login(userCred) {
   console.log('we got:', userCred);
-  // return HttpService.ajax('api/auth/login', 'post', userCred)
+  // return httpService.ajax('api/auth/login', 'post', userCred)
   //     .then(res => console.log('result is:', res))
 }
 function signup(userCred) {
-  HttpService.ajax('api/auth/signup', 'post', userCred).then(res =>
+  httpService.ajax('api/auth/signup', 'post', userCred).then(res =>
     console.log(res)
   );
 }
 function logout() {
-  HttpService.ajax('api/auth/logout', 'post').then(res => console.log(res));
+  httpService.ajax('api/auth/logout', 'post').then(res => console.log(res));
 }
 function getUsers() {
-  HttpService.ajax('api/user').then(res => console.log(res));
+  httpService.ajax('api/user').then(res => console.log(res));
 }
