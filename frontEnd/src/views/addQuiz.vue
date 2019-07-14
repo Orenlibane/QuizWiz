@@ -53,7 +53,7 @@
     </div>
     <div class="flex add-btns">
       <button @click="addQuest">Add question</button>
-      <button @click="addQuiz">Submit Quiz</button>
+      <button @click="addQuiz()">Submit Quiz</button>
     </div>
 
     <footer>footer here</footer>
@@ -68,14 +68,9 @@ import utilService from "@/service/utilService.js";
 export default {
   name: "home",
   components: {},
-  computed: {
-    // questNumUpdated() {
-    //   return this.questNum;
-    // }
-  },
+  computed: {},
   data() {
     return {
-      questNum: 4,
       tagToAdd: "",
       newQuiz: {
         title: "",
@@ -95,20 +90,19 @@ export default {
   methods: {
     addQuest() {
       var quest = { question: "", answers: ["", "", "", ""] };
-      this.questNum++;
       this.newQuiz.questions.push(quest);
     },
     deleteQuest(questIdx) {
       this.newQuiz.questions.splice(questIdx, 1);
-      this.questNum--;
     },
     setCurrectAnswer(questIdx, ev) {
       var value = ev.target.value;
       this.newQuiz.questions[questIdx].currentAnswerIdx = parseInt(value - 1);
     },
     addQuiz() {
-      this.newQuiz._id = utilService.makeId();
-      quizService.addQuiz(this.newQuiz);
+      console.log(this.newQuiz);
+      var addedQuiz = this.newQuiz;
+      this.$store.dispatch({ type: "addQuiz", addedQuiz });
       this.$router.push("/");
     },
     addTag() {

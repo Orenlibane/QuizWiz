@@ -69,9 +69,7 @@ export default {
   computed: {},
   data() {
     return {
-      questNum: 4,
       tagToAdd: "",
-
       loadedQuiz: {}
     };
   },
@@ -84,12 +82,10 @@ export default {
   methods: {
     addQuest() {
       var quest = { question: "", answers: ["", "", "", ""] };
-      this.questNum++;
       this.loadedQuiz.questions.push(quest);
     },
     deleteQuest(questIdx) {
       this.loadedQuiz.questions.splice(questIdx, 1);
-      this.questNum--;
     },
     setCurrectAnswer(questIdx, ev) {
       var value = ev.target.value;
@@ -100,10 +96,7 @@ export default {
       this.$router.push("/");
     },
     addTag() {
-      console.log(this.newQuiz.tags);
-      console.log(this.tagToAdd);
       this.loadedQuiz.tags.push(this.tagToAdd);
-      console.log(this.newQuiz.tags);
       this.tagToAdd = "";
     },
     removeTag(idx) {

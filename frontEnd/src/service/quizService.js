@@ -50,6 +50,7 @@ async function editQuiz(NewQuiz) {
 }
 
 async function deleteQuiz(id) {
+  console.log(id, 'delete in quizservice');
   try {
     return await httpService.delete(`/${id}`, id);
   } catch (err) {

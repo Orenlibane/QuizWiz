@@ -1,6 +1,6 @@
 'use strict';
 import quizService from '@/service/quizService.js';
-
+import utilService from '@/service/utilService.js';
 const quizStore = {
   state: {
     quizes: ''
@@ -8,6 +8,10 @@ const quizStore = {
   mutations: {
     setQuizes(state, { quizes }) {
       state.quizes = quizes;
+    },
+    addQuiz(state, { addedQuiz }) {
+      console.log(addedQuiz, 'this is the new added quiz');
+      state.quizes.unshift(addedQuiz);
     },
     deleteQuiz(state, { quizId }) {
       var idxToDelete = state.quizes.findIndex(quiz => quiz._id === quizId);
@@ -35,11 +39,21 @@ const quizStore = {
       context.commit({ type: 'setQuizes', quizes });
     },
     async deleteQuiz(context, { quizId }) {
+      console.log(quizId, 'delete in store action');
       try {
         await quizService.deleteQuiz(quizId);
         context.commit({ type: 'deleteQuiz', quizId });
       } catch (err) {
         console.log('err in deleting in store', err);
+      }
+    },
+    async addQuiz(context, { addedQuiz }) {
+      try {
+        addedQuiz._id = utilService.makeId();
+        await quizService.addQuiz(addedQuiz);
+        context.commit({ type: 'addQuiz', addedQuiz });
+      } catch (err) {
+        console.log('err in adding in store', err);
       }
     },
     async editQuiz(context, { loadedQuiz }) {

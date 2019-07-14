@@ -41,6 +41,7 @@ export default {
   props: ["quiz"],
   methods: {
     deleteQuiz(quizId) {
+      console.log(quizId, "in the quiz prev");
       this.$store.dispatch({ type: "deleteQuiz", quizId });
     }
   },
