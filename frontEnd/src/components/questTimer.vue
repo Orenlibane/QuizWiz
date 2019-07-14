@@ -1,12 +1,14 @@
 <template>
   <div class="quest-time">
-    <h3>Time left: {{timer}}</h3>
-    info:{{info.currentQuestion}}
-    game res: {{gameRes}}
+    <h3 class="center">{{timer}} sec</h3>
+
+    <!-- info:{{info.currentQuestion}}
+    game res: {{gameRes}}-->
   </div>
 </template>
 
 <script>
+import global from "@/styles/global.scss";
 export default {
   props: {
     info: {
