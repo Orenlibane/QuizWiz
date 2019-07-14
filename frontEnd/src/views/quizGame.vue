@@ -94,6 +94,7 @@ export default {
     this.$store.dispatch({ type: "getQuiz", quizId }).then(quiz => {
       this.cmp.info = { quiz, currentQuestion: -1, timer: null };
     });
+    eventBus.$emit(GAME_ON);
   }
 };
 </script>

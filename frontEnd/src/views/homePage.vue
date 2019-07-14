@@ -31,8 +31,7 @@ export default {
     };
   },
   created() {
-    var game = false;
-    eventBus.$emit(GAME_OFF, game);
+    eventBus.$emit(GAME_OFF);
   }
 };
 </script>
