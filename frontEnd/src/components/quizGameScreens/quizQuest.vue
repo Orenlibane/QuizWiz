@@ -1,5 +1,5 @@
 <template>
-  <section class="quizQuest flex layout-container both-align-center column">
+  <section class="quizQuest flex both-align-center column">
     <h1 class="question-render">{{currQuestion}}</h1>
     <div class="answers">
       <div
