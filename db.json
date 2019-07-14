@@ -3,6 +3,7 @@
     {
       "_id": 4,
       "name": "History",
+      "creatorName": "Oren",
       "tags": [
         "History"
       ],
@@ -79,7 +80,7 @@
             "Chillax man..."
           ],
           "correctOptIdx": 2
-        },
+        }
       ]
     }
   ]
