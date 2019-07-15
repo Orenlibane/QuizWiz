@@ -27,7 +27,7 @@
     <div v-for="(quest,questIdx) in loadedQuiz.quests" :key="questIdx">
       <h4>Question {{questIdx+1}}</h4>
       <hr />
-      <input type="text" v-model="loadedQuiz.quests[questIdx].quests" />
+      <input type="text" v-model="loadedQuiz.quests[questIdx].txt" />
       <span>
         <h5>Answers:</h5>
         <input

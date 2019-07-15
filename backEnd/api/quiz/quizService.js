@@ -30,7 +30,7 @@ async function getById(quizId) {
   }
 }
 
-async function remove() {
+async function remove(quizId) {
   console.log(quizId, 'quiz id in backend service delete');
   const collection = await dbService.getCollection('quiz');
   try {

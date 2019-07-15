@@ -1,5 +1,5 @@
 'use strict';
-import userService from '@/service/userService.js';
+import userService from '../stores/userStore.js'
 
 const userStore = {
   // state: {

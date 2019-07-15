@@ -28,7 +28,7 @@
       <span>
         <h5>Answers:</h5>
         <input
-          v-model="newQuiz.quests[questIdx].ans[idx]"
+          v-model="newQuiz.quests[questIdx].opts[idx]"
           v-for="(n,idx) in 4"
           :key="idx"
           type="text"
@@ -74,7 +74,7 @@ export default {
         quests: [
           {
             txt: "",
-            ans: []
+            opts: []
           }
         ]
       }
@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     addQuest() {
-      var quest = { txt: "", ans: ["", "", "", ""] };
+      var quest = { txt: "", opts: ["", "", "", ""] };
       this.newQuiz.quests.push(quest);
     },
     deleteQuest(questIdx) {
@@ -90,7 +90,7 @@ export default {
     },
     setCurrectAnswer(questIdx, ev) {
       var value = ev.target.value;
-      this.newQuiz.quests[questIdx].currentAnswerIdx = parseInt(value - 1);
+      this.newQuiz.quests[questIdx].correctOptIdx = parseInt(value - 1);
     },
     addQuiz() {
       console.log(this.newQuiz);

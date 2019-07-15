@@ -28,8 +28,10 @@ router.get('/:id', async (req, res) => {
 // quiz Delete
 router.delete('/:id', async (req, res) => {
   console.log('params to del', req.params);
+  console.log('params to del', req.params.id);
   const quizId = req.params.id;
   try {
+    console.log('quizId', quizId);
     await quizService.remove(quizId);
     return res.json({});
   } catch (err) {

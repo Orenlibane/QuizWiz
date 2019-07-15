@@ -13,9 +13,9 @@ function login(userCred) {
   //     .then(res => console.log('result is:', res))
 }
 function signup(userCred) {
-  httpService.ajax('api/auth/signup', 'post', userCred).then(res =>
-    console.log(res)
-  );
+  httpService
+    .ajax('api/auth/signup', 'post', userCred)
+    .then(res => console.log(res));
 }
 function logout() {
   httpService.ajax('api/auth/logout', 'post').then(res => console.log(res));
