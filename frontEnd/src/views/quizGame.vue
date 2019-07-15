@@ -93,6 +93,7 @@ export default {
     const quizId = this.$route.params.id;
     var quiz = await this.$store.dispatch({ type: "getQuiz", quizId });
     this.cmp.info = { quiz, currQuest: -1, timer: null };
+    // var currQuestIdx = await (this.$store.dispatch({type: "getCurrQuestIdx", -1}))
     eventBus.$emit(GAME_ON);
   }
 };
