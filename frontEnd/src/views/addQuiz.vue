@@ -90,7 +90,7 @@ export default {
     },
     setCurrectAnswer(questIdx, ev) {
       var value = ev.target.value;
-      this.newQuiz.quests[questIdx].currentAnswerIdx = parseInt(value - 1);
+      this.newQuiz.quests[questIdx].correctOptIdx = parseInt(value - 1);
     },
     addQuiz() {
       console.log(this.newQuiz);
