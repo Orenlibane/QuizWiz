@@ -1,7 +1,7 @@
 import router from '@/router';
 
 const BASE_URL =
-  process.env.NODE_ENV === 'production' ? '/' : '//localhost:3000/quizes';
+  process.env.NODE_ENV === 'production' ? '/' : '//localhost:3000/quiz';
 
 import Axios from 'axios';
 var axios = Axios.create({

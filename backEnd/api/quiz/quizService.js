@@ -1,4 +1,4 @@
-const dbService = require('./db.service');
+const dbService = require('../../services/db.service');
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
@@ -10,9 +10,11 @@ module.exports = {
 };
 
 async function query() {
+  console.log('got to list in backend quiz service');
   const collection = await dbService.getCollection('quiz');
   try {
     const quiz = await collection.find({}).toArray();
+    console.log('should print the collection from db', quiz);
     return quiz;
   } catch (err) {
     console.log('ERROR: cannot find quiz');
