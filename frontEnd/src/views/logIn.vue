@@ -39,7 +39,7 @@ export default {
     async login() {
       try {
         const user = await userService.login(this.user);
-        this.$router.push("/");
+        // this.$router.push("/");
       } catch (err) {
         console.log("CANNOT CONNECT");
       }
