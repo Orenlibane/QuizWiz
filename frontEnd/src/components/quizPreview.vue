@@ -16,7 +16,7 @@
       <h2>{{quiz.name}}</h2>
       <p>by {{quiz.creatorName}}</p>
       <div class="quiz-preview-timer">
-        <span>00:59</span>
+        <!-- <span>{{serverTime}}</span> -->
       </div>
       <div class="flex both-align-center">
         <button @click="deleteQuiz(quiz._id)">🗑️</button>
@@ -37,6 +37,8 @@
 <script>
 import quizService from "../service/quizService.js";
 import _quizPreview from "../styles/components/_quiz-prev.scss";
+import filters from "../filters.js";
+const moment = require("moment");
 
 export default {
   props: {
@@ -57,6 +59,11 @@ export default {
     },
     enterGameUrl() {
       return `quiz/${this.quiz._id}/game`;
+    },
+    serverTime() {
+      let time = moment(this.$store.getters.serverTime).format("h:mm:ss");
+
+      return time;
     }
   }
 };

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-// import moment from 'moment';
+import moment from 'moment';
 
 Vue.filter('answerFormat', val => {
   if (val === 'false') return '❌';
@@ -11,4 +11,8 @@ Vue.filter('grade', val => {
   else if (val <= 60) return 'I guess thats ok...';
   else if (val <= 85) return 'Very Nice!';
   else return 'Perfect!!';
+});
+
+Vue.filter('timeAgo', ms => {
+  return moment(ms).fromNow();
 });
