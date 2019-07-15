@@ -52,7 +52,7 @@
     </div>
     <div class="flex add-btns">
       <button @click="addQuest">Add question</button>
-      <button @click="editQuiz(loadedQuiz)">Update Quiz</button>
+      <button @click="editQuiz()">Update Quiz</button>
     </div>
   </section>
 </template>
@@ -92,8 +92,9 @@ export default {
       var value = ev.target.value;
       this.loadedQuiz.questions[questIdx].currectAnswer = value;
     },
-    editQuiz(loadedQuiz) {
-      this.$store.dispatch({ type: "editQuiz", loadedQuiz });
+    editQuiz() {
+      console.log(this.loadedQuiz, "sent from the edit view");
+      this.$store.dispatch({ type: "editQuiz", loadedQuiz: this.loadedQuiz });
       this.$router.push("/");
     },
     addTag() {

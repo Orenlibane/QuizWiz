@@ -44,6 +44,7 @@ async function addQuiz(NewQuiz) {
 
 async function editQuiz(NewQuiz) {
   try {
+    console.log('newquiz in frontend service', NewQuiz);
     return await httpService.put(`/${NewQuiz._id}`, NewQuiz);
   } catch (err) {
     console.log('error in editing quiz', err);

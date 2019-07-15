@@ -6,7 +6,6 @@ module.exports = router;
 
 //quiz list
 router.get('/', async (req, res) => {
-  console.log('got to list in backend quiz routes');
   try {
     const quizes = await quizService.query();
     return res.json(quizes);
@@ -54,10 +53,11 @@ router.post('/', async (req, res) => {
 
 // quiz Edit
 router.put('/:id', async (req, res) => {
+  console.log(req.body, 'in the routes update');
   try {
     const quiz = req.body;
     const updatedQuiz = await quizService.update(quiz);
-    console.log(updatedQuiz);
+    // console.log(updatedQuiz);
     return res.json(updatedQuiz);
   } catch (err) {
     console.log('err in update - backend quiz routes', err);
