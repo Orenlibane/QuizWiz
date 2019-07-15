@@ -18,7 +18,7 @@ const quizStore = {
       state.quizes.splice(idxToDelete, 1);
     },
     editQuiz(state, { loadedQuiz }) {
-      var idxToChange = state.quizes.findIndex(
+      let idxToChange = state.quizes.findIndex(
         quiz => quiz._id === loadedQuiz._id
       );
       state.quizes.splice(idxToChange, 1, loadedQuiz);
@@ -60,8 +60,8 @@ const quizStore = {
     },
     async editQuiz(context, { loadedQuiz }) {
       try {
+        await quizService.editQuiz(loadedQuiz);
         context.commit({ type: 'editQuiz', loadedQuiz });
-        quizService.editQuiz(loadedQuiz);
       } catch (err) {
         console.log('err in editing in store', err);
       }
