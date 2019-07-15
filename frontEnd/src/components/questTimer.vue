@@ -22,10 +22,14 @@ export default {
     return {
       timer: null,
       countDown: null,
-      questIdx: this.info.currQuest
+      questIdx: this.info.currQuest,
+      // currTimeStamp: null,
+      // destTimeStamp: null
     };
   },
   created() {
+    // this.destTimeStamp = this.currTimeStamp + 10000
+    // console.log('dest - curr =', this.destTimeStamp - this.currTimeStamp);
     this.timer = 10;
 
     this.countDown = setInterval(() => {
