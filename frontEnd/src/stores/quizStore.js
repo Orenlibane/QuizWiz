@@ -32,6 +32,7 @@ const quizStore = {
 
   actions: {
     async getQuiz(context, { quizId }) {
+      console.log(quizId);
       return await quizService.getById(quizId);
     },
     async loadQuizes(context) {
@@ -49,9 +50,8 @@ const quizStore = {
     },
     async addQuiz(context, { addedQuiz }) {
       try {
-        addedQuiz._id = utilService.makeId();
-        addedQuiz.createdAt = Date.now()
-        await quizService.addQuiz(addedQuiz);
+        addedQuiz.createdAt = Date.now();
+        addedQuiz = await quizService.addQuiz(addedQuiz);
         console.log('pushed', addedQuiz);
         context.commit({ type: 'addQuiz', addedQuiz });
       } catch (err) {

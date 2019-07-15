@@ -4,9 +4,7 @@
       "_id": 4,
       "name": "History",
       "creatorName": "Oren",
-      "tags": [
-        "History"
-      ],
+      "tags": ["History"],
       "createdAt": 1563108182475,
       "bestScore": 777,
       "likesCount": 4,

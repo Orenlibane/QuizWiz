@@ -24,6 +24,7 @@ async function query() {
 
 async function getById(id) {
   try {
+    console.log(id);
     return await httpService.get(`/${id}`);
   } catch (err) {
     console.log('error in getting single', err);
@@ -33,6 +34,7 @@ async function getById(id) {
 
 async function addQuiz(NewQuiz) {
   try {
+    console.log(NewQuiz, 'quiz before http service');
     return await httpService.post(`/`, NewQuiz);
   } catch (err) {
     console.log('error in adding quiz', err);

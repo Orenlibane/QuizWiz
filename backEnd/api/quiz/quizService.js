@@ -1,4 +1,4 @@
-const dbService = require('./db.service');
+const dbService = require('../../services/db.service');
 const ObjectId = require('mongodb').ObjectId;
 
 module.exports = {
@@ -31,6 +31,7 @@ async function getById(quizId) {
 }
 
 async function remove(quizId) {
+  console.log(quizId, 'quiz id in backend service delete');
   const collection = await dbService.getCollection('quiz');
   try {
     await collection.remove({ _id: ObjectId(quizId) });
@@ -44,6 +45,7 @@ async function add(quiz) {
   const collection = await dbService.getCollection('quiz');
   try {
     await collection.insertOne(quiz);
+    console.log('Quiz from the service', quiz);
     return quiz;
   } catch (err) {
     console.log(`ERROR: cannot insert quiz`);

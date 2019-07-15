@@ -10,13 +10,14 @@ const http = require('http').createServer(app);
 
 // const authRoutes = require('./api/auth/auth.routes')
 // const userRoutes = require('./api/user/user.routes')
+const quizRoutes = require('./api/quiz/quiz.routes');
 
 const logger = require('./services/logger.service');
 const socketService = require('./services/socket.service');
 
 //SESSION
-// app.use(cookieParser())
-// app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(bodyParser.json());
 // app.use(session({
 //     secret: 'keyboard cat',
 //     resave: false,
@@ -26,7 +27,7 @@ const socketService = require('./services/socket.service');
 
 if (process.env.NODE_ENV !== 'production') {
   const corsOptions = {
-    origin: 'http://127.0.0.1:8080',
+    origin: 'http://localhost:8080',
     credentials: true
   };
   app.use(cors(corsOptions));
@@ -35,6 +36,7 @@ if (process.env.NODE_ENV !== 'production') {
 // routes
 // app.use('/api/auth', authRoutes)
 // app.use('/api/user', userRoutes
+app.use('/quiz', quizRoutes);
 
 socketService.setup(http);
 

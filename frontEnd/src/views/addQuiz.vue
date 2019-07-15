@@ -49,8 +49,6 @@
       <button @click="addQuest">Add question</button>
       <button @click="addQuiz()">Submit Quiz</button>
     </div>
-
-    <footer>footer here</footer>
   </section>
 </template>
 
@@ -96,9 +94,13 @@ export default {
     },
     addQuiz() {
       console.log(this.newQuiz);
-      console.log("length of the quiz:", this.newQuiz.quests.length);
-      if (this.newQuiz.quests.length === 0 || this.newQuiz.quests.length === 1)
+      if (
+        this.newQuiz.quests.length === 0 ||
+        this.newQuiz.quests.length === 1
+      ) {
+        console.log("cant add quiz with less then 2 questions");
         return;
+      }
       var addedQuiz = this.newQuiz;
       this.$store.dispatch({ type: "addQuiz", addedQuiz });
       this.$router.push("/");
