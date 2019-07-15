@@ -36,6 +36,7 @@ export default {
     return ajax(endpoint, 'PUT', data);
   },
   delete(endpoint, data) {
+    console.log('end point:', endpoint, 'data:', data);
     return ajax(endpoint, 'DELETE', data);
   }
 };
