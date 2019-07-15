@@ -8,11 +8,6 @@ export default {
   getById
 };
 
-// function query() {
-//   return httpService.get('/');
-//   console.log('haaa');
-// }
-
 async function query() {
   try {
     return await httpService.get('/');

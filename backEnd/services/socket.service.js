@@ -17,7 +17,7 @@ function setup(http) {
 
     setInterval(() => {
       socket.emit('serverTime', Date.now());
-      console.log(Date.now());
+      // console.log(Date.now());
     }, 200);
 
     // socket.on('chat join', (user) => {
