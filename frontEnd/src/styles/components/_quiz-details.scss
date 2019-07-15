@@ -1,0 +1,17 @@
+.quiz-details {
+  padding-top: rem(28px);
+}
+.quiz-details-like-count {
+  width: rem(30px);
+  height: rem(30px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+}
+.details-footer{
+  position: fixed;
+  bottom: rem(42px);
+  right: 0;
+  left:0;
+}
