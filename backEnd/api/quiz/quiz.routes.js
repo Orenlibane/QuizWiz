@@ -28,6 +28,7 @@ router.get('/:id', async (req, res) => {
 
 // quiz Delete
 router.delete('/:id', async (req, res) => {
+  console.log('params to del', req.params);
   const quizId = req.params.id;
   try {
     await quizService.remove(quizId);
@@ -39,9 +40,12 @@ router.delete('/:id', async (req, res) => {
 
 // quiz Add
 router.post('/', async (req, res) => {
+  console.log(req.body);
   const quiz = req.body;
+  console.log(quiz);
   try {
     const quizWithId = await quizService.add(quiz);
+    console.log('quizWithId???', quizWithId);
     return res.json(quizWithId);
   } catch (err) {
     console.log('err in add - backend quiz routes', err);

@@ -10,11 +10,9 @@ module.exports = {
 };
 
 async function query() {
-  console.log('got to list in backend quiz service');
   const collection = await dbService.getCollection('quiz');
   try {
     const quiz = await collection.find({}).toArray();
-    console.log('should print the collection from db', quiz);
     return quiz;
   } catch (err) {
     console.log('ERROR: cannot find quiz');
@@ -33,6 +31,7 @@ async function getById(quizId) {
 }
 
 async function remove(quizId) {
+  console.log(quizId, 'quiz id in backend service delete');
   const collection = await dbService.getCollection('quiz');
   try {
     await collection.remove({ _id: ObjectId(quizId) });
@@ -46,6 +45,7 @@ async function add(quiz) {
   const collection = await dbService.getCollection('quiz');
   try {
     await collection.insertOne(quiz);
+    console.log('Quiz from the service', quiz);
     return quiz;
   } catch (err) {
     console.log(`ERROR: cannot insert quiz`);

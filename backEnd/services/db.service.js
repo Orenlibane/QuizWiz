@@ -15,6 +15,7 @@ async function connect() {
     });
     const db = client.db(dbName);
     dbConn = db;
+    console.log('connected to MONGO DB');
     return db;
   } catch (err) {
     console.log('Cannot Connect to DB', err);
