@@ -78,11 +78,11 @@ export default {
       // if (gameStage.cmp === "quizQuest") {
       //   this.cmp.info.currQuest++;
       // }
-    },
-
-    getQuestTimer(time) {
-      this.cmp.info.timer = time;
     }
+
+    // getQuestTimer(time) {
+    //   this.cmp.info.timer = time;
+    // }
   },
   computed: {
     gameStage() {

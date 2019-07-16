@@ -37,8 +37,9 @@ on('questionChange', currentQuestion => {
   console.log(currentQuestion);
   store.dispatch({ type: 'changeGameQuestion', currentQuestion });
 });
-on('endGame', () => {
+on('endGame', gameScores => {
   store.dispatch({ type: 'changeGameStage', stage: 'quizEnd' });
+  store.dispatch({ type: 'getGameScores', gameScores });
 });
 on('middleQuiz', () => {
   store.dispatch({ type: 'changeGameStage', stage: 'quizLobby' });
