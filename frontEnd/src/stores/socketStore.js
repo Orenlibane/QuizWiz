@@ -1,5 +1,4 @@
 import socket from '../service/SocketService.js';
-import { clearInterval } from 'timers';
 
 export default {
   state: {
@@ -45,7 +44,7 @@ export default {
       console.log(state.gameTime);
       socket.on('startGameTimer', () => {
         state.timeInterval = setInterval(() => {
-          state.gameTime--;
+          // state.gameTime--;
           console.log(state.gameTime);
         }, 1000);
         setTimeout(() => {
