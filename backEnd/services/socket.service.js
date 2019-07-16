@@ -19,12 +19,13 @@ function setup(http) {
       //for debugging - checking the current games
       const allGames = gameService.getAllonlineGames();
       // console.log(allGames);
-      socket.emit('startGameTimer');
+      socket.emit('startGameTimer')
+      console.log("sdfdssdfdsfds")
       //count to 30
       setTimeout(() => {
         socket.emit('startTheGame');
         console.log('sent the start game from server');
-      }, 30000);
+      }, 10000);
     });
 
     //socket.on(user join)

@@ -1,21 +1,11 @@
 import socket from '../service/SocketService.js';
-
 export default {
   state: {
-    users: [],
     serverClock: null,
-    gameTime: 30,
-    timeInterval: null
-  },
-  getters: {
-    users(state) {
-      return state.users;
-    },
-    serverTime(state) {
-      return state.serverClock;
-    },
-    getTime(state) {
-      return state.gameTime;
+    gameState: {
+      users: [],
+      countdown: 10,
+      timeInterval: null
     }
   },
   mutations: {
@@ -24,13 +14,17 @@ export default {
     },
     updateServerClock(state, { serverClock }) {
       state.serverClock = serverClock;
+    },
+    updateGameCountDown(state, { countdown }) {
+      state.gameState.countdown = countdown;
+      console.log(state.gameState.countdown, 'from mutation countdown');
+    },
+    resetGameInterval(state) {
+      clearInterval(state.gameState.timeInterval);
+      console.log(state.gameState.timeInterval, 'from mutation clear');
     }
   },
   actions: {
-    chatJoin({ commit }) {
-      socket.emit('chat join', 'Y');
-      //   socket.on('chat newMsg', msg => commit({ type: 'addMsg', msg }));
-    },
     serverClock({ commit }) {
       socket.on('serverTime', serverClock =>
         commit({ type: 'updateServerClock', serverClock })
@@ -40,22 +34,33 @@ export default {
       console.log(quiz, 'store - on create game');
       socket.emit('onCreateGame', quiz);
     },
-    startGameTimer(context) {
-      console.log(state.gameTime);
+    gameStartListener(context) {
       socket.on('startGameTimer', () => {
-        state.timeInterval = setInterval(() => {
-          // state.gameTime--;
-          console.log(state.gameTime);
+        const interval = setInterval(() => {
+          const countdown = context.state.gameState.countdown - 1;
+          context.commit({ type: 'updateGameCountDown', countdown });
         }, 1000);
         setTimeout(() => {
-          clearInterval(state.timeInterval);
-          state.gameTime = 30;
-        }, 30000);
+          clearInterval(interval);
+          context.commit({ type: 'updateGameCountDown', countdown: 10 });
+        }, 10000);
       });
     },
+
     startGame(context) {
       socket.on('startTheGame');
       console.log('listening to start game from front');
+    }
+  },
+  getters: {
+    users(state) {
+      return state.users;
+    },
+    serverTime(state) {
+      return state.serverClock;
+    },
+    getGameCountDown(state) {
+      return state.gameState.countdown;
     }
   }
 };

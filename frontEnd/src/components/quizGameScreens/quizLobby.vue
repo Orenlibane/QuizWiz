@@ -31,13 +31,11 @@ export default {
   props: ["info"],
   methods: {
     checkGameTimer() {
-      this.$store.dispatch({ type: "startGameTimer" });
+      this.$store.dispatch({ type: "gameStartListener" });
     },
     async startGame() {
-      this.$store.dispatch({ type: "startGame" });
-      setTimeout(() => {
-        this.$emit("gameStage", { cmp: "quizQuest" });
-      }, 30000);
+      await this.$store.dispatch({ type: "startGame" });
+      this.$emit("gameStage", { cmp: "quizQuest" });
     }
   },
   computed: {
