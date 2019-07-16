@@ -26,18 +26,16 @@
 
 <script>
 import quizLobby from "@/styles/components/_quiz-lobby.scss";
-import { setTimeout } from "timers";
+// import { setTimeout } from "timers";
 export default {
   props: ["info"],
   methods: {
     checkGameTimer() {
-      this.$store.dispatch({ type: "startGameTimer" });
+      this.$store.dispatch({ type: "gameStartListener" });
     },
-    startGame() {
-      this.$store.dispatch({ type: "startGame" });
-      setTimeout(() => {
+    async startGame() {
+      await this.$store.dispatch({ type: "startGame" });
         this.$emit("gameStage", { cmp: "quizQuest" });
-      }, 30000);
     }
   },
   computed: {
