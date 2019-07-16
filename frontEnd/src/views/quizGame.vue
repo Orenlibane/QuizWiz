@@ -1,14 +1,17 @@
+
+
+
 <template>
   <section class="layout-container">
     <quiz-gameboard v-if="isPlaying" :info="cmp.info"></quiz-gameboard>
-    <component :is="cmp.type" @gameStage="gameSequence" :info="cmp.info" :gameRes="cmp.gameRes" />
-    <quest-timer
+    <component :is="gameStage" :info="cmp.info" :currQuest="currQuest" :gameRes="cmp.gameRes" />
+    <!-- <quest-timer
       v-if="isPlaying"
       :info="cmp.info"
       :gameRes="cmp.gameRes"
       @gameStage="gameSequence"
       @emitTime="getQuestTimer"
-    ></quest-timer>
+    ></quest-timer>-->
   </section>
 </template>
 
@@ -71,10 +74,10 @@ export default {
           score: gameStage.ans === "false" ? 0 : this.cmp.info.timer * 10
         });
       }
-      this.cmp.type = gameStage.cmp;
-      if (gameStage.cmp === "quizQuest") {
-        this.cmp.info.currQuest++;
-      }
+      // this.cmp.type = gameStage.cmp;
+      // if (gameStage.cmp === "quizQuest") {
+      //   this.cmp.info.currQuest++;
+      // }
     },
 
     getQuestTimer(time) {
@@ -82,18 +85,34 @@ export default {
     }
   },
   computed: {
+    gameStage() {
+      return this.$store.getters.gameStage;
+    },
     gameState() {
       return this.cmpArr[this.gameState];
     },
     isPlaying() {
       return this.cmp.type === "quizQuest";
+    },
+    currQuest() {
+      // console.log("ssssss", this.$store.getters.currentQuestion);
+      // this.cmp.info.currQuest = this.$store.getters.currentQuestion;
+      return this.$store.getters.currentQuestion;
+    }
+  },
+  watch: {
+    "$store.getters.currentQuestion": function(newVal, oldVal) {
+      console.log(this.cmp.info);
+      console.log("new val", newVal);
+      this.cmp.info.currQuest = newVal.currentQuestion;
     }
   },
   async created() {
     const quizId = this.$route.params.id;
     var quiz = await this.$store.dispatch({ type: "getQuiz", quizId });
-    this.cmp.info = { quiz, currQuest: -1, timer: null };
-    // var currQuestIdx = await (this.$store.dispatch({type: "getCurrQuestIdx", -1}))
+    this.cmp.info = { quiz, currQuest: 0, timer: null };
+
+    //Remove footer and header
     eventBus.$emit(GAME_ON);
   }
 };

@@ -10,6 +10,7 @@
 import appHeader from "@/components/appHeader";
 import appFooter from "@/components/appFooter";
 import eventBus, { GAME_ON, GAME_OFF } from "@/event-bus.js";
+import socketService from "./service/SocketService.js";
 
 export default {
   name: "app",
@@ -30,8 +31,6 @@ export default {
     eventBus.$on(GAME_OFF, game => {
       this.game = false;
     });
-    this.$store.dispatch({ type: "chatJoin" });
-    this.$store.dispatch({type: "checkUser"})
   }
 };
 </script>

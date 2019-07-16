@@ -40,8 +40,8 @@
       <img src="@/assets/placeholder_600x400_2.jpg" alt />
     </div>
     <div class="flex column justify-center align-center">
-      <button class="mid-btn" @click="startSinglePlayer">Start</button>
-      <button class="mid-btn">Multiplayer</button>
+      <button class="mid-btn" @click="startSinglePlayer">SinglePlayer</button>
+      <button class="mid-btn" @click="startMultiplayer">Multiplayer</button>
     </div>
     <div class="details-footer layout-container flex justify-cener align-center space-between">
       <div class="tags-show flex">
@@ -76,6 +76,10 @@ export default {
   methods: {
     startSinglePlayer() {
       this.$emit("gameStage", { cmp: "quizReady" });
+    },
+    startMultiplayer() {
+      this.$store.dispatch({ type: "changeGameStage", stage: "quizLobby" });
+      this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
     }
   }
 };

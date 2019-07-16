@@ -17,6 +17,7 @@
 import quizList from "../components/quizList";
 import global from "@/styles/global.scss";
 import eventBus, { GAME_OFF } from "@/event-bus.js";
+import socketService from "../service/SocketService.js";
 const moment = require("moment");
 
 export default {
@@ -47,7 +48,7 @@ export default {
     this.$store.dispatch({ type: "loadQuizes" });
     //We send this event in order to make the footer and the header appear when we're not in a game-mode
     eventBus.$emit(GAME_OFF);
-    this.$store.dispatch({ type: "serverClock" });
+    // this.$store.dispatch({ type: "serverClock" });
   }
 };
 </script>
