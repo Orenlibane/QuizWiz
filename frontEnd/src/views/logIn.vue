@@ -1,19 +1,19 @@
 <template>
   <section class="login flex column align-center">
     <h1>Login</h1>
-    <form class="flex column" @submit.prevent="login">
+    <form class="flex column" @submit.prevent="doLogin">
       <div>
         <span>Username:</span>
-        <input v-model="user.userName" type="text" placeholder="enter username" required autofocus />
+        <input v-model="loginCred.email" type="text" placeholder="Enter E-mail" autofocus required />
       </div>
       <div>
         <span>Password:</span>
         <input
           type="password"
-          v-model="user.password"
-          placeholder="enter password"
-          required
+          v-model="loginCred.password"
+          placeholder="Enter password"
           @keyup.enter="login"
+          required
         />
       </div>
       <button>Login</button>
@@ -28,25 +28,28 @@ export default {
   name: "login",
   data() {
     return {
-      user: {
-        userName: "",
+      loginCred: {
+        email: "",
         password: ""
       }
       //   currUser: userService.getLoggedinUser()
     };
   },
   methods: {
-    async login() {
-      try {
-        const user = await userService.login(this.user);
-        // this.$router.push("/");
-      } catch (err) {
-        console.log("CANNOT CONNECT");
-      }
-      console.log("logging in!");
+    async doLogin() {
+      // console.log('check sanity');
+      const cred = this.loginCred;
+      await this.$store.dispatch({ type: "login", userCred: cred });
+      const user = this.$store.getters.getUser;
+      // console.log("user:", user);
+      if (user) this.$router.push("/");
     }
   },
-  components: {}
+  created() {
+    if (this.$store.getters.getUser) {
+      console.log("papapapapapa", this.$store.getters.getUser);
+    }
+  }
 };
 </script>
 

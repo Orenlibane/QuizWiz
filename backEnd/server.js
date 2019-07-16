@@ -8,8 +8,8 @@ const session = require('express-session');
 const app = express();
 const http = require('http').createServer(app);
 
-// const authRoutes = require('./api/auth/auth.routes')
-// const userRoutes = require('./api/user/user.routes')
+const authRoutes = require('./api/auth/auth.routes')
+const userRoutes = require('./api/user/user.routes')
 const quizRoutes = require('./api/quiz/quiz.routes');
 
 const logger = require('./services/logger.service');
@@ -18,12 +18,12 @@ const socketService = require('./services/socket.service');
 //SESSION
 app.use(cookieParser());
 app.use(bodyParser.json());
-// app.use(session({
-//     secret: 'keyboard cat',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: { secure: false }
-//   }))
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }
+  }))
 
 if (process.env.NODE_ENV !== 'production') {
   const corsOptions = {
@@ -34,9 +34,9 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // routes
-// app.use('/api/auth', authRoutes)
-// app.use('/api/user', userRoutes
-app.use('/quiz', quizRoutes);
+app.use('/auth', authRoutes)
+app.use('/user', userRoutes)
+app.use('/quiz', quizRoutes)
 
 socketService.setup(http);
 

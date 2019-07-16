@@ -1,10 +1,16 @@
 const userService = require('./user.service')
 
+function getLoggedIn(req, res) {
+    const user = req.session.user
+    // console.log('user from ctrler:', user);
+    res.json(user)
+}
+
 async function getUser(req, res) {
     const user = await userService.getById(req.params.id)
     res.send(user)
 }
-  
+
 const getUsers = async (req, res) => {
     const users = await userService.query()
     res.send(users)
@@ -16,6 +22,7 @@ async function deleteUser(req, res) {
 }
 
 module.exports = {
+    getLoggedIn,
     getUser,
     getUsers,
     deleteUser
