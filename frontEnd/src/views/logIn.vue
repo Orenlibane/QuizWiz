@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import userService from "../service/UserService";
+import userService from "../service/userService";
 
 export default {
   name: "login",
