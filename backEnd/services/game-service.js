@@ -6,13 +6,10 @@ module.exports = {
   getAllonlineGames,
   startGame,
   gamePlayersCount
-}
+};
 
 let onlineGames = [];
 
-function removeGame(gameId) {
-  onlineGames = onlineGames.filter(game => game._id !== gameId)
-}
 function getAllonlineGames() {
   return onlineGames;
 }
@@ -20,7 +17,7 @@ function gamePlayersCount(gameId) {
   const gameById = onlineGames.find(game => game._id === gameId);
   return gameById.gamePlayers.length;
 }
-function joinGame(player, gameId) {
+function joinGame(gameId, player = { nickName: 'guest', id: _makeId() }) {
   const gameById = onlineGames.find(game => game._id === gameId);
   gameById.gamePlayers.push(player);
 }
@@ -32,20 +29,27 @@ function startGame(gameId) {
   const gameById = onlineGames.find(game => game._id === gameId);
   gameById.isGameOn = true;
 }
-function createGame(quizId) {
+
+function removeGame(gameId) {
+  onlineGames = onlineGames.filter(game => game._id !== gameId);
+}
+
+function createGame(quiz) {
   const newGame = {
     gamePlayers: [],
     isGameOn: false,
-    quizId,
-    _id: _makeId()
-  }
+    quiz,
+    _id: _makeId(12),
+    timeCreated: Date.now()
+  };
   onlineGames.unshift(newGame);
   return newGame;
 }
 
 function _makeId(length = 5) {
-  let text = "";
-  const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let text = '';
+  const possible =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   for (var i = 0; i < length; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }

@@ -78,8 +78,7 @@ export default {
       this.$emit("gameStage", { cmp: "quizReady" });
     },
     startMultiplayer() {
-      console.log("starting multiplayer");
-      console.log("Creating room");
+      this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
       this.$emit("gameStage", { cmp: "quizLobby" });
     }
   }

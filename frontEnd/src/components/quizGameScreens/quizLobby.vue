@@ -2,8 +2,8 @@
   <section class="flex both-align-center column container">
     <div class="lobby flex column space-around center">
       <h2>QUIZ TITLE</h2>
-      <h1>time to start 00:30</h1>
-
+      <h1>{{getTime}}</h1>
+      <!-- server time to start game -->
       <h3>players X/N</h3>
 
       <div class="lobby-img flex column">
@@ -15,8 +15,6 @@
       <div class="lobby-chat">
         <ul class="chat clean-list">
           <li>oren has joined....</li>
-          <li>josef has joined....</li>
-          <li>yaniv has joined....</li>
         </ul>
       </div>
       <router-link to="/">
@@ -28,7 +26,31 @@
 
 <script>
 import quizLobby from "@/styles/components/_quiz-lobby.scss";
+import { setTimeout } from "timers";
 export default {
-  props: ["info"]
+  props: ["info"],
+  methods: {
+    checkGameTimer() {
+      this.$store.dispatch({ type: "startGameTimer" });
+    },
+    startGame() {
+      this.$store.dispatch({ type: "startGame" });
+      setTimeout(() => {
+        this.$emit("gameStage", { cmp: "quizQuest" });
+      }, 30000);
+    }
+  },
+  computed: {
+    getTime() {
+      return this.$store.getters.getTime;
+    }
+  },
+  created() {
+    this.checkGameTimer();
+    this.startGame();
+  },
+  data() {
+    return {};
+  }
 };
 </script>

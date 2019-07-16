@@ -16,7 +16,7 @@
       <h2>{{quiz.name}}</h2>
       <p>by {{quiz.creatorName}}</p>
       <div class="quiz-preview-timer">
-        <!-- <span>{{serverTime}}</span> -->
+        <span>{{serverTime}}</span>
       </div>
       <div class="flex both-align-center">
         <button @click="deleteQuiz(quiz._id)">🗑️</button>

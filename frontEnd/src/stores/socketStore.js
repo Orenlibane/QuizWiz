@@ -1,9 +1,12 @@
 import socket from '../service/SocketService.js';
+import { clearInterval } from 'timers';
 
 export default {
   state: {
     users: [],
-    serverClock: null
+    serverClock: null,
+    gameTime: 30,
+    timeInterval: null
   },
   getters: {
     users(state) {
@@ -11,6 +14,9 @@ export default {
     },
     serverTime(state) {
       return state.serverClock;
+    },
+    getTime(state) {
+      return state.gameTime;
     }
   },
   mutations: {
@@ -30,9 +36,25 @@ export default {
       socket.on('serverTime', serverClock =>
         commit({ type: 'updateServerClock', serverClock })
       );
+    },
+    onCreateGame(context, { quiz }) {
+      console.log(quiz, 'store - on create game');
+      socket.emit('onCreateGame', quiz);
+    },
+    startGameTimer(context) {
+      socket.on('startGameTimer', () => {
+        this.state.timeInterval = setInterval(() => {
+          this.state.gameTime--;
+        }, 1000);
+        setTimeout(() => {
+          clearInterval(this.state.timeInterval);
+          this.state.gameTime = 30;
+        }, 30000);
+      });
+    },
+    startGame(context) {
+      socket.on('startTheGame');
+      console.log('listening to start game from front');
     }
-    // sendMsg(context, { txt }) {
-    //   socket.emit('chat msg', txt);
-    // }
   }
 };
