@@ -42,13 +42,15 @@ export default {
       socket.emit('onCreateGame', quiz);
     },
     startGameTimer(context) {
+      console.log(state.gameTime);
       socket.on('startGameTimer', () => {
-        this.state.timeInterval = setInterval(() => {
-          this.state.gameTime--;
+        state.timeInterval = setInterval(() => {
+          state.gameTime--;
+          console.log(state.gameTime);
         }, 1000);
         setTimeout(() => {
-          clearInterval(this.state.timeInterval);
-          this.state.gameTime = 30;
+          clearInterval(state.timeInterval);
+          state.gameTime = 30;
         }, 30000);
       });
     },
