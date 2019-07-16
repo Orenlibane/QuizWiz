@@ -22,7 +22,7 @@ export default {
     return {
       timer: null,
       countDown: null,
-      questIdx: this.info.currQuest,
+      questIdx: this.info.currQuest
       // currTimeStamp: null,
       // destTimeStamp: null
     };
@@ -33,16 +33,12 @@ export default {
     this.timer = 10;
 
     this.countDown = setInterval(() => {
-      console.log("time ticking", this.timer);
+      // console.log("time ticking", this.timer);
       this.$emit("emitTime", this.timer);
       this.timer--;
     }, 1000);
   },
   updated() {
-    //If game ended
-    if (this.info.currQuest + 1 === this.info.quiz.quests.length) {
-      clearInterval(this.countDown);
-    }
     //Timer Case #1: Time is up and the user did not pick an answer
     if (this.timer === 0) {
       //If its the last question: goodbye :)
@@ -57,6 +53,11 @@ export default {
       //Timer Case #2: The user picked an answer
     }
     if (this.questIdx !== this.info.currQuest) {
+      //If game ended
+      if (this.info.currQuest === this.info.quiz.quests.length) {
+        console.log("Interval cleared");
+        clearInterval(this.countDown);
+      }
       this.questIdx++;
       this.timer = 10;
     }

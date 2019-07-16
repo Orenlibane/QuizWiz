@@ -1,7 +1,5 @@
-import router from '@/router';
-
 const BASE_URL =
-  process.env.NODE_ENV === 'production' ? '/quiz' : '//localhost:3000/quiz';
+  process.env.NODE_ENV === 'production' ? '/' : '//localhost:3000/';
 
 import Axios from 'axios';
 var axios = Axios.create({
@@ -18,7 +16,7 @@ async function ajax(endpoint, method = 'get', data = null) {
     return res.data;
   } catch (err) {
     if (err.response.status === 401) {
-      router.push('/');
+      console.log('401 Error!');
     } else {
       throw new error();
     }

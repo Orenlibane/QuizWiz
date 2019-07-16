@@ -31,6 +31,7 @@ export default {
       this.game = false;
     });
     this.$store.dispatch({ type: "chatJoin" });
+    this.$store.dispatch({type: "checkUser"})
   }
 };
 </script>

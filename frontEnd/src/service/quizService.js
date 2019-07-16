@@ -10,7 +10,7 @@ export default {
 
 async function query() {
   try {
-    return await httpService.get('/');
+    return await httpService.get('quiz');
   } catch (err) {
     console.log('error in getting List', err);
     throw new error();
@@ -20,7 +20,7 @@ async function query() {
 async function getById(id) {
   try {
     console.log(id);
-    return await httpService.get(`/${id}`);
+    return await httpService.get(`quiz/${id}`);
   } catch (err) {
     console.log('error in getting single', err);
     throw new error();
@@ -30,7 +30,7 @@ async function getById(id) {
 async function addQuiz(NewQuiz) {
   try {
     console.log(NewQuiz, 'quiz before http service');
-    return await httpService.post(`/`, NewQuiz);
+    return await httpService.post(`quiz/`, NewQuiz);
   } catch (err) {
     console.log('error in adding quiz', err);
     throw new error();
@@ -40,7 +40,7 @@ async function addQuiz(NewQuiz) {
 async function editQuiz(NewQuiz) {
   try {
     console.log('newquiz in frontend service', NewQuiz);
-    return await httpService.put(`/${NewQuiz._id}`, NewQuiz);
+    return await httpService.put(`quiz/${NewQuiz._id}`, NewQuiz);
   } catch (err) {
     console.log('error in editing quiz', err);
     throw new error();
@@ -50,7 +50,7 @@ async function editQuiz(NewQuiz) {
 async function deleteQuiz(id) {
   console.log(id, 'delete in quizservice');
   try {
-    return await httpService.delete(`/${id}`, id);
+    return await httpService.delete(`quiz/${id}`, id);
   } catch (err) {
     console.log('error in deleting quiz', err);
     throw new error();

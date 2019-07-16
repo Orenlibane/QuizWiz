@@ -4,27 +4,15 @@
 
     <form class="flex" @submit.prevent="signUp">
       <div class="flex column">
-        <span>Enter new username:</span>
+        <span>Enter Email:</span>
         <span>Enter Password:</span>
-        <span>Enter New Password:</span>
+        <span>Enter Username:</span>
       </div>
 
       <div class="flex column">
-        <input
-          v-model="newUser.userName"
-          type="text"
-          placeholder="Enter Username"
-          required
-          autofocus
-        />
-        <input type="password" v-model="newUser.pass" placeholder="Enter Password" required />
-        <input
-          type="password"
-          v-model="newUser.rePass"
-          placeholder="Confirm Password"
-          required
-          @keyup.enter="signUp"
-        />
+        <input v-model="signupCred.email" type="email" placeholder="Enter Email" required autofocus />
+        <input type="password" v-model="signupCred.password" placeholder="Enter Password" required />
+        <input type="text" v-model="signupCred.username" placeholder="Enter Username" required />
       </div>
       <button>Sign Up</button>
     </form>
@@ -32,20 +20,20 @@
 </template>
 
 <script>
+import userService from "../service/userService";
 export default {
   data() {
     return {
-      newUser: {
-        userName: "",
-        pass: "",
-        rePass: ""
+      signupCred: {
+        email: "",
+        password: "",
+        username: ""
       }
     };
   },
   methods: {
-    signUp() {
-      if (this.newUser.pass !== this.newUser.rePass) return;
-      console.log("signing up", this.newUser);
+     signUp() {
+      userService.signup(this.signupCred);
       this.$router.push("/");
     }
   }
