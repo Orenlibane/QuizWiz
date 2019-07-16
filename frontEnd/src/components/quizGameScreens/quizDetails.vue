@@ -78,8 +78,8 @@ export default {
       this.$emit("gameStage", { cmp: "quizReady" });
     },
     startMultiplayer() {
+      this.$store.dispatch({ type: "changeGameStage", stage: "quizLobby" });
       this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
-      this.$emit("gameStage", { cmp: "quizLobby" });
     }
   }
 };

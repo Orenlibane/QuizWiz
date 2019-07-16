@@ -10,6 +10,7 @@
       >
         <button :class="ansStyle(idx)">{{opt}}</button>
       </div>
+      {{timer}}
     </div>
   </section>
 </template>
@@ -17,6 +18,7 @@
 
 <script>
 import global from "@/styles/global.scss";
+import { clearInterval } from "timers";
 export default {
   name: "quizQuest",
   props: {
@@ -26,12 +28,14 @@ export default {
   },
   data() {
     return {
-      isAnswered: false
+      isAnswered: false,
+      timer: 10,
+      timerInterval: null
     };
   },
   computed: {
     currQuestNum() {
-      return this.info.currQuest + 1;
+      return this.info.currQuest;
     },
     currQuest() {
       return this.info.quiz.quests[this.info.currQuest].txt;
@@ -48,13 +52,18 @@ export default {
       if (this.isAnswered) return;
       this.isAnswered = true;
       let currAns = idx === this.correctOptIdx;
-      setTimeout(() => {
-        if (this.info.currQuest + 1 === this.info.quiz.quests.length)
-          return this.$emit("gameStage", { cmp: "quizEnd", ans: "" + currAns });
-        this.isAnswered = false;
-        // this.$emit("ans")
-        this.$emit("gameStage", { cmp: "quizQuest", ans: "" + currAns });
-      }, 1000);
+      if (currAns) {
+        this.$store.dispatch({ type: "updateAns", currAns: true });
+      } else {
+        this.$store.dispatch({ type: "updateAns", currAns: false });
+      }
+      // setTimeout(() => {
+      //   if (this.info.currQuest + 1 === this.info.quiz.quests.length)
+      //     return this.$emit("gameStage", { cmp: "quizEnd", ans: "" + currAns });
+      //   this.isAnswered = false;
+      //   // this.$emit("ans")
+      //   this.$emit("gameStage", { cmp: "quizQuest", ans: "" + currAns });
+      // }, 1000);
     },
     ansStyle(idx) {
       if (!this.isAnswered) return "";
@@ -67,10 +76,13 @@ export default {
   },
   destroyed() {
     console.log("Quiz Game got destroyed");
+    clearInterval(this.timerInterval);
   },
-  // updated(){
-
-  // }
+  created() {
+    this.timerInterval = setInterval(() => {
+      this.timer--;
+    }, 1000);
+  }
 };
 </script>
 

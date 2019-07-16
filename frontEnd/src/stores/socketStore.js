@@ -1,19 +1,24 @@
 import socket from '../service/SocketService.js';
+import quizStore from './quizStore.js';
+
 export default {
   state: {
     serverClock: null,
     gameState: {
       users: [],
-      countdown: 10,
-      timeInterval: null
+      countdown: 5,
+      timeInterval: null,
+      gameStage: 'quizDetails',
+      currentQuiz: null,
+      currentQuestion: null
     }
   },
   mutations: {
     addUser(state, { user }) {
       state.users.push(user);
     },
-    updateServerClock(state, { serverClock }) {
-      state.serverClock = serverClock;
+    updateServerClock(state, { clock }) {
+      state.serverClock = clock;
     },
     updateGameCountDown(state, { countdown }) {
       state.gameState.countdown = countdown;
@@ -22,34 +27,55 @@ export default {
     resetGameInterval(state) {
       clearInterval(state.gameState.timeInterval);
       console.log(state.gameState.timeInterval, 'from mutation clear');
+    },
+    updateGameStage(state, { stage }) {
+      state.gameState.gameStage = stage;
+    },
+    firstGameSetting(state, { quiz }) {
+      state.gameState.currentQuiz = quiz;
+    },
+    updateCurrentQuestion(state, { currentQuestion }) {
+      console.log(currentQuestion);
+
+      state.gameState.currentQuestion = currentQuestion;
     }
   },
   actions: {
-    serverClock({ commit }) {
-      socket.on('serverTime', serverClock =>
-        commit({ type: 'updateServerClock', serverClock })
-      );
+    updateAns(context, { currAns }) {
+      socket.emit('updateAns', currAns);
+    },
+    loadGameQuiz(context, { quiz }) {
+      context.commit({ type: 'firstGameSetting', quiz });
+    },
+    changeGameStage(context, { stage }) {
+      context.commit({ type: 'updateGameStage', stage: stage });
+    },
+    changeGameQuestion(context, { currentQuestion }) {
+      console.log(currentQuestion);
+
+      context.commit({ type: 'updateCurrentQuestion', currentQuestion });
+    },
+    serverClock(context, { clock }) {
+      context.commit({ type: 'updateServerClock', clock });
     },
     onCreateGame(context, { quiz }) {
       console.log(quiz, 'store - on create game');
       socket.emit('onCreateGame', quiz);
     },
     gameStartListener(context) {
-      socket.on('startGameTimer', () => {
-        const interval = setInterval(() => {
-          const countdown = context.state.gameState.countdown - 1;
-          context.commit({ type: 'updateGameCountDown', countdown });
-        }, 1000);
-        setTimeout(() => {
-          clearInterval(interval);
-          context.commit({ type: 'updateGameCountDown', countdown: 10 });
-        }, 10000);
-      });
+      const interval = setInterval(() => {
+        const countdown = context.state.gameState.countdown - 1;
+        context.commit({ type: 'updateGameCountDown', countdown });
+      }, 1000);
+      setTimeout(() => {
+        clearInterval(interval);
+        context.commit({ type: 'updateGameCountDown', countdown: 5 });
+      }, 5000);
     },
-
     startGame(context) {
-      socket.on('startTheGame');
-      console.log('listening to start game from front');
+      socket.on('startTheGame', () => {
+        console.log('game start');
+      });
     }
   },
   getters: {
@@ -61,6 +87,15 @@ export default {
     },
     getGameCountDown(state) {
       return state.gameState.countdown;
+    },
+    gameStage(state) {
+      return state.gameState.gameStage;
+    },
+    currentQuestion(state) {
+      return state.gameState.currentQuestion;
+    },
+    getQuiz(state) {
+      return state.gameState.currentQuiz;
     }
   }
 };

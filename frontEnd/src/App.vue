@@ -10,6 +10,7 @@
 import appHeader from "@/components/appHeader";
 import appFooter from "@/components/appFooter";
 import eventBus, { GAME_ON, GAME_OFF } from "@/event-bus.js";
+import socketService from "./service/SocketService.js";
 
 export default {
   name: "app",

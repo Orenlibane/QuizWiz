@@ -19,6 +19,7 @@ function gamePlayersCount(gameId) {
 }
 function joinGame(gameId, player = { nickName: 'guest', id: _makeId() }) {
   const gameById = onlineGames.find(game => game._id === gameId);
+  player.ans = [];
   gameById.gamePlayers.push(player);
 }
 function leaveGame(playerId, gameId) {
