@@ -564,3 +564,7 @@ Tue, 16 Jul 2019 15:25:49 GMT - Info - Server is running on port:  3000
 Tue, 16 Jul 2019 15:27:57 GMT - Info - Server is running on port:  3000
 Tue, 16 Jul 2019 15:40:18 GMT - Info - Server is running on port:  3000
 >>>>>>> 53868765af389545923f6498a0affa73b223ab73
+
+Tue, 16 Jul 2019 16:24:30 GMT - Info - Server is running on port:  3000
+Tue, 16 Jul 2019 16:27:14 GMT - Debug - auth.service - login with email: 11
+Tue, 16 Jul 2019 18:49:50 GMT - Debug - auth.service - login with email: 11
