@@ -1,4 +1,4 @@
-<template>
+  <template>
   <section class="login flex column align-center">
     <h1>Login</h1>
     <form class="flex column" @submit.prevent="doLogin">
@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import userService from '../service/userService.js';
+import userService from "../service/userService.js";
 
 export default {
   name: "login",
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     async doLogin() {
-      console.log('check sanity');
+      console.log("check sanity");
       const cred = this.loginCred;
       await this.$store.dispatch({ type: "login", userCred: cred });
       const user = this.$store.getters.getUser;

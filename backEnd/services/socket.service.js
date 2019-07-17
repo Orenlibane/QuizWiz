@@ -5,14 +5,14 @@ var io;
 function setup(http) {
   io = socketIO(http);
 
-  io.on('connection', function(socket) {
+  io.on('connection', function (socket) {
     // SERVER GLOBAL TIME SEND
     setInterval(() => {
       socket.emit('serverTime', Date.now());
       // console.log('regregre');
     }, 200);
 
-    socket.on('onCreateGame', function(quiz) {
+    socket.on('onCreateGame', function (quiz) {
       let currentQuestion = 0;
       let interval = null;
       const newGame = gameService.createGame(quiz);
@@ -25,8 +25,12 @@ function setup(http) {
       const allGames = gameService.getAllonlineGames();
       // console.log(allGames);
       socket.emit('startGameTimer');
-      //count to 30
+      //count to 30 Till the game begins.
+      //NOTE: the room's creator should also be able to start the game,
+      // regardless to the timer end.
+
       setTimeout(() => {
+
         socket.emit('startTheGame', quiz);
         console.log('sent the start game from server');
         socket.emit('questionChange', { currentQuestion });

@@ -107,6 +107,6 @@ export default {
     },
     getGameScores(state) {
       return state.gameState.scores.gamePlayers;
-    }
+    },
   }
 };

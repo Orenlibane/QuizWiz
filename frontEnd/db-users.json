@@ -3,7 +3,7 @@
     {
       "_id": "3298urj",
       "nickName": "admin",
-      "userName": "admin@gmail.com",
+      "name": "admin@gmail.com",
       "password": "1234",
       "playCount": 12,
       "expCount": 1,

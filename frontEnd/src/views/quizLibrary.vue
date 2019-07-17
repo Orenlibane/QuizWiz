@@ -1,6 +1,6 @@
 <template>
-  <div class="quiz-libary">
-    <h1>This is quiz libary page</h1>
+  <div class="quiz-library">
+    <h1>This is quiz library page</h1>
     <quiz-filter></quiz-filter>
     <quiz-list :quizes="liveQuizes"></quiz-list>
   </div>

@@ -18,10 +18,18 @@ const userStore = {
   ,
   actions: {
     async checkUser(context) {
-      const user = await userService.checkUser()
-      // console.log('user we got back from check user:', user);
-      if (user) context.commit({ type: 'setUser', user });
-
+      try {
+        const user = await userService.checkUser()
+        // console.log('user we got back from check user:', user);
+        if (user) {
+          context.commit({ type: 'setUser', user });
+          return true;
+        }
+        return false;
+      }
+      catch {
+        console.log('Something went wrong in checkUser action');
+      }
     },
 
     async login(context, { userCred }) {
