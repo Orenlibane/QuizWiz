@@ -18,9 +18,9 @@
       <p>oren joined</p>
       <button class="mid-btn">show more</button>
     </div>
-    <span>00:59</span>
+    <span>{{getTime}}</span>
     <div class="flex column justify-center align-center">
-      <button class="mid-btn" @click="startSinglePlayer">Leave</button>
+      <button class="mid-btn">Leave</button>
       <!-- <button class="mid-btn" @click="startMultiplayer">Start Game</button> -->
     </div>
   </section>
@@ -33,7 +33,7 @@ export default {
   methods: {},
   computed: {
     getTime() {
-      return this.$store.getters.getTime;
+      return this.$store.getters.getGameCountDown;
     }
   },
   created() {},
