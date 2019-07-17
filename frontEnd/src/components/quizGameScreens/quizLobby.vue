@@ -1,25 +1,27 @@
 <template>
-  <section class="flex both-align-center column container">
-    <div class="lobby flex column space-around center">
-      <h2>QUIZ TITLE</h2>
-      <h1>{{getTime}}</h1>
-      <!-- server time to start game -->
-      <h3>players X/N</h3>
-
-      <div class="lobby-img flex column">
-        <img
-          src="https://i.dailymail.co.uk/i/pix/2014/12/05/23C714C900000578-0-image-m-21_1417800566578.jpg"
-          alt
-        />
-      </div>
-      <div class="lobby-chat">
-        <ul class="chat clean-list">
-          <li>oren has joined....</li>
-        </ul>
-      </div>
-      <router-link to="/">
-        <button>Leave Quiz lobby</button>
-      </router-link>
+  <section class="layout-container">
+    <router-link to="/">
+      <button class="small-btn">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+    </router-link>
+    <div class="flex justify-center column align-center">
+      <h2>You Have Joined {{info.quiz.name}}</h2>
+      <p>by {{info.quiz.creatorName}}</p>
+    </div>
+    <div class="quiz-details-img">
+      <img src="@/assets/placeholder_600x400_2.jpg" alt />
+    </div>
+    <div>
+      <p>oren joined</p>
+      <p>oren joined</p>
+      <p>oren joined</p>
+      <button class="mid-btn">show more</button>
+    </div>
+    <span>00:59</span>
+    <div class="flex column justify-center align-center">
+      <button class="mid-btn" @click="startSinglePlayer">Leave</button>
+      <!-- <button class="mid-btn" @click="startMultiplayer">Start Game</button> -->
     </div>
   </section>
 </template>

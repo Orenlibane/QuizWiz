@@ -7,7 +7,7 @@ import logIn from './views/logIn';
 import signUp from './views/signUp';
 import quizGame from './views/quizGame.vue';
 import quizLibary from './views/quizLibary.vue';
-import TEST1 from './components/quizGameScreens/quizDetails.vue';
+import TEST1 from './components/quizGameScreens/quizLobby.vue';
 // import about from './views/about.vue';
 
 Vue.use(Router);
