@@ -40,16 +40,12 @@ function removeGame(gameId) {
 }
 
 function setAnswer(gameId, playerId, answer) {
-  console.log('data set answer func gets:', gameId, playerId, answer);
   const currGame = onlineGames.find(game => game._id === gameId);
-  console.log(' curr game we got from searching:', currGame);
   const currPlayer = currGame.gamePlayers.find(
     player => player.id === playerId
   );
-  console.log('currPlayer', currPlayer);
   if (!currPlayer.ans) currPlayer.ans = [];
   currPlayer.ans.push(answer);
-  console.log('curr player ans array is now:', currPlayer.ans);
 }
 
 function getGameById(gameId) {
@@ -61,6 +57,8 @@ function createGame(quiz) {
     gamePlayers: [],
     isGameOn: false,
     quiz,
+    // status: 'lobby',
+    // currQuest: 0,
     _id: _makeId(12),
     timeCreated: Date.now()
   };

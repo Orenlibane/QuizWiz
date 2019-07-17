@@ -6,10 +6,12 @@
       </button>
     </router-link>
     <div v-if="!showQuests" class="flex column both-align-center quiz-end">
-      <h1 class="score-prec">{{correctAnsPercentage}}%</h1>
-      <h3>You had {{correctAnsCount}} correct answers</h3>
-      <h3>{{correctAnsPercentage | grade}}</h3>
-      <h3>Your Score: {{score}}</h3>
+      <!-- <h1 class="score-prec">{{correctAnsPercentage}}%</h1> -->
+      <h1>Your Total Score is: {{userTotalScore}}</h1>
+
+      <!-- <h3>You had {{correctAnsCount}} correct answers</h3> -->
+      <!-- <h3>{{correctAnsPercentage | grade}}</h3> -->
+      <!-- <h3>Your Score: {{score}}</h3> -->
       <h3>Game Ended</h3>
       <h3>Quiz by: Creator of the game</h3>
       <div v-for="(player,playerIdx) in gameScores" :key="playerIdx">
@@ -49,7 +51,9 @@ export default {
       type: Object
     }
   },
-  created() {},
+  created() {
+    console.log("END GAME HERE");
+  },
   data() {
     return {
       showQuests: false
@@ -58,6 +62,9 @@ export default {
   computed: {
     quests() {
       return this.info.quiz.quests;
+    },
+    userTotalScore() {
+      return this.$store.getters.userTotalScore;
     },
     gameScores() {
       return this.$store.getters.getGameScores;

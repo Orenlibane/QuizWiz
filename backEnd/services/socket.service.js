@@ -12,7 +12,7 @@ function setup(http) {
       // console.log('regregre');
     }, 200);
 
-    socket.on('onCreateGame', function(quiz) {
+    socket.on('onCreateGame', quiz => {
       let currentQuestion = 0;
 
       const newGame = gameService.createGame(quiz);
@@ -20,32 +20,44 @@ function setup(http) {
       socket.join(newGame._id);
       //join the game creator into game on the service
       var playerId = gameService.joinGame(newGame._id);
-      console.log('this is the creating of the player ID', playerId);
-      //for debugging - checking the current games
-      const allGames = gameService.getAllonlineGames();
-      // console.log(allGames);
       socket.emit('startGameTimer');
-      //count to 30
-      setTimeout(() => {
-        socket.emit('startTheGame', quiz);
-        socket.emit('questionChange', { currentQuestion });
-        const interval = setInterval(() => {
-          setTimeout(() => {
-            let currentGame = gameService.getGameById(newGame._id);
-            socket.emit('middleQuiz', currentGame);
-          }, 10000);
+      setInterval(moveQuiz, 5000);
+      function moveQuiz(game) {
+        if (game.status === 'lobby' || 'middle') {
+          game.status = 'quest';
+          socket.emit();
+          // if
+        }
+      }
 
-          setTimeout(() => {
-            socket.emit('quizQuest');
-            currentQuestion++;
-            socket.emit('questionChange', { currentQuestion });
-          }, 20000);
-          if (currentQuestion + 1 > newGame.quiz.quests.length) {
+      //LOBBY COUNTDOWN TO 5
+      setTimeout(() => {
+        socket.emit('startTheGame');
+
+        setTimeout(() => {
+          let currentGame = gameService.getGameById(newGame._id);
+          socket.emit('middleQuiz', currentGame);
+          currentQuestion++;
+          socket.emit('questionChange', { currentQuestion });
+        }, 5000);
+
+        const interval = setInterval(() => {
+          if (currentQuestion === newGame.quiz.quests.length) {
             let currentGame = gameService.getGameById(newGame._id);
             socket.emit('endGame', currentGame);
             clearInterval(interval);
+          } else {
+            setTimeout(() => {
+              socket.emit('quizQuest');
+              setTimeout(() => {
+                let currentGame = gameService.getGameById(newGame._id);
+                socket.emit('middleQuiz', currentGame);
+                currentQuestion++;
+                socket.emit('questionChange', { currentQuestion });
+              }, 5000);
+            }, 5000);
           }
-        }, 20000);
+        }, 11000);
       }, 5000);
       socket.on('updateAns', answer => {
         gameService.setAnswer(newGame._id, playerId, answer);

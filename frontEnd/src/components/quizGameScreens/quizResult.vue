@@ -1,7 +1,7 @@
 <template>
   <section class="game-results">
     <h1>results</h1>
-    <h2>You did: Bad/good/great?</h2>
+    <h1>Your current Score is: {{userTotalScore}}</h1>
 
     <h3>Here are the following scores:</h3>
     <div v-for="(player,playerIdx) in gameScores" :key="playerIdx">
@@ -25,6 +25,9 @@ export default {
   computed: {
     gameScores() {
       return this.$store.getters.getGameScores;
+    },
+    userTotalScore() {
+      return this.$store.getters.userTotalScore;
     }
   },
   methods: {},
