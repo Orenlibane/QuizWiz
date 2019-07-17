@@ -11,7 +11,8 @@ export default {
       gameStage: 'quizDetails',
       currentQuiz: null,
       currentQuestion: null,
-      scores: []
+      scores: [],
+      userScore: []
     }
   },
   mutations: {
@@ -42,6 +43,10 @@ export default {
     setGameScore(state, { gameScores }) {
       console.log(gameScores);
       state.gameState.scores = gameScores;
+    },
+    setUserScore(state, { res }) {
+      console.log(res);
+      state.gameState.userScore.push(res.score);
     }
   },
   actions: {
@@ -49,8 +54,8 @@ export default {
       context.commit({ type: 'setGameScore', gameScores });
     },
     updateAns(context, { res }) {
-      console.log('curr ans', res);
       socket.emit('updateAns', res);
+      context.commit({ type: 'setUserScore', res });
     },
     loadGameQuiz(context, { quiz }) {
       context.commit({ type: 'firstGameSetting', quiz });
@@ -59,15 +64,12 @@ export default {
       context.commit({ type: 'updateGameStage', stage: stage });
     },
     changeGameQuestion(context, { currentQuestion }) {
-      console.log(currentQuestion);
-
       context.commit({ type: 'updateCurrentQuestion', currentQuestion });
     },
     serverClock(context, { clock }) {
       context.commit({ type: 'updateServerClock', clock });
     },
     onCreateGame(context, { quiz }) {
-      console.log(quiz, 'store - on create game');
       socket.emit('onCreateGame', quiz);
     },
     gameStartListener(context) {
@@ -108,5 +110,12 @@ export default {
     getGameScores(state) {
       return state.gameState.scores.gamePlayers;
     },
+    userTotalScore(state) {
+      let totalScore = state.gameState.userScore.reduce((acc, score) => {
+        acc += score;
+        return acc;
+      }, 0);
+      return totalScore;
+    }
   }
 };

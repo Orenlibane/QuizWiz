@@ -28,9 +28,8 @@ on('startGameTimer', () => {
   store.dispatch({ type: 'gameStartListener' });
 });
 
-on('startTheGame', quiz => {
+on('startTheGame', () => {
   store.dispatch({ type: 'changeGameStage', stage: 'quizQuest' });
-  store.dispatch({ type: 'loadGameQuiz', quiz });
 });
 
 on('questionChange', currentQuestion => {
@@ -38,6 +37,7 @@ on('questionChange', currentQuestion => {
   store.dispatch({ type: 'changeGameQuestion', currentQuestion });
 });
 on('endGame', gameScores => {
+  console.log('emit endgame');
   store.dispatch({ type: 'changeGameStage', stage: 'quizEnd' });
   store.dispatch({ type: 'getGameScores', gameScores });
 });
