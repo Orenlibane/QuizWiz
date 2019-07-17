@@ -21,14 +21,14 @@ function setup(http) {
       //join the game creator into game on the service
       var playerId = gameService.joinGame(newGame._id);
       socket.emit('startGameTimer');
-      setInterval(moveQuiz, 5000);
+      // setInterval(moveQuiz, 5000);
       // function moveQuiz(game) {
       //   if (game.status === 'lobby' || 'middle') {
       //     game.status = 'quest';
       //     socket.emit();
       //     // if
       //   }
-      }
+      // }
 
       //LOBBY COUNTDOWN TO 5
       setTimeout(() => {
