@@ -31,7 +31,10 @@ export default {
     eventBus.$on(GAME_OFF, game => {
       this.game = false;
     });
-    this.$store.dispatch({type: "checkUser"})
+    //Checking if a user is logged in. if not - we ask the guest for a nickname and give him an unique ID
+    //so he his browser will be recognized by the server.
+    this.$store.dispatch({ type: "checkUser" });
+    
   }
 };
 </script>

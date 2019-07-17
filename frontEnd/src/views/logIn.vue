@@ -12,7 +12,7 @@
           type="password"
           v-model="loginCred.password"
           placeholder="Enter password"
-          @keyup.enter="login"
+          @keyup.enter="doLogin"
           required
         />
       </div>
@@ -37,7 +37,7 @@ export default {
   },
   methods: {
     async doLogin() {
-      // console.log('check sanity');
+      console.log('check sanity');
       const cred = this.loginCred;
       await this.$store.dispatch({ type: "login", userCred: cred });
       const user = this.$store.getters.getUser;
