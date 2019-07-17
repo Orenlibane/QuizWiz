@@ -9,9 +9,13 @@
   align-items: center;
   background-color: lightgray;
 }
-.details-footer{
+.details-footer {
   position: fixed;
   bottom: rem(42px);
   right: 0;
-  left:0;
+  left: 0;
+}
+.quiz-details-img {
+  display: flex;
+  justify-content: center;
 }
