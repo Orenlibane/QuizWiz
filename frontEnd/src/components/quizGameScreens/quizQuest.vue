@@ -65,6 +65,8 @@ export default {
           type: "updateAns",
           res: { currAns: false, score: 0 }
         });
+
+        //ADD FUNCTIONALITY IF PLAYER DIDNT CLICK
       }
       // setTimeout(() => {
       //   if (this.info.currQuest + 1 === this.info.quiz.quests.length)

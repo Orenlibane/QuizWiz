@@ -17,6 +17,7 @@ function getAllonlineGames() {
 }
 function gamePlayersCount(gameId) {
   const gameById = onlineGames.find(game => game._id === gameId);
+  console.log('is bug here?');
   return gameById.gamePlayers.length;
 }
 // Michael: Need to keep going with the code check from here
@@ -53,7 +54,7 @@ function setAnswer(gameId, playerId, answer) {
 }
 
 function getGameById(gameId) {
-  onlineGames.find(game => game._id === gameId);
+  return onlineGames.find(game => game._id === gameId);
 }
 
 function createGame(quiz) {

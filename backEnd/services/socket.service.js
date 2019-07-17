@@ -6,7 +6,7 @@ function setup(http) {
   io = socketIO(http);
 
   io.on('connection', function(socket) {
-    //SERVER GLOBAL TIME SEND
+    // SERVER GLOBAL TIME SEND
     setInterval(() => {
       socket.emit('serverTime', Date.now());
       // console.log('regregre');
@@ -32,7 +32,9 @@ function setup(http) {
         socket.emit('questionChange', { currentQuestion });
         interval = setInterval(() => {
           setTimeout(() => {
-            socket.emit('middleQuiz');
+            let currentGame = gameService.getGameById(newGame._id);
+            console.log('currentGame', currentGame);
+            socket.emit('middleQuiz', currentGame);
           }, 10000);
 
           setTimeout(() => {
@@ -41,7 +43,8 @@ function setup(http) {
             currentQuestion++;
             socket.emit('questionChange', { currentQuestion });
           }, 20000);
-
+          console.log('checking var', newGame);
+          console.log('checking var quiz as function', newGame.quiz);
           if (currentQuestion + 1 > newGame.quiz.quests.length) {
             let currentGame = gameService.getGameById(newGame._id);
             socket.emit('endGame', currentGame);

@@ -41,8 +41,10 @@ on('endGame', gameScores => {
   store.dispatch({ type: 'changeGameStage', stage: 'quizEnd' });
   store.dispatch({ type: 'getGameScores', gameScores });
 });
-on('middleQuiz', () => {
-  store.dispatch({ type: 'changeGameStage', stage: 'quizLobby' });
+on('middleQuiz', gameScores => {
+  console.log('scores in socket Service front', gameScores);
+  store.dispatch({ type: 'changeGameStage', stage: 'quizResult' });
+  store.dispatch({ type: 'getGameScores', gameScores: gameScores });
 });
 on('quizQuest', () => {
   store.dispatch({ type: 'changeGameStage', stage: 'quizQuest' });

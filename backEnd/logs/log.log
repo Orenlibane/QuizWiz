@@ -621,7 +621,56 @@ Tue, 16 Jul 2019 17:24:11 GMT - Info - Server is running on port:  3000
 Tue, 16 Jul 2019 17:24:44 GMT - Info - Server is running on port:  3000
 Tue, 16 Jul 2019 17:25:43 GMT - Info - Server is running on port:  3000
 Tue, 16 Jul 2019 17:36:49 GMT - Info - Server is running on port:  3000
+<<<<<<< HEAD
+Wed, 17 Jul 2019 05:53:18 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:12:46 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:12:47 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:12:51 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:20:34 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:22:06 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:25:07 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:29:19 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:29:31 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:29:58 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:30:43 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:31:31 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:35:19 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:37:00 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:38:20 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:39:34 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:39:51 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:40:01 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:40:49 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:40:55 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:41:40 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:42:57 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:44:05 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:44:13 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:45:58 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:46:05 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:46:08 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:47:49 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:47:53 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:50:48 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:51:06 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:52:40 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:53:37 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:55:37 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 06:58:58 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 07:00:17 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 07:05:56 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 07:08:12 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 07:08:15 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 07:10:11 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 07:11:13 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 07:14:06 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 07:15:56 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 07:16:53 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 07:17:44 GMT - Info - Server is running on port:  3000
+Wed, 17 Jul 2019 07:19:51 GMT - Info - Server is running on port:  3000
+=======
 >>>>>>> ff8c1b5311b9a71b51b0d505df629552b4edace7
+<<<<<<< HEAD
 
 Wed, 17 Jul 2019 05:56:18 GMT - Info - Server is running on port:  3000
 Wed, 17 Jul 2019 06:27:33 GMT - Info - Server is running on port:  3000
@@ -656,3 +705,8 @@ Wed, 17 Jul 2019 07:41:47 GMT - Info - Server is running on port:  3000
 Wed, 17 Jul 2019 07:41:52 GMT - Info - Server is running on port:  3000
 Wed, 17 Jul 2019 07:42:21 GMT - Debug - auth.service - login with email: 11
 Wed, 17 Jul 2019 07:42:21 GMT - Debug - auth.service - login with email: 11
+=======
+>>>>>>> b78b66568dac6905b204126b386b85190a0a215d
+>>>>>>> 92712da7a1b18e22f68e4e66e46947503d0cc9c4
+
+Wed, 17 Jul 2019 07:51:47 GMT - Info - Server is running on port:  3000
