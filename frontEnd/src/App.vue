@@ -31,7 +31,7 @@ export default {
     eventBus.$on(GAME_OFF, game => {
       this.game = false;
     });
-    this.$store.dispatch({type: "checkUser"})
+    // this.$store.dispatch({type: "checkUser"})
   }
 };
 </script>

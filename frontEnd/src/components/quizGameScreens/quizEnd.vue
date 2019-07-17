@@ -12,6 +12,15 @@
       <h3>Your Score: {{score}}</h3>
       <h3>Game Ended</h3>
       <h3>Quiz by: Creator of the game</h3>
+      <div v-for="(player,playerIdx) in gameScores" :key="playerIdx">
+        <li>Name: {{player.nickName}}</li>
+        <hr />
+        <li v-for="(answer,answerIdx) in player.ans" :key="answerIdx">
+          Answer {{answerIdx+1}}:{{answer.currAns}}
+          Score :{{answer.score}}
+        </li>
+        <hr />
+      </div>
       <button class="big-btn">Like</button>
       <button @click="toggleQuests" class="show-questions-btn">show Questions</button>
     </div>
@@ -50,7 +59,9 @@ export default {
     quests() {
       return this.info.quiz.quests;
     },
-
+    gameScores() {
+      return this.$store.getters.getGameScores;
+    },
     score() {
       return this.gameRes.reduce((acc, ans) => {
         acc += ans.score;

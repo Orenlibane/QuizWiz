@@ -17,6 +17,7 @@ function getAllonlineGames() {
 }
 function gamePlayersCount(gameId) {
   const gameById = onlineGames.find(game => game._id === gameId);
+  console.log('is bug here?');
   return gameById.gamePlayers.length;
 }
 function joinGame(gameId, player = { nickName: 'guest', id: _makeId() }) {
@@ -52,7 +53,7 @@ function setAnswer(gameId, playerId, answer) {
 }
 
 function getGameById(gameId) {
-  onlineGames.find(game => game._id === gameId);
+  return onlineGames.find(game => game._id === gameId);
 }
 
 function createGame(quiz) {

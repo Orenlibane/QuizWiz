@@ -1,22 +1,33 @@
 <template>
   <section class="game-results">
     <h1>results</h1>
-    <div v-for="(quest,idx) in info.quiz.questions" :key="idx" class="question-result">
-      Question: {{info.quiz.questions[idx]}}
-      Answer: ""
+    <h2>You did: Bad/good/great?</h2>
+
+    <h3>Here are the following scores:</h3>
+    <div v-for="(player,playerIdx) in gameScores" :key="playerIdx">
+      <li>Name: {{player.nickName}}</li>
+      <hr />
+      <li v-for="(answer,answerIdx) in player.ans" :key="answerIdx">
+        Answer {{answerIdx+1}}:{{answer.currAns}}
+        Score :{{answer.score}}
+      </li>
+      <hr />
     </div>
-    <button>Back to HomePage</button>
   </section>
 </template>
 
 <script>
 export default {
-  props: ["info"],
-  methods: {
-    leaveGame() {
-      // update the user score on store.
-      this.$router.push("/");
+  props: [],
+  data() {
+    return {};
+  },
+  computed: {
+    gameScores() {
+      return this.$store.getters.getGameScores;
     }
-  }
+  },
+  methods: {},
+  created() {}
 };
 </script>

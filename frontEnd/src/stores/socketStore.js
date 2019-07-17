@@ -104,6 +104,9 @@ export default {
     },
     getQuiz(state) {
       return state.gameState.currentQuiz;
+    },
+    getGameScores(state) {
+      return state.gameState.scores.gamePlayers;
     }
   }
 };
