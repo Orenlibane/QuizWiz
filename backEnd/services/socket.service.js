@@ -14,7 +14,7 @@ function setup(http) {
 
     socket.on('onCreateGame', function(quiz) {
       let currentQuestion = 0;
-      let interval = null;
+
       const newGame = gameService.createGame(quiz);
       //Create and join the room
       socket.join(newGame._id);
@@ -28,23 +28,18 @@ function setup(http) {
       //count to 30
       setTimeout(() => {
         socket.emit('startTheGame', quiz);
-        console.log('sent the start game from server');
         socket.emit('questionChange', { currentQuestion });
-        interval = setInterval(() => {
+        const interval = setInterval(() => {
           setTimeout(() => {
             let currentGame = gameService.getGameById(newGame._id);
-            console.log('currentGame', currentGame);
             socket.emit('middleQuiz', currentGame);
           }, 10000);
 
           setTimeout(() => {
             socket.emit('quizQuest');
-            console.log('currentQuestion', currentQuestion);
             currentQuestion++;
             socket.emit('questionChange', { currentQuestion });
           }, 20000);
-          console.log('checking var', newGame);
-          console.log('checking var quiz as function', newGame.quiz);
           if (currentQuestion + 1 > newGame.quiz.quests.length) {
             let currentGame = gameService.getGameById(newGame._id);
             socket.emit('endGame', currentGame);

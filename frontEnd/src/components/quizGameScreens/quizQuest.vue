@@ -18,7 +18,6 @@
 
 <script>
 import global from "@/styles/global.scss";
-import { clearInterval } from "timers";
 export default {
   name: "quizQuest",
   props: {
@@ -86,8 +85,17 @@ export default {
     console.log("the info:", this.info);
   },
   destroyed() {
-    console.log("Quiz Game got destroyed");
     clearInterval(this.timerInterval);
+
+    console.log("Quiz Game got destroyed");
+    console.log("is Answer", this.isAnswered);
+    if (!this.isAnswered) {
+      console.log("here");
+      this.$store.dispatch({
+        type: "updateAns",
+        res: { currAns: false, score: 0 }
+      });
+    }
   },
   created() {
     this.timerInterval = setInterval(() => {
