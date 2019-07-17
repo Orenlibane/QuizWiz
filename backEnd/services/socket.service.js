@@ -19,7 +19,8 @@ function setup(http) {
       //Create and join the room
       socket.join(newGame._id);
       //join the game creator into game on the service
-      gameService.joinGame(newGame._id);
+      var playerId = gameService.joinGame(newGame._id);
+      console.log('this is the creating of the player ID', playerId);
       //for debugging - checking the current games
       const allGames = gameService.getAllonlineGames();
       // console.log(allGames);
@@ -42,11 +43,15 @@ function setup(http) {
           }, 20000);
 
           if (currentQuestion + 1 > newGame.quiz.quests.length) {
-            socket.emit('endGame');
+            let currentGame = gameService.getGameById(newGame._id);
+            socket.emit('endGame', currentGame);
             clearInterval(interval);
           }
         }, 20000);
       }, 5000);
+      socket.on('updateAns', answer => {
+        gameService.setAnswer(newGame._id, playerId, answer);
+      });
     });
 
     //socket.on(user join)

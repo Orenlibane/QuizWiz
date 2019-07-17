@@ -53,9 +53,18 @@ export default {
       this.isAnswered = true;
       let currAns = idx === this.correctOptIdx;
       if (currAns) {
-        this.$store.dispatch({ type: "updateAns", currAns: true });
+        this.$store.dispatch({
+          type: "updateAns",
+          res: {
+            currAns: true,
+            score: this.timer * 10
+          }
+        });
       } else {
-        this.$store.dispatch({ type: "updateAns", currAns: false });
+        this.$store.dispatch({
+          type: "updateAns",
+          res: { currAns: false, score: 0 }
+        });
       }
       // setTimeout(() => {
       //   if (this.info.currQuest + 1 === this.info.quiz.quests.length)

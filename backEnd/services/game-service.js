@@ -5,7 +5,9 @@ module.exports = {
   removeGame,
   getAllonlineGames,
   startGame,
-  gamePlayersCount
+  gamePlayersCount,
+  setAnswer,
+  getGameById
 };
 
 let onlineGames = [];
@@ -21,6 +23,7 @@ function joinGame(gameId, player = { nickName: 'guest', id: _makeId() }) {
   const gameById = onlineGames.find(game => game._id === gameId);
   player.ans = [];
   gameById.gamePlayers.push(player);
+  return player.id;
 }
 function leaveGame(playerId, gameId) {
   const gameById = onlineGames.find(game => game._id === gameId);
@@ -33,6 +36,23 @@ function startGame(gameId) {
 
 function removeGame(gameId) {
   onlineGames = onlineGames.filter(game => game._id !== gameId);
+}
+
+function setAnswer(gameId, playerId, answer) {
+  console.log('data set answer func gets:', gameId, playerId, answer);
+  const currGame = onlineGames.find(game => game._id === gameId);
+  console.log(' curr game we got from searching:', currGame);
+  const currPlayer = currGame.gamePlayers.find(
+    player => player.id === playerId
+  );
+  console.log('currPlayer', currPlayer);
+  if (!currPlayer.ans) currPlayer.ans = [];
+  currPlayer.ans.push(answer);
+  console.log('curr player ans array is now:', currPlayer.ans);
+}
+
+function getGameById(gameId) {
+  onlineGames.find(game => game._id === gameId);
 }
 
 function createGame(quiz) {

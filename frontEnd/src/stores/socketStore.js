@@ -10,7 +10,8 @@ export default {
       timeInterval: null,
       gameStage: 'quizDetails',
       currentQuiz: null,
-      currentQuestion: null
+      currentQuestion: null,
+      scores: []
     }
   },
   mutations: {
@@ -36,13 +37,20 @@ export default {
     },
     updateCurrentQuestion(state, { currentQuestion }) {
       console.log(currentQuestion);
-
       state.gameState.currentQuestion = currentQuestion;
+    },
+    setGameScore(state, { gameScores }) {
+      console.log(gameScores);
+      state.gameState.scores = gameScores;
     }
   },
   actions: {
-    updateAns(context, { currAns }) {
-      socket.emit('updateAns', currAns);
+    getGameScores(context, { gameScores }) {
+      context.commit({ type: 'setGameScore', gameScores });
+    },
+    updateAns(context, { res }) {
+      console.log('curr ans', res);
+      socket.emit('updateAns', res);
     },
     loadGameQuiz(context, { quiz }) {
       context.commit({ type: 'firstGameSetting', quiz });
