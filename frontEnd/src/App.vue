@@ -41,8 +41,8 @@ export default {
     //so that his browser will be recognized by the server.
     try {
       const user = await this.$store.dispatch({ type: "checkUser" });
-      console.log("checking user in app.vue", user);
-      console.log("user is (from app):", this.$store.getters.getUser);
+      // console.log("checking user in app.vue", user);
+      // console.log("user is (from app):", this.$store.getters.getUser);
       if (!user) {
         this.$router.push("/welcome");
       }

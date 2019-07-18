@@ -1,5 +1,6 @@
 <template>
   <div v-if="currUser" class="loggedUser">
+    <span class="avatar"></span>
     <span>Welcome, {{currUser.username}} |</span>
     <router-link :to="profileUrl">
       <span>My Profile |</span>
@@ -36,3 +37,13 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+.avatar {
+  background: white;
+  border: 2px solid black;
+  padding: 2rem;
+  padding-right: 3rem;
+  border-radius: 3rem;
+}
+</style>
