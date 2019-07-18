@@ -1,5 +1,5 @@
 <template>
-  <div class="quiz-library">
+  <div class="quiz-library layout-container">
     <h1 class="center">Quiz Library</h1>
     <!-- <quiz-filter></quiz-filter> -->
     <quiz-list v-if="games" :quizes="games"></quiz-list>

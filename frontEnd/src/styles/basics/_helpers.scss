@@ -84,7 +84,11 @@
 }
 
 .layout-container {
-  padding-left: rem(20px);
-  padding-right: rem(20px);
-  color: white;
+  padding-left: rem(10px);
+  padding-right: rem(10px);
+  // color: white;
+}
+
+.underLine {
+  text-decoration: underline;
 }

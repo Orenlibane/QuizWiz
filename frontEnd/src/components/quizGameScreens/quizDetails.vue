@@ -52,6 +52,13 @@ export default {
     },
     startMultiplayer() {
       this.$store.dispatch({ type: "changeGameStage", stage: "quizLobby" });
+      let nickName = prompt("please enter a nickName");
+      let infoToLog = {
+        nickName: nickName,
+        id: utilService.makeId()
+      };
+      this.$store.dispatch({ type: "setUser", infoToLog });
+      this.info.quiz.creator = infoToLog;
       this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
     }
   }

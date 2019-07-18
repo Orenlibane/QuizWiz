@@ -56,7 +56,6 @@ on('endGame', gameScores => {
 });
 
 on('returnAllLiveGames', liveGames => {
-  console.log(liveGames);
   store.dispatch({ type: 'setLoadedGames', liveGames });
 });
 

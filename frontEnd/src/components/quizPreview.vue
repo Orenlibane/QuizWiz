@@ -15,7 +15,7 @@
       <p>by {{quiz.creatorName}}</p>
       <h2>{{quiz.name}}</h2>
       <div class="quiz-preview-timer flex space-between align-center">
-      <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
+        <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
         <span>{{serverTime}}</span>
       </div>
       <div class="flex both-align-center">
@@ -25,7 +25,8 @@
         </button>
 
         <button class="card-btn">
-          <router-link :to="enterGameUrl">Enter</router-link>
+          <router-link v-if="!quiz.gameId" :to="enterGameUrl">Enter</router-link>
+          <button v-if="quiz.gameId" @click="enterLiveGame">EnterLiveGame</button>
         </button>
       </div>
     </div>
@@ -38,6 +39,7 @@
 import quizService from "../service/quizService.js";
 import _quizPreview from "../styles/components/_quiz-prev.scss";
 import filters from "../filters.js";
+import utilService from "../service/utilService.js";
 const moment = require("moment");
 
 export default {
@@ -51,6 +53,19 @@ export default {
     deleteQuiz(quizId) {
       console.log(quizId, "in the quiz prev");
       this.$store.dispatch({ type: "deleteQuiz", quizId });
+    },
+    enterLiveGame() {
+      let guestNick = prompt("please enter your name:");
+      let infoToLog = {
+        gameId: this.quiz.gameId,
+        player: {
+          id: utilService.makeId(),
+          nickName: guestNick
+        }
+      };
+      this.$store.dispatch({ type: "setUser", infoToLog: infoToLog.player });
+      this.$store.dispatch({ type: "logToLiveGame", infoToLog });
+      this.$router.push(`/quiz/${this.quiz._id}/game`);
     }
   },
   computed: {

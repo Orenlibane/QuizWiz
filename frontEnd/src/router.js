@@ -8,7 +8,7 @@ import quizGame from './views/quizGame.vue';
 import quizLibrary from './views/quizLibrary.vue';
 import userProfile from './views/userProfile.vue';
 import welcomePage from './views/welcomePage.vue';
-import TEST1 from './components/quizGameScreens/quizLobby.vue';
+import TEST1 from './components/quizGameScreens/quizQuest.vue';
 // import about from './views/about.vue';
 
 Vue.use(Router);
