@@ -1,25 +1,23 @@
 .quiz-preview-img-container {
   width: 100%;
-  height: rem(120px);
+  height: rem(169px);
 }
 .quiz-preview-img-container img {
   width: 100%;
-  height: rem(120px);
+  height: rem(169px);
   object-fit: cover;
-  object-position: top;
-  // display: block;
+  object-position: center;
+  display: block;
   padding: 0;
   margin: 0;
-  border-top-left-radius:rem(10px);
-  border-top-right-radius:rem(10px);
-
+  border-radius: rem(5px);
 }
 
 .quiz-preview-card {
-  // border: 1px solid black;
-  // padding: rem(13px);
+  padding: rem(8px);
   background-color: $clr3;
   border-radius: rem(10px);
+  margin-bottom: rem(40px);
 }
 
 .quiz-preview-btn-container {
@@ -29,23 +27,30 @@
 .quiz-preview-like-count {
   width: rem(30px);
   height: rem(30px);
-  // background-color: lightgray;
+  background-color: rgba(0, 0, 0, 0.5);
+
+
   color: $clr3;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top-right-radius: rem(5px);
 }
 .quiz-preview-like-btn {
   width: rem(30px);
   height: rem(30px);
   color: $clr3;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: rem(5px);
   border: none;
+  cursor: pointer;
+  outline: none;
 }
 
 .quiz-preview-details {
-  padding-left: rem(18px);
+  // padding-left: rem(18px);
   width: 100%;
+  font-family: 'Titillium-Web';
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -60,9 +65,9 @@
 .quiz-preview-timer span {
   font-size: rem(40px);
 }
-.card-btn{
+.card-btn {
   background-color: $clr1;
-  color:$clr3;
+  color: $clr3;
   // padding-right: rem(5px);
   // padding-left: rem(5px);
   width: rem(70px);
@@ -70,8 +75,8 @@
   border-radius: rem(5px);
   cursor: pointer;
 }
-.card-btn a{
-  color: $clr3;
+.card-btn a {
+  color: $clr2;
   text-decoration-line: none;
   font-size: rem(19px);
 }
