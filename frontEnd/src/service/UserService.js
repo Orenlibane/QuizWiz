@@ -13,9 +13,7 @@ function checkUser() {
   return httpService.get('user/getLoggedIn');
 }
 
-function createGuestUser() {
-
-}
+function createGuestUser() {}
 
 function login(userCred) {
   // console.log('user service:', userCred);

@@ -2,7 +2,7 @@
   <div v-if="currUser" class="loggedUser">
     <span>Welcome, {{currUser.username}} |</span>
     <router-link :to="profileUrl">
-      <span>My Profile |</span>
+      <!-- <span>My Profile |</span> -->
     </router-link>
     <button @click="doLogout">Log Out</button>
   </div>

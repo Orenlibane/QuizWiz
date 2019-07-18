@@ -6,13 +6,13 @@ var axios = Axios.create({
   withCredentials: true
 });
 
-async function ajax(endpoint, method = 'get', data = null,params = null) {
+async function ajax(endpoint, method = 'get', data = null, params = null) {
   try {
     const res = await axios({
       url: `${BASE_URL}${endpoint}`,
       method,
       data,
-      params,
+      params
     });
     return res.data;
   } catch (err) {
@@ -26,7 +26,7 @@ async function ajax(endpoint, method = 'get', data = null,params = null) {
 
 export default {
   get(endpoint, data) {
-    return ajax(endpoint, 'GET',null ,data);
+    return ajax(endpoint, 'GET', null, data);
   },
   post(endpoint, data) {
     return ajax(endpoint, 'POST', data);
