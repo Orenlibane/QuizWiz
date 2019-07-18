@@ -18,6 +18,10 @@
   background-color: $clr3;
   border-radius: rem(10px);
   margin-bottom: rem(40px);
+  // @include for-narrow-layout {
+  //   width: 50%;
+  //   background: green;
+  // }
 }
 
 .quiz-preview-btn-container {
