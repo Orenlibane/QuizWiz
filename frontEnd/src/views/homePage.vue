@@ -52,17 +52,17 @@ export default {
   created() {
     //Checking if a user is logged in. if not - we ask the guest for a nickname and give him an unique ID
     //so he his browser will be recognized by the server.
-    (async () => {
-      try {
-        const user = await this.$store.dispatch({ type: "checkUser" });
-        if (!user) {
-          console.log("user signed in in app is:", user);
-          this.$router.push("/welcome");
-        }
-      } catch {
-        console.log("Something went wrong in app vue");
-      }
-    })();
+    // (async () => {
+    //   try {
+    //     const user = await this.$store.dispatch({ type: "checkUser" });
+    //     if (!user) {
+    //       console.log("user signed in in app is:", user);
+    //       this.$router.push("/welcome");
+    //     }
+    //   } catch {
+    //     console.log("Something went wrong in app vue");
+    //   }
+    // })();
 
     this.$store.dispatch({ type: "loadQuizes" });
     //We send this event in order to make the footer and the header appear when we're not in a game-mode
