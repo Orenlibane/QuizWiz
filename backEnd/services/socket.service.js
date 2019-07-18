@@ -6,53 +6,71 @@ function setup(http) {
   io = socketIO(http);
 
   io.on('connection', function(socket) {
+    io.emit('returnAllLiveGames', gameService.getAllonlineGames());
+
     // SERVER GLOBAL TIME SEND
     // setInterval(() => {
     //   socket.emit('serverTime', Date.now());
-    //   // console.log('regregre');
-    // }, 200);
+    // }, 1000);
+
+    socket.on('loggingToGame', infoToLog => {
+      console.log('trying to connect to', infoToLog.gameId);
+      socket.join(infoToLog.gameId);
+      let newPlayer = gameService.joinGame(infoToLog.gameId, infoToLog.player);
+      io.to(infoToLog.gameId).emit('loggedUser', newPlayer);
+    });
 
     socket.on('onCreateGame', quiz => {
       var newGame = gameService.createGame(quiz);
       io.emit('returnAllLiveGames', gameService.getAllonlineGames());
       //Create and join the room
       socket.join(newGame._id);
+      console.log('created the game on:', newGame._id);
+
+      // ON -> get the guest Name //
 
       //join the game creator into game on the service
-      var player = gameService.joinGame(newGame._id);
+      var player = gameService.joinGame(newGame._id, quiz.creator);
 
-      //TESTING -> sending the connected players names into the loby
-      socket.emit('loggedUser', player);
+      // sending the connected players names into the loby
+      io.to(newGame._id).emit('loggedUser', player);
+      //sending the signal to start the 5 sec lobby timer
+      io.to(newGame._id).emit('startGameTimer');
 
-      //sending the signle to start the 5 sec lobby timer
-      socket.emit('startGameTimer');
+      //WHEN WE NEED TO REALLY KILL THE LIVE GAME
+      // setTimeout(() => {
+      //   io.emit('returnAllLiveGames', gameService.getAllonlineGames());
+      // }, 60000);
 
-      var gameInterval = setInterval(moveQuiz, 5000, newGame, socket);
+      var gameInterval = setInterval(moveQuiz, 5000, newGame, io);
 
-      function moveQuiz(newGame, socket) {
+      function moveQuiz(newGame, io) {
         console.log('current Game status', newGame.status);
         if (newGame.status === 'lobby' || newGame.status === 'middle') {
           if (newGame.currQuest === newGame.quiz.quests.length) {
             newGame.currQuest--;
             newGame.status = 'endGame';
-            socket.emit('endGame', newGame);
+            io.to(newGame._id).emit('endGame', newGame); //send to everyone who is in the room
             clearInterval(gameInterval);
-            socket.leave(newGame._id);
-            gameService.removeGame(newGame._id);
+            // io.to(newGame._id).leave(newGame._id);
+            //SEND TO DATABASE
+            gameService.removeGame(newGame._id); //when changed we dont need it
             io.emit('returnAllLiveGames', gameService.getAllonlineGames());
             return;
           }
           newGame.status = 'quest';
-          socket.emit('quizQuest');
+          io.to(newGame._id).emit('quizQuest');
         } else if (newGame.status === 'quest') {
           console.log('send middle');
           newGame.status = 'middle';
-          socket.emit('middleQuiz', newGame);
+          io.to(newGame._id).emit('middleQuiz', newGame);
+          console.log(newGame);
           newGame.currQuest++;
-          socket.emit('questionChange', newGame.currQuest);
+          io.to(newGame._id).emit('questionChange', newGame.currQuest);
         }
       }
       socket.on('updateAns', answer => {
+        console.log('this game players', newGame.gamePlayers);
         gameService.setAnswer(newGame._id, player.id, answer);
       });
     });

@@ -1,13 +1,13 @@
   <template>
-  <section class="login flex column align-center">
+  <section class="log-in flex align-items justify-conte">
     <h1>Login</h1>
-    <form class="flex column" @submit.prevent="doLogin">
-      <div>
+    <form class="flex" @submit.prevent="doLogin">
+      <div class="flex column justify-center">
         <span>Username:</span>
-        <input v-model="loginCred.email" type="text" placeholder="Enter E-mail" autofocus required />
-      </div>
-      <div>
         <span>Password:</span>
+      </div>
+      <div class="flex column justify-center">
+        <input type="text" v-model="loginCred.email" placeholder="Enter E-mail" autofocus required />
         <input
           type="password"
           v-model="loginCred.password"
@@ -15,8 +15,8 @@
           @keyup.enter="doLogin"
           required
         />
+        <button>Login</button>
       </div>
-      <button>Login</button>
     </form>
   </section>
 </template>

@@ -12,11 +12,16 @@ export default {
       currentQuiz: null,
       currentQuestion: null,
       scores: [],
-      userScore: []
+      userScore: [],
+      user: {}
     }
   },
   mutations: {
+    setUser(state, { infoToLog }) {
+      state.user = infoToLog.player;
+    },
     addUser(state, { user }) {
+      //TODO: CHECK FOR DELETE
       state.users.push(user);
     },
     updateServerClock(state, { clock }) {
@@ -49,6 +54,14 @@ export default {
     }
   },
   actions: {
+    setUser(context, { infoToLog }) {
+      console.log('info To log', infoToLog);
+      context.commit({ type: 'setUser', infoToLog });
+    },
+    logToLiveGame(context, { infoToLog }) {
+      console.log('infoToLog', infoToLog);
+      socket.emit('loggingToGame', infoToLog);
+    },
     setLoadedGames(context, { liveGames }) {
       context.commit({ type: 'setLiveGames', liveGames });
     },
@@ -95,6 +108,7 @@ export default {
   getters: {
     getLiveGames(state) {
       let liveGames = state.liveGames.map(game => {
+        game.quiz.gameId = game._id;
         return game.quiz;
       });
       return liveGames;

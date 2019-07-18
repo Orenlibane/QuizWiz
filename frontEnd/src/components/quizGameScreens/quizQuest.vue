@@ -80,16 +80,7 @@ export default {
           type: "updateAns",
           res: { currAns: false, score: 0 }
         });
-
-        //ADD FUNCTIONALITY IF PLAYER DIDNT CLICK
       }
-      // setTimeout(() => {
-      //   if (this.info.currQuest + 1 === this.info.quiz.quests.length)
-      //     return this.$emit("gameStage", { cmp: "quizEnd", ans: "" + currAns });
-      //   this.isAnswered = false;
-      //   // this.$emit("ans")
-      //   this.$emit("gameStage", { cmp: "quizQuest", ans: "" + currAns });
-      // }, 1000);
     },
     ansStyle(idx) {
       if (!this.isAnswered) return "";
@@ -102,9 +93,7 @@ export default {
   },
   destroyed() {
     clearInterval(this.timerInterval);
-
-    console.log("Quiz Game got destroyed");
-    console.log("is Answer", this.isAnswered);
+    let playerId = this.$store.state.user.id;
     if (!this.isAnswered) {
       console.log("here");
       this.$store.dispatch({
