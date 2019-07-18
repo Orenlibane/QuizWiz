@@ -1,5 +1,5 @@
 <template>
-  <section class="quizQuest flex both-align-center column">
+  <!-- <section class="quizQuest flex both-align-center column">
     <h1 class="question-render">{{currQuest}}</h1>
     <div class="answers">
       <div
@@ -11,6 +11,24 @@
         <button :class="ansStyle(idx)">{{opt}}</button>
       </div>
       {{timer}}
+    </div>
+  </section>-->
+  <section class="quiz-quest layout-container">
+    <div class="question-status flex space-between">
+      <span>Question {{currQuestNum}}/7</span>
+      <span>{{timer}}</span>
+    </div>
+    <div class="quest-name-container">
+      <h2 class="center">{{currQuest}}</h2>
+    </div>
+    <div class="quest-answers-container">
+      <button
+        class="quest-anser-btn"
+        :class="ansStyle(idx)"
+        @click="chooseAns(idx)"
+        v-for="(opt,idx) in currOpts"
+        :key="idx"
+      >{{opt}}</button>
     </div>
   </section>
 </template>
@@ -29,7 +47,11 @@ export default {
     return {
       isAnswered: false,
       timer: 10,
-      timerInterval: null
+      timerInterval: null,
+      quest: {
+        name: "what type of food represents summer?",
+        opts: ["watermelon", "orange", "apple", "tomato"]
+      }
     };
   },
   computed: {
@@ -58,8 +80,8 @@ export default {
             answerInfo: {
               currAns: true,
               score: this.timer * 10
-            },
-            id: this.$store.getters.getUser
+            }
+            // id: this.$store.getters.getUser
           }
         });
       } else {
@@ -69,8 +91,8 @@ export default {
             answerInfo: {
               currAns: false,
               score: this.timer * 10
-            },
-            id: this.$store.getters.getUser
+            }
+            // id: this.$store.getters.getUser
           }
         });
       }
@@ -86,8 +108,7 @@ export default {
   },
   destroyed() {
     clearInterval(this.timerInterval);
-    let player = this.$store.state.getters.getUser;
-    console.log("this is the user gotten by the getter", player);
+    // let player = this.$store.state.getters.getUser;
     if (!this.isAnswered) {
       console.log("here");
       this.$store.dispatch({
@@ -96,8 +117,8 @@ export default {
           answerInfo: {
             currAns: false,
             score: this.timer * 10
-          },
-          id: this.$store.getters.getUser
+          }
+          // id: this.$store.getters.getUser
         }
       });
     }

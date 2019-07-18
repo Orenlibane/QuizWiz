@@ -1,36 +1,37 @@
-.answers {
+
+.quest-name-container {
+  background-color: $clr3;
+  width: 100%;
+  height: em(200px);
+  border-radius: em(20px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top:em(50px);
+  margin-bottom: em(50px);
+}
+.quest-answers-container{
+  justify-content: center;
+  align-items:center;
+  color: $clr3;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap:20px;
   width: 100%;
 }
-
-.possible-answers {
-  display: flex;
-  flex-direction: column;
-}
-.question-render {
-  padding: 0;
-  padding-bottom: 21px;
-}
-
-.possible-answers button {
-  justify-content: center;
-  margin-bottom: 10px;
-  font-size: 20px;
+.quest-anser-btn{
+  width: 100%;
+  height: 120px;
+  font-size:em(20px);
+  background-color: $clr3;
+  padding-top:em(15px);
+  padding-bottom:em(15px);
+  border-radius:em(10px);
   outline: none;
-  border: none;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  align-items: center;
-  background-color: grey;
-  color:white;
-  cursor: pointer;
-  // transition: 0.3s ease-out transform;
 }
-
-.quest-time {
-  font-weight: bold;
-  font-size: 24px;
-}
-
-.quizQuest{
-  color: white;
+.question-status{
+  color: $clr3;
+  font-size:em(30px);
+  padding-top:10px;
 }

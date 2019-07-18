@@ -63,7 +63,7 @@ export default {
           nickName: guestNick
         }
       };
-      this.$store.dispatch({ type: "setUser", infoToLog });
+      this.$store.dispatch({ type: "setUser", infoToLog: infoToLog.player });
       this.$store.dispatch({ type: "logToLiveGame", infoToLog });
       this.$router.push(`/quiz/${this.quiz._id}/game`);
     }

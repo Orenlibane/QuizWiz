@@ -19,8 +19,7 @@ export default {
   mutations: {
     setUser(state, { infoToLog }) {
       console.log('info To log', infoToLog);
-
-      state.gameState.user = infoToLog.player;
+      state.gameState.user = infoToLog;
     },
     addUser(state, { user }) {
       //TODO: CHECK FOR DELETE
