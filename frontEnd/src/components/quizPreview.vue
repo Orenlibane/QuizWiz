@@ -12,10 +12,10 @@
     </div>
     <!-- PREVIEW DETAILS LEFT SIDE -->
     <div class="quiz-preview-details">
-      <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
-      <h2>{{quiz.name}}</h2>
       <p>by {{quiz.creatorName}}</p>
-      <div class="quiz-preview-timer">
+      <h2>{{quiz.name}}</h2>
+      <div class="quiz-preview-timer flex space-between align-center">
+      <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
         <span>{{serverTime}}</span>
       </div>
       <div class="flex both-align-center">
