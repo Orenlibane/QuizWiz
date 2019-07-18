@@ -5,14 +5,13 @@
     <h1 class="caps">live games</h1>
     <quiz-list v-if="liveGames" :quizes="liveGames"></quiz-list>
 
-    <h1 class="caps">all games</h1>
-    <quiz-list v-if="games" :quizes="games"></quiz-list>
-    <!-- <h1>Recommended for you</h1>
-    <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>-->
-
-    <router-link to="/quiz/add">
-      <button class="addQuizBtn">Add quiz</button>
-    </router-link>
+    <!-- <h1 class="caps">all games</h1> -->
+    <!-- <quiz-list v-if="games" :quizes="games"></quiz-list> -->
+    <div class="flex both-align-center">
+      <router-link to="/quiz/add">
+        <button class="addQuizBtn">Add Quiz</button>
+      </router-link>
+    </div>
   </section>
 </template>
 

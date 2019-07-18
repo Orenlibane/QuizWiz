@@ -94,7 +94,10 @@ export default {
   },
   getters: {
     getLiveGames(state) {
-      return state.liveGames;
+      let liveGames = state.liveGames.map(game => {
+        return game.quiz;
+      });
+      return liveGames;
     },
     users(state) {
       return state.users;

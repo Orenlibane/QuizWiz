@@ -7,10 +7,10 @@ function setup(http) {
 
   io.on('connection', function(socket) {
     // SERVER GLOBAL TIME SEND
-    setInterval(() => {
-      socket.emit('serverTime', Date.now());
-      // console.log('regregre');
-    }, 200);
+    // setInterval(() => {
+    //   socket.emit('serverTime', Date.now());
+    //   // console.log('regregre');
+    // }, 200);
 
     socket.on('onCreateGame', quiz => {
       var newGame = gameService.createGame(quiz);
@@ -37,9 +37,9 @@ function setup(http) {
             newGame.status = 'endGame';
             socket.emit('endGame', newGame);
             clearInterval(gameInterval);
-            // socket.leave(newGame._id);
-            // gameService.removeGame(newGame._id);
-            // io.emit('returnAllLiveGames', gameService.getAllonlineGames());
+            socket.leave(newGame._id);
+            gameService.removeGame(newGame._id);
+            io.emit('returnAllLiveGames', gameService.getAllonlineGames());
             return;
           }
           newGame.status = 'quest';
