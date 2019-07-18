@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <app-header v-if="showHeaderAndFooter"></app-header>
+    <!-- <app-header v-if="showHeaderAndFooter"></app-header> -->
     <router-view></router-view>
-    <app-footer v-if="showHeaderAndFooter"></app-footer>
+    <!-- <app-footer v-if="showHeaderAndFooter"></app-footer> -->
   </div>
 </template>
 
