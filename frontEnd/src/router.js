@@ -52,7 +52,7 @@ export default new Router({
       component: quizGame
     },
     {
-      path: '/libary',
+      path: '/library',
       name: 'quizLibary',
       component: quizLibary
     }

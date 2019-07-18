@@ -49,3 +49,7 @@ on('middleQuiz', gameScores => {
 on('quizQuest', () => {
   store.dispatch({ type: 'changeGameStage', stage: 'quizQuest' });
 });
+on('loggedUser', loggedPlayer => {
+  console.log(loggedPlayer);
+  store.dispatch({ type: 'newLoggedUser', loggedPlayer });
+});

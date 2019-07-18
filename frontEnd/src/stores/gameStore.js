@@ -1,27 +1,24 @@
-Vue.use(Vuex);
-
-export default new Vuex.Store({
-  strict: true,
-  modules: {},
+const gameStore = {
   state: {
-    userRes: [],
-    currQuestTimer: null,
-    currQuest: null,
+    currentGameUsers: []
   },
-  mutations: {},
-  getters: {},
-  actions: {
-    async getCurrQuestTimer(context) {
-      try{
-        console.log('getting time');
-      }
-      catch {
-        console.log('could not get time');
-      }
+  mutations: {
+    addLoggedUser(state, { loggedPlayer }) {
+      console.log(loggedPlayer);
+      state.currentGameUsers.push(loggedPlayer);
     }
   },
-});
+  actions: {
+    newLoggedUser(context, { loggedPlayer }) {
+      console.log(loggedPlayer);
+      context.commit({ type: 'addLoggedUser', loggedPlayer });
+    }
+  },
+  getters: {
+    getLoggedUsers(state) {
+      return state.currentGameUsers;
+    }
+  }
+};
 
-// async getQuiz(context, { quizId }) {
-//   return await quizService.getById(quizId);
-// },
+export default gameStore;

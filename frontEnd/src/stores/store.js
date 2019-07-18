@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import userStore from './userStore.js';
 import quizStore from './quizStore.js';
 import socketStore from './socketStore.js';
+import gameStore from './gameStore.js';
 
 Vue.use(Vuex);
 
@@ -11,7 +12,8 @@ export default new Vuex.Store({
   modules: {
     userStore,
     quizStore,
-    socketStore
+    socketStore,
+    gameStore
   },
   state: {
     isGame: false

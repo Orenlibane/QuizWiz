@@ -1,6 +1,7 @@
 'use strict';
 import quizService from '@/service/quizService.js';
 import utilService from '@/service/utilService.js';
+
 const quizStore = {
   state: {
     quizes: ''

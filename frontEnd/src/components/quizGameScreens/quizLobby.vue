@@ -13,9 +13,9 @@
       <img src="@/assets/placeholder_600x400_2.jpg" alt />
     </div>
     <div>
-      <p>oren joined</p>
-      <p>oren joined</p>
-      <p>oren joined</p>
+      <ul>
+        <li v-for="(user,idx) in loggedUsers" :key="idx">{{user.nickName}} has Joined the Game</li>
+      </ul>
       <button class="mid-btn">show more</button>
     </div>
     <span>{{getTime}}</span>
@@ -34,6 +34,9 @@ export default {
   computed: {
     getTime() {
       return this.$store.getters.getGameCountDown;
+    },
+    loggedUsers() {
+      return this.$store.getters.getLoggedUsers;
     }
   },
   created() {},
