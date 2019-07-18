@@ -24,11 +24,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer!important;
+  cursor: pointer;
   // border:1px solid white;
-}
-.footer-btn i {
-  cursor: pointer!important;
 }
 
 .app-footer .footer-btn:not(:first-child) {
@@ -37,7 +34,4 @@
 .app-footer > .router-link-active {
   // background-color: blue;
   color: $clr2;
-}
-a{
-  cursor: pointer;
 }
