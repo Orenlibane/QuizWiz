@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 Wed, 17 Jul 2019 15:09:56 GMT - Info - Server is running on port:  3000
 Wed, 17 Jul 2019 15:10:12 GMT - Debug - auth.service - login with email: 11
@@ -13,3 +14,9 @@ Thu, 18 Jul 2019 07:30:06 GMT - Debug - auth.service - login with email: 11
 Thu, 18 Jul 2019 07:44:49 GMT - Info - Server is running on port:  3000
 Thu, 18 Jul 2019 07:45:22 GMT - Info - Server is running on port:  3000
 Thu, 18 Jul 2019 07:45:27 GMT - Debug - auth.service - login with email: 11
+=======
+>>>>>>> 267abe374a0607cd248911c4facf7ea445c44463
+
+Thu, 18 Jul 2019 07:58:12 GMT - Debug - auth.service - login with email: 11
+Thu, 18 Jul 2019 07:58:20 GMT - Info - Server is running on port:  3000
+Thu, 18 Jul 2019 07:58:53 GMT - Debug - auth.service - login with email: 11

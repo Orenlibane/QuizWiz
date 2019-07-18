@@ -19,12 +19,12 @@
         <span>{{serverTime}}</span>
       </div>
       <div class="flex both-align-center">
-        <button @click="deleteQuiz(quiz._id)">🗑️</button>
-        <button>
+        <button class="card-btn" @click="deleteQuiz(quiz._id)">🗑️</button>
+        <button class="card-btn">
           <router-link :to="editUrl">Edit</router-link>
         </button>
 
-        <button>
+        <button class="card-btn">
           <router-link :to="enterGameUrl">Enter</router-link>
         </button>
       </div>

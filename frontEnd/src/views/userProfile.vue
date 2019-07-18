@@ -1,28 +1,26 @@
 <template>
-  <section class="user-profile">
-      {{user}}
-  <input type="file" @change="onFileSelected">
-  <button @click="upload">Upload</button>
+  <section v-if="user" class="user-profile">
+    {{user}}
+    <div>
+      E-mail: {{user.email}}
+      <span class="edit">Edit</span>
+    </div>
   </section>
 </template>
 
 <script>
 export default {
-  created() {
-    this.user = this.$store.getters.getUser
+  async created() {
+    this.user = await this.$store.getters.getUser;
+    console.log('user:', this.$store.getters);
   },
 
   data() {
-      return{
-          user: Object,
-          selectedFile: null
-      }
+    return {
+      user: Object,
+      selectedFile: null
+    };
   },
-  methods: {
-    onFileSelected(event) {
-      console.log(event);
-      this.selectedFile = event.target.files[0]
-    }
-  }
+  methods: {}
 };
 </script>

@@ -7,15 +7,19 @@
   height: rem(120px);
   object-fit: cover;
   object-position: top;
-  display: block;
+  // display: block;
   padding: 0;
   margin: 0;
+  border-top-left-radius:rem(10px);
+  border-top-right-radius:rem(10px);
+
 }
 
 .quiz-preview-card {
   // border: 1px solid black;
   // padding: rem(13px);
   background-color: $clr3;
+  border-radius: rem(10px);
 }
 
 .quiz-preview-btn-container {
@@ -35,24 +39,39 @@
   width: rem(30px);
   height: rem(30px);
   color: $clr3;
-  background-color: rgba(0,0,0,0.0);
+  background-color: rgba(0, 0, 0, 0);
   border: none;
 }
 
-.quiz-preview-details{
+.quiz-preview-details {
   padding-left: rem(18px);
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.quiz-preview-card p{
+.quiz-preview-card p {
   padding: 0;
-  margin:0;
+  margin: 0;
 }
-.quiz-preview-timer{
+.quiz-preview-timer {
   text-align: right;
 }
-.quiz-preview-timer span{
+.quiz-preview-timer span {
   font-size: rem(40px);
+}
+.card-btn{
+  background-color: $clr1;
+  color:$clr3;
+  // padding-right: rem(5px);
+  // padding-left: rem(5px);
+  width: rem(70px);
+  height: rem(40px);
+  border-radius: rem(5px);
+  cursor: pointer;
+}
+.card-btn a{
+  color: $clr3;
+  text-decoration-line: none;
+  font-size: rem(19px);
 }
