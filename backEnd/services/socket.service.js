@@ -6,11 +6,11 @@ function setup(http) {
   io = socketIO(http);
 
   io.on('connection', function(socket) {
-    // SERVER GLOBAL TIME SEND
-    setInterval(() => {
-      socket.emit('serverTime', Date.now());
-      // console.log('regregre');
-    }, 200);
+    // // SERVER GLOBAL TIME SEND
+    // setInterval(() => {
+    //   socket.emit('serverTime', Date.now());
+    //   // console.log('regregre');
+    // }, 200);
 
     socket.on('onCreateGame', quiz => {
       let currentQuestion = 0;
@@ -28,60 +28,26 @@ function setup(http) {
       //sending the signle to start the 5 sec lobby timer
       socket.emit('startGameTimer');
 
-      //---------------------------------------------------------------------------
+      var gameInterval = setInterval(moveQuiz, 5000, newGame, socket);
 
-      // WAY TO SIMPLIFIY THE CODE WITH TIMEOUTS
-      // var gameInterval = setInterval(moveQuiz, 5000, newGame);
-
-      // function moveQuiz(newGame) {
-      //   console.log('stat');
-      //   if (newGame.status === 'lobby' || 'middle') {
-      //     newGame.status = 'quest';
-      //     socket.emit('quizQuest');
-      //     if (newGame.currQuest === newGame.quiz.quests.length) {
-      //       newGame.status = 'endGame';
-      //       socket.emit('endGame', newGame);
-      //       clearInterval(gameInterval);
-      //     }
-      //   } else if (newGame.status === 'quest') {
-      //     newGame.status = 'middle';
-      //     socket.emit('middleQuiz', newGame);
-      //     newGame.currQuest++;
-      //     socket.emit('questionChange', { currentQuestion });
-      //   }
-      // }
-
-      //----------------------------------------------------------------------------------------
-
-      //LOBBY COUNTDOWN TO 5
-      setTimeout(() => {
-        socket.emit('startTheGame');
-
-        setTimeout(() => {
-          socket.emit('middleQuiz', newGame);
-          currentQuestion++;
-          socket.emit('questionChange', { currentQuestion });
-        }, 5000);
-
-        const interval = setInterval(() => {
-          if (currentQuestion === newGame.quiz.quests.length) {
+      function moveQuiz(newGame, socket) {
+        console.log('current Game status', newGame.status);
+        if (newGame.status === 'lobby' || newGame.status === 'middle') {
+          newGame.status = 'quest';
+          socket.emit('quizQuest');
+          if (newGame.currQuest === newGame.quiz.quests.length) {
+            newGame.status = 'endGame';
             socket.emit('endGame', newGame);
-            clearInterval(interval);
-            socket.leave(newGame._id);
-            gameService.removeGame(newGame._id);
-            console.log(newGame);
-          } else {
-            setTimeout(() => {
-              socket.emit('quizQuest');
-              setTimeout(() => {
-                socket.emit('middleQuiz', newGame);
-                currentQuestion++;
-                socket.emit('questionChange', { currentQuestion });
-              }, 5000);
-            }, 5000);
+            clearInterval(gameInterval);
           }
-        }, 11000);
-      }, 5000);
+        } else if (newGame.status === 'quest') {
+          console.log('send middle');
+          newGame.status = 'middle';
+          socket.emit('middleQuiz', newGame);
+          newGame.currQuest++;
+          socket.emit('questionChange', newGame.currQuest);
+        }
+      }
       socket.on('updateAns', answer => {
         gameService.setAnswer(newGame._id, player.id, answer);
       });
@@ -95,3 +61,36 @@ function setup(http) {
 module.exports = {
   setup
 };
+
+//----------------------------------------------------------------------------------------
+
+//LOBBY COUNTDOWN TO 5
+// setTimeout(() => {
+//   socket.emit('startTheGame');
+
+//   setTimeout(() => {
+//     socket.emit('middleQuiz', newGame);
+//     currentQuestion++;
+//     socket.emit('questionChange', { currentQuestion });
+//   }, 5000);
+
+//   const interval = setInterval(() => {
+//     if (currentQuestion === newGame.quiz.quests.length) {
+//       socket.emit('endGame', newGame);
+//       clearInterval(interval);
+//       socket.leave(newGame._id);
+//       gameService.removeGame(newGame._id);
+//       console.log(newGame);
+//     } else {
+//       setTimeout(() => {
+//         socket.emit('quizQuest');
+//         setTimeout(() => {
+//           socket.emit('middleQuiz', newGame);
+//           currentQuestion++;
+//           socket.emit('questionChange', { currentQuestion });
+//         }, 5000);
+//       }, 5000);
+//     }
+//   }, 11000);
+// }, 5000);
+//-------------------------------------------

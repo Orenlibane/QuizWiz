@@ -36,7 +36,7 @@ export default {
     firstGameSetting(state, { quiz }) {
       state.gameState.currentQuiz = quiz;
     },
-    updateCurrentQuestion(state, { currentQuestion }) {
+    updateCurrentQuestion(state, currentQuestion) {
       console.log(currentQuestion);
       state.gameState.currentQuestion = currentQuestion;
     },
@@ -61,6 +61,8 @@ export default {
       context.commit({ type: 'firstGameSetting', quiz });
     },
     changeGameStage(context, { stage }) {
+      console.log('change screen socket store');
+
       context.commit({ type: 'updateGameStage', stage: stage });
     },
     changeGameQuestion(context, { currentQuestion }) {

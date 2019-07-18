@@ -47,6 +47,7 @@ on('middleQuiz', gameScores => {
   store.dispatch({ type: 'getGameScores', gameScores: gameScores });
 });
 on('quizQuest', () => {
+  console.log('change screen socket service');
   store.dispatch({ type: 'changeGameStage', stage: 'quizQuest' });
 });
 on('loggedUser', loggedPlayer => {
