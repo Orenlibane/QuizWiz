@@ -12,7 +12,7 @@
 export default {
   async created() {
     this.user = await this.$store.getters.getUser;
-    console.log('user:', this.$store.getters);
+    console.log("user:", this.$store.getters);
   },
 
   data() {
