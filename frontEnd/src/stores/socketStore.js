@@ -18,7 +18,9 @@ export default {
   },
   mutations: {
     setUser(state, { infoToLog }) {
-      state.user = infoToLog.player;
+      console.log('info To log', infoToLog);
+
+      state.gameState.user = infoToLog.player;
     },
     addUser(state, { user }) {
       //TODO: CHECK FOR DELETE
@@ -55,7 +57,6 @@ export default {
   },
   actions: {
     setUser(context, { infoToLog }) {
-      console.log('info To log', infoToLog);
       context.commit({ type: 'setUser', infoToLog });
     },
     logToLiveGame(context, { infoToLog }) {
@@ -106,6 +107,9 @@ export default {
     }
   },
   getters: {
+    getUser(state) {
+      return state.gameState.user;
+    },
     getLiveGames(state) {
       let liveGames = state.liveGames.map(game => {
         game.quiz.gameId = game._id;
@@ -114,6 +118,7 @@ export default {
       return liveGames;
     },
     users(state) {
+      //TODO: CHECK FOR DELETE
       return state.users;
     },
     serverTime(state) {

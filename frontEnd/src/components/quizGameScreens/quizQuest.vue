@@ -55,14 +55,23 @@ export default {
         this.$store.dispatch({
           type: "updateAns",
           res: {
-            currAns: true,
-            score: this.timer * 10
+            answerInfo: {
+              currAns: true,
+              score: this.timer * 10
+            },
+            id: this.$store.getters.getUser
           }
         });
       } else {
         this.$store.dispatch({
           type: "updateAns",
-          res: { currAns: false, score: 0 }
+          res: {
+            answerInfo: {
+              currAns: false,
+              score: this.timer * 10
+            },
+            id: this.$store.getters.getUser
+          }
         });
       }
     },
@@ -77,12 +86,19 @@ export default {
   },
   destroyed() {
     clearInterval(this.timerInterval);
-    let playerId = this.$store.state.user.id;
+    let player = this.$store.state.getters.getUser;
+    console.log("this is the user gotten by the getter", player);
     if (!this.isAnswered) {
       console.log("here");
       this.$store.dispatch({
         type: "updateAns",
-        res: { currAns: false, score: 0 }
+        res: {
+          answerInfo: {
+            currAns: false,
+            score: this.timer * 10
+          },
+          id: this.$store.getters.getUser
+        }
       });
     }
   },
