@@ -1,11 +1,12 @@
 .quiz-preview-img-container {
-  max-width: rem(120px);
+  width: 100%;
   height: rem(120px);
 }
 .quiz-preview-img-container img {
-  max-width: rem(120px);
+  width: 100%;
   height: rem(120px);
   object-fit: cover;
+  object-position: top;
   display: block;
   padding: 0;
   margin: 0;
@@ -13,7 +14,7 @@
 
 .quiz-preview-card {
   border: 1px solid black;
-  padding: rem(13px);
+  // padding: rem(13px);
 }
 
 .quiz-preview-btn-container {
@@ -23,7 +24,8 @@
 .quiz-preview-like-count {
   width: rem(30px);
   height: rem(30px);
-  background-color: lightgray;
+  // background-color: lightgray;
+  color: $clr3;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +33,8 @@
 .quiz-preview-like-btn {
   width: rem(30px);
   height: rem(30px);
-  background-color: lightgray;
+  color: $clr3;
+  background-color: rgba(0,0,0,0.0);
   border: none;
 }
 

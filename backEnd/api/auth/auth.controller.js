@@ -10,7 +10,7 @@ async function login(req, res) {
         req.session.user = user;
         console.log('req.session when logging in:', req.session.user);
         res.json(user)
-    } 
+    }
     catch (err) {
         res.status(401).send({ error: err })
     }
@@ -31,10 +31,11 @@ async function signup(req, res) {
     }
 }
 
-async function logout(req, res){
+async function logout(req, res) {
     try {
         req.session.destroy()
         res.send({ message: 'logged out successfully' })
+        this.$router.push('/welcome')
     } catch (err) {
         res.status(500).send({ error: err })
     }

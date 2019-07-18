@@ -9,7 +9,7 @@ const router = express.Router()
 // router.delete('/:id',  requireAuth, deleteUser)
 
 router.get('/', getUsers)
-router.get('/yarin', getLoggedIn)
+router.get('/getLoggedIn', getLoggedIn)
 router.get('/:id', getUser)
 router.delete('/:id', deleteUser)
 

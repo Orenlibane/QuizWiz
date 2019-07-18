@@ -20,9 +20,10 @@ function gamePlayersCount(gameId) {
   console.log('is bug here?');
   return gameById.gamePlayers.length;
 }
-function joinGame(gameId, player = { nickName: 'guest', id: _makeId() }) {
+// Michael: Need to keep going with the code check from here
+//In here - later on we'll have to get the guest nickname and its id from the session.
+function joinGame(gameId, player = { nickName: 'guest', id: _makeId(), ans: [] }) {
   const gameById = onlineGames.find(game => game._id === gameId);
-  player.ans = [];
   gameById.gamePlayers.push(player);
   return player;
 }

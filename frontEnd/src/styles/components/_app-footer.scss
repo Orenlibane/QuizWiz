@@ -1,5 +1,5 @@
 .app-footer {
-  background-color: grey;
+  background-color: $clr3;
   z-index: 10;
   padding-top: rem(5px);
   padding-bottom: rem(5px);
@@ -17,21 +17,27 @@
   border: none;
   font-size: rem(21px);
   text-transform: uppercase;
-  background-color: grey;
-  color: white;
+  // background-color: grey;
+  color: $clr1;
   outline: none;
   text-decoration-line: none;
   display: flex;
   justify-content: center;
   align-items: center;
-  border:1px solid white;
+  cursor: pointer!important;
+  // border:1px solid white;
+}
+.footer-btn i {
+  cursor: pointer!important;
 }
 
 .app-footer .footer-btn:not(:first-child) {
   margin-left: rem(36px);
 }
-.app-footer >.router-link-active {
-  background-color: blue;
-  color: white;
-
+.app-footer > .router-link-active {
+  // background-color: blue;
+  color: $clr2;
+}
+a{
+  cursor: pointer;
 }

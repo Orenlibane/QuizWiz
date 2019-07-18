@@ -5,7 +5,7 @@ var io;
 function setup(http) {
   io = socketIO(http);
 
-  io.on('connection', function(socket) {
+  io.on('connection', function (socket) {
     // SERVER GLOBAL TIME SEND
     // setInterval(() => {
     //   socket.emit('serverTime', Date.now());
@@ -27,6 +27,7 @@ function setup(http) {
 
       //sending the signle to start the 5 sec lobby timer
       socket.emit('startGameTimer');
+<<<<<<< HEAD
 
       //---------------------------------------------------------------------------
 
@@ -52,6 +53,16 @@ function setup(http) {
       // }
 
       //----------------------------------------------------------------------------------------
+=======
+      // setInterval(moveQuiz, 5000);
+      // function moveQuiz(game) {
+      //   if (game.status === 'lobby' || 'middle') {
+      //     game.status = 'quest';
+      //     socket.emit();
+      //     // if
+      //   }
+      // }
+>>>>>>> be20c4d495c5510b23e4cf5299a66ac14a260713
 
       //LOBBY COUNTDOWN TO 5
       setTimeout(() => {

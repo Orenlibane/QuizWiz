@@ -5,11 +5,16 @@ export default {
   logout,
   signup,
   getUsers,
-  checkUser
+  checkUser,
+  createGuestUser
 };
 
 function checkUser() {
-  return httpService.get('user/yarin');
+  return httpService.get('user/getLoggedIn');
+}
+
+function createGuestUser() {
+
 }
 
 function login(userCred) {

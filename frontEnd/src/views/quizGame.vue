@@ -111,7 +111,7 @@ export default {
     const quizId = this.$route.params.id;
     var quiz = await this.$store.dispatch({ type: "getQuiz", quizId });
     this.cmp.info = { quiz, currQuest: 0, timer: null };
-
+    this.cmp.testInfo;
     //Remove footer and header
     eventBus.$emit(GAME_ON);
   }

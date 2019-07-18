@@ -3,10 +3,11 @@ import Router from 'vue-router';
 import HomePage from './views/homePage';
 import addQuiz from './views/addQuiz';
 import editQuiz from './views/editQuiz';
-import logIn from './views/logIn';
 import signUp from './views/signUp';
 import quizGame from './views/quizGame.vue';
-import quizLibary from './views/quizLibary.vue';
+import quizLibrary from './views/quizLibrary.vue';
+import userProfile from './views/userProfile.vue';
+import welcomePage from './views/welcomePage.vue';
 import TEST1 from './components/quizGameScreens/quizLobby.vue';
 // import about from './views/about.vue';
 
@@ -16,6 +17,11 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: '/welcome',
+      name: 'welcome',
+      component: welcomePage
+    },
     {
       path: '/',
       name: 'homePage',
@@ -31,11 +37,11 @@ export default new Router({
       name: 'editQuiz',
       component: editQuiz
     },
-    {
-      path: '/login',
-      name: 'logIn',
-      component: logIn
-    },
+    // {
+    //   path: '/login',
+    //   name: 'logIn',
+    //   component: logIn
+    // },
     {
       path: '/signup',
       name: 'signUp',
@@ -53,8 +59,19 @@ export default new Router({
     },
     {
       path: '/library',
+<<<<<<< HEAD
       name: 'quizLibary',
       component: quizLibary
+=======
+      name: 'quizLibrary',
+      component: quizLibrary
+    },
+    {
+      path: '/profile/:id',
+      name: 'userProfile',
+      component: userProfile
+>>>>>>> be20c4d495c5510b23e4cf5299a66ac14a260713
     }
+
   ]
 });

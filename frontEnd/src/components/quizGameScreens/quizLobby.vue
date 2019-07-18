@@ -20,6 +20,7 @@
     </div>
     <span>{{getTime}}</span>
     <div class="flex column justify-center align-center">
+      <button @click="startGame">Start Game</button>
       <button class="mid-btn">Leave</button>
       <!-- <button class="mid-btn" @click="startMultiplayer">Start Game</button> -->
     </div>
@@ -30,7 +31,11 @@
 import quizLobby from "@/styles/components/_quiz-lobby.scss";
 export default {
   props: ["info"],
-  methods: {},
+  methods: {
+    startGame() {
+      console.log('Starting game!');
+    }
+  },
   computed: {
     getTime() {
       return this.$store.getters.getGameCountDown;
@@ -39,7 +44,9 @@ export default {
       return this.$store.getters.getLoggedUsers;
     }
   },
-  created() {},
+  created() {
+    console.log("room info:", this.info);
+  },
   data() {
     return {};
   }
