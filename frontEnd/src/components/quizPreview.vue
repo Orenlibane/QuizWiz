@@ -61,7 +61,7 @@ export default {
       return `quiz/${this.quiz._id}/game`;
     },
     serverTime() {
-      let time = moment(this.$store.getters.serverTime).format("h:mm:ss");
+      let time = moment(this.$store.getters.serverTime).format("mm:ss");
 
       return time;
     }

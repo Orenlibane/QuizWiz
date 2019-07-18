@@ -6,11 +6,11 @@ function setup(http) {
   io = socketIO(http);
 
   io.on('connection', function(socket) {
-    // // SERVER GLOBAL TIME SEND
-    // setInterval(() => {
-    //   socket.emit('serverTime', Date.now());
-    //   // console.log('regregre');
-    // }, 200);
+    // SERVER GLOBAL TIME SEND
+    setInterval(() => {
+      socket.emit('serverTime', Date.now());
+      // console.log('regregre');
+    }, 200);
 
     socket.on('onCreateGame', quiz => {
       let currentQuestion = 0;

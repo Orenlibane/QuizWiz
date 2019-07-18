@@ -6,7 +6,7 @@
   width: 100%;
   height: rem(169px);
   object-fit: cover;
-  object-position: top;
+  object-position: center;
   display: block;
   padding: 0;
   margin: 0;
@@ -17,6 +17,7 @@
   padding: rem(8px);
   background-color: $clr3;
   border-radius: rem(10px);
+  margin-bottom: rem(40px);
 }
 
 .quiz-preview-btn-container {
@@ -26,7 +27,9 @@
 .quiz-preview-like-count {
   width: rem(30px);
   height: rem(30px);
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
+
+
   color: $clr3;
   display: flex;
   justify-content: center;
@@ -37,14 +40,15 @@
   width: rem(30px);
   height: rem(30px);
   color: $clr3;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: rem(5px);
   border: none;
   cursor: pointer;
   outline: none;
 }
 
 .quiz-preview-details {
-  padding-left: rem(18px);
+  // padding-left: rem(18px);
   width: 100%;
   font-family: 'Titillium-Web';
   display: flex;
@@ -72,7 +76,7 @@
   cursor: pointer;
 }
 .card-btn a {
-  color: $clr3;
+  color: $clr2;
   text-decoration-line: none;
   font-size: rem(19px);
 }
