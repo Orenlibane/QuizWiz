@@ -59,14 +59,8 @@ export default new Router({
     },
     {
       path: '/library',
-      name: 'quizLibrary',
+      name: 'quizLibary',
       component: quizLibrary
-    },
-    {
-      path: '/profile/:id',
-      name: 'userProfile',
-      component: userProfile
     }
-
   ]
 });

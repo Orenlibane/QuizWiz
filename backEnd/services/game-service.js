@@ -25,7 +25,7 @@ function gamePlayersCount(gameId) {
 function joinGame(gameId, player = { nickName: 'guest', id: _makeId(), ans: [] }) {
   const gameById = onlineGames.find(game => game._id === gameId);
   gameById.gamePlayers.push(player);
-  return player.id;
+  return player;
 }
 function leaveGame(playerId, gameId) {
   const gameById = onlineGames.find(game => game._id === gameId);
@@ -37,7 +37,9 @@ function startGame(gameId) {
 }
 
 function removeGame(gameId) {
+  console.log(gameId);
   onlineGames = onlineGames.filter(game => game._id !== gameId);
+  console.log('games after', onlineGames);
 }
 
 function setAnswer(gameId, playerId, answer) {
@@ -58,8 +60,8 @@ function createGame(quiz) {
     gamePlayers: [],
     isGameOn: false,
     quiz,
-    // status: 'lobby',
-    // currQuest: 0,
+    status: 'lobby',
+    currQuest: 0,
     _id: _makeId(12),
     timeCreated: Date.now()
   };

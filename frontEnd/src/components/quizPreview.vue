@@ -1,5 +1,5 @@
 <template>
-  <section class="quiz-preview-card flex">
+  <section class="quiz-preview-card flex column">
     <!-- IMG RIGHT SIDE WITH BTNS -->
     <div class="quiz-preview-img-container">
       <img class="quiz-img-preview" src="@/assets/placeholder_600x400_2.jpg" alt />

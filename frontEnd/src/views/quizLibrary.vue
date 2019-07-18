@@ -18,6 +18,9 @@ export default {
     liveQuizes() {
       return this.$store.getters.getQuizes;
     }
+  },
+  created() {
+    console.log("libary");
   }
 };
 </script>

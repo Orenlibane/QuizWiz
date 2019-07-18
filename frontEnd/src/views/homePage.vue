@@ -4,8 +4,8 @@
 
     <h1 class="caps">live games</h1>
     <quiz-list v-if="liveGames" :quizes="liveGames"></quiz-list>
-    <h1>Recommended for you</h1>
-    <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>
+    <!-- <h1>Recommended for you</h1>
+    <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>-->
 
     <router-link to="/quiz/add">
       <button class="addQuizBtn">Add quiz</button>
