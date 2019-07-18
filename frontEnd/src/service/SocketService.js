@@ -28,18 +28,17 @@ on('startGameTimer', () => {
   store.dispatch({ type: 'gameStartListener' });
 });
 
-on('startTheGame', () => {
-  store.dispatch({ type: 'changeGameStage', stage: 'quizQuest' });
-});
-
 on('questionChange', currentQuestion => {
   console.log(currentQuestion);
   store.dispatch({ type: 'changeGameQuestion', currentQuestion });
 });
-on('endGame', gameScores => {
-  console.log('emit endgame');
-  store.dispatch({ type: 'changeGameStage', stage: 'quizEnd' });
-  store.dispatch({ type: 'getGameScores', gameScores });
+on('loggedUser', loggedPlayer => {
+  console.log(loggedPlayer);
+  store.dispatch({ type: 'newLoggedUser', loggedPlayer });
+});
+
+on('startTheGame', () => {
+  store.dispatch({ type: 'changeGameStage', stage: 'quizQuest' });
 });
 on('middleQuiz', gameScores => {
   console.log('scores in socket Service front', gameScores);
@@ -50,7 +49,18 @@ on('quizQuest', () => {
   console.log('change screen socket service');
   store.dispatch({ type: 'changeGameStage', stage: 'quizQuest' });
 });
-on('loggedUser', loggedPlayer => {
-  console.log(loggedPlayer);
-  store.dispatch({ type: 'newLoggedUser', loggedPlayer });
+on('endGame', gameScores => {
+  console.log('emit endgame');
+  store.dispatch({ type: 'changeGameStage', stage: 'quizEnd' });
+  store.dispatch({ type: 'getGameScores', gameScores });
 });
+
+on('returnAllLiveGames', liveGames => {
+  console.log(liveGames);
+  store.dispatch({ type: 'setLoadedGames', liveGames });
+});
+
+// on('changeGameStage', stage => {
+//   console.log('change screen socket service');
+//   store.dispatch({ type: 'changeGameStage', stage: stage });
+// });

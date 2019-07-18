@@ -13,9 +13,8 @@ function setup(http) {
     // }, 200);
 
     socket.on('onCreateGame', quiz => {
-      let currentQuestion = 0;
-
       var newGame = gameService.createGame(quiz);
+      io.emit('returnAllLiveGames', gameService.getAllonlineGames());
       //Create and join the room
       socket.join(newGame._id);
 
@@ -33,13 +32,18 @@ function setup(http) {
       function moveQuiz(newGame, socket) {
         console.log('current Game status', newGame.status);
         if (newGame.status === 'lobby' || newGame.status === 'middle') {
-          newGame.status = 'quest';
-          socket.emit('quizQuest');
           if (newGame.currQuest === newGame.quiz.quests.length) {
+            newGame.currQuest--;
             newGame.status = 'endGame';
             socket.emit('endGame', newGame);
             clearInterval(gameInterval);
+            // socket.leave(newGame._id);
+            // gameService.removeGame(newGame._id);
+            // io.emit('returnAllLiveGames', gameService.getAllonlineGames());
+            return;
           }
+          newGame.status = 'quest';
+          socket.emit('quizQuest');
         } else if (newGame.status === 'quest') {
           console.log('send middle');
           newGame.status = 'middle';

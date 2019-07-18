@@ -4,6 +4,9 @@
 
     <h1 class="caps">live games</h1>
     <quiz-list v-if="liveGames" :quizes="liveGames"></quiz-list>
+
+    <h1 class="caps">all games</h1>
+    <quiz-list v-if="games" :quizes="games"></quiz-list>
     <!-- <h1>Recommended for you</h1>
     <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>-->
 
@@ -27,8 +30,11 @@ export default {
   },
   computed: {
     // *IMPORTANT NOTE: we will attach this computed property to the live games array when we'll start with the multiplayer
-    liveGames() {
+    games() {
       return this.$store.getters.getQuizes;
+    },
+    liveGames() {
+      return this.$store.getters.getLiveGames;
     },
     quizes() {
       return this.$store.getters.getQuizes;
