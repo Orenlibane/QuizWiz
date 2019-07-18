@@ -1,8 +1,8 @@
 <template>
   <div class="quiz-library">
-    <h1>This is quiz library page</h1>
-    <quiz-filter></quiz-filter>
-    <quiz-list :quizes="liveQuizes"></quiz-list>
+    <h1 class="center">Quiz Library</h1>
+    <!-- <quiz-filter></quiz-filter> -->
+    <quiz-list v-if="games" :quizes="games"></quiz-list>
   </div>
 </template>
 
@@ -15,12 +15,10 @@ export default {
   props: [],
   components: { quizList, quizFilter },
   computed: {
-    liveQuizes() {
+    games() {
       return this.$store.getters.getQuizes;
     }
   },
-  created() {
-    console.log("libary");
-  }
+  created() {}
 };
 </script>

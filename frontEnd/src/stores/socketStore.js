@@ -3,11 +3,11 @@ import quizStore from './quizStore.js';
 
 export default {
   state: {
+    liveGames: [],
     serverClock: null,
     gameState: {
       users: [],
       countdown: 5,
-      timeInterval: null,
       gameStage: 'quizDetails',
       currentQuiz: null,
       currentQuestion: null,
@@ -26,17 +26,13 @@ export default {
       state.gameState.countdown = countdown;
       console.log(state.gameState.countdown, 'from mutation countdown');
     },
-    resetGameInterval(state) {
-      clearInterval(state.gameState.timeInterval);
-      console.log(state.gameState.timeInterval, 'from mutation clear');
-    },
     updateGameStage(state, { stage }) {
       state.gameState.gameStage = stage;
     },
     firstGameSetting(state, { quiz }) {
       state.gameState.currentQuiz = quiz;
     },
-    updateCurrentQuestion(state, { currentQuestion }) {
+    updateCurrentQuestion(state, currentQuestion) {
       console.log(currentQuestion);
       state.gameState.currentQuestion = currentQuestion;
     },
@@ -47,9 +43,15 @@ export default {
     setUserScore(state, { res }) {
       console.log(res);
       state.gameState.userScore.push(res.score);
+    },
+    setLiveGames(state, { liveGames }) {
+      state.liveGames = liveGames;
     }
   },
   actions: {
+    setLoadedGames(context, { liveGames }) {
+      context.commit({ type: 'setLiveGames', liveGames });
+    },
     getGameScores(context, { gameScores }) {
       context.commit({ type: 'setGameScore', gameScores });
     },
@@ -61,6 +63,8 @@ export default {
       context.commit({ type: 'firstGameSetting', quiz });
     },
     changeGameStage(context, { stage }) {
+      console.log('change screen socket store');
+
       context.commit({ type: 'updateGameStage', stage: stage });
     },
     changeGameQuestion(context, { currentQuestion }) {
@@ -89,6 +93,12 @@ export default {
     }
   },
   getters: {
+    getLiveGames(state) {
+      let liveGames = state.liveGames.map(game => {
+        return game.quiz;
+      });
+      return liveGames;
+    },
     users(state) {
       return state.users;
     },

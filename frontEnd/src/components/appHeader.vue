@@ -3,7 +3,6 @@
     <router-link to="/">
       <h1>QwizWizz</h1>
     </router-link>
-    <!-- <p class="points">1234 points</p> -->
     <div class="header-btn-container flex both-align-center">
       <!-- <logged-user></logged-user> -->
       <button class="header-btn">

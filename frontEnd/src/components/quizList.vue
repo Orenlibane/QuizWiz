@@ -12,10 +12,14 @@ export default {
   props: {
     quizes: {
       type: Array
+    },
+    liveGames: {
+      type: Array
     }
   },
   components: {
     quizPreview
-  }
+  },
+  computed: {}
 };
 </script>

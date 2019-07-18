@@ -4,12 +4,14 @@
 
     <h1 class="caps">live games</h1>
     <quiz-list v-if="liveGames" :quizes="liveGames"></quiz-list>
-    <!-- <h1>Recommended for you</h1>
-    <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>-->
 
-    <router-link to="/quiz/add">
-      <button class="addQuizBtn">Add quiz</button>
-    </router-link>
+    <!-- <h1 class="caps">all games</h1> -->
+    <!-- <quiz-list v-if="games" :quizes="games"></quiz-list> -->
+    <div class="flex both-align-center">
+      <router-link to="/quiz/add">
+        <button class="addQuizBtn">Add Quiz</button>
+      </router-link>
+    </div>
   </section>
 </template>
 
@@ -27,8 +29,11 @@ export default {
   },
   computed: {
     // *IMPORTANT NOTE: we will attach this computed property to the live games array when we'll start with the multiplayer
-    liveGames() {
+    games() {
       return this.$store.getters.getQuizes;
+    },
+    liveGames() {
+      return this.$store.getters.getLiveGames;
     },
     quizes() {
       return this.$store.getters.getQuizes;
