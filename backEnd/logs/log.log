@@ -10,3 +10,6 @@ Thu, 18 Jul 2019 07:20:27 GMT - Debug - auth.service - login with email: 11
 
 Thu, 18 Jul 2019 07:24:52 GMT - Info - Server is running on port:  3000
 Thu, 18 Jul 2019 07:30:06 GMT - Debug - auth.service - login with email: 11
+Thu, 18 Jul 2019 07:44:49 GMT - Info - Server is running on port:  3000
+Thu, 18 Jul 2019 07:45:22 GMT - Info - Server is running on port:  3000
+Thu, 18 Jul 2019 07:45:27 GMT - Debug - auth.service - login with email: 11
