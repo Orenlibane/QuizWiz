@@ -1,5 +1,4 @@
 import socket from '../service/SocketService.js';
-import quizStore from './quizStore.js';
 
 export default {
   state: {
