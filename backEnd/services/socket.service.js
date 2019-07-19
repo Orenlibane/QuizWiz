@@ -57,6 +57,10 @@ function setup(http) {
             io.to(newGame._id).emit('endGame', newGame); //send to everyone who is in the room
             clearInterval(gameInterval);
             //SEND TO DATABASE
+            //TRYING TO RESET CLIENT //TODO: patch to check
+            setTimeout(() => {
+              io.to(newGame._id).emit('backToStart'); //send to everyone who is in the room
+            }, 7000);
             gameService.removeGame(newGame._id); //when changed we dont need it
             io.emit('returnAllLiveGames', gameService.getAllonlineGames());
             return;
