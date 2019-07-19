@@ -54,8 +54,9 @@ export default {
       this.$store.dispatch({ type: "changeGameStage", stage: "quizLobby" });
       let nickName = prompt("please enter a nickName");
       let infoToLog = {
+        userId: utilService.makeId(),
         nickName: nickName,
-        id: utilService.makeId()
+        ans: []
       };
       this.$store.dispatch({ type: "setUser", infoToLog });
       this.info.quiz.creator = infoToLog;

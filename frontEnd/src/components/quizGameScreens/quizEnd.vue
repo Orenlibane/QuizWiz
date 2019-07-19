@@ -52,11 +52,12 @@ export default {
     }
   },
   created() {
-    console.log("END GAME HERE");
+    this.user = this.$store.getters.getUser;
   },
   data() {
     return {
-      showQuests: false
+      showQuests: false,
+      user: {}
     };
   },
   computed: {
@@ -64,7 +65,19 @@ export default {
       return this.info.quiz.quests;
     },
     userTotalScore() {
-      return this.$store.getters.userTotalScore;
+      console.log("THIS IS THE USER", this.user);
+      let allScores = this.$store.getters.getGameScores;
+      let currentUser = allScores.find(
+        user => this.user.userId === user.userId
+      );
+      console.log("this is the user", currentUser);
+      let userTotalScore = currentUser.ans.reduce((acc, userScores) => {
+        acc += userScores.score;
+        return acc;
+      }, 0);
+      console.log("this should be the user scores", userTotalScore);
+
+      return userTotalScore;
     },
     gameScores() {
       return this.$store.getters.getGameScores;

@@ -4,10 +4,10 @@
     <h1>Your current Score is: {{userTotalScore}}</h1>
 
     <h3>Here are the following scores:</h3>
-    <div v-for="(player,playerIdx) in gameScores" :key="playerIdx">
-      <li>Name: {{player.nickName}}</li>
+    <div v-for="(user,userIdx) in gameScores" :key="userIdx">
+      <li>Name: {{user.nickName}}</li>
       <hr />
-      <li v-for="(answer,answerIdx) in player.ans" :key="answerIdx">
+      <li v-for="(answer,answerIdx) in user.ans" :key="answerIdx">
         Answer {{answerIdx+1}}:{{answer.currAns}}
         Score :{{answer.score}}
       </li>
@@ -20,17 +20,32 @@
 export default {
   props: [],
   data() {
-    return {};
+    return {
+      user: {}
+    };
   },
   computed: {
     gameScores() {
       return this.$store.getters.getGameScores;
     },
     userTotalScore() {
-      return this.$store.getters.userTotalScore;
+      let allScores = this.$store.getters.getGameScores;
+      let currentUser = allScores.find(
+        user => this.user.userId === user.userId
+      );
+      console.log("this is the user", currentUser);
+      let userTotalScore = currentUser.ans.reduce((acc, userScores) => {
+        acc += userScores.score;
+        return acc;
+      }, 0);
+      console.log("this should be the user scores", userTotalScore);
+
+      return userTotalScore;
     }
   },
-  methods: {},
-  created() {}
+  created() {
+    this.user = this.$store.getters.getUser;
+  },
+  methods: {}
 };
 </script>

@@ -66,15 +66,16 @@ export default {
       this.$store.dispatch({ type: "deleteQuiz", quizId });
     },
     enterLiveGame() {
-      let guestNick = prompt("please enter your name:");
+      let nickName = prompt("please enter your name:");
       let infoToLog = {
         gameId: this.quiz.gameId,
-        player: {
-          id: utilService.makeId(),
-          nickName: guestNick
+        user: {
+          userId: utilService.makeId(),
+          nickName: nickName,
+          ans: []
         }
       };
-      this.$store.dispatch({ type: "setUser", infoToLog: infoToLog.player });
+      this.$store.dispatch({ type: "setUser", infoToLog: infoToLog.user });
       this.$store.dispatch({ type: "logToLiveGame", infoToLog });
       this.$router.push(`/quiz/${this.quiz._id}/game`);
     }

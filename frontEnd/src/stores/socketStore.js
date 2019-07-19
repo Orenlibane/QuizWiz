@@ -12,15 +12,11 @@ export default {
       currentQuiz: null,
       currentQuestion: null,
       scores: [],
-      userScore: [],
+      userScores: [],
       user: {}
     }
   },
   mutations: {
-    setUser(state, { infoToLog }) {
-      console.log('info To log', infoToLog);
-      state.gameState.user = infoToLog;
-    },
     addUser(state, { user }) {
       //TODO: CHECK FOR DELETE
       state.users.push(user);
@@ -30,7 +26,6 @@ export default {
     },
     updateGameCountDown(state, { countdown }) {
       state.gameState.countdown = countdown;
-      console.log(state.gameState.countdown, 'from mutation countdown');
     },
     updateGameStage(state, { stage }) {
       state.gameState.gameStage = stage;
@@ -39,19 +34,22 @@ export default {
       state.gameState.currentQuiz = quiz;
     },
     updateCurrentQuestion(state, currentQuestion) {
-      console.log(currentQuestion);
       state.gameState.currentQuestion = currentQuestion;
     },
+    //setting the game scores from server on emit of stages: middle/end
     setGameScore(state, { gameScores }) {
-      console.log(gameScores);
       state.gameState.scores = gameScores;
-    },
-    setUserScore(state, { res }) {
-      console.log(res);
-      state.gameState.userScore.push(res.score);
     },
     setLiveGames(state, { liveGames }) {
       state.liveGames = liveGames;
+    },
+    setUserScores(state, { res }) {
+      console.log('setting the user score MUT', res);
+      //TODO: CHECK IF CAN COMMENT IT OUT AND USE THE SCORES FROM SET USER
+      state.gameState.userScores.push(res.score);
+    },
+    setUser(state, { infoToLog }) {
+      state.gameState.user = infoToLog;
     }
   },
   actions: {
@@ -59,25 +57,25 @@ export default {
       context.commit({ type: 'setUser', infoToLog });
     },
     logToLiveGame(context, { infoToLog }) {
-      console.log('infoToLog', infoToLog);
       socket.emit('loggingToGame', infoToLog);
     },
     setLoadedGames(context, { liveGames }) {
       context.commit({ type: 'setLiveGames', liveGames });
     },
+    //getting the game scores from server on emit of stages: middle/end
     getGameScores(context, { gameScores }) {
+      console.log('game Scores back from server in action', gameScores);
       context.commit({ type: 'setGameScore', gameScores });
     },
+    //updating the user score array (only score) and emiting to server
     updateAns(context, { res }) {
       socket.emit('updateAns', res);
-      context.commit({ type: 'setUserScore', res });
+      context.commit({ type: 'setUserScores', res });
     },
     loadGameQuiz(context, { quiz }) {
       context.commit({ type: 'firstGameSetting', quiz });
     },
     changeGameStage(context, { stage }) {
-      console.log('change screen socket store');
-
       context.commit({ type: 'updateGameStage', stage: stage });
     },
     changeGameQuestion(context, { currentQuestion }) {
@@ -100,9 +98,7 @@ export default {
       }, 5000);
     },
     startGame(context) {
-      socket.on('startTheGame', () => {
-        console.log('game start');
-      });
+      socket.on('startTheGame', () => {});
     }
   },
   getters: {
@@ -135,15 +131,14 @@ export default {
     getQuiz(state) {
       return state.gameState.currentQuiz;
     },
+    //return all users scores and info -
+    //TODO: CAN I DELETE?
+    // getUsersScores(state) {
+    //   return state.gameState.userScores;
+    // },
+    //getting the game scores from server on emit of stages: middle/end
     getGameScores(state) {
       return state.gameState.scores.gamePlayers;
-    },
-    userTotalScore(state) {
-      let totalScore = state.gameState.userScore.reduce((acc, score) => {
-        acc += score;
-        return acc;
-      }, 0);
-      return totalScore;
     }
   }
 };

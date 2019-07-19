@@ -1,18 +1,4 @@
 <template>
-  <!-- <section class="quizQuest flex both-align-center column">
-    <h1 class="question-render">{{currQuest}}</h1>
-    <div class="answers">
-      <div
-        class="possible-answers"
-        v-for="(opt,idx) in currOpts"
-        :key="idx"
-        @click="chooseAns(idx)"
-      >
-        <button :class="ansStyle(idx)">{{opt}}</button>
-      </div>
-      {{timer}}
-    </div>
-  </section>-->
   <section class="quiz-quest layout-container">
     <div class="question-status flex space-between">
       <span>Question {{currQuestNum}}/7</span>
@@ -51,7 +37,8 @@ export default {
       quest: {
         name: "what type of food represents summer?",
         opts: ["watermelon", "orange", "apple", "tomato"]
-      }
+      },
+      user: {}
     };
   },
   computed: {
@@ -80,8 +67,8 @@ export default {
             answerInfo: {
               currAns: true,
               score: this.timer * 10
-            }
-            // id: this.$store.getters.getUser
+            },
+            userId: this.user.userId
           }
         });
       } else {
@@ -90,9 +77,9 @@ export default {
           res: {
             answerInfo: {
               currAns: false,
-              score: this.timer * 10
-            }
-            // id: this.$store.getters.getUser
+              score: 0
+            },
+            userId: this.user.userId
           }
         });
       }
@@ -108,17 +95,15 @@ export default {
   },
   destroyed() {
     clearInterval(this.timerInterval);
-    // let player = this.$store.state.getters.getUser;
     if (!this.isAnswered) {
-      console.log("here");
       this.$store.dispatch({
         type: "updateAns",
         res: {
           answerInfo: {
             currAns: false,
-            score: this.timer * 10
-          }
-          // id: this.$store.getters.getUser
+            score: 0
+          },
+          userId: this.user.userId
         }
       });
     }
@@ -127,6 +112,7 @@ export default {
     this.timerInterval = setInterval(() => {
       this.timer--;
     }, 1000);
+    this.user = this.$store.getters.getUser;
   }
 };
 </script>

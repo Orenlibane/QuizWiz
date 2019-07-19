@@ -41,18 +41,9 @@ export default {
           quiz: Object,
           currQuest: Number,
           timer: Number
-        },
-        gameRes: [],
-        inform: "func"
+        }
       },
-      cmpArr: [
-        "quizDetails",
-        "quizLobby",
-        "quizReady",
-        "quizQuest",
-        "quizEnd",
-        "quizResult"
-      ]
+      user: {}
     };
   },
   components: {
@@ -74,15 +65,7 @@ export default {
           score: gameStage.ans === "false" ? 0 : this.cmp.info.timer * 10
         });
       }
-      // this.cmp.type = gameStage.cmp;
-      // if (gameStage.cmp === "quizQuest") {
-      //   this.cmp.info.currQuest++;
-      // }
     }
-
-    // getQuestTimer(time) {
-    //   this.cmp.info.timer = time;
-    // }
   },
   computed: {
     gameStage() {
@@ -95,8 +78,6 @@ export default {
       return this.cmp.type === "quizQuest";
     },
     currQuest() {
-      // console.log("ssssss", this.$store.getters.currentQuestion);
-      // this.cmp.info.currQuest = this.$store.getters.currentQuestion;
       return this.$store.getters.currentQuestion;
     }
   },
@@ -107,6 +88,7 @@ export default {
       this.cmp.info.currQuest = newVal.currentQuestion;
     }
   },
+
   async created() {
     const quizId = this.$route.params.id;
     var quiz = await this.$store.dispatch({ type: "getQuiz", quizId });
