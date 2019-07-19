@@ -1,8 +1,7 @@
 <template>
-  <section class="quiz-preview-card flex column">
+  <section class="quiz-preview-card">
     <!-- IMG RIGHT SIDE WITH BTNS -->
-    <div class="quiz-preview-img-container">
-      <img class="quiz-img-preview" src="@/assets/placeholder_600x400_2.jpg" alt />
+    <div class="quiz-preview-img-container" :style="{ backgroundImage: 'url(' + imgUrl + ')' }">
       <div class="quiz-preview-btn-container flex">
         <button class="quiz-preview-like-btn">
           <i class="fas fa-thumbs-up"></i>
@@ -16,7 +15,7 @@
       <h2>{{quiz.name}}</h2>
       <div class="quiz-preview-timer flex space-between align-center">
         <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
-        <span>{{serverTime}}</span>
+        <span>00:59</span>
       </div>
       <div class="flex both-align-center">
         <button class="card-btn" @click="deleteQuiz(quiz._id)">🗑️</button>
@@ -46,6 +45,11 @@ export default {
   props: {
     quiz: {
       type: Object
+    }
+  },
+  data(){
+    return {
+      imgUrl:'https://images.unsplash.com/photo-1563454758691-702be3d2e2b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80'
     }
   },
   methods: {
