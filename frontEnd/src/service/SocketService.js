@@ -29,11 +29,9 @@ on('startGameTimer', () => {
 });
 
 on('questionChange', currentQuestion => {
-  console.log(currentQuestion);
   store.dispatch({ type: 'changeGameQuestion', currentQuestion });
 });
 on('loggedUser', loggedPlayer => {
-  console.log(loggedPlayer);
   store.dispatch({ type: 'newLoggedUser', loggedPlayer });
 });
 
@@ -41,18 +39,20 @@ on('startTheGame', () => {
   store.dispatch({ type: 'changeGameStage', stage: 'quizQuest' });
 });
 on('middleQuiz', gameScores => {
-  console.log('scores in socket Service front', gameScores);
   store.dispatch({ type: 'changeGameStage', stage: 'quizResult' });
   store.dispatch({ type: 'getGameScores', gameScores: gameScores });
 });
 on('quizQuest', () => {
-  console.log('change screen socket service');
   store.dispatch({ type: 'changeGameStage', stage: 'quizQuest' });
 });
 on('endGame', gameScores => {
-  console.log('emit endgame');
   store.dispatch({ type: 'changeGameStage', stage: 'quizEnd' });
   store.dispatch({ type: 'getGameScores', gameScores });
+  //TODO: tried to break the chain but it doesnt work
+  // setTimeout(() => {
+  //   console.log('moving it back to the lobby');
+  //   store.dispatch({ type: 'changeGameStage', stage: 'quizDetails' })
+  // }, 2000)
 });
 
 on('returnAllLiveGames', liveGames => {
@@ -60,6 +60,5 @@ on('returnAllLiveGames', liveGames => {
 });
 
 // on('changeGameStage', stage => {
-//   console.log('change screen socket service');
 //   store.dispatch({ type: 'changeGameStage', stage: stage });
 // });

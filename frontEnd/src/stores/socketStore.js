@@ -77,7 +77,6 @@ export default {
     },
     changeGameStage(context, { stage }) {
       console.log('change screen socket store');
-
       context.commit({ type: 'updateGameStage', stage: stage });
     },
     changeGameQuestion(context, { currentQuestion }) {
@@ -112,6 +111,8 @@ export default {
     getLiveGames(state) {
       let liveGames = state.liveGames.map(game => {
         game.quiz.gameId = game._id;
+        game.quiz.isGameOn = game.isGameOn
+        console.log('game.quiz is (after adding isGameOn):', game.quiz);
         return game.quiz;
       });
       return liveGames;

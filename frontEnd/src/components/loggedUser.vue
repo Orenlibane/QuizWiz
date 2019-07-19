@@ -30,7 +30,6 @@ export default {
   },
   methods: {
     doLogout() {
-      console.log("loging out");
       this.$store.dispatch({ type: "logout" });
       this.$router.push("/welcome");
     }

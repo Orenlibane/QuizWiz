@@ -36,6 +36,7 @@
         </li>
       </ul>
     </div>
+  <router-link to="/">Back Home</router-link>
   </section>
 </template>
 

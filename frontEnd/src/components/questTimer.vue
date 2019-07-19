@@ -29,11 +29,9 @@ export default {
   },
   created() {
     // this.destTimeStamp = this.currTimeStamp + 10000
-    // console.log('dest - curr =', this.destTimeStamp - this.currTimeStamp);
     this.timer = 10;
 
     this.countDown = setInterval(() => {
-      // console.log("time ticking", this.timer);
       this.$emit("emitTime", this.timer);
       this.timer--;
     }, 1000);
@@ -55,7 +53,6 @@ export default {
     if (this.questIdx !== this.info.currQuest) {
       //If game ended
       if (this.info.currQuest === this.info.quiz.quests.length) {
-        console.log("Interval cleared");
         clearInterval(this.countDown);
       }
       this.questIdx++;

@@ -103,9 +103,7 @@ export default {
       return "wrongAnsStyle";
     }
   },
-  mounted() {
-    console.log("the info:", this.info);
-  },
+
   destroyed() {
     clearInterval(this.timerInterval);
     // let player = this.$store.state.getters.getUser;

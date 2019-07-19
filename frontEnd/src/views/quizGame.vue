@@ -65,25 +65,21 @@ export default {
     quizGameboard,
     questTimer
   },
-  methods: {
-    gameSequence(gameStage) {
-      if (gameStage.ans) {
-        this.cmp.gameRes.push({
-          questIdx: this.cmp.gameRes.length,
-          result: gameStage.ans,
-          score: gameStage.ans === "false" ? 0 : this.cmp.info.timer * 10
-        });
-      }
-      // this.cmp.type = gameStage.cmp;
-      // if (gameStage.cmp === "quizQuest") {
-      //   this.cmp.info.currQuest++;
-      // }
-    }
-
-    // getQuestTimer(time) {
-    //   this.cmp.info.timer = time;
-    // }
-  },
+  // methods: {
+  //   gameSequence(gameStage) {
+  //     if (gameStage.ans) {
+  //       this.cmp.gameRes.push({
+  //         questIdx: this.cmp.gameRes.length,
+  //         result: gameStage.ans,
+  //         score: gameStage.ans === "false" ? 0 : this.cmp.info.timer * 10
+  //       });
+  //     }
+  //     console.log('game stage chani');
+  //     if(gameStage === 'quizEnd') {
+  //       console.log('the quiz has ended!!!!! michael');
+  //     }
+  //   }
+  // },
   computed: {
     gameStage() {
       return this.$store.getters.gameStage;
@@ -95,8 +91,6 @@ export default {
       return this.cmp.type === "quizQuest";
     },
     currQuest() {
-      // console.log("ssssss", this.$store.getters.currentQuestion);
-      // this.cmp.info.currQuest = this.$store.getters.currentQuestion;
       return this.$store.getters.currentQuestion;
     }
   },

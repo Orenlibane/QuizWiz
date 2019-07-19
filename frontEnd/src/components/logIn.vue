@@ -37,17 +37,14 @@ export default {
   },
   methods: {
     async doLogin() {
-      console.log("check sanity");
       const cred = this.loginCred;
       await this.$store.dispatch({ type: "login", userCred: cred });
       const user = this.$store.getters.getUser;
-      // console.log("user:", user);
       if (user) this.$router.push("/");
     }
   },
   created() {
     if (this.$store.getters.getUser) {
-      console.log("papapapapapa", this.$store.getters.getUser);
     }
   }
 };

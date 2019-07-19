@@ -7,7 +7,7 @@ import signUp from './views/signUp';
 import quizGame from './views/quizGame.vue';
 import quizLibrary from './views/quizLibrary.vue';
 import userProfile from './views/userProfile.vue';
-import welcomePage from './views/welcomePage.vue';
+// import welcomePage from './views/welcomePage.vue';
 import TEST1 from './components/quizGameScreens/quizQuest.vue';
 // import about from './views/about.vue';
 
@@ -17,11 +17,11 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    {
-      path: '/welcome',
-      name: 'welcome',
-      component: welcomePage
-    },
+    // {
+    //   path: '/welcome',
+    //   name: 'welcome',
+    //   component: welcomePage
+    // },
     {
       path: '/',
       name: 'homePage',
@@ -55,6 +55,11 @@ export default new Router({
     {
       path: '/quiz/:id/game',
       name: 'quizGame',
+      component: quizGame
+    },
+    {
+      path: 'quiz/:id/game/:gameId',
+      name: 'quizMultiGame',
       component: quizGame
     },
     {

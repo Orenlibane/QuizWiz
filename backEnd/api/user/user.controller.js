@@ -2,7 +2,6 @@ const userService = require('./user.service')
 
 function getLoggedIn(req, res) {
     const user = req.session.user
-    // console.log('user from ctrler:', user);
     res.json(user)
 }
 

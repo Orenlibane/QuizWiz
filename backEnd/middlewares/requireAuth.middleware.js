@@ -1,7 +1,6 @@
 const logger = require('../services/logger.service')
 
 async function requireAuth(req, res, next) {
-  console.log('req session when doing auth:', req.session.user);
   if (req.session.user) {
     console.log('we dont allow you to sign');
     res.status(401).end('Unauthorized');

@@ -13,6 +13,7 @@ module.exports = {
 let onlineGames = [];
 
 function getAllonlineGames() {
+  console.log('the online games are:', onlineGames);
   return onlineGames; //which are isOn:false
 }
 function gamePlayersCount(gameId) {
@@ -30,6 +31,7 @@ function joinGame(
   gameById.gamePlayers.push(player);
   return player;
 }
+//TODO: delete?
 function leaveGame(playerId, gameId) {
   const gameById = onlineGames.find(game => game._id === gameId);
   gameById = gameById.gamePlayers.filter(player => player._id !== playerId);
@@ -40,9 +42,7 @@ function startGame(gameId) {
 }
 
 function removeGame(gameId) {
-  console.log(gameId);
   onlineGames = onlineGames.filter(game => game._id !== gameId);
-  console.log('games after', onlineGames);
 }
 
 // Setthe curr ans for each one of the players array

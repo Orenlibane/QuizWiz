@@ -17,6 +17,7 @@ export default {
   components: {
     quizPreview
   },
-  computed: {}
+  computed: {},
+
 };
 </script>

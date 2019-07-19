@@ -31,7 +31,6 @@ async function getById(quizId) {
 }
 
 async function remove(quizId) {
-  console.log(quizId, 'quiz id in backend service delete');
   const collection = await dbService.getCollection('quiz');
   try {
     await collection.remove({ _id: ObjectId(quizId) });
@@ -45,7 +44,6 @@ async function add(quiz) {
   const collection = await dbService.getCollection('quiz');
   try {
     await collection.insertOne(quiz);
-    console.log('Quiz from the service', quiz);
     return quiz;
   } catch (err) {
     console.log(`ERROR: cannot insert quiz`);
@@ -58,7 +56,6 @@ async function update(quiz) {
   try {
     const quizId = quiz._id;
     delete quiz._id;
-    console.log('quiz from edit', quiz);
     await collection.updateOne({ _id: ObjectId(quizId) }, { $set: quiz });
     return quiz;
   } catch (err) {

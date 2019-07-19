@@ -51,7 +51,6 @@ export default {
   methods: {
     // THOSE OPTIONS ARE ONLY FOR TESTING!!! The user won't really be able to delete games.
     deleteQuiz(quizId) {
-      console.log(quizId, "in the quiz prev");
       this.$store.dispatch({ type: "deleteQuiz", quizId });
     },
     enterLiveGame() {
@@ -65,21 +64,24 @@ export default {
       };
       this.$store.dispatch({ type: "setUser", infoToLog: infoToLog.player });
       this.$store.dispatch({ type: "logToLiveGame", infoToLog });
-      this.$router.push(`/quiz/${this.quiz._id}/game`);
+      console.log('live games:', this.$store.getters.getLiveGames);
+      // this.$router.push(`/quiz/${this.quiz._id}/game/${this.infoToLog.id}`);
     }
   },
   computed: {
-    editUrl() {
-      return `quiz/edit/${this.quiz._id}`;
-    },
     enterGameUrl() {
       return `quiz/${this.quiz._id}/game`;
     },
+    editUrl() {
+      return `quiz/edit/${this.quiz._id}`;
+    },
     serverTime() {
       let time = moment(this.$store.getters.serverTime).format("mm:ss");
-
       return time;
     }
+  },
+  created() {
+    console.log('quiz:',this.quiz);
   }
 };
 </script>

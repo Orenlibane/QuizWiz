@@ -5,7 +5,7 @@ var io;
 function setup(http) {
   io = socketIO(http);
 
-  io.on('connection', function(socket) {
+  io.on('connection', function (socket) {
     io.emit('returnAllLiveGames', gameService.getAllonlineGames());
 
     // SERVER GLOBAL TIME SEND
@@ -14,7 +14,6 @@ function setup(http) {
     // }, 1000);
 
     socket.on('loggingToGame', infoToLog => {
-      console.log('trying to connect to', infoToLog.gameId);
       socket.join(infoToLog.gameId);
       let newPlayer = gameService.joinGame(infoToLog.gameId, infoToLog.player);
       io.to(infoToLog.gameId).emit('loggedUser', newPlayer);
@@ -25,8 +24,6 @@ function setup(http) {
       io.emit('returnAllLiveGames', gameService.getAllonlineGames());
       //Create and join the room
       socket.join(newGame._id);
-      console.log('created the game on:', newGame._id);
-
       // ON -> get the guest Name //
 
       //join the game creator into game on the service
@@ -45,7 +42,6 @@ function setup(http) {
       var gameInterval = setInterval(moveQuiz, 5000, newGame, io);
 
       function moveQuiz(newGame, io) {
-        console.log('current Game status', newGame.status);
         if (newGame.status === 'lobby' || newGame.status === 'middle') {
           if (newGame.currQuest === newGame.quiz.quests.length) {
             newGame.currQuest--;
@@ -58,19 +54,19 @@ function setup(http) {
             io.emit('returnAllLiveGames', gameService.getAllonlineGames());
             return;
           }
+          console.log('newGame after lobby now', newGame);
+          newGame.isGameOn = true;
+          io.emit('returnAllLiveGames', gameService.getAllonlineGames());
           newGame.status = 'quest';
           io.to(newGame._id).emit('quizQuest');
         } else if (newGame.status === 'quest') {
-          console.log('send middle');
           newGame.status = 'middle';
           io.to(newGame._id).emit('middleQuiz', newGame);
-          console.log(newGame);
           newGame.currQuest++;
           io.to(newGame._id).emit('questionChange', newGame.currQuest);
         }
       }
       socket.on('updateAns', answer => {
-        console.log('this game players', newGame.gamePlayers);
         gameService.setAnswer(newGame._id, player.id, answer);
       });
     });
