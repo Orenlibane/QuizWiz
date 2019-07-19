@@ -1,25 +1,34 @@
 .app-footer {
   background-color: $clr3;
   z-index: 10;
-  padding-top: rem(5px);
-  padding-bottom: rem(5px);
+  padding-left:rem(50px);
+  padding-right:rem(50px);
+  padding-top: rem(30px);
+  padding-bottom: rem(30px);
   position: fixed;
   bottom: 0;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: rem(66px);
   border-top-left-radius: em(30px);
   border-top-right-radius: em(30px);
+  @include for-normal-layout {
+    justify-content: center;
+  }
+  // @include for-normal-layout {
+  //   flex-direction: column;
+  // }
+  @include for-narrow-layout {
+    justify-content: center;
+  }
 }
 .footer-btn {
-  width: rem(47px);
-  height: rem(47px);
+  width: rem(24px);
+  height: rem(24px);
   border: none;
   font-size: rem(21px);
   text-transform: uppercase;
-  // background-color: grey;
   color: $clr1;
   outline: none;
   text-decoration-line: none;
@@ -27,13 +36,15 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  // border:1px solid white;
+}
+.app-footer svg{
+  cursor: pointer;
 }
 
 .app-footer .footer-btn:not(:first-child) {
-  margin-left: rem(36px);
+  margin-left: rem(50px);
 }
-.app-footer > .router-link-active {
-  // background-color: blue;
-  color: $clr2;
+.app-footer > .router-link-active>svg {
+  fill:$clr2;
 }
+
