@@ -6,22 +6,20 @@ export default {
     serverClock: null,
     gameState: {
       users: [],
-      countdown: 5,
       gameStage: 'quizDetails',
       currentQuiz: null,
       currentQuestion: null,
       scores: [],
       userScores: [],
-      user: {}
+      user: {},
+      lobbyTimer: null
     }
   },
   mutations: {
     updateServerClock(state, { clock }) {
       state.serverClock = clock;
     },
-    updateGameCountDown(state, { countdown }) {
-      state.gameState.countdown = countdown;
-    },
+
     updateGameStage(state, { stage }) {
       state.gameState.gameStage = stage;
     },
@@ -44,6 +42,10 @@ export default {
     },
     setUser(state, { infoToLog }) {
       state.gameState.user = infoToLog;
+    },
+    updateLobbyTimer(state, { lobbyTimer }) {
+      console.log(lobbyTimer);
+      state.gameState.lobbyTimer = lobbyTimer;
     }
   },
   actions: {
@@ -80,18 +82,11 @@ export default {
     onCreateGame(context, { quiz }) {
       socket.emit('onCreateGame', quiz);
     },
-    gameStartListener(context) {
-      const interval = setInterval(() => {
-        const countdown = context.state.gameState.countdown - 1;
-        context.commit({ type: 'updateGameCountDown', countdown });
-      }, 1000);
-      setTimeout(() => {
-        clearInterval(interval);
-        context.commit({ type: 'updateGameCountDown', countdown: 5 });
-      }, 5000);
-    },
     startGame(context) {
       socket.on('startTheGame', () => {});
+    },
+    updateLobbyTimer(context, { lobbyTimer }) {
+      context.commit({ type: 'updateLobbyTimer', lobbyTimer });
     }
   },
   getters: {
@@ -102,7 +97,6 @@ export default {
       let liveGames = state.liveGames.map(game => {
         game.quiz.gameId = game._id;
         game.quiz.isGameOn = game.isGameOn;
-        console.log('game.quiz is (after adding isGameOn):', game.quiz);
         return game.quiz;
       });
       return liveGames;
@@ -126,5 +120,10 @@ export default {
     getGameScores(state) {
       return state.gameState.scores.gamePlayers;
     }
+    //TODO: Fix lobby Timer
+    // getLobbyTimer(state) {
+    //   console.log('from state:', state.gameState.lobbyTimer);
+    //   return state.gameState.lobbyTimer;
+    // }
   }
 };

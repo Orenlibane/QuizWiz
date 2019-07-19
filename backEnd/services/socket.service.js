@@ -5,7 +5,7 @@ var io;
 function setup(http) {
   io = socketIO(http);
 
-  io.on('connection', function (socket) {
+  io.on('connection', function(socket) {
     io.emit('returnAllLiveGames', gameService.getAllonlineGames());
 
     // SERVER GLOBAL TIME SEND
@@ -36,15 +36,18 @@ function setup(http) {
 
       // sending the connected users names into the loby
       io.to(newGame._id).emit('loggedUser', user);
-      //sending the signal to start the 5 sec lobby timer
-      io.to(newGame._id).emit('startGameTimer');
+      //sending the signal to start the 20 sec lobby timer
+      let lobbyTimer = 20;
+      let lobbyTimerInterval = setInterval(() => {
+        io.to(newGame._id).emit('sendLobbyTimer', lobbyTimer); //need to send server time insted
+        lobbyTimer--;
+        if (lobbyTimer === 0) clearInterval(lobbyTimerInterval);
+      }, 1000);
 
-      //WHEN WE NEED TO REALLY KILL THE LIVE GAME
-      // setTimeout(() => {
-      //   io.emit('returnAllLiveGames', gameService.getAllonlineGames());
-      // }, 60000);
-
-      var gameInterval = setInterval(moveQuiz, 5000, newGame, io);
+      let gameInterval;
+      setTimeout(() => {
+        gameInterval = setInterval(moveQuiz, 10000, newGame, io);
+      }, 15000);
 
       function moveQuiz(newGame, io) {
         if (newGame.status === 'lobby' || newGame.status === 'middle') {
@@ -53,13 +56,11 @@ function setup(http) {
             newGame.status = 'endGame';
             io.to(newGame._id).emit('endGame', newGame); //send to everyone who is in the room
             clearInterval(gameInterval);
-            // io.to(newGame._id).leave(newGame._id);
             //SEND TO DATABASE
             gameService.removeGame(newGame._id); //when changed we dont need it
             io.emit('returnAllLiveGames', gameService.getAllonlineGames());
             return;
           }
-          console.log('newGame after lobby now', newGame);
           newGame.isGameOn = true;
           io.emit('returnAllLiveGames', gameService.getAllonlineGames());
           newGame.status = 'quest';

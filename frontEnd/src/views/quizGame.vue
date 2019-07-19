@@ -3,16 +3,11 @@
 
 <template>
   <section class="layout-container">
-    <quiz-gameboard v-if="isPlaying" :info="cmp.info"></quiz-gameboard>
     <component :is="gameStage" :info="cmp.info" :currQuest="currQuest" :gameRes="cmp.gameRes" />
   </section>
 </template>
 
 <script>
-// quizGameboard and questTimer give feedback to the user about his game state
-import quizGameboard from "../components/quizGameboard";
-import questTimer from "../components/questTimer";
-
 //the Dynamic game screens
 import quizDetails from "../components/quizGameScreens/quizDetails";
 import quizEnd from "../components/quizGameScreens/quizEnd";
@@ -45,34 +40,14 @@ export default {
     quizLobby,
     quizResult,
     quizReady,
-    quizQuest,
-    quizGameboard,
-    questTimer
+    quizQuest
   },
-  // methods: {
-  //   gameSequence(gameStage) {
-  //     if (gameStage.ans) {
-  //       this.cmp.gameRes.push({
-  //         questIdx: this.cmp.gameRes.length,
-  //         result: gameStage.ans,
-  //         score: gameStage.ans === "false" ? 0 : this.cmp.info.timer * 10
-  //       });
-  //     }
-  //     console.log('game stage chani');
-  //     if(gameStage === 'quizEnd') {
-  //       console.log('the quiz has ended!!!!! michael');
-  //     }
-  //   }
-  // },
   computed: {
     gameStage() {
       return this.$store.getters.gameStage;
     },
     gameState() {
       return this.cmpArr[this.gameState];
-    },
-    isPlaying() {
-      return this.cmp.type === "quizQuest";
     },
     currQuest() {
       return this.$store.getters.currentQuestion;

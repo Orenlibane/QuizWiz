@@ -18,11 +18,10 @@
       </ul>
       <button class="mid-btn">show more</button>
     </div>
-    <span>{{getTime}}</span>
+    <span class="fs40">{{lobbyTime}}</span>
     <div class="flex column justify-center align-center">
       <button @click="startGame">Start Game</button>
       <button class="mid-btn">Leave</button>
-      <!-- <button class="mid-btn" @click="startMultiplayer">Start Game</button> -->
     </div>
   </section>
 </template>
@@ -37,11 +36,15 @@ export default {
     }
   },
   computed: {
-    getTime() {
-      return this.$store.getters.getGameCountDown;
-    },
+    // getTime() {
+    //   return this.$store.getters.getGameCountDown;
+    // },
     loggedUsers() {
       return this.$store.getters.getLoggedUsers;
+    },
+    lobbyTime() {
+      console.log("lobby countdown:", this.$store.getters.getLobbyTimer);
+      return this.$store.getters.getLobbyTimer;
     }
   },
 

@@ -18,9 +18,6 @@ export default {
     quizes() {
       return this.$store.getters.getQuizes;
     }
-  },
-  // created() {
-  //   this.$store.dispatch({type: "loadQuizes"})
-  // }
+  }
 };
 </script>

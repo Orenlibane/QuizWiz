@@ -31,7 +31,7 @@
       <h2>{{quiz.name}}</h2>
       <div class="quiz-preview-timer flex space-between align-center">
         <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
-        <span>00:59</span>
+        <span v-if="quiz.gameId">{{lobbyTime}}</span>
       </div>
       <div class="flex both-align-center">
         <button class="card-btn" @click="deleteQuiz(quiz._id)">🗑️</button>
@@ -101,6 +101,10 @@ export default {
       let time = moment(this.$store.getters.serverTime).format("mm:ss");
       return time;
     }
+    // lobbyTime() {
+    //   console.log("lobby timer:", this.$store.state.getters.getLobbyTimer);
+    //   return this.$store.state.getters.getLobbyTimer;
+    // }
   },
   created() {
     console.log("quiz:", this.quiz);
