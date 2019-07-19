@@ -1,6 +1,3 @@
-
-
-
 <template>
   <section class="layout-container">
     <quiz-gameboard v-if="isPlaying" :info="cmp.info"></quiz-gameboard>

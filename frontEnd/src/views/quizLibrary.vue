@@ -18,9 +18,15 @@ export default {
     quizes() {
       return this.$store.getters.getQuizes;
     }
-  },
+  }
   // created() {
   //   this.$store.dispatch({type: "loadQuizes"})
   // }
 };
 </script>
+<style lang="scss" scoped>
+h1 {
+  color: white;
+  margin-bottom: em(10px);
+}
+</style>

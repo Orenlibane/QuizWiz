@@ -1,8 +1,8 @@
 <template>
   <section class="home-page layout-container">
-    <span>{{serverTime}}</span>
+    <!-- <span>{{serverTime}}</span> -->
 
-    <h1 class="caps underLine">live games</h1>
+    <h1 class="caps">live games</h1>
     <quiz-list v-if="liveGames" :quizes="liveGames"></quiz-list>
     <!-- <h1 class="caps">all games</h1> -->
     <!-- <quiz-list v-if="quizes" :quizes="quizes"></quiz-list> -->

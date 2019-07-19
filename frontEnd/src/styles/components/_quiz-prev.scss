@@ -1,8 +1,9 @@
 .quiz-preview-img-container {
-  height: rem(169px);
+  height: rem(160px);
   width: 100%;
   background-size: cover;
   position: relative;
+  border-radius: rem(10px);
   @include for-normal-layout {
 
   }
@@ -38,7 +39,6 @@
   width: rem(30px);
   height: rem(30px);
   background-color: rgba(0, 0, 0, 0.5);
-
   color: $clr3;
   display: flex;
   justify-content: center;
