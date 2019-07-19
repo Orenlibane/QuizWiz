@@ -76,10 +76,6 @@ export default {
       context.commit({ type: 'firstGameSetting', quiz });
     },
     changeGameStage(context, { stage }) {
-<<<<<<< HEAD
-      console.log('change screen socket store');
-=======
->>>>>>> 5f94eb4cd7b1c5f098f24f1c00c35c12086fe3fd
       context.commit({ type: 'updateGameStage', stage: stage });
     },
     changeGameQuestion(context, { currentQuestion }) {
