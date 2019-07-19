@@ -9,7 +9,7 @@
     </div>
     <div class="quest-answers-container">
       <button
-        class="quest-anser-btn"
+        class="quest-answer-btn"
         :class="ansStyle(idx)"
         @click="chooseAns(idx)"
         v-for="(opt,idx) in currOpts"
@@ -34,10 +34,6 @@ export default {
       isAnswered: false,
       timer: 10,
       timerInterval: null,
-      quest: {
-        name: "what type of food represents summer?",
-        opts: ["watermelon", "orange", "apple", "tomato"]
-      },
       user: {}
     };
   },
@@ -117,10 +113,10 @@ export default {
 
 <style scoped>
 .wrongAnsStyle {
-  background: red;
+  background: rgb(173, 55, 55, 0.7);
 }
 
 .correctAnsStyle {
-  background: green;
+  background: rgb(47, 149, 47, 0.7);
 }
 </style>

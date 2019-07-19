@@ -5,13 +5,6 @@
   <section class="layout-container">
     <quiz-gameboard v-if="isPlaying" :info="cmp.info"></quiz-gameboard>
     <component :is="gameStage" :info="cmp.info" :currQuest="currQuest" :gameRes="cmp.gameRes" />
-    <!-- <quest-timer
-      v-if="isPlaying"
-      :info="cmp.info"
-      :gameRes="cmp.gameRes"
-      @gameStage="gameSequence"
-      @emitTime="getQuestTimer"
-    ></quest-timer>-->
   </section>
 </template>
 

@@ -1,4 +1,3 @@
-
 .quest-name-container {
   background-color: $clr3;
   width: 100%;
@@ -8,30 +7,30 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-top:em(50px);
+  margin-top: em(50px);
   margin-bottom: em(50px);
 }
-.quest-answers-container{
+.quest-answers-container {
   justify-content: center;
-  align-items:center;
+  align-items: center;
   color: $clr3;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap:20px;
+  gap: 20px;
   width: 100%;
 }
-.quest-anser-btn{
+.quest-answer-btn {
   width: 100%;
   height: 120px;
-  font-size:em(20px);
+  font-size: em(30px);
   background-color: $clr3;
-  padding-top:em(15px);
-  padding-bottom:em(15px);
-  border-radius:em(10px);
+  padding-top: em(15px);
+  padding-bottom: em(15px);
+  border-radius: em(10px);
   outline: none;
 }
-.question-status{
+.question-status {
   color: $clr3;
-  font-size:em(30px);
-  padding-top:10px;
+  font-size: em(30px);
+  padding-top: 10px;
 }

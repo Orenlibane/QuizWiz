@@ -4,7 +4,6 @@
       <h1>QwizWizz</h1>
     </router-link>
     <div class="header-btn-container flex both-align-center">
-      <!-- <logged-user></logged-user> -->
       <button class="header-btn">
         <i class="fas fa-search"></i>
       </button>
@@ -15,12 +14,3 @@
   </header>
 </template>
 
-<script>
-import loggedUser from "./loggedUser";
-export default {
-  methods: {},
-  components: {
-    loggedUser
-  }
-};
-</script>

@@ -6,6 +6,7 @@
       <h1>{{timer}}</h1>
     </div>
   </section>
+  <!-- TODO: delete if not using -->
 </template>
 
 <script>

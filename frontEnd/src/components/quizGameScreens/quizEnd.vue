@@ -6,7 +6,7 @@
       </button>
     </router-link>
     <h1>Game Ended</h1>
-    <div class="flex column both-align-center quiz-end">
+    <div class="fs20 flex column both-align-center quiz-end">
       <h1 class="score-prec">{{correctAnsPercentage}}%</h1>
       <h2>{{correctAnsPercentage | grade}}</h2>
       <h1>Your Total Score is: {{userTotalScore}}</h1>
@@ -34,7 +34,7 @@
         </li>
       </ul>
     </div>
-  <router-link to="/">Back Home</router-link>
+    <router-link to="/">Back Home</router-link>
   </section>
 </template>
 

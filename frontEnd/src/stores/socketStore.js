@@ -16,10 +16,6 @@ export default {
     }
   },
   mutations: {
-    addUser(state, { user }) {
-      //TODO: CHECK FOR DELETE
-      state.users.push(user);
-    },
     updateServerClock(state, { clock }) {
       state.serverClock = clock;
     },
@@ -43,7 +39,6 @@ export default {
       state.liveGames = liveGames;
     },
     setUserScores(state, { res }) {
-      console.log('setting the user score MUT', res);
       //TODO: CHECK IF CAN COMMENT IT OUT AND USE THE SCORES FROM SET USER
       state.gameState.userScores.push(res.score);
     },
@@ -63,7 +58,6 @@ export default {
     },
     //getting the game scores from server on emit of stages: middle/end
     getGameScores(context, { gameScores }) {
-      console.log('game Scores back from server in action', gameScores);
       context.commit({ type: 'setGameScore', gameScores });
     },
     //updating the user score array (only score) and emiting to server
@@ -107,15 +101,11 @@ export default {
     getLiveGames(state) {
       let liveGames = state.liveGames.map(game => {
         game.quiz.gameId = game._id;
-        game.quiz.isGameOn = game.isGameOn
+        game.quiz.isGameOn = game.isGameOn;
         console.log('game.quiz is (after adding isGameOn):', game.quiz);
         return game.quiz;
       });
       return liveGames;
-    },
-    users(state) {
-      //TODO: CHECK FOR DELETE
-      return state.users;
     },
     serverTime(state) {
       return state.serverClock;
@@ -132,11 +122,6 @@ export default {
     getQuiz(state) {
       return state.gameState.currentQuiz;
     },
-    //return all users scores and info -
-    //TODO: CAN I DELETE?
-    // getUsersScores(state) {
-    //   return state.gameState.userScores;
-    // },
     //getting the game scores from server on emit of stages: middle/end
     getGameScores(state) {
       return state.gameState.scores.gamePlayers;

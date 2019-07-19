@@ -33,7 +33,7 @@ export default {
   props: ["info"],
   methods: {
     startGame() {
-      console.log('Starting game!');
+      console.log("Starting game!");
     }
   },
   computed: {
@@ -44,7 +44,7 @@ export default {
       return this.$store.getters.getLoggedUsers;
     }
   },
- 
+
   data() {
     return {};
   }
