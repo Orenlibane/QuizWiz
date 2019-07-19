@@ -7,9 +7,9 @@
 </template>
 
 <script>
+import global from "@/styles/global.scss";
 import appHeader from "@/components/appHeader";
 import appFooter from "@/components/appFooter";
-import global from "@/styles/global.scss";
 
 import eventBus, { GAME_ON, GAME_OFF } from "@/event-bus.js";
 import socketService from "./service/SocketService.js";
