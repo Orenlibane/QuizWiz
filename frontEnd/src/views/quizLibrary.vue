@@ -28,5 +28,6 @@ export default {
 h1 {
   color: white;
   margin-bottom: em(10px);
+  font-family: "Lilita-One-regular", sans-serif;
 }
 </style>
