@@ -17,10 +17,6 @@ export default {
     }
   },
   mutations: {
-    setUser(state, { infoToLog }) {
-      console.log('info To log', infoToLog);
-      state.gameState.user = infoToLog;
-    },
     addUser(state, { user }) {
       //TODO: CHECK FOR DELETE
       state.users.push(user);
@@ -30,7 +26,6 @@ export default {
     },
     updateGameCountDown(state, { countdown }) {
       state.gameState.countdown = countdown;
-      console.log(state.gameState.countdown, 'from mutation countdown');
     },
     updateGameStage(state, { stage }) {
       state.gameState.gameStage = stage;
@@ -39,19 +34,21 @@ export default {
       state.gameState.currentQuiz = quiz;
     },
     updateCurrentQuestion(state, currentQuestion) {
-      console.log(currentQuestion);
       state.gameState.currentQuestion = currentQuestion;
     },
     setGameScore(state, { gameScores }) {
-      console.log(gameScores);
       state.gameState.scores = gameScores;
-    },
-    setUserScore(state, { res }) {
-      console.log(res);
-      state.gameState.userScore.push(res.score);
     },
     setLiveGames(state, { liveGames }) {
       state.liveGames = liveGames;
+    },
+    setUserScore(state, { res }) {
+      console.log('setting the user score MUT', res);
+      //TODO: CHECK IF CAN COMMENT IT OUT AND USE THE SCORES FROM SET USER
+      state.gameState.userScore.push(res.score);
+    },
+    setUser(state, { infoToLog }) {
+      state.gameState.user = infoToLog;
     }
   },
   actions: {
@@ -59,7 +56,6 @@ export default {
       context.commit({ type: 'setUser', infoToLog });
     },
     logToLiveGame(context, { infoToLog }) {
-      console.log('infoToLog', infoToLog);
       socket.emit('loggingToGame', infoToLog);
     },
     setLoadedGames(context, { liveGames }) {
@@ -68,6 +64,7 @@ export default {
     getGameScores(context, { gameScores }) {
       context.commit({ type: 'setGameScore', gameScores });
     },
+    //updating the user score array (only score) and emiting to server
     updateAns(context, { res }) {
       socket.emit('updateAns', res);
       context.commit({ type: 'setUserScore', res });
@@ -76,8 +73,6 @@ export default {
       context.commit({ type: 'firstGameSetting', quiz });
     },
     changeGameStage(context, { stage }) {
-      console.log('change screen socket store');
-
       context.commit({ type: 'updateGameStage', stage: stage });
     },
     changeGameQuestion(context, { currentQuestion }) {
@@ -100,9 +95,7 @@ export default {
       }, 5000);
     },
     startGame(context) {
-      socket.on('startTheGame', () => {
-        console.log('game start');
-      });
+      socket.on('startTheGame', () => {});
     }
   },
   getters: {
