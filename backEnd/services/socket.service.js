@@ -78,36 +78,3 @@ function setup(http) {
 module.exports = {
   setup
 };
-
-//----------------------------------------------------------------------------------------
-
-//LOBBY COUNTDOWN TO 5
-// setTimeout(() => {
-//   socket.emit('startTheGame');
-
-//   setTimeout(() => {
-//     socket.emit('middleQuiz', newGame);
-//     currentQuestion++;
-//     socket.emit('questionChange', { currentQuestion });
-//   }, 5000);
-
-//   const interval = setInterval(() => {
-//     if (currentQuestion === newGame.quiz.quests.length) {
-//       socket.emit('endGame', newGame);
-//       clearInterval(interval);
-//       socket.leave(newGame._id);
-//       gameService.removeGame(newGame._id);
-//       console.log(newGame);
-//     } else {
-//       setTimeout(() => {
-//         socket.emit('quizQuest');
-//         setTimeout(() => {
-//           socket.emit('middleQuiz', newGame);
-//           currentQuestion++;
-//           socket.emit('questionChange', { currentQuestion });
-//         }, 5000);
-//       }, 5000);
-//     }
-//   }, 11000);
-// }, 5000);
-//-------------------------------------------
