@@ -6,8 +6,16 @@
 html {
   font-family: "Titilium-web", sans-serif;
   font-size: 14px;
+  @include for-mobile-layout {
+    font-size: rem(10px);
+  }
+  @include for-narrow-layout {
+    font-size: rem(11px);
+
+  }
   @include for-normal-layout {
-    font-size: 16px;
+    font-size: rem(16px);
+
   }
 }
 

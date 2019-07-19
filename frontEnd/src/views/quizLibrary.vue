@@ -1,9 +1,10 @@
 <template>
-  <div class="quiz-library layout-container">
-    <h1 class="center">Quiz Library</h1>
-    <!-- <quiz-filter></quiz-filter> -->
-    <quiz-list v-if="games" :quizes="games"></quiz-list>
-  </div>
+  <section class="layout-container">
+    <h1>Quiz Library</h1>
+    <div class="quiz-library">
+      <quiz-list v-if="games" :quizes="games"></quiz-list>
+    </div>
+  </section>
 </template>
 
 <script>

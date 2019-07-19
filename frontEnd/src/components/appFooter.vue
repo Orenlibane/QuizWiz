@@ -1,16 +1,16 @@
 <template>
   <footer class="app-footer">
     <router-link exact to="/score" class="footer-btn">
-      <i class="fas fa-poll-h"></i>
+      <button class="score-btn"></button>
     </router-link>
     <router-link exact to="/" class="footer-btn">
-      <i class="fas fa-home"></i>
+      <button class="home-btn"></button>
     </router-link>
     <router-link exact to="user" class="footer-btn">
-      <i class="fas fa-user"></i>
+      <button class="home-btn"></button>
     </router-link>
     <router-link exact to="/library" class="footer-btn">
-      <i class="fas fa-gamepad"></i>
+      <button class="home-btn"></button>
     </router-link>
   </footer>
 </template>

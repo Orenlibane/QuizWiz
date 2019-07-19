@@ -1,38 +1,43 @@
 .quiz-preview-img-container {
-  width: 100%;
   height: rem(169px);
-}
-.quiz-preview-img-container img {
   width: 100%;
-  height: rem(169px);
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  padding: 0;
-  margin: 0;
-  border-radius: rem(5px);
-}
+  background-size: cover;
+  position: relative;
+  @include for-normal-layout {
 
+  }
+  @include for-narrow-layout {
+
+  }
+  @include for-mobile-layout {
+    width: 100%;
+    margin-right:10px;
+  }
+}
 .quiz-preview-card {
   padding: rem(8px);
   background-color: $clr3;
   border-radius: rem(10px);
-  margin-bottom: rem(40px);
-  // @include for-narrow-layout {
-  //   width: 50%;
-  //   background: green;
-  // }
+  display: flex;
+  @include for-mobile-layout {
+    flex-direction: row;
+  }
+  @include for-normal-layout {
+    flex-direction: column;
+  }
+  @include for-narrow-layout {
+    flex-direction: column;
+  }
 }
 
 .quiz-preview-btn-container {
-  position: relative;
-  top: -26px;
+  position: absolute;
+  bottom: 0;
 }
 .quiz-preview-like-count {
   width: rem(30px);
   height: rem(30px);
   background-color: rgba(0, 0, 0, 0.5);
-
 
   color: $clr3;
   display: flex;
@@ -54,7 +59,7 @@
 .quiz-preview-details {
   // padding-left: rem(18px);
   width: 100%;
-  font-family: 'Titillium-Web';
+  font-family: "Titillium-Web";
   display: flex;
   flex-direction: column;
   justify-content: space-between;
