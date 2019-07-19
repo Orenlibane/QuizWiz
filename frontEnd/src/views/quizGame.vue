@@ -1,6 +1,3 @@
-
-
-
 <template>
   <section class="layout-container">
     <component :is="gameStage" :info="cmp.info" :currQuest="currQuest" :gameRes="cmp.gameRes" />

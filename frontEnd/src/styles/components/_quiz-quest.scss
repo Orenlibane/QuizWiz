@@ -3,16 +3,10 @@
   width: 100%;
   height: em(200px);
   border-radius: em(20px);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
   margin-top: em(50px);
   margin-bottom: em(50px);
 }
 .quest-answers-container {
-  justify-content: center;
-  align-items: center;
   color: $clr3;
   display: grid;
   grid-template-columns: 1fr 1fr;
