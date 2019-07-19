@@ -30,12 +30,12 @@ $normal-breakpoint: 1000px;
 
 .layout-container {
   @include for-mobile-layout {
-    padding-left: rem(10px);
-    padding-right: rem(10px);
+    padding-left: rem(30px);
+    padding-right: rem(30px);
   }
   @include for-narrow-layout {
-    padding-left: rem(20px);
-    padding-right: rem(20px);
+    padding-left: rem(35px);
+    padding-right: rem(35px);
   }
   @include for-normal-layout {
     padding-left: rem(50px);
