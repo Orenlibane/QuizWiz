@@ -1,10 +1,9 @@
 <template>
-  <section class="layout-container">
-    <h1>Quiz Library</h1>
-    <div class="quiz-library">
-      <quiz-list v-if="games" :quizes="games"></quiz-list>
-    </div>
-  </section>
+  <div class="quiz-library layout-container">
+    <h1 class="center">Quiz Library</h1>
+    <!-- <quiz-filter></quiz-filter> -->
+    <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>
+  </div>
 </template>
 
 <script>
@@ -16,10 +15,12 @@ export default {
   props: [],
   components: { quizList, quizFilter },
   computed: {
-    games() {
+    quizes() {
       return this.$store.getters.getQuizes;
     }
   },
-  created() {}
+  // created() {
+  //   this.$store.dispatch({type: "loadQuizes"})
+  // }
 };
 </script>

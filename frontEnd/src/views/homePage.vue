@@ -4,9 +4,8 @@
 
     <h1 class="caps underLine">live games</h1>
     <quiz-list v-if="liveGames" :quizes="liveGames"></quiz-list>
-
     <!-- <h1 class="caps">all games</h1> -->
-    <!-- <quiz-list v-if="games" :quizes="games"></quiz-list> -->
+    <!-- <quiz-list v-if="quizes" :quizes="quizes"></quiz-list> -->
     <div class="flex both-align-center">
       <router-link to="/quiz/add">
         <button class="addQuizBtn">Add Quiz</button>
@@ -33,7 +32,11 @@ export default {
       return this.$store.getters.getQuizes;
     },
     liveGames() {
-      return this.$store.getters.getLiveGames;
+      let liveGames = this.$store.getters.getLiveGames;
+      return liveGames.filter(game => {
+        console.log('is game on?', game);
+        return game.isGameOn === false;
+      });
     },
     quizes() {
       return this.$store.getters.getQuizes;
@@ -64,7 +67,7 @@ export default {
     //   }
     // })();
 
-    this.$store.dispatch({ type: "loadQuizes" });
+    // this.$store.dispatch({ type: "loadQuizes" });
     //We send this event in order to make the footer and the header appear when we're not in a game-mode
     eventBus.$emit(GAME_OFF);
     // this.$store.dispatch({ type: "serverClock" });

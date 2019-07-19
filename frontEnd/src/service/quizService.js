@@ -19,7 +19,6 @@ async function query() {
 
 async function getById(id) {
   try {
-    console.log(id);
     return await httpService.get(`quiz/${id}`);
   } catch (err) {
     console.log('error in getting single', err);
@@ -48,7 +47,6 @@ async function editQuiz(NewQuiz) {
 }
 
 async function deleteQuiz(id) {
-  console.log(id, 'delete in quizservice');
   try {
     return await httpService.delete(`quiz/${id}`, id);
   } catch (err) {

@@ -4,7 +4,7 @@ import utilService from '@/service/utilService.js';
 
 const quizStore = {
   state: {
-    quizes: ''
+    quizes: []
   },
   mutations: {
     setQuizes(state, { quizes }) {
@@ -26,6 +26,7 @@ const quizStore = {
   },
   getters: {
     getQuizes(state) {
+      console.log('getter of quizes returns:', state.quizes);
       return state.quizes;
     }
   },

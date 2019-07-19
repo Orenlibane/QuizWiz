@@ -5,7 +5,7 @@ var io;
 function setup(http) {
   io = socketIO(http);
 
-  io.on('connection', function(socket) {
+  io.on('connection', function (socket) {
     io.emit('returnAllLiveGames', gameService.getAllonlineGames());
 
     // SERVER GLOBAL TIME SEND
@@ -59,6 +59,9 @@ function setup(http) {
             io.emit('returnAllLiveGames', gameService.getAllonlineGames());
             return;
           }
+          console.log('newGame after lobby now', newGame);
+          newGame.isGameOn = true;
+          io.emit('returnAllLiveGames', gameService.getAllonlineGames());
           newGame.status = 'quest';
           io.to(newGame._id).emit('quizQuest');
         } else if (newGame.status === 'quest') {

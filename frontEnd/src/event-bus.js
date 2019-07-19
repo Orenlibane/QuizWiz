@@ -1,4 +1,3 @@
-console.log('testing the event bus');
 import Vue from 'vue';
 var bus = new Vue();
 

@@ -43,9 +43,6 @@ export default {
     return {};
   },
 
-  created() {
-    console.log(this.info);
-  },
   methods: {
     startSinglePlayer() {
       this.$emit("gameStage", { cmp: "quizReady" });
@@ -58,8 +55,9 @@ export default {
         nickName: nickName,
         ans: []
       };
-      this.$store.dispatch({ type: "setUser", infoToLog });
       this.info.quiz.creator = infoToLog;
+      // console.log('quizes after adding user:', this.$store.getters.getQuizes);
+      this.$store.dispatch({ type: "setUser", infoToLog });
       this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
     }
   }

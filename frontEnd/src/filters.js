@@ -7,10 +7,12 @@ Vue.filter('answerFormat', val => {
 });
 
 Vue.filter('grade', val => {
-  if (val <= 30) return 'Too bad, u can do better';
+  if (val <= 15) return '🐺You know Nothing Jon Snow🐺 ';
+  else if (val <= 30) return "😥Too bad, I'm sure you can do better😥";
   else if (val <= 60) return 'I guess thats ok...';
   else if (val <= 85) return 'Very Nice!';
-  else return 'Perfect!!';
+  else if (val <= 95) return 'You are Amazing🏆';
+  else return 'Perfect!!! You deserve a cookie 🍪';
 });
 
 Vue.filter('timeAgo', ms => {

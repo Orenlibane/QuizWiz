@@ -5,13 +5,6 @@
   <section class="layout-container">
     <quiz-gameboard v-if="isPlaying" :info="cmp.info"></quiz-gameboard>
     <component :is="gameStage" :info="cmp.info" :currQuest="currQuest" :gameRes="cmp.gameRes" />
-    <!-- <quest-timer
-      v-if="isPlaying"
-      :info="cmp.info"
-      :gameRes="cmp.gameRes"
-      @gameStage="gameSequence"
-      @emitTime="getQuestTimer"
-    ></quest-timer>-->
   </section>
 </template>
 
@@ -56,17 +49,21 @@ export default {
     quizGameboard,
     questTimer
   },
-  methods: {
-    gameSequence(gameStage) {
-      if (gameStage.ans) {
-        this.cmp.gameRes.push({
-          questIdx: this.cmp.gameRes.length,
-          result: gameStage.ans,
-          score: gameStage.ans === "false" ? 0 : this.cmp.info.timer * 10
-        });
-      }
-    }
-  },
+  // methods: {
+  //   gameSequence(gameStage) {
+  //     if (gameStage.ans) {
+  //       this.cmp.gameRes.push({
+  //         questIdx: this.cmp.gameRes.length,
+  //         result: gameStage.ans,
+  //         score: gameStage.ans === "false" ? 0 : this.cmp.info.timer * 10
+  //       });
+  //     }
+  //     console.log('game stage chani');
+  //     if(gameStage === 'quizEnd') {
+  //       console.log('the quiz has ended!!!!! michael');
+  //     }
+  //   }
+  // },
   computed: {
     gameStage() {
       return this.$store.getters.gameStage;
