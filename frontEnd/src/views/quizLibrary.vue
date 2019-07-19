@@ -1,6 +1,6 @@
 <template>
   <div class="quiz-library layout-container">
-    <h1 class="center">Quiz Library</h1>
+    <h1>Quiz Library</h1>
     <!-- <quiz-filter></quiz-filter> -->
     <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>
   </div>

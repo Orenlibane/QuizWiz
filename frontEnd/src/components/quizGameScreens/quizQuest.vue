@@ -4,10 +4,10 @@
       <span>Question {{currQuestNum}}/7</span>
       <span>{{timer}}</span>
     </div>
-    <div class="quest-name-container">
+    <div class="quest-name-container flex justify-center align-center column">
       <h2 class="center">{{currQuest}}</h2>
     </div>
-    <div class="quest-answers-container">
+    <div class="quest-answers-container justify-center align-center">
       <button
         class="quest-answer-btn"
         :class="ansStyle(idx)"
@@ -112,10 +112,10 @@ export default {
 </script>
 
 <style scoped>
+
 .wrongAnsStyle {
   background: rgb(173, 55, 55, 0.7);
 }
-
 .correctAnsStyle {
   background: rgb(47, 149, 47, 0.7);
 }

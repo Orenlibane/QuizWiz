@@ -16,9 +16,6 @@
   @include for-normal-layout {
     justify-content: center;
   }
-  // @include for-normal-layout {
-  //   flex-direction: column;
-  // }
   @include for-narrow-layout {
     justify-content: center;
   }
