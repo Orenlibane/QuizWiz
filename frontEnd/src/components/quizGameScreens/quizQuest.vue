@@ -77,7 +77,7 @@ export default {
           res: {
             answerInfo: {
               currAns: false,
-              score: this.timer * 10
+              score: 0
             },
             userId: this.user.userId
           }
@@ -101,7 +101,7 @@ export default {
         res: {
           answerInfo: {
             currAns: false,
-            score: this.timer * 10
+            score: 0
           },
           userId: this.user.userId
         }
@@ -113,7 +113,6 @@ export default {
       this.timer--;
     }, 1000);
     this.user = this.$store.getters.getUser;
-    console.log(this.user);
   }
 };
 </script>

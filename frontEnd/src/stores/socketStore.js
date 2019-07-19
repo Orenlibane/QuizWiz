@@ -12,7 +12,7 @@ export default {
       currentQuiz: null,
       currentQuestion: null,
       scores: [],
-      userScore: [],
+      userScores: [],
       user: {}
     }
   },
@@ -36,16 +36,17 @@ export default {
     updateCurrentQuestion(state, currentQuestion) {
       state.gameState.currentQuestion = currentQuestion;
     },
+    //setting the game scores from server on emit of stages: middle/end
     setGameScore(state, { gameScores }) {
       state.gameState.scores = gameScores;
     },
     setLiveGames(state, { liveGames }) {
       state.liveGames = liveGames;
     },
-    setUserScore(state, { res }) {
+    setUserScores(state, { res }) {
       console.log('setting the user score MUT', res);
       //TODO: CHECK IF CAN COMMENT IT OUT AND USE THE SCORES FROM SET USER
-      state.gameState.userScore.push(res.score);
+      state.gameState.userScores.push(res.score);
     },
     setUser(state, { infoToLog }) {
       state.gameState.user = infoToLog;
@@ -61,13 +62,15 @@ export default {
     setLoadedGames(context, { liveGames }) {
       context.commit({ type: 'setLiveGames', liveGames });
     },
+    //getting the game scores from server on emit of stages: middle/end
     getGameScores(context, { gameScores }) {
+      console.log('game Scores back from server in action', gameScores);
       context.commit({ type: 'setGameScore', gameScores });
     },
     //updating the user score array (only score) and emiting to server
     updateAns(context, { res }) {
       socket.emit('updateAns', res);
-      context.commit({ type: 'setUserScore', res });
+      context.commit({ type: 'setUserScores', res });
     },
     loadGameQuiz(context, { quiz }) {
       context.commit({ type: 'firstGameSetting', quiz });
@@ -128,15 +131,14 @@ export default {
     getQuiz(state) {
       return state.gameState.currentQuiz;
     },
+    //return all users scores and info -
+    //TODO: CAN I DELETE?
+    // getUsersScores(state) {
+    //   return state.gameState.userScores;
+    // },
+    //getting the game scores from server on emit of stages: middle/end
     getGameScores(state) {
       return state.gameState.scores.gamePlayers;
-    },
-    userTotalScore(state) {
-      let totalScore = state.gameState.userScore.reduce((acc, score) => {
-        acc += score;
-        return acc;
-      }, 0);
-      return totalScore;
     }
   }
 };

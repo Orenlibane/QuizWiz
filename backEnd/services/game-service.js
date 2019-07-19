@@ -17,7 +17,6 @@ function getAllonlineGames() {
 }
 function gamePlayersCount(gameId) {
   const gameById = onlineGames.find(game => game._id === gameId);
-  console.log('is bug here?');
   return gameById.gamePlayers.length;
 }
 // Michael: Need to keep going with the code check from here
@@ -41,23 +40,13 @@ function startGame(gameId) {
 }
 
 function removeGame(gameId) {
-  console.log(gameId);
   onlineGames = onlineGames.filter(game => game._id !== gameId);
-  console.log('games after', onlineGames);
 }
 
 // Setthe curr ans for each one of the players array
 function setAnswer(gameId, userId, answer) {
   const currGame = onlineGames.find(game => game._id === gameId);
   let currUser = currGame.gamePlayers.find(user => user.userId === userId);
-  console.log('this is the game we play right now', currGame);
-  console.log('this is the currUser we should have found', userId);
-  console.log('this is the currUser found', currUser);
-  // if (!currPlayer) {
-  //   // currGame.gamePlayers.push();
-  //   currPlayer = currGame.gamePlayers.find(player => player.id === playerId);
-  // }
-  // if (!currPlayer.ans) currPlayer.ans = [];
   currUser.ans.push(answer);
 }
 

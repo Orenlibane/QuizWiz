@@ -31,13 +31,11 @@ function setup(http) {
       socket.join(newGame._id);
       console.log('created the game on:', newGame._id);
 
-      // ON -> get the guest Name //
-
       //join the game creator into game on the service
-      var player = gameService.joinGame(newGame._id, quiz.creator);
+      var user = gameService.joinGame(newGame._id, quiz.creator);
 
-      // sending the connected players names into the loby
-      io.to(newGame._id).emit('loggedUser', player);
+      // sending the connected users names into the loby
+      io.to(newGame._id).emit('loggedUser', user);
       //sending the signal to start the 5 sec lobby timer
       io.to(newGame._id).emit('startGameTimer');
 
@@ -71,9 +69,6 @@ function setup(http) {
         }
       }
       socket.on('updateAns', answer => {
-        console.log('Sent Answer CREATOR ', answer);
-        console.log('This is the game before an answer', newGame);
-
         gameService.setAnswer(newGame._id, answer.userId, answer.answerInfo);
       });
     });
