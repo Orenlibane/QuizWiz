@@ -119,11 +119,11 @@ export default {
     //getting the game scores from server on emit of stages: middle/end
     getGameScores(state) {
       return state.gameState.scores.gamePlayers;
-    }
+    },
     //TODO: Fix lobby Timer
-    // getLobbyTimer(state) {
-    //   console.log('from state:', state.gameState.lobbyTimer);
-    //   return state.gameState.lobbyTimer;
-    // }
+    getLobbyTimer(state) {
+      console.log('from state:', state.gameState.lobbyTimer);
+      return state.gameState.lobbyTimer;
+    }
   }
 };
