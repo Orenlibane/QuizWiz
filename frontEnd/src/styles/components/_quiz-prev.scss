@@ -45,10 +45,11 @@
   align-items: center;
   border-top-right-radius: rem(5px);
 }
+
 .quiz-preview-like-btn {
   width: rem(30px);
   height: rem(30px);
-  color: $clr3;
+  fill: $clr3;
   background-color: rgba(0, 0, 0, 0.5);
   border-bottom-left-radius: rem(5px);
   border: none;
