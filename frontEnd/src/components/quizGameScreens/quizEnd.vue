@@ -70,7 +70,6 @@ export default {
       let currentUser = allScores.find(
         user => this.user.userId === user.userId
       );
-      console.log("this is the user", currentUser);
       let userTotalScore = currentUser.ans.reduce((acc, userScores) => {
         acc += userScores.score;
         return acc;
