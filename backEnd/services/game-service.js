@@ -18,18 +18,18 @@ function getAllonlineGames() {
 }
 function gamePlayersCount(gameId) {
   const gameById = onlineGames.find(game => game._id === gameId);
-  console.log('is bug here?');
   return gameById.gamePlayers.length;
 }
 // Michael: Need to keep going with the code check from here
 //In here - later on we'll have to get the guest nickname and its id from the session.
 function joinGame(
   gameId,
-  player = { nickName: 'guest', id: _makeId(), ans: [] }
+  user = { nickName: 'guest', id: _makeId(), ans: [] }
 ) {
+  console.log('this is the user created', user);
   const gameById = onlineGames.find(game => game._id === gameId);
-  gameById.gamePlayers.push(player);
-  return player;
+  gameById.gamePlayers.push(user);
+  return user;
 }
 //TODO: delete?
 function leaveGame(playerId, gameId) {
@@ -46,13 +46,10 @@ function removeGame(gameId) {
 }
 
 // Setthe curr ans for each one of the players array
-function setAnswer(gameId, playerId, answer) {
+function setAnswer(gameId, userId, answer) {
   const currGame = onlineGames.find(game => game._id === gameId);
-  const currPlayer = currGame.gamePlayers.find(
-    player => player.id === playerId
-  );
-  if (!currPlayer.ans) currPlayer.ans = [];
-  currPlayer.ans.push(answer);
+  let currUser = currGame.gamePlayers.find(user => user.userId === userId);
+  currUser.ans.push(answer);
 }
 
 function getGameById(gameId) {

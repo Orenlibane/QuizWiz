@@ -31,9 +31,7 @@ const userStore = {
     },
 
     async login(context, { userCred }) {
-      console.log('got cred:', userCred);
       const user = await userService.login(userCred);
-      console.log('user we got:', user);
       if (user) context.commit({ type: 'setUser', user });
     },
 

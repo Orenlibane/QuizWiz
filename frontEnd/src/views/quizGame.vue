@@ -41,18 +41,9 @@ export default {
           quiz: Object,
           currQuest: Number,
           timer: Number
-        },
-        gameRes: [],
-        inform: "func"
+        }
       },
-      cmpArr: [
-        "quizDetails",
-        "quizLobby",
-        "quizReady",
-        "quizQuest",
-        "quizEnd",
-        "quizResult"
-      ]
+      user: {}
     };
   },
   components: {
@@ -101,6 +92,7 @@ export default {
       this.cmp.info.currQuest = newVal.currentQuestion;
     }
   },
+
   async created() {
     const quizId = this.$route.params.id;
     var quiz = await this.$store.dispatch({ type: "getQuiz", quizId });

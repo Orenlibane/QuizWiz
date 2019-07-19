@@ -11,7 +11,6 @@ const quizStore = {
       state.quizes = quizes;
     },
     addQuiz(state, { addedQuiz }) {
-      console.log(addedQuiz, 'this is the new added quiz');
       state.quizes.unshift(addedQuiz);
     },
     deleteQuiz(state, { quizId }) {
@@ -41,7 +40,6 @@ const quizStore = {
       context.commit({ type: 'setQuizes', quizes });
     },
     async deleteQuiz(context, { quizId }) {
-      console.log(quizId, 'delete in store action');
       try {
         await quizService.deleteQuiz(quizId);
         context.commit({ type: 'deleteQuiz', quizId });
@@ -53,7 +51,6 @@ const quizStore = {
       try {
         addedQuiz.createdAt = Date.now();
         addedQuiz = await quizService.addQuiz(addedQuiz);
-        console.log('pushed', addedQuiz);
         context.commit({ type: 'addQuiz', addedQuiz });
       } catch (err) {
         console.log('err in adding in store', err);

@@ -1,8 +1,6 @@
 <template>
-  <section>
-    <div v-for="quiz in quizes" :key="quiz._id">
-      <quiz-preview :quiz="quiz"></quiz-preview>
-    </div>
+  <section class="quiz-list-container">
+      <quiz-preview v-for="quiz in quizes" :key="quiz._id" :quiz="quiz"></quiz-preview>
   </section>
 </template>
 

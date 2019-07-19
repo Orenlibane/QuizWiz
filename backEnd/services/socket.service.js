@@ -15,8 +15,13 @@ function setup(http) {
 
     socket.on('loggingToGame', infoToLog => {
       socket.join(infoToLog.gameId);
-      let newPlayer = gameService.joinGame(infoToLog.gameId, infoToLog.player);
-      io.to(infoToLog.gameId).emit('loggedUser', newPlayer);
+      let newUser = gameService.joinGame(infoToLog.gameId, infoToLog.user);
+      io.to(infoToLog.gameId).emit('loggedUser', newUser);
+
+      socket.on('updateAns', answer => {
+        let currGame = gameService.getGameById(infoToLog.gameId);
+        gameService.setAnswer(currGame._id, answer.userId, answer.answerInfo);
+      });
     });
 
     socket.on('onCreateGame', quiz => {
@@ -24,13 +29,13 @@ function setup(http) {
       io.emit('returnAllLiveGames', gameService.getAllonlineGames());
       //Create and join the room
       socket.join(newGame._id);
-      // ON -> get the guest Name //
+      console.log('created the game on:', newGame._id);
 
       //join the game creator into game on the service
-      var player = gameService.joinGame(newGame._id, quiz.creator);
+      var user = gameService.joinGame(newGame._id, quiz.creator);
 
-      // sending the connected players names into the loby
-      io.to(newGame._id).emit('loggedUser', player);
+      // sending the connected users names into the loby
+      io.to(newGame._id).emit('loggedUser', user);
       //sending the signal to start the 5 sec lobby timer
       io.to(newGame._id).emit('startGameTimer');
 
@@ -67,48 +72,12 @@ function setup(http) {
         }
       }
       socket.on('updateAns', answer => {
-        gameService.setAnswer(newGame._id, player.id, answer);
+        gameService.setAnswer(newGame._id, answer.userId, answer.answerInfo);
       });
     });
-
-    //socket.on(user join)
-    //socket.on(user leave)
   });
 }
 
 module.exports = {
   setup
 };
-
-//----------------------------------------------------------------------------------------
-
-//LOBBY COUNTDOWN TO 5
-// setTimeout(() => {
-//   socket.emit('startTheGame');
-
-//   setTimeout(() => {
-//     socket.emit('middleQuiz', newGame);
-//     currentQuestion++;
-//     socket.emit('questionChange', { currentQuestion });
-//   }, 5000);
-
-//   const interval = setInterval(() => {
-//     if (currentQuestion === newGame.quiz.quests.length) {
-//       socket.emit('endGame', newGame);
-//       clearInterval(interval);
-//       socket.leave(newGame._id);
-//       gameService.removeGame(newGame._id);
-//       console.log(newGame);
-//     } else {
-//       setTimeout(() => {
-//         socket.emit('quizQuest');
-//         setTimeout(() => {
-//           socket.emit('middleQuiz', newGame);
-//           currentQuestion++;
-//           socket.emit('questionChange', { currentQuestion });
-//         }, 5000);
-//       }, 5000);
-//     }
-//   }, 11000);
-// }, 5000);
-//-------------------------------------------
