@@ -15,7 +15,10 @@
   right: 0;
   left: 0;
 }
-.quiz-details-img {
+.quiz-details-img img{
   display: flex;
   justify-content: center;
+  width: 100%;
+  // max-height: em(200px);
+  // object-fit: contain;
 }
