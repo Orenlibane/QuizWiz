@@ -10,7 +10,7 @@
       <p>by {{info.quiz.creatorName}}</p>
     </div>
     <div class="quiz-details-img">
-      <img src="@/assets/placeholder_600x400_2.jpg" alt />
+      <!-- <img src="@/assets/placeholder_600x400_2.jpg" alt /> -->
     </div>
     <div class="flex column justify-center align-center">
       <button class="mid-btn" @click="startSinglePlayer">SinglePlayer</button>

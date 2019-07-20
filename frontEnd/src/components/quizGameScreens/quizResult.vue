@@ -13,6 +13,20 @@
       </li>
       <hr />
     </div>
+    <div v-for="(user,userIdx) in gameScores" :key="userIdx">
+      <table class="players">
+        <tr>
+          <th>quest</th>
+          <th>name</th>
+          <th>score</th>
+        </tr>
+        <tr v-for="(answer,answerIdx) in user.ans" :key="answerIdx">
+          <td>{{answerIdx+1}}</td>
+          <td>{{user.nickName}}</td>
+          <td>{{answer.currAns}}</td>
+        </tr>
+      </table>
+    </div>
   </section>
 </template>
 
