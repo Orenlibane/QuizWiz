@@ -1,6 +1,6 @@
 .quiz-list-container {
   display: grid;
-
+  margin-bottom:em(100px);
   @include for-mobile-layout {
     grid-template-columns: 1fr;
     gap: 10px;

@@ -1,9 +1,10 @@
 <template>
   <section class="home-page layout-container">
-    <span>{{serverTime}}</span>
+    <!-- <span>{{serverTime}}</span> -->
 
-    <h1 class="caps underLine">live games</h1>
-    <quiz-list v-if="liveGames" :quizes="liveGames"></quiz-list>
+    <h1 class="caps">live games</h1>
+    <quiz-list v-if="liveGames.length" :quizes="liveGames"></quiz-list>
+    <h1 v-else>no games currently</h1>
     <!-- <h1 class="caps">all games</h1> -->
     <!-- <quiz-list v-if="quizes" :quizes="quizes"></quiz-list> -->
     <div class="flex both-align-center">
@@ -16,7 +17,6 @@
 
 <script>
 import quizList from "../components/quizList";
-import global from "@/styles/global.scss";
 import eventBus, { GAME_OFF } from "@/event-bus.js";
 import socketService from "../service/SocketService.js";
 const moment = require("moment");
@@ -33,10 +33,7 @@ export default {
     },
     liveGames() {
       let liveGames = this.$store.getters.getLiveGames;
-      return liveGames.filter(game => {
-        console.log('is game on?', game);
-        return game.isGameOn === false;
-      });
+      return liveGames.filter(game => game.isGameOn === false);
     },
     quizes() {
       return this.$store.getters.getQuizes;

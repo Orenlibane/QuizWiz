@@ -4,7 +4,7 @@
     <h1>Your current Score is: {{userTotalScore}}</h1>
 
     <h3>Here are the following scores:</h3>
-    <div v-for="(user,userIdx) in gameScores" :key="userIdx">
+    <div class="fs24" v-for="(user,userIdx) in gameScores" :key="userIdx">
       <li>Name: {{user.nickName}}</li>
       <hr />
       <li v-for="(answer,answerIdx) in user.ans" :key="answerIdx">
@@ -12,6 +12,20 @@
         Score :{{answer.score}}
       </li>
       <hr />
+    </div>
+    <div v-for="(user,userIdx) in gameScores" :key="userIdx">
+      <table class="players">
+        <tr>
+          <th>quest</th>
+          <th>name</th>
+          <th>score</th>
+        </tr>
+        <tr v-for="(answer,answerIdx) in user.ans" :key="answerIdx">
+          <td>{{answerIdx+1}}</td>
+          <td>{{user.nickName}}</td>
+          <td>{{answer.currAns}}</td>
+        </tr>
+      </table>
     </div>
   </section>
 </template>

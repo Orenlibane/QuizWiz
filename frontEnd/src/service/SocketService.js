@@ -1,6 +1,7 @@
 import io from 'socket.io-client';
 import socketStore from '../stores/socketStore.js';
 import store from '../stores/store.js';
+import router from '../router.js';
 
 const BASE_URL =
   process.env.NODE_ENV === 'production' ? '/' : '//localhost:3000';
@@ -24,10 +25,6 @@ on('serverTime', clock => {
   store.dispatch({ type: 'serverClock', clock });
 });
 
-on('startGameTimer', () => {
-  store.dispatch({ type: 'gameStartListener' });
-});
-
 on('questionChange', currentQuestion => {
   store.dispatch({ type: 'changeGameQuestion', currentQuestion });
 });
@@ -48,17 +45,15 @@ on('quizQuest', () => {
 on('endGame', gameScores => {
   store.dispatch({ type: 'changeGameStage', stage: 'quizEnd' });
   store.dispatch({ type: 'getGameScores', gameScores });
-  //TODO: tried to break the chain but it doesnt work
-  // setTimeout(() => {
-  //   console.log('moving it back to the lobby');
-  //   store.dispatch({ type: 'changeGameStage', stage: 'quizDetails' })
-  // }, 2000)
+});
+on('backToStart', () => {
+  store.dispatch({ type: 'changeGameStage', stage: 'quizDetails' });
 });
 
 on('returnAllLiveGames', liveGames => {
   store.dispatch({ type: 'setLoadedGames', liveGames });
 });
 
-// on('changeGameStage', stage => {
-//   store.dispatch({ type: 'changeGameStage', stage: stage });
-// });
+on('sendLobbyTimer', lobbyTimer => {
+  store.dispatch({ type: 'updateLobbyTimer', lobbyTimer });
+});

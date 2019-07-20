@@ -1,8 +1,11 @@
 .quiz-preview-img-container {
-  height: rem(169px);
+  height: rem(190px);
   width: 100%;
   background-size: cover;
+  background-repeat: no-repeat;
   position: relative;
+  background-position: bottom;
+  border-radius: rem(10px);
   @include for-normal-layout {
 
   }
@@ -33,12 +36,13 @@
 .quiz-preview-btn-container {
   position: absolute;
   bottom: 0;
+  border-bottom-left-radius: rem(10px);
+  overflow: hidden;
 }
 .quiz-preview-like-count {
   width: rem(30px);
   height: rem(30px);
   background-color: rgba(0, 0, 0, 0.5);
-
   color: $clr3;
   display: flex;
   justify-content: center;
@@ -58,7 +62,6 @@
 }
 
 .quiz-preview-details {
-  // padding-left: rem(18px);
   width: 100%;
   font-family: "Titillium-Web";
   display: flex;
@@ -78,8 +81,6 @@
 .card-btn {
   background-color: $clr1;
   color: $clr3;
-  // padding-right: rem(5px);
-  // padding-left: rem(5px);
   width: rem(70px);
   height: rem(40px);
   border-radius: rem(5px);
