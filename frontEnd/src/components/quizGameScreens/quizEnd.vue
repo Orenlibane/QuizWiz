@@ -1,6 +1,5 @@
 <template>
   <section class="layout-container">
-    {{gameScores}}
     <router-link to="/">
       <button class="btn-quiz">
         <i class="fas fa-backward"></i>
@@ -20,14 +19,20 @@
           <th>quest</th>
           <th>name</th>
           <th>score</th>
-        </tr> -->
-            <div class="table-heading flex justify-center align-center"><h1>Score Board:</h1></div>
+    </tr>-->
+    <div class="table-heading flex justify-center align-center">
+      <h1>Score Board:</h1>
+    </div>
     <div class="score-table flex justify-center column">
-      <div class="table-item flex align-center space-between" v-for="(user,userIdx) in gameScores" :key="userIdx">
+      <div
+        class="table-item flex align-center space-between"
+        v-for="(user,userIdx) in sortedUsersTotalScores"
+        :key="userIdx"
+      >
         <div class="player-details flex align-center">
-          <div class="player-place">{{idxFormat(userIdx)}}</div>
+          <div class="player-place">{{idxFormat(userIdx+1)}}</div>
           <div class="player-avatar">
-            <img src="https://api.adorable.io/avatars/285/abott@adorable.png" alt />
+            <img :src="setAvatar(user.nickName)" alt />
           </div>
           <div class="player-name">{{user.nickName}}</div>
         </div>
@@ -49,17 +54,10 @@
               />
             </g>
           </svg>
-          <span> &nbsp; {{user.score}}</span>
+          <span>&nbsp; {{user.totalScore}}</span>
         </div>
       </div>
     </div>
-        <!-- <tr v-for="(answer,answerIdx) in user.ans" :key="answerIdx">
-          <td>{{answerIdx+1}}</td>
-          <td>{{user.nickName}}</td>
-          <td>{{answer.score}}</td>
-        </tr> -->
-    <!-- <button class="big-btn">Like</button> -->
-    <!-- <button @click="toggleQuests" class="show-questions-btn">show Questions</button> -->
 
     <div v-if="showQuests" class="questions-sum flex column">
       <button @click="toggleQuests" class="show-questions-btn">show Questions:</button>
@@ -106,6 +104,23 @@ export default {
     };
   },
   computed: {
+    sortedUsersTotalScores() {
+      let usersTotalScores = [];
+      this.gameScores.forEach(user => {
+        let reducingUser = {
+          nickName: user.nickName,
+          totalScore: 0,
+          ans: user.ans
+        };
+        reducingUser.ans.forEach(ans => {
+          reducingUser.totalScore += ans.score;
+        });
+        usersTotalScores.push(reducingUser);
+      });
+      return usersTotalScores.sort((user1, user2) => {
+        return user2.totalScore - user1.totalScore;
+      });
+    },
     quests() {
       return this.info.quiz.quests;
     },
@@ -137,7 +152,6 @@ export default {
       );
       return userTotalRightAnswers;
     },
-
     gameScores() {
       return this.$store.getters.getGameScores;
     }
@@ -146,10 +160,16 @@ export default {
     toggleQuests() {
       this.showQuests = !this.showQuests;
     },
-        idxFormat(idx) {
+    idxFormat(idx) {
       return idx < 10 ? `0${idx}` : idx;
+    },
+    setAvatar(nickName) {
+      return "https://api.adorable.io/avatars/103/" + nickName + ".png";
     }
   }
 };
 </script>
+
+
+
 
