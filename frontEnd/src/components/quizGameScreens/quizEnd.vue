@@ -1,5 +1,5 @@
 <template>
-  <section class="layout-container">
+  <section class>
     <router-link to="/">
       <button class="btn-quiz">
         <i class="fas fa-backward"></i>
@@ -13,13 +13,6 @@
       <h1>Total right answers {{userTotalRightAnswers}}/{{currUserAnswers.ans.length}}</h1>
       <h1 class="fs30">All users Answers</h1>
     </div>
-    <!-- <div v-for="(user,userIdx) in gameScores" :key="userIdx">
-      <table class="players">
-        <tr>
-          <th>quest</th>
-          <th>name</th>
-          <th>score</th>
-    </tr>-->
     <div class="table-heading flex justify-center align-center">
       <h1>Score Board:</h1>
     </div>
@@ -92,9 +85,9 @@ export default {
     );
 
     //TODO: should change -> should depened on server time
-    // setTimeout(() => {
-    //   this.$router.push("/");
-    // }, 7000);
+    setTimeout(() => {
+      this.$router.push("/");
+    }, 7000);
   },
   data() {
     return {
