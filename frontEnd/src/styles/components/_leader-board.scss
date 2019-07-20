@@ -1,0 +1,21 @@
+.players {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+.players td,
+.players th {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: $clr3
+}
+.players tr:nth-child(even) {
+  background-color: $clr5;
+}
+.players th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: $clr3;
+  color: $clr4;
+}

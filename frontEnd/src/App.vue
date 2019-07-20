@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <app-header v-if="!game"></app-header>
+    <!-- <app-header v-if="!game"></app-header> -->
     <router-view></router-view>
     <app-footer v-if="!game"></app-footer>
   </div>
