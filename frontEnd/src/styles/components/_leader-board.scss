@@ -7,7 +7,7 @@
 .players th {
   padding-top: 8px;
   padding-bottom: 8px;
-  color: $clr3
+  color: $clr3;
 }
 .players tr:nth-child(even) {
   background-color: $clr5;
@@ -18,4 +18,55 @@
   text-align: left;
   background-color: $clr3;
   color: $clr4;
+}
+// 1st column
+.score-table {
+  color: $clr3;
+  font-family: "Lilita-One-regular";
+  padding-bottom: em(50px);
+  font-size: em(30px);
+  @include for-normal-layout {
+  }
+  @include for-narrow-layout {
+  }
+  @include for-mobile-layout {
+    font-size: em(20px);
+  }
+}
+.score-table .table-item:nth-child(odd) {
+  background-color: $clr5;
+}
+
+.table-item {
+  height: em(40px);
+  padding: em(5px);
+  @include for-mobile-layout {
+    padding-left: rem(25px);
+    padding-right: rem(25px);
+  }
+  @include for-narrow-layout {
+    padding-left: rem(35px);
+    padding-right: rem(35px);
+  }
+  @include for-normal-layout {
+    padding-left: rem(200px);
+    padding-right: rem(200px);
+  }
+}
+.player-details {
+  height: 100%;
+}
+.player-place {
+  margin-right: em(10px);
+}
+.player-avatar {
+  height: 100%;
+}
+.player-avatar img {
+  height: 100%;
+  border-radius: em(300px);
+  margin-right: em(10px);
+}
+.table-heading {
+  color: $clr3;
 }
