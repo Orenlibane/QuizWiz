@@ -5,6 +5,7 @@ import addQuiz from './views/addQuiz';
 import editQuiz from './views/editQuiz';
 import quizGame from './views/quizGame.vue';
 import quizLibrary from './views/quizLibrary.vue';
+import leaderBoard from './views/leaderBoard.vue'
 
 Vue.use(Router);
 
@@ -41,6 +42,11 @@ export default new Router({
       path: '/library',
       name: 'quizLibrary',
       component: quizLibrary
+    },
+    {
+      path: '/score',
+      name: 'score',
+      component: leaderBoard
     }
   ]
 });

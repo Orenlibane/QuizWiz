@@ -6,11 +6,13 @@
 html {
   font-family: "Titilium-web", sans-serif;
   font-size: 14px;
+  
 }
 
 body {
   margin: 0;
-  background-color: $clr1;
+  height: 100vh;
+  background-image: radial-gradient($clr5 5%,$clr1 60%);
 }
 
 img {

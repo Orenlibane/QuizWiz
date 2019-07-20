@@ -1,8 +1,10 @@
 .quiz-preview-img-container {
-  height: rem(160px);
+  height: rem(190px);
   width: 100%;
   background-size: cover;
+  background-repeat: no-repeat;
   position: relative;
+  background-position: bottom;
   border-radius: rem(10px);
   @include for-normal-layout {
 
@@ -60,7 +62,6 @@
 }
 
 .quiz-preview-details {
-  // padding-left: rem(18px);
   width: 100%;
   font-family: "Titillium-Web";
   display: flex;
@@ -80,8 +81,6 @@
 .card-btn {
   background-color: $clr1;
   color: $clr3;
-  // padding-right: rem(5px);
-  // padding-left: rem(5px);
   width: rem(70px);
   height: rem(40px);
   border-radius: rem(5px);
