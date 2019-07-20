@@ -70,3 +70,84 @@
 .table-heading {
   color: $clr3;
 }
+
+// end screen
+
+
+.end-screen{
+  padding-top: em(20px);
+}
+.winners-podium-trophy {
+  margin-bottom: em(20px);
+}
+.winners-podium {
+  .place {
+    width: em(200px);
+    font-family: "Lilita-One-regular";
+    height: em(200px);
+    background-color: white;
+    border-radius: 100%;
+    position: relative;
+    @include for-mobile-layout {
+      height: em(105px);
+      width: em(105px);
+      margin: em(9px);
+    }
+    @include for-narrow-layout {
+      height: em(170px);
+      width: em(170px);
+      margin: em(9px);
+    }
+    @include for-normal-layout {
+    }
+    margin: em(20px);
+    span {
+      width: em(40px);
+      height: em(40px);
+      padding: 20px;
+      font-size: em(25px);
+      border-radius: 100%;
+      background-color: $clr2;
+      position: absolute;
+      top: em(-10px);
+      left: 13px;
+      color: $clr3;
+      @include for-mobile-layout {
+        height: em(50px);
+        width: em(50px);
+        font-size: em(13px);
+        padding: 0;
+        left: em(-9px);
+      }
+      @include for-narrow-layout {
+        height: em(65px);
+        width: em(65px);
+        font-size: em(16px);
+        padding: 0;
+        left: em(0px);
+      }
+      @include for-normal-layout {
+      }
+    }
+    div {
+      font-size: em(30px);
+      @include for-mobile-layout {
+        font-size: em(20px);
+      }
+      @include for-narrow-layout {
+      }
+      @include for-normal-layout {
+      }
+    }
+    .player-score {
+      font-size: em(50px);
+      @include for-mobile-layout {
+        font-size: em(30px);
+      }
+      @include for-narrow-layout {
+      }
+      @include for-normal-layout {
+      }
+    }
+  }
+}
