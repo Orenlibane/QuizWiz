@@ -19,3 +19,16 @@
     height: rem(30px);
     background-color: lightgray;
 }
+
+.pink-btn{
+  background-color: $clrbtn2;
+  border:none;
+  font-size: rem(16px);
+  color: white;
+  padding: em(16px);
+  width: em(200px);
+  border-radius: em(10px);
+  outline: none;
+  box-shadow: 0 0 5px 0px black;
+  margin: em(5px);
+}

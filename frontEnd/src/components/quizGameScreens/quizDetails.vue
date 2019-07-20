@@ -1,5 +1,5 @@
 <template>
-  <section class="quiz-details">
+  <!-- <section class="quiz-details">
     <router-link to="/">
       <button class="small-btn">
         <i class="fas fa-arrow-left"></i>
@@ -10,7 +10,6 @@
       <p>by {{info.quiz.creatorName}}</p>
     </div>
     <div class="quiz-details-img">
-      <!-- <img src="@/assets/placeholder_600x400_2.jpg" alt /> -->
     </div>
     <div class="flex column justify-center align-center">
       <button class="mid-btn" @click="startSinglePlayer">SinglePlayer</button>
@@ -27,6 +26,31 @@
         </button>
         <span class="quiz-details-like-count">{{info.quiz.likesCount}}</span>
       </div>
+    </div>
+  </section>-->
+  <section class="quiz-details layout-container">
+    <div class="quiz-details-time-score flex space-between">
+      <div class="start-time flex justify-center align-center column">
+        <span>time to start</span>
+        <h2>00:20</h2>
+      </div>
+      <div class="best-score flex justify-center align-center column">
+        <span>best score</span>
+        <h2>3000</h2>
+      </div>
+    </div>
+    <div class="quiz-details-header flex justify-center align-center">
+      <img
+        class="quiz-img"
+        src="https://images.unsplash.com/photo-1563454758691-702be3d2e2b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80"
+        alt
+      />
+    </div>
+    <div class="quiz-details-action flex justify-center align-center column">
+      <span>by {{info.quiz.creatorName}}</span>
+      <h2>{{info.quiz.name}}</h2>
+      <button class="pink-btn" @click="startSinglePlayer">Single Player</button>
+      <button class="pink-btn" @click="startMultiplayer">Multiplayer</button>
     </div>
   </section>
 </template>
