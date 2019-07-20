@@ -44,7 +44,6 @@ export default {
       state.gameState.user = infoToLog;
     },
     updateLobbyTimer(state, { lobbyTimer }) {
-      console.log(lobbyTimer);
       state.gameState.lobbyTimer = lobbyTimer;
     }
   },
@@ -122,7 +121,6 @@ export default {
     },
     //TODO: Fix lobby Timer
     getLobbyTimer(state) {
-      console.log('from state:', state.gameState.lobbyTimer);
       return state.gameState.lobbyTimer;
     }
   }

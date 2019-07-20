@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <!-- <app-header v-if="!game"></app-header> -->
+    <app-header v-if="!game"></app-header>
     <router-view></router-view>
     <app-footer v-if="!game"></app-footer>
   </div>
@@ -39,7 +39,7 @@ export default {
     eventBus.$on(GAME_OFF, game => {
       this.game = false;
     });
-    this.$store.dispatch({type: 'loadQuizes'})
+    this.$store.dispatch({ type: "loadQuizes" });
     //Checking if a user is logged in. if not - he is being redirected to the welcome page, our FOLD,
     // and we give him 3 Options: Login, Signup, or Play as guest.
     //so that his browser will be recognized by the server.

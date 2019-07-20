@@ -29,6 +29,7 @@
 
 <script>
 import quizLobby from "@/styles/components/_quiz-lobby.scss";
+
 export default {
   props: ["info"],
   methods: {
@@ -41,7 +42,6 @@ export default {
       return this.$store.getters.getLoggedUsers;
     },
     lobbyTime() {
-      console.log("lobby countdown:", this.$store.getters.getLobbyTimer);
       return this.$store.getters.getLobbyTimer;
     }
   },

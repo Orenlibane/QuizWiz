@@ -1,6 +1,7 @@
 import io from 'socket.io-client';
 import socketStore from '../stores/socketStore.js';
 import store from '../stores/store.js';
+import router from '../router.js';
 
 const BASE_URL =
   process.env.NODE_ENV === 'production' ? '/' : '//localhost:3000';
@@ -54,6 +55,5 @@ on('returnAllLiveGames', liveGames => {
 });
 
 on('sendLobbyTimer', lobbyTimer => {
-  console.log(lobbyTimer, 'lobby timer from socket service');
   store.dispatch({ type: 'updateLobbyTimer', lobbyTimer });
 });

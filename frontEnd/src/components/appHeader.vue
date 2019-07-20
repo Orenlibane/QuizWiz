@@ -3,14 +3,14 @@
     <router-link to="/">
       <h1>QwizWizz</h1>
     </router-link>
-    <div class="header-btn-container flex both-align-center">
+    <!-- <div class="header-btn-container flex both-align-center">
       <button class="header-btn">
         <i class="fas fa-search"></i>
       </button>
       <button class="header-btn">
         <i class="fas fa-filter"></i>
       </button>
-    </div>
+    </div>-->
   </header>
 </template>
 

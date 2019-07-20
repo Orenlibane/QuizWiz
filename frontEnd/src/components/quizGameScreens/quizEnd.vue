@@ -61,6 +61,11 @@ export default {
     this.currUserAnswers = allScores.find(
       user => this.user.userId === user.userId
     );
+
+    //TODO: should change -> should depened on server time
+    setTimeout(() => {
+      this.$router.push("/");
+    }, 7000);
   },
   data() {
     return {

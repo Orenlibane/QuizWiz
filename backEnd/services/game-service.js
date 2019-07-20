@@ -64,7 +64,8 @@ function createGame(quiz) {
     status: 'lobby',
     currQuest: 0,
     _id: _makeId(12),
-    timeCreated: Date.now()
+    timeCreated: Date.now(),
+    gameType: quiz.gameType
   };
   onlineGames.unshift(newGame);
   return newGame;

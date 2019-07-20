@@ -13,8 +13,8 @@
       <!-- <img src="@/assets/placeholder_600x400_2.jpg" alt /> -->
     </div>
     <div class="flex column justify-center align-center">
-      <button class="mid-btn" @click="startSinglePlayer">SinglePlayer</button>
-      <button class="mid-btn" @click="startMultiplayer">Multiplayer</button>
+      <!-- <button class="mid-btn" @click="startGame('single')">SinglePlayer</button> -->
+      <button class="mid-btn" @click="startGame('mult')">Multiplayer</button>
     </div>
     <div class="details-footer layout-container flex justify-cener align-center space-between">
       <div class="tags-show flex">
@@ -34,6 +34,7 @@
 <script>
 import quizService from "@/service/quizService.js";
 import utilService from "@/service/utilService.js";
+const Swal = require("sweetalert2");
 
 export default {
   components: {},
@@ -44,21 +45,27 @@ export default {
   },
 
   methods: {
-    startSinglePlayer() {
-      this.$emit("gameStage", { cmp: "quizReady" });
-    },
-    startMultiplayer() {
+    async startGame(gameType) {
       this.$store.dispatch({ type: "changeGameStage", stage: "quizLobby" });
-      let nickName = prompt("please enter a nickName");
+      let nickName = await Swal.fire({
+        title: "Enter your Guest NickName",
+        input: "text"
+      });
       let infoToLog = {
         userId: utilService.makeId(),
-        nickName: nickName,
+        nickName: nickName.value,
         ans: []
       };
       this.info.quiz.creator = infoToLog;
       // console.log('quizes after adding user:', this.$store.getters.getQuizes);
       this.$store.dispatch({ type: "setUser", infoToLog });
-      this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
+      if ((gameType = "single")) {
+        this.info.quiz.gameType = "single";
+        this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
+      } else {
+        this.info.quiz.gameType = "mult";
+        this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
+      }
     }
   }
 };

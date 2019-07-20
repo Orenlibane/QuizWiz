@@ -58,6 +58,7 @@ function setup(http) {
             clearInterval(gameInterval);
             //SEND TO DATABASE
             //TRYING TO RESET CLIENT //TODO: patch to check
+
             setTimeout(() => {
               io.to(newGame._id).emit('backToStart'); //send to everyone who is in the room
             }, 7000);
@@ -65,8 +66,11 @@ function setup(http) {
             io.emit('returnAllLiveGames', gameService.getAllonlineGames());
             return;
           }
-          newGame.isGameOn = true;
-          io.emit('returnAllLiveGames', gameService.getAllonlineGames());
+          //TODO:this should prevent showing it on home page screen
+          // if (newGame.gameType === 'mult') {
+          //   newGame.isGameOn = true;
+          //   io.emit('returnAllLiveGames', gameService.getAllonlineGames());
+          // }
           newGame.status = 'quest';
           io.to(newGame._id).emit('quizQuest');
         } else if (newGame.status === 'quest') {

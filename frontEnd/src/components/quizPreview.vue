@@ -57,6 +57,7 @@ import _quizPreview from "../styles/components/_quiz-prev.scss";
 import filters from "../filters.js";
 import utilService from "../service/utilService.js";
 const moment = require("moment");
+const Swal = require("sweetalert2");
 
 export default {
   props: {
@@ -75,13 +76,18 @@ export default {
     deleteQuiz(quizId) {
       this.$store.dispatch({ type: "deleteQuiz", quizId });
     },
-    enterLiveGame() {
-      let nickName = prompt("please enter your name:");
+    async enterLiveGame() {
+      // let nickName = prompt("please enter your name:");
+      let nickName = await Swal.fire({
+        title: "Enter your Guest NickName",
+        input: "text"
+      });
+
       let infoToLog = {
         gameId: this.quiz.gameId,
         user: {
           userId: utilService.makeId(),
-          nickName: nickName,
+          nickName: nickName.value,
           ans: []
         }
       };
@@ -107,9 +113,7 @@ export default {
     //   return this.$store.state.getters.getLobbyTimer;
     // }
   },
-  created() {
-    console.log("quiz:", this.quiz);
-  }
+  created() {}
 };
 </script>
 
