@@ -37,7 +37,7 @@ function setup(http) {
       // sending the connected users names into the loby
       io.to(newGame._id).emit('loggedUser', user);
       //sending the signal to start the 20 sec lobby timer
-      let lobbyTimer = 20;
+      let lobbyTimer = 30;
       let lobbyTimerInterval = setInterval(() => {
         io.to(newGame._id).emit('sendLobbyTimer', lobbyTimer); //need to send server time insted
         lobbyTimer--;
@@ -47,7 +47,7 @@ function setup(http) {
       let gameInterval;
       setTimeout(() => {
         gameInterval = setInterval(moveQuiz, 10000, newGame, io);
-      }, 15000);
+      }, 22000);
 
       function moveQuiz(newGame, io) {
         if (newGame.status === 'lobby' || newGame.status === 'middle') {
@@ -67,10 +67,8 @@ function setup(http) {
             return;
           }
           //TODO:this should prevent showing it on home page screen
-          // if (newGame.gameType === 'mult') {
-          //   newGame.isGameOn = true;
-          //   io.emit('returnAllLiveGames', gameService.getAllonlineGames());
-          // }
+          newGame.isGameOn = true;
+          io.emit('returnAllLiveGames', gameService.getAllonlineGames());
           newGame.status = 'quest';
           io.to(newGame._id).emit('quizQuest');
         } else if (newGame.status === 'quest') {

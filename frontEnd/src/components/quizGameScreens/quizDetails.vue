@@ -49,7 +49,7 @@
     <div class="quiz-details-action flex justify-center align-center column">
       <span>by {{info.quiz.creatorName}}</span>
       <h2>{{info.quiz.name}}</h2>
-      <button class="pink-btn" @click="startGame('mult')">Single Player</button>
+      <button class="pink-btn" @click="startGame('single')">Single Player</button>
       <button class="pink-btn" @click="startGame('mult')">Multiplayer</button>
     </div>
   </section>
@@ -83,7 +83,7 @@ export default {
       this.info.quiz.creator = infoToLog;
       // console.log('quizes after adding user:', this.$store.getters.getQuizes);
       this.$store.dispatch({ type: "setUser", infoToLog });
-      if ((gameType = "single")) {
+      if (gameType === "single") {
         this.info.quiz.gameType = "single";
         this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
       } else {

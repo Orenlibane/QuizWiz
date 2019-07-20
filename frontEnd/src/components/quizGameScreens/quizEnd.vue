@@ -79,9 +79,9 @@ export default {
       return this.info.quiz.quests;
     },
     correctAnsPercentage() {
-      return (
+      return parseFloat(
         (this.userTotalRightAnswers / this.currUserAnswers.ans.length) * 100
-      );
+      ).toFixed(0);
     },
     userTotalScore() {
       let userTotalScore = this.currUserAnswers.ans.reduce(
