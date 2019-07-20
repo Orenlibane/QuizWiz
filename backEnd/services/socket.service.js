@@ -8,18 +8,17 @@ function setup(http) {
   io.on('connection', function(socket) {
     io.emit('returnAllLiveGames', gameService.getAllonlineGames());
 
-    // SERVER GLOBAL TIME SEND
-    // setInterval(() => {
-    //   socket.emit('serverTime', Date.now());
-    // }, 1000);
-
     socket.on('loggingToGame', infoToLog => {
       socket.join(infoToLog.gameId);
-      let newUser = gameService.joinGame(infoToLog.gameId, infoToLog.user);
-      io.to(infoToLog.gameId).emit('loggedUser', newUser);
+      // console.log('info to log for reload check', infoToLog);
+      let currGame = gameService.getGameById(infoToLog.gameId);
+      // console.log('Game found', currGame);
+
+      gameService.joinGame(infoToLog.gameId, infoToLog.user);
+      io.to(infoToLog.gameId).emit('loggedUsers', currGame.gamePlayers);
 
       socket.on('updateAns', answer => {
-        let currGame = gameService.getGameById(infoToLog.gameId);
+        // console.log('currGame before function call', currGame);
         gameService.setAnswer(currGame._id, answer.userId, answer.answerInfo);
       });
     });
@@ -29,13 +28,11 @@ function setup(http) {
       io.emit('returnAllLiveGames', gameService.getAllonlineGames());
       //Create and join the room
       socket.join(newGame._id);
-      console.log('created the game on:', newGame._id);
-
       //join the game creator into game on the service
       var user = gameService.joinGame(newGame._id, quiz.creator);
 
       // sending the connected users names into the loby
-      io.to(newGame._id).emit('loggedUser', user);
+      io.to(newGame._id).emit('loggedUsers', newGame.gamePlayers);
       //sending the signal to start the 20 sec lobby timer
       let lobbyTimer = 30;
       let lobbyTimerInterval = setInterval(() => {

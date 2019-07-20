@@ -4,15 +4,14 @@ const gameStore = {
   },
   //add new logged user to see in the lobby screen
   mutations: {
-    addLoggedUser(state, { loggedPlayer }) {
-      state.currentGameUsers.push(loggedPlayer);
+    setGamePlayers(state, { gamePlayers }) {
+      state.currentGameUsers = gamePlayers;
     }
   },
   actions: {
-    //add new logged user to see in the lobby screen
     //TODO: change name
-    newLoggedUser(context, { loggedPlayer }) {
-      context.commit({ type: 'addLoggedUser', loggedPlayer });
+    setLoggedGamePlayers(context, { gamePlayers }) {
+      context.commit({ type: 'setGamePlayers', gamePlayers });
     }
   },
   getters: {

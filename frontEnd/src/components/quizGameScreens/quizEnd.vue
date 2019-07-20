@@ -1,5 +1,6 @@
 <template>
   <section class="layout-container">
+    {{gameScores}}
     <router-link to="/">
       <button class="btn-quiz">
         <i class="fas fa-backward"></i>

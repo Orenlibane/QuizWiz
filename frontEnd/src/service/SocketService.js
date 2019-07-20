@@ -28,8 +28,8 @@ on('serverTime', clock => {
 on('questionChange', currentQuestion => {
   store.dispatch({ type: 'changeGameQuestion', currentQuestion });
 });
-on('loggedUser', loggedPlayer => {
-  store.dispatch({ type: 'newLoggedUser', loggedPlayer });
+on('loggedUsers', gamePlayers => {
+  store.dispatch({ type: 'setLoggedGamePlayers', gamePlayers });
 });
 
 on('startTheGame', () => {
