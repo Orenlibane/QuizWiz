@@ -12,7 +12,7 @@
     <div class="quiz-details-img">
     </div>
     <div class="flex column justify-center align-center">
-      <!-- <button class="mid-btn" @click="startGame('single')">SinglePlayer</button> -->
+      <button class="mid-btn" @click="startGame('single')">SinglePlayer</button>
       <button class="mid-btn" @click="startGame('mult')">Multiplayer</button>
     </div>
     <div class="details-footer layout-container flex justify-cener align-center space-between">
@@ -49,8 +49,8 @@
     <div class="quiz-details-action flex justify-center align-center column">
       <span>by {{info.quiz.creatorName}}</span>
       <h2>{{info.quiz.name}}</h2>
-      <button class="pink-btn" @click="startSinglePlayer">Single Player</button>
-      <button class="pink-btn" @click="startMultiplayer">Multiplayer</button>
+      <button class="pink-btn" @click="startGame('mult')">Single Player</button>
+      <button class="pink-btn" @click="startGame('mult')">Multiplayer</button>
     </div>
   </section>
 </template>
