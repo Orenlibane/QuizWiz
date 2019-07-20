@@ -4,7 +4,7 @@
     <h1>Your current Score is: {{userTotalScore}}</h1>
 
     <h3>Here are the following scores:</h3>
-    <div class="fs24" v-for="(user,userIdx) in gameScores" :key="userIdx">
+    <!-- <div class="fs24" v-for="(user,userIdx) in gameScores" :key="userIdx">
       <li>Name: {{user.nickName}}</li>
       <hr />
       <li v-for="(answer,answerIdx) in user.ans" :key="answerIdx">
@@ -12,7 +12,7 @@
         Score :{{answer.score}}
       </li>
       <hr />
-    </div>
+    </div>-->
     <div v-for="(user,userIdx) in gameScores" :key="userIdx">
       <table class="players">
         <tr>
