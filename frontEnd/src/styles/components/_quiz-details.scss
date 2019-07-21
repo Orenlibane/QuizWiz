@@ -11,6 +11,17 @@
   background-color: $clr3;
   border: none;
   border-radius: em(10px);
+
+  @include for-mobile-layout {
+    padding: em(10px);
+    width: 100%;
+  }
+  @include for-narrow-layout {
+  }
+  @include for-normal-layout {
+    width: em(700px);
+    padding: em(80px);
+  }
 }
 .quiz-details-action span {
   color: gray;
@@ -38,8 +49,10 @@
   height: 100vh;
   position: fixed;
   top: 0;
-  left:0;
+  left: 0;
   z-index: -2;
   filter: brightness(50%);
   background-size: cover;
+  background-position-x: center;
+  background-repeat: no-repeat;
 }
