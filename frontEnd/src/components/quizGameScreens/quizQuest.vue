@@ -1,7 +1,7 @@
 <template>
   <section class="quiz-quest layout-container">
     <div class="question-status flex space-between">
-      <span>Question {{currQuestNum}}/{{info.quiz.quests.length}}</span>
+      <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
       <span>{{timer}}</span>
     </div>
     <div class="quest-name-container flex justify-center align-center column">

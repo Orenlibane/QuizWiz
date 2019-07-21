@@ -13,9 +13,9 @@ module.exports = {
 let onlineGames = [];
 
 function getAllonlineGames() {
-  console.log('the online games are:', onlineGames);
   return onlineGames; //which are isOn:false
 }
+
 function gamePlayersCount(gameId) {
   const gameById = onlineGames.find(game => game._id === gameId);
   return gameById.gamePlayers.length;
@@ -26,7 +26,6 @@ function joinGame(
   gameId,
   user = { nickName: 'guest', id: _makeId(), ans: [] }
 ) {
-  console.log('this is the user created', user);
   const gameById = onlineGames.find(game => game._id === gameId);
   gameById.gamePlayers.push(user);
   return user;
@@ -48,6 +47,10 @@ function removeGame(gameId) {
 // Setthe curr ans for each one of the players array
 function setAnswer(gameId, userId, answer) {
   const currGame = onlineGames.find(game => game._id === gameId);
+  console.log('inside the set Answer Page', currGame);
+  console.log('arguments gotten when answer', arguments);
+  console.log('all the online Games', onlineGames);
+  console.log('curr game players inside function', currGame.gamePlayers);
   let currUser = currGame.gamePlayers.find(user => user.userId === userId);
   currUser.ans.push(answer);
 }

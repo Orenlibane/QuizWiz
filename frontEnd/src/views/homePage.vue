@@ -4,7 +4,7 @@
 
     <h1 class="caps">live games</h1>
     <quiz-list v-if="liveGames.length" :quizes="liveGames"></quiz-list>
-    <h1 v-else>no games currently</h1>
+    <h1 v-else>No Live Games Currently</h1>
     <!-- <h1 class="caps">all games</h1> -->
     <!-- <quiz-list v-if="quizes" :quizes="quizes"></quiz-list> -->
     <div class="flex both-align-center">
@@ -33,7 +33,9 @@ export default {
     },
     liveGames() {
       let liveGames = this.$store.getters.getLiveGames;
-      return liveGames.filter(game => game.isGameOn === false);
+      return liveGames.filter(
+        game => game.isGameOn === false && game.gameType === "mult"
+      );
     },
     quizes() {
       return this.$store.getters.getQuizes;
@@ -44,30 +46,10 @@ export default {
       return time;
     }
   },
-  // data() {
-  //   return {
-  //     sentFrom: "homePage"
-  //   };
-  // },
-  created() {
-    //Checking if a user is logged in. if not - we ask the guest for a nickname and give him an unique ID
-    //so he his browser will be recognized by the server.
-    // (async () => {
-    //   try {
-    //     const user = await this.$store.dispatch({ type: "checkUser" });
-    //     if (!user) {
-    //       console.log("user signed in in app is:", user);
-    //       this.$router.push("/welcome");
-    //     }
-    //   } catch {
-    //     console.log("Something went wrong in app vue");
-    //   }
-    // })();
 
-    // this.$store.dispatch({ type: "loadQuizes" });
-    //We send this event in order to make the footer and the header appear when we're not in a game-mode
+  created() {
+    console.log("live games", this.liveGames);
     eventBus.$emit(GAME_OFF);
-    // this.$store.dispatch({ type: "serverClock" });
   }
 };
 </script>

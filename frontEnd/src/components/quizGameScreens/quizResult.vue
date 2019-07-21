@@ -4,33 +4,16 @@
     <h1>Your current Score is: {{userTotalScore}}</h1>
 
     <h3>Here are the following scores:</h3>
-    <div class="fs24" v-for="(user,userIdx) in gameScores" :key="userIdx">
-      <li>Name: {{user.nickName}}</li>
-      <hr />
-      <li v-for="(answer,answerIdx) in user.ans" :key="answerIdx">
-        Answer {{answerIdx+1}}:{{answer.currAns}}
-        Score :{{answer.score}}
-      </li>
-      <hr />
+    <score-table :users="sortedUsersTotalScores"></score-table>
+    <div class="table-heading flex justify-center align-center">
+      <h1>Score Board:</h1>
     </div>
-    <div v-for="(user,userIdx) in gameScores" :key="userIdx">
-      <table class="players">
-        <tr>
-          <th>quest</th>
-          <th>name</th>
-          <th>score</th>
-        </tr>
-        <tr v-for="(answer,answerIdx) in user.ans" :key="answerIdx">
-          <td>{{answerIdx+1}}</td>
-          <td>{{user.nickName}}</td>
-          <td>{{answer.currAns}}</td>
-        </tr>
-      </table>
-    </div>
+
   </section>
 </template>
 
 <script>
+import scoreTable from '../scoreTable/scoreTable.vue';
 export default {
   props: [],
   data() {
@@ -39,6 +22,24 @@ export default {
     };
   },
   computed: {
+    sortedUsersTotalScores() {
+      let usersTotalScores = [];
+      this.gameScores.forEach(user => {
+        let reducingUser = {
+          nickName: user.nickName,
+          totalScore: 0,
+          ans: user.ans
+        };
+        reducingUser.ans.forEach(ans => {
+          reducingUser.totalScore += ans.score;
+        });
+        usersTotalScores.push(reducingUser);
+      });
+      return usersTotalScores.sort((user1, user2) => {
+        return user2.totalScore - user1.totalScore;
+      });
+    },
+
     gameScores() {
       return this.$store.getters.getGameScores;
     },
@@ -60,6 +61,16 @@ export default {
   created() {
     this.user = this.$store.getters.getUser;
   },
-  methods: {}
+  components:{
+    scoreTable
+  },
+  methods: {
+    idxFormat(idx) {
+      return idx < 10 ? `0${idx}` : idx;
+    },
+    setAvatar(nickName) {
+      return "https://api.adorable.io/avatars/103/" + nickName + ".png";
+    }
+  }
 };
 </script>

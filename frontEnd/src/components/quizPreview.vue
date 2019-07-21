@@ -32,7 +32,7 @@
       <div class="quiz-preview-timer flex space-between align-center">
         <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
         <span v-if="quiz.gameId">{{lobbyTime}}</span>
-        <span v-else>XX:XX</span>
+        <span v-else>30:00</span>
       </div>
       <div class="flex both-align-center">
         <button class="card-btn" @click="deleteQuiz(quiz._id)">🗑️</button>

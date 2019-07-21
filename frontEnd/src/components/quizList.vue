@@ -1,6 +1,6 @@
 <template>
   <section class="quiz-list-container">
-      <quiz-preview v-for="quiz in quizes" :key="quiz._id" :quiz="quiz"></quiz-preview>
+    <quiz-preview v-for="quiz in quizes" :key="quiz._id" :quiz="quiz"></quiz-preview>
   </section>
 </template>
 
