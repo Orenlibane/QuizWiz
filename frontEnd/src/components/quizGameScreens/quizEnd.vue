@@ -161,7 +161,9 @@
     <!-- scores table -->
     <score-table :users="sortedUsersTotalScores"></score-table>
     <!-- scores table -->
-    <router-link to="/">Back Home</router-link>
+    <div class="flex both-align-center">
+      <button class="white-btn" @click.stop="backHome">continue</button>
+    </div>
   </section>
 </template>
 
@@ -264,6 +266,9 @@ export default {
     },
     setAvatar(nickName) {
       return "https://api.adorable.io/avatars/103/" + nickName + ".png";
+    },
+    backHome() {
+      this.$router.push("/");
     }
   }
 };

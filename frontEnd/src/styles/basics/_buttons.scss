@@ -10,19 +10,19 @@
   color: $clr3;
   margin-bottom: rem(11px);
   font-size: rem(19px);
-  border:none;
-  
+  border: none;
+
   border-radius: rem(13px);
 }
 .quiz-details-like-btn {
-    width: rem(30px);
-    height: rem(30px);
-    background-color: lightgray;
+  width: rem(30px);
+  height: rem(30px);
+  background-color: lightgray;
 }
 
-.pink-btn{
+.pink-btn {
   background-color: $clrbtn2;
-  border:none;
+  border: none;
   font-size: rem(16px);
   color: white;
   padding: em(16px);
@@ -31,4 +31,13 @@
   outline: none;
   box-shadow: 0 0 5px 0px black;
   margin: em(5px);
+}
+.white-btn {
+  padding: 10px;
+  font-size: 30px;
+  border: none;
+  border-radius: 20px;
+  background-color: white;
+  color: #fdba21;
+  font-family: "Lilita-One-regular";
 }
