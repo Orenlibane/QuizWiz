@@ -1,5 +1,5 @@
 <template>
-  <section class="quiz-preview-card">
+  <section @click.stop="showDetails" class="quiz-preview-card">
     <!-- IMG RIGHT SIDE WITH BTNS -->
     <div
       class="quiz-preview-img-container"
@@ -34,19 +34,23 @@
       <h2>{{quiz.name}}</h2>
       <div class="quiz-preview-timer flex space-between align-center">
         <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
-        <span v-if="quiz.gameId">{{lobbyTime}}</span>
-        <span v-else>30:00</span>
+        <span v-if="!quiz.gameId"></span>
+        <span v-else>00:30</span>
       </div>
       <div class="flex both-align-center">
-        <button class="card-btn" @click="deleteQuiz(quiz._id)">🗑️</button>
-        <button class="card-btn">
+        <!-- <button class="card-btn" @click.stop="deleteQuiz(quiz._id)">🗑️</button>
+        <button @click.stop="" class="card-btn">
           <router-link :to="editUrl">Edit</router-link>
-        </button>
+        </button> -->
 
-        <button class="card-btn">
+        <!-- <button class="card-btn">
           <router-link v-if="!quiz.gameId" :to="enterGameUrl">Enter</router-link>
           <button v-if="quiz.gameId" @click="enterLiveGame">EnterLiveGame</button>
-        </button>
+        </button> -->
+
+        <!-- <button v-if="!quiz.gameId" @click="showDetails" class="card-btn">enter</button>
+        <button v-if="quiz.gameId" @click="enterLiveGame" class="card-btn">join</button> -->
+
       </div>
     </div>
   </section>
@@ -78,6 +82,10 @@ export default {
     // THOSE OPTIONS ARE ONLY FOR TESTING!!! The user won't really be able to delete games.
     deleteQuiz(quizId) {
       this.$store.dispatch({ type: "deleteQuiz", quizId });
+    },
+    showDetails(){
+      if(!this.quiz.gameId) this.$router.push(`quiz/${this.quiz._id}/game`);
+      else this.enterLiveGame();
     },
     async enterLiveGame() {
       // let nickName = prompt("please enter your name:");
