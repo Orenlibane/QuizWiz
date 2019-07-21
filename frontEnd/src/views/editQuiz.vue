@@ -45,8 +45,8 @@
       </span>
       <div>
         <h5>Currect Answer</h5>
-        <select @change="setCurrectAnswer(questIdx,$event)">
-          <option>Answer</option>
+        <select @change="setCorrectAns(questIdx,$event)">
+          <option :selected="loadedQuiz.quests[questIdx].correctAns">Answer</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -86,15 +86,17 @@ export default {
   },
   methods: {
     addQuest() {
-      var quest = { question: "", answers: ["", "", "", ""] };
-      this.loadedQuiz.questions.push(quest);
+      console.log('adding quest');
+      var quest = { quest: "", opts: ["", "", "", ""] };
+      console.log('trying to push to', this.loadedQuiz.quests);
+      this.loadedQuiz.quests.push(quest);
     },
     deleteQuest(questIdx) {
-      this.loadedQuiz.questions.splice(questIdx, 1);
+      this.loadedQuiz.quests.splice(questIdx, 1);
     },
-    setCurrectAnswer(questIdx, ev) {
+    setCorrectAns(questIdx, ev) {
       var value = ev.target.value;
-      this.loadedQuiz.questions[questIdx].currectAnswer = value;
+      this.loadedQuiz.quests[questIdx].correctAns = value;
     },
     editQuiz() {
       console.log(this.loadedQuiz, "sent from the edit view");
