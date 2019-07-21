@@ -4,7 +4,7 @@
       <button class="btn-quiz">
         <i class="fas fa-backward"></i>
       </button>
-    </router-link> -->
+    </router-link>-->
     <div class="winners-podium-trophy flex justify-center align-center">
       <svg
         width="107px"
@@ -116,39 +116,51 @@
       </svg>
     </div>
     <div class="winners-podium flex justify-center">
-      <div class="place 3rd-place flex justify-center align-center column">
+      <div
+        v-if="sortedUsersTotalScores[2]"
+        class="place 3rd-place flex justify-center align-center column"
+      >
         <span class="flex justify-center align-center">3</span>
         <div class="player-name">{{sortedUsersTotalScores[2].nickName}}</div>
         <div class="player-score">{{sortedUsersTotalScores[2].totalScore}}</div>
       </div>
-      <div class="place 1st-place flex justify-center align-center column">
+      <div
+        v-if="sortedUsersTotalScores[0]"
+        class="place 1st-place flex justify-center align-center column"
+      >
         <span class="flex justify-center align-center">1</span>
         <div class="player-name">{{sortedUsersTotalScores[0].nickName}}</div>
         <div class="player-score">{{sortedUsersTotalScores[0].totalScore}}</div>
       </div>
-      <div class="place 2nd-place flex justify-center align-center column">
+      <div
+        v-if="sortedUsersTotalScores[1]"
+        class="place 2nd-place flex justify-center align-center column"
+      >
         <span class="flex justify-center align-center">2</span>
         <div class="player-name">{{sortedUsersTotalScores[1].nickName}}</div>
         <div class="player-score">{{sortedUsersTotalScores[1].totalScore}}</div>
       </div>
     </div>
-    <div class="fs20 flex column justify-center align-center">
-      <h1 class="score-prec">{{correctAnsPercentage}}%</h1>
+    <!-- scores -->
+    <div class="flex justify-center">
+      <div class="score-label flex justify-center align-center column">
+        <p>success rate</p>
+        <span>{{correctAnsPercentage}}%</span>
+      </div>
+      <div class="score-label flex justify-center align-center column">
+        <p>right answers</p>
+        <span>{{userTotalRightAnswers}}/{{currUserAnswers.ans.length}}</span>
+      </div>
+    </div>
+
+    <div class="flex justify-center align-center">
       <h2>{{correctAnsPercentage | grade}}</h2>
-      <h1>Your Total Score is: {{userTotalScore}}</h1>
-      <h1>Total right answers {{userTotalRightAnswers}}/{{currUserAnswers.ans.length}}</h1>
-      <h1 class="fs30">All users Answers</h1>
     </div>
+
+    <!-- scores -->
+    <!-- scores table -->
     <score-table :users="sortedUsersTotalScores"></score-table>
-    <div v-if="showQuests" class="questions-sum flex column">
-      <button @click="toggleQuests" class="show-questions-btn">show Questions:</button>
-      <ul class="clean-list" v-for="(quest, idx) in quests" :key="idx">
-        <li class="flex space-between">
-          <span>Question #{{idx+1}} : {{quest.txt}}</span>
-          <span>{{showAnswer(idx) | answerFormat}}</span>
-        </li>
-      </ul>
-    </div>
+    <!-- scores table -->
     <router-link to="/">Back Home</router-link>
   </section>
 </template>

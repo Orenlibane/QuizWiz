@@ -151,3 +151,24 @@
     }
   }
 }
+
+.score-title{
+  color: $clr3;
+}
+.score-label{
+  color: $clr3;
+  font-family: "Lilita-One-regular";
+  font-size: em(29px);
+  margin: em(20px);
+  p{
+    font-size:em(16px);
+    text-align: center;
+    padding: 0;
+    color: $clr2;
+    margin: 0;
+  }
+  span{
+    font-size: em(30px);
+    padding: 0;
+  }
+}
