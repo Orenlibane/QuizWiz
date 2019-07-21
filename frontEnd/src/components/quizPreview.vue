@@ -6,7 +6,7 @@
       :style="{ backgroundImage: 'url(' + quiz.imgUrl + ')' }"
     >
       <div class="quiz-preview-btn-container flex">
-        <button class="quiz-preview-like-btn" >
+        <button class="quiz-preview-like-btn">
           <svg
             width="16px"
             height="14px"

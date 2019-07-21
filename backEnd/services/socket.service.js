@@ -26,9 +26,10 @@ function setup(http) {
       startLobbyTimer(currGame._id);
 
       let gameInterval;
-      startGameSequence(gameSequence, 5000, currGame, io);
+      startGameSequence(gameSequence, 7500, currGame, io);
 
       function gameSequence(currGame, io) {
+        console.log('CurrGame', currGame);
         if (currGame.currQuest === currGame.quiz.quests.length) {
           console.log('end');
           handleEndGame(currGame, io);
@@ -80,7 +81,7 @@ function createAndJoinGame(quiz, socket) {
 function startGameSequence(gameSequence, timeForPart, newGame, io) {
   setTimeout(() => {
     gameInterval = setInterval(gameSequence, timeForPart, newGame, io);
-  }, 21000);
+  }, 23000);
 }
 
 function handleEndGame(newGame, io) {

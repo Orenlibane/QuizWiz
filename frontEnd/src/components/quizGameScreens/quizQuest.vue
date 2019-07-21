@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       isAnswered: false,
-      timer: 10,
+      timer: 7,
       timerInterval: null,
       user: {}
     };
@@ -62,7 +62,7 @@ export default {
           res: {
             answerInfo: {
               currAns: true,
-              score: this.timer * 10
+              score: this.timer * 10 * 1.43
             },
             userId: this.user.userId
           }
