@@ -5,7 +5,8 @@ export default {
   addQuiz,
   deleteQuiz,
   editQuiz,
-  getById
+  getById,
+  likeQuiz
 };
 
 async function query() {
