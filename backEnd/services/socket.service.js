@@ -29,6 +29,7 @@ function setup(http) {
       startGameSequence(gameSequence, 5000, currGame, io);
 
       function gameSequence(currGame, io) {
+        console.log('CurrGame', currGame);
         if (currGame.currQuest === currGame.quiz.quests.length) {
           console.log('end');
           handleEndGame(currGame, io);
@@ -80,7 +81,7 @@ function createAndJoinGame(quiz, socket) {
 function startGameSequence(gameSequence, timeForPart, newGame, io) {
   setTimeout(() => {
     gameInterval = setInterval(gameSequence, timeForPart, newGame, io);
-  }, 21000);
+  }, 25000);
 }
 
 function handleEndGame(newGame, io) {
