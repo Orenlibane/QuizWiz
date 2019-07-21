@@ -6,7 +6,7 @@
         <input type="text" placeholder="Quiz Title" v-model="newQuiz.name" />
       </h2>
       <div class="flex">
-        <div class="img-container">
+        <div>
           <h5>Add tags</h5>
           <input type="text" v-model="tagToAdd" placeholder="Add tags" />
           <button @click="addTag">+</button>
@@ -16,8 +16,12 @@
           </div>
         </div>
         <div class="img-container">
-          <h5>Add image</h5>
-          <div class="addimg">+</div>
+          <h5>Image URL:</h5>
+          <input type="text" v-model="newQuiz.imgUrl" placeholder="Add image url" />
+        </div>
+        <div>
+          <h5>Created By:</h5>
+          <input type="text" v-model="newQuiz.creatorName" placeholder="Your name" />
         </div>
       </div>
     </div>
@@ -66,7 +70,8 @@ export default {
       tagToAdd: "",
       newQuiz: {
         name: "",
-        creatorName: "Username",
+        creatorName: "",
+        imgUrl: "",
         tags: [],
         createdAt: null,
         bestScore: 0,

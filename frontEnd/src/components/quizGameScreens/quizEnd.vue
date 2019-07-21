@@ -118,7 +118,7 @@
     <div class="winners-podium flex justify-center">
       <div
         v-if="sortedUsersTotalScores[2]"
-        class="place 3rd-place flex justify-center align-center column"
+        class="place-3rd place flex justify-center align-center column"
       >
         <span class="flex justify-center align-center">3</span>
         <div class="player-name">{{sortedUsersTotalScores[2].nickName}}</div>
@@ -126,7 +126,7 @@
       </div>
       <div
         v-if="sortedUsersTotalScores[0]"
-        class="place 1st-place flex justify-center align-center column"
+        class="place place-1st flex justify-center align-center column"
       >
         <span class="flex justify-center align-center">1</span>
         <div class="player-name">{{sortedUsersTotalScores[0].nickName}}</div>
@@ -134,7 +134,7 @@
       </div>
       <div
         v-if="sortedUsersTotalScores[1]"
-        class="place 2nd-place flex justify-center align-center column"
+        class="place place-2nd flex justify-center align-center column"
       >
         <span class="flex justify-center align-center">2</span>
         <div class="player-name">{{sortedUsersTotalScores[1].nickName}}</div>
@@ -153,7 +153,7 @@
       </div>
     </div>
 
-    <div class="flex justify-center align-center">
+    <div class="game-summery-msg flex justify-center align-center">
       <h2>{{correctAnsPercentage | grade}}</h2>
     </div>
 

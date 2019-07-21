@@ -1,9 +1,12 @@
 <template>
   <section class="quiz-preview-card">
     <!-- IMG RIGHT SIDE WITH BTNS -->
-    <div class="quiz-preview-img-container" :style="{ backgroundImage: 'url(' + imgUrl + ')' }">
+    <div
+      class="quiz-preview-img-container"
+      :style="{ backgroundImage: 'url(' + quiz.imgUrl + ')' }"
+    >
       <div class="quiz-preview-btn-container flex">
-        <button class="quiz-preview-like-btn">
+        <button class="quiz-preview-like-btn" @click="onLike">
           <svg
             width="16px"
             height="14px"
