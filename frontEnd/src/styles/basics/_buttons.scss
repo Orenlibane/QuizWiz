@@ -41,3 +41,16 @@
   color: #fdba21;
   font-family: "Lilita-One-regular";
 }
+
+.quiz-details-btn{
+  padding: em(20px);
+  border-radius: em(300px);
+  color: $clr2;
+  min-width: em(200px);
+  font-size:em(20px);
+  margin:em(5px);
+  border:none;
+  font-family: "Lilita-One-regular";
+  background-color: $clr1;
+  cursor: pointer;
+}
