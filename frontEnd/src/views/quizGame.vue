@@ -1,5 +1,5 @@
 <template>
-  <section class="layout-container">
+  <section class="">
     <component :is="gameStage" :info="cmp.info" :currQuest="currQuest" :gameRes="cmp.gameRes" />
   </section>
 </template>
