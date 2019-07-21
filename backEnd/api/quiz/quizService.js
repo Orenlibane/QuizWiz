@@ -6,8 +6,8 @@ module.exports = {
   remove,
   getById,
   add,
-  update
   // likeQuiz
+  update,
 };
 
 async function query() {
@@ -64,7 +64,3 @@ async function update(quiz) {
     throw err;
   }
 }
-
-// async function likeQuiz(quizId) {
-//   await console.log('QUIZ');
-// }

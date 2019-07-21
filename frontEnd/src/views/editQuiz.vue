@@ -19,8 +19,12 @@
           </div>
         </div>
         <div class="img-container">
-          <h5>Add image</h5>
-          <div class="addimg">+</div>
+          <h5>Image URL:</h5>
+          <input type="text" v-model="loadedQuiz.imgUrl" placeholder="Add image url" />
+        </div>
+        <div>
+          <h5>Created By:</h5>
+          <input type="text" v-model="loadedQuiz.creatorName" placeholder="Your name" />
         </div>
       </div>
     </div>
