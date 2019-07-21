@@ -1,57 +1,94 @@
 <template>
-  <section class="add-quiz">
-    <h1>Create a new quiz</h1>
-    <div class="top-options flex column">
-      <h2>
-        <input type="text" placeholder="Quiz Title" v-model="newQuiz.name" />
-      </h2>
-      <div class="flex">
+  <section class="add-quiz flex column both-align-center">
+    <div class="inner-container">
+      <!-- Header & Subheader -->
+      <div class="header">
+        <h1 class="fs30">Add A New Quiz</h1>
+      </div>
+      <!-- Add Form -->
+      <form @click.prevent>
+        <!--Quiz Name -->
         <div>
-          <h5>Add tags</h5>
-          <input type="text" v-model="tagToAdd" placeholder="Add tags" />
-          <button @click="addTag">+</button>
-          <div class="flex space-between" v-for="(tag,idx) in newQuiz.tags" :key="idx">
-            {{tag}}
-            <button @click="removeTag(idx)">X</button>
-          </div>
+          <label for="title">Quiz Name:</label>
+          <input type="text" placeholder="Choose A Name" v-model="newQuiz.name" />
         </div>
-        <div class="img-container">
-          <h5>Image URL:</h5>
-          <input type="text" v-model="newQuiz.imgUrl" placeholder="Add image url" />
-        </div>
+        <!-- Quiz Creator -->
         <div>
-          <h5>Created By:</h5>
+          <label for="creator">Created By:</label>
           <input type="text" v-model="newQuiz.creatorName" placeholder="Your name" />
         </div>
-      </div>
-    </div>
-    <div v-for="(quest,questIdx) in newQuiz.quests" :key="questIdx">
-      <h4>Question {{questIdx+1}}</h4>
-      <hr />
-      <input type="text" v-model="newQuiz.quests[questIdx].txt" />
-      <span>
-        <h5>Answers:</h5>
-        <input
-          v-model="newQuiz.quests[questIdx].opts[idx]"
-          v-for="(n,idx) in 4"
-          :key="idx"
-          type="text"
-        />
 
-        <button @click="deleteQuest(questIdx)">🗑️</button>
-      </span>
-      <h5>Currect Answer</h5>
-      <select @change="setCurrectAnswer(questIdx, $event)">
-        <option>Answer</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select>
-    </div>
-    <div class="flex add-btns">
-      <button @click="addQuest">Add question</button>
-      <button @click="addQuiz()">Submit Quiz</button>
+        <!-- Quiz Tags -->
+        <div>
+          <label for="tags">Tags:</label>
+          <input type="text" v-model="tagToAdd" placeholder="Add a tag..." />
+          <button class="add-tag-btn" @click="addTag">
+            <i class="fas fa-plus"></i>
+          </button>
+          <div class="tag-item" v-for="(tag,idx) in newQuiz.tags" :key="idx">
+            {{tag}}
+            <button class="remove-tag-btn" @click="removeTag(idx)">
+              <i class="fas fa-trash"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Image -->
+        <div class="add-img">
+          <label for="image">Image URL:</label>
+          <input type="text" v-model="newQuiz.imgUrl" placeholder="Image url..." />
+        </div>
+        <!-- Quiz Questions -->
+
+        <hr />
+        <label class="quests-header" for="questions">Questions:</label>
+        <hr />
+
+        <div class="quest-container" v-for="(quest,questIdx) in newQuiz.quests" :key="questIdx">
+          <label for="question">Question {{questIdx+1}}</label>
+          <input
+            class="quest-input"
+            type="text"
+            placeholder="Write a question..."
+            v-model="newQuiz.quests[questIdx].txt"
+          />
+          <button class="delete-quest-btn" @click="deleteQuest(questIdx)">
+            <i class="fas fa-trash"></i>
+          </button>
+
+          <label for="options">Options</label>
+          <input
+            class="opt-input"
+            v-model="newQuiz.quests[questIdx].opts[idx]"
+            v-for="(n,idx) in 4"
+            :key="idx"
+            type="text"
+            :placeholder="`Option ${idx+1}`"
+          />
+          <div class="corr-ans">
+            <label for="correct">Correct Answer:</label>
+            <select @change="setCorrectAns(questIdx, $event)">
+              <option>Answer</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex both-align-center">
+          <button class="add-quest-btn" @click="addQuest">
+            New Question
+            <i class="fas fa-plus"></i>
+          </button>
+        </div>
+
+        <button class="submit-quiz-btn" @click="addQuiz()">
+          Submit Quiz
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </form>
     </div>
   </section>
 </template>
@@ -93,7 +130,7 @@ export default {
     deleteQuest(questIdx) {
       this.newQuiz.quests.splice(questIdx, 1);
     },
-    setCurrectAnswer(questIdx, ev) {
+    setCorrectAns(questIdx, ev) {
       var value = ev.target.value;
       this.newQuiz.quests[questIdx].correctOptIdx = parseInt(value - 1);
     },
@@ -124,6 +161,3 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>

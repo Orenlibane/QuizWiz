@@ -7,11 +7,6 @@
     <h1 v-else>No Live Games Currently</h1>
     <!-- <h1 class="caps">all games</h1> -->
     <!-- <quiz-list v-if="quizes" :quizes="quizes"></quiz-list> -->
-    <div class="flex both-align-center">
-      <router-link to="/quiz/add">
-        <button class="addQuizBtn">Add Quiz</button>
-      </router-link>
-    </div>
   </section>
 </template>
 
