@@ -6,7 +6,8 @@ module.exports = {
   remove,
   getById,
   add,
-  update
+  update,
+  likeQuiz
 };
 
 async function query() {
@@ -59,7 +60,11 @@ async function update(quiz) {
     await collection.updateOne({ _id: ObjectId(quizId) }, { $set: quiz });
     return quiz;
   } catch (err) {
-    console.log(`ERROR: cannot update toy ${quiz._id}`);
+    console.log(`ERROR: cannot update quiz ${quiz._id}`);
     throw err;
   }
+}
+
+async function likeQuiz(quizId) {
+ await console.log('QUIZ');
 }
