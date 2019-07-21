@@ -153,7 +153,7 @@
       </div>
     </div>
 
-    <div class="flex justify-center align-center">
+    <div class="game-summery-msg flex justify-center align-center">
       <h2>{{correctAnsPercentage | grade}}</h2>
     </div>
 
