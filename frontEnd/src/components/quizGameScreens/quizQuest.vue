@@ -62,7 +62,7 @@ export default {
           res: {
             answerInfo: {
               currAns: true,
-              score: this.timer * 10 * 1.43
+              score: this.timer * 10 
             },
             userId: this.user.userId
           }

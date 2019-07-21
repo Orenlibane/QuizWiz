@@ -1,6 +1,6 @@
 <template>
   <div class="quiz-library layout-container">
-    <h1>Quiz Library</h1>
+    <h1 class="white-headline">Quiz Library</h1>
     <!-- <quiz-filter></quiz-filter> -->
     <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>
   </div>
@@ -22,9 +22,4 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-h1 {
-  color: white;
-  margin-bottom: em(10px);
-  font-family: "Lilita-One-regular", sans-serif;
-}
 </style>
