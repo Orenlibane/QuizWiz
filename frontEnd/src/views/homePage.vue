@@ -5,8 +5,9 @@
     <h1 class="caps">live games</h1>
     <quiz-list v-if="liveGames.length" :quizes="liveGames"></quiz-list>
     <h1 v-else>No Live Games Currently</h1>
-    <!-- <h1 class="caps">all games</h1> -->
-    <!-- <quiz-list v-if="quizes" :quizes="quizes"></quiz-list> -->
+    <hr />
+    <h1 class="caps">all games</h1>
+    <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>
     <div class="flex both-align-center">
       <router-link to="/quiz/add">
         <button class="addQuizBtn">Add Quiz</button>
@@ -27,7 +28,6 @@ export default {
     quizList
   },
   computed: {
-    // *IMPORTANT NOTE: we will attach this computed property to the live games array when we'll start with the multiplayer
     games() {
       return this.$store.getters.getQuizes;
     },
