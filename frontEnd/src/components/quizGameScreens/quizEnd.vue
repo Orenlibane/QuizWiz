@@ -185,9 +185,12 @@ export default {
     );
 
     //TODO: should change -> should depened on server time
-    setTimeout(() => {
-      this.$router.push("/");
-    }, 7000);
+    // setTimeout(() => {
+    //   this.$router.push("/");
+    // }, 7000);
+  },
+  destroyed() {
+    this.$store.dispatch({ type: "changeGameStage", stage: "quizDetails" });
   },
   data() {
     return {

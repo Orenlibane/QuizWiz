@@ -46,9 +46,9 @@ on('endGame', gameScores => {
   store.dispatch({ type: 'changeGameStage', stage: 'quizEnd' });
   store.dispatch({ type: 'getGameScores', gameScores });
 });
-on('backToStart', () => {
-  store.dispatch({ type: 'changeGameStage', stage: 'quizDetails' });
-});
+// on('backToStart', () => {
+//   store.dispatch({ type: 'changeGameStage', stage: 'quizDetails' });
+// });
 
 on('returnAllLiveGames', liveGames => {
   store.dispatch({ type: 'setLoadedGames', liveGames });
