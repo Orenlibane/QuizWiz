@@ -22,6 +22,8 @@
   background-color: $clr3;
   border-radius: rem(10px);
   display: flex;
+  cursor: pointer;
+  transition: all ease-in-out .3s;
   @include for-mobile-layout {
     flex-direction: row;
   }
@@ -31,6 +33,9 @@
   @include for-narrow-layout {
     flex-direction: column;
   }
+}
+.quiz-preview-card:hover{
+  transform: scale(1.01);
 }
 
 .quiz-preview-btn-container {

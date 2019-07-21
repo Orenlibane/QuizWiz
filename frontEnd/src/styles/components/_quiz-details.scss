@@ -8,15 +8,29 @@
 }
 
 .quiz-details-action {
-  background-color: $clr3;
+  background-color: rgba(255,255,255,0.9);
   border: none;
-  border-radius: em(10px);
+  border-radius: em(50px);
+  z-index: 9;
+  @include for-mobile-layout {
+    padding: em(10px);
+    width: 100%;
+  }
+  @include for-narrow-layout {
+    width: em(600px);
+    padding: em(55px);
+  }
+  @include for-normal-layout {
+    width: em(700px);
+    padding: em(80px);
+  }
 }
 .quiz-details-action span {
   color: gray;
 }
 .quiz-details-action h2 {
   font-size: em(30px);
+  margin-bottom: em(10px);
 }
 .best-score h2 {
   color: white;
@@ -38,8 +52,27 @@
   height: 100vh;
   position: fixed;
   top: 0;
-  left:0;
+  left: 0;
   z-index: -2;
   filter: brightness(50%);
   background-size: cover;
+  background-position-x: center;
+  background-repeat: no-repeat;
+}
+
+
+.tags-show{
+  margin-bottom:em(10px);
+}
+.tags-show div{
+  border-radius: em(10px);
+  background-color: grey;
+  color: $clr3;
+  padding: em(9px);
+  margin: em(5px);
+}
+.quiz-details-action h2{
+  text-transform: capitalize;
+  font-family: "Lilita-One-regular";
+  font-size: em(45px);
 }

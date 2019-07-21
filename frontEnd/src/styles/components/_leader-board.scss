@@ -49,8 +49,8 @@
     padding-right: rem(35px);
   }
   @include for-normal-layout {
-    padding-left: rem(200px);
-    padding-right: rem(200px);
+    padding-left: rem(400px);
+    padding-right: rem(400px);
   }
 }
 .player-details {
@@ -93,9 +93,21 @@
   @include for-normal-layout {
   }
   span {
-    height: em(30px);
-    width: em(30px);
+    height: em(45px);
+    width: em(45px);
     top: em(-15px);
+    @include for-mobile-layout {
+      height: em(30px);
+      width: em(30px);
+    }
+    @include for-narrow-layout {
+      height: em(45px);
+      width: em(45px);
+    }
+    @include for-normal-layout {
+      height: em(45px);
+      width: em(45px);
+    }
   }
 }
 .place-1st {
@@ -132,9 +144,21 @@
   @include for-normal-layout {
   }
   span {
-    height: em(30px);
-    width: em(30px);
+    height: em(45px);
+    width: em(45px);
     top: em(-15px);
+    @include for-mobile-layout {
+      height: em(30px);
+      width: em(30px);
+    }
+    @include for-narrow-layout {
+      height: em(45px);
+      width: em(45px);
+    }
+    @include for-normal-layout {
+      height: em(45px);
+      width: em(45px);
+    }
   }
 }
 .winners-podium {
@@ -212,7 +236,7 @@
   h2 {
     color: white;
     font-family: "Lilita-One-regular";
-    font-size:em(30px);
-    margin-bottom:em(20px);
+    font-size: em(30px);
+    margin-bottom: em(20px);
   }
 }

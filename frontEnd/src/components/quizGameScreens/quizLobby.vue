@@ -37,7 +37,7 @@
       </div>
     </div>
     <div class="quiz-details-header flex justify-center align-center">
-      <div class="quiz-img" :style="{ backgroundImage: 'url(' + imgUrl + ')' }">
+      <div class="quiz-img" :style="{ backgroundImage: 'url(' + info.quiz.imgUrl + ')' }">
         <div class="quiz-preview-btn-container flex">
           <button class="quiz-preview-like-btn">
             <svg

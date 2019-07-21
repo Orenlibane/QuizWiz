@@ -5,15 +5,12 @@
 
     <h3>Here are the following scores:</h3>
     <score-table :users="sortedUsersTotalScores"></score-table>
-    <div class="table-heading flex justify-center align-center">
-      <h1>Score Board:</h1>
-    </div>
-
+    <div class="table-heading flex justify-center align-center"></div>
   </section>
 </template>
 
 <script>
-import scoreTable from '../scoreTable/scoreTable.vue';
+import scoreTable from "../scoreTable/scoreTable.vue";
 export default {
   props: [],
   data() {
@@ -61,7 +58,7 @@ export default {
   created() {
     this.user = this.$store.getters.getUser;
   },
-  components:{
+  components: {
     scoreTable
   },
   methods: {

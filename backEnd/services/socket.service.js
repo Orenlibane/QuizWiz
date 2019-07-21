@@ -11,15 +11,12 @@ function setup(http) {
 
     socket.on('loggingToGame', infoToLog => {
       socket.join(infoToLog.gameId);
-      console.log('Sent when logged to game', infoToLog.gameId);
       currGame = gameService.getGameById(infoToLog.gameId);
-      console.log('GameId when found', currGame._id);
 
       gameService.joinGame(infoToLog.gameId, infoToLog.user);
       sendLoggedUsersToClient(io, infoToLog.gameId, currGame);
     });
     socket.on('updateAns', answer => {
-      console.log('GameId after answer', currGame._id);
       gameService.setAnswer(currGame._id, answer.userId, answer.answerInfo);
     });
 
@@ -29,9 +26,10 @@ function setup(http) {
       startLobbyTimer(currGame._id);
 
       let gameInterval;
-      startGameSequence(gameSequence, 7000, currGame, io);
+      startGameSequence(gameSequence, 7500, currGame, io);
 
       function gameSequence(currGame, io) {
+        console.log('CurrGame', currGame);
         if (currGame.currQuest === currGame.quiz.quests.length) {
           console.log('end');
           handleEndGame(currGame, io);
@@ -43,8 +41,14 @@ function setup(http) {
           console.log('lobb/mid');
           afterMiddleOrLobby(currGame, io);
         } else if (currGame.status === 'quest') {
-          console.log('quest');
-          afterQuest(currGame, io);
+          if (currGame.currQuest === currGame.quiz.quests.length) {
+            console.log('end');
+            handleEndGame(currGame, io);
+            return;
+          } else {
+            console.log('quest');
+            afterQuest(currGame, io);
+          }
         }
       }
     });
@@ -77,7 +81,7 @@ function createAndJoinGame(quiz, socket) {
 function startGameSequence(gameSequence, timeForPart, newGame, io) {
   setTimeout(() => {
     gameInterval = setInterval(gameSequence, timeForPart, newGame, io);
-  }, 21000);
+  }, 23000);
 }
 
 function handleEndGame(newGame, io) {
@@ -86,9 +90,7 @@ function handleEndGame(newGame, io) {
   io.to(newGame._id).emit('endGame', newGame);
   clearInterval(gameInterval);
   //SHOULD SEND TO DATABASE
-  // setTimeout(() => {
-  //   io.to(newGame._id).emit('backToStart');
-  // }, 8000);
+
   gameService.removeGame(newGame._id);
 
   io.emit('returnAllLiveGames', gameService.getAllonlineGames());

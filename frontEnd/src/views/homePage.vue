@@ -22,7 +22,6 @@ export default {
     quizList
   },
   computed: {
-    // *IMPORTANT NOTE: we will attach this computed property to the live games array when we'll start with the multiplayer
     games() {
       return this.$store.getters.getQuizes;
     },

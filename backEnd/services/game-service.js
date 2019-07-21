@@ -47,16 +47,7 @@ function removeGame(gameId) {
 // Setthe curr ans for each one of the players array
 function setAnswer(gameId, userId, answer) {
   const currGame = onlineGames.find(game => game._id === gameId);
-  console.log(
-    'entered setAnswer function with gameId',
-    gameId,
-    'user id',
-    userId
-  );
-  // console.log('inside the set Answer Page', currGame);
-  // console.log('arguments gotten when answer', arguments);
-  // console.log('all the online Games', onlineGames);
-  // console.log('curr game players inside function', currGame.gamePlayers);
+
   try {
     let currUser = currGame.gamePlayers.find(user => user.userId === userId);
     currUser.ans.push(answer);
