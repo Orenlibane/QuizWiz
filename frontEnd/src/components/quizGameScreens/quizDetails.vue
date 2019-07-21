@@ -1,6 +1,6 @@
 <template>
   <section class="quiz-details layout-container">
-    <div class="quiz-img" :style="{ backgroundImage: 'url(' + imgUrl + ')' }"></div>
+    <div class="quiz-img" :style="{ backgroundImage: 'url(' + info.quiz.imgUrl + ')' }"></div>
     <div class="quiz-details-action flex justify-center align-center column">
       <span>by {{info.quiz.creatorName}}</span>
       <h2>{{info.quiz.name}}</h2>
