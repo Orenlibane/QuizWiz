@@ -79,65 +79,88 @@
 .winners-podium-trophy {
   margin-bottom: em(20px);
 }
-.place-3rd{
-  width: em(120px);
-  height: em(120px);
+.place-3rd {
+  width: em(160px);
+  height: em(160px);
+  @include for-mobile-layout {
+    width: em(100px);
+    height: em(100px);
+  }
+  @include for-narrow-layout {
+    width: em(140px);
+    height: em(140px);
+  }
+  @include for-normal-layout {
+  }
+  span {
+    height: em(30px);
+    width: em(30px);
+    top: em(-15px);
+  }
 }
-.place-1st{
+.place-1st {
   width: em(200px);
   height: em(200px);
+  color: $clr2;
+  @include for-mobile-layout {
+    width: em(160px);
+    height: em(160px);
+  }
+  @include for-narrow-layout {
+    width: em(180px);
+    height: em(180px);
+  }
+  @include for-normal-layout {
+  }
+  span {
+    height: em(50px);
+    width: em(50px);
+    top: em(-20px);
+  }
 }
-.place-2nd{
-  width: em(120px);
-  height: em(120px);
+.place-2nd {
+  width: em(160px);
+  height: em(160px);
+  @include for-mobile-layout {
+    width: em(100px);
+    height: em(100px);
+  }
+  @include for-narrow-layout {
+    width: em(140px);
+    height: em(140px);
+  }
+  @include for-normal-layout {
+  }
+  span {
+    height: em(30px);
+    width: em(30px);
+    top: em(-15px);
+  }
 }
 .winners-podium {
   align-items: flex-end;
   .place {
-    // width: em(200px);
-    
     font-family: "Lilita-One-regular";
-    // height: em(200px);
     background-color: white;
     border-radius: 100%;
     position: relative;
     @include for-mobile-layout {
-      // height: em(105px);
-      // width: em(105px);
       margin: em(9px);
     }
     @include for-narrow-layout {
-      // height: em(170px);
-      // width: em(170px);
       margin: em(9px);
     }
     @include for-normal-layout {
     }
     margin: em(20px);
     span {
-      width: em(40px);
-      height: em(40px);
-      padding: 20px;
-      font-size: em(25px);
       border-radius: 100%;
       background-color: $clr2;
       position: absolute;
-      top: em(-10px);
-      left: 13px;
       color: $clr3;
       @include for-mobile-layout {
-        height: em(50px);
-        width: em(50px);
-        font-size: em(13px);
-        padding: 0;
-        left: em(-9px);
       }
       @include for-narrow-layout {
-        height: em(65px);
-        width: em(65px);
-        font-size: em(16px);
-        padding: 0;
-        left: em(0px);
       }
       @include for-normal-layout {
       }
@@ -183,5 +206,13 @@
   span {
     font-size: em(30px);
     padding: 0;
+  }
+}
+.game-summery-msg {
+  h2 {
+    color: white;
+    font-family: "Lilita-One-regular";
+    font-size:em(30px);
+    margin-bottom:em(20px);
   }
 }
