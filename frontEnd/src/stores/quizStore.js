@@ -63,6 +63,17 @@ const quizStore = {
       } catch (err) {
         console.log('err in editing in store', err);
       }
+    },
+    async likeQuiz(context, {quizId}) {
+      console.log('likingdddsadsad');
+        try{
+          console.log('gggggg');
+          await quizService.likeQuiz(quizId)
+
+        }
+        catch(err){
+          console.log('nada', err);
+        }
     }
   }
 };

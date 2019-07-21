@@ -1,6 +1,12 @@
 .quiz-details {
-  padding-top: em(50px);
+  // padding-top: em(50px);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
 .quiz-details-action {
   background-color: $clr3;
   border: none;
@@ -28,11 +34,12 @@
   color: grey;
 }
 .quiz-img {
-  height: em(400px);
-  width: 100%;
-  position: relative;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left:0;
+  z-index: -2;
+  filter: blur(10px);
   background-size: cover;
-  background-position: bottom;
-  border-radius: em(10px);
-  margin-bottom: em(50px);
 }
