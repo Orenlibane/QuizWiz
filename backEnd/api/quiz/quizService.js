@@ -6,8 +6,8 @@ module.exports = {
   remove,
   getById,
   add,
-  update,
-  likeQuiz
+  update
+  // likeQuiz
 };
 
 async function query() {
@@ -65,6 +65,6 @@ async function update(quiz) {
   }
 }
 
-async function likeQuiz(quizId) {
- await console.log('QUIZ');
-}
+// async function likeQuiz(quizId) {
+//   await console.log('QUIZ');
+// }

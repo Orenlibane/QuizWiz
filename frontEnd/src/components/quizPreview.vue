@@ -3,7 +3,7 @@
     <!-- IMG RIGHT SIDE WITH BTNS -->
     <div class="quiz-preview-img-container" :style="{ backgroundImage: 'url(' + imgUrl + ')' }">
       <div class="quiz-preview-btn-container flex">
-        <button class="quiz-preview-like-btn" @click="toggleLike">
+        <button class="quiz-preview-like-btn">
           <svg
             width="16px"
             height="14px"
@@ -95,11 +95,11 @@ export default {
       this.$store.dispatch({ type: "setUser", infoToLog: infoToLog.user });
       this.$store.dispatch({ type: "logToLiveGame", infoToLog });
       this.$router.push(`/quiz/${this.quiz._id}/game`);
-    },
-    toggleLike() {
-      console.log("give like to", this.quiz._id);
-      this.$store.dispatch({type: "likeQuiz", quizId: this.quiz._id})
     }
+    // toggleLike() {
+    //   console.log("give like to", this.quiz._id);
+    //   this.$store.dispatch({type: "likeQuiz", quizId: this.quiz._id})
+    // }
   },
   computed: {
     enterGameUrl() {
