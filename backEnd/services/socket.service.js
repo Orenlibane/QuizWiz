@@ -2,6 +2,7 @@ const socketIO = require('socket.io');
 const gameService = require('./game-service');
 
 var io;
+let currGame;
 function setup(http) {
   io = socketIO(http);
 
@@ -10,69 +11,38 @@ function setup(http) {
 
     socket.on('loggingToGame', infoToLog => {
       socket.join(infoToLog.gameId);
-      // console.log('info to log for reload check', infoToLog);
-      let currGame = gameService.getGameById(infoToLog.gameId);
-      // console.log('Game found', currGame);
+      console.log('Sent when logged to game', infoToLog.gameId);
+      currGame = gameService.getGameById(infoToLog.gameId);
+      console.log('GameId when found', currGame._id);
 
       gameService.joinGame(infoToLog.gameId, infoToLog.user);
-      io.to(infoToLog.gameId).emit('loggedUsers', currGame.gamePlayers);
+      sendLoggedUsersToClient(io, infoToLog.gameId, currGame);
 
       socket.on('updateAns', answer => {
-        // console.log('currGame before function call', currGame);
+        console.log('GameId after answer', currGame._id);
         gameService.setAnswer(currGame._id, answer.userId, answer.answerInfo);
       });
     });
 
     socket.on('onCreateGame', quiz => {
-      var newGame = gameService.createGame(quiz);
-      io.emit('returnAllLiveGames', gameService.getAllonlineGames());
-      //Create and join the room
-      socket.join(newGame._id);
-      //join the game creator into game on the service
-      var user = gameService.joinGame(newGame._id, quiz.creator);
-
-      // sending the connected users names into the loby
-      io.to(newGame._id).emit('loggedUsers', newGame.gamePlayers);
-      //sending the signal to start the 20 sec lobby timer
-      let lobbyTimer = 30;
-      let lobbyTimerInterval = setInterval(() => {
-        io.to(newGame._id).emit('sendLobbyTimer', lobbyTimer); //need to send server time insted
-        lobbyTimer--;
-        if (lobbyTimer === 0) clearInterval(lobbyTimerInterval);
-      }, 1000);
+      let newGame = createAndJoinGame(quiz, socket);
+      sendLoggedUsersToClient(io, newGame._id, newGame);
+      startLobbyTimer(newGame._id);
 
       let gameInterval;
-      setTimeout(() => {
-        gameInterval = setInterval(moveQuiz, 10000, newGame, io);
-      }, 22000);
+      startGameSequence(gameSequence, 7000, newGame, io);
 
-      function moveQuiz(newGame, io) {
-        if (newGame.status === 'lobby' || newGame.status === 'middle') {
-          if (newGame.currQuest === newGame.quiz.quests.length) {
-            newGame.currQuest--;
-            newGame.status = 'endGame';
-            io.to(newGame._id).emit('endGame', newGame); //send to everyone who is in the room
-            clearInterval(gameInterval);
-            //SEND TO DATABASE
-            //TRYING TO RESET CLIENT //TODO: patch to check
-
-            setTimeout(() => {
-              io.to(newGame._id).emit('backToStart'); //send to everyone who is in the room
-            }, 7000);
-            gameService.removeGame(newGame._id); //when changed we dont need it
-            io.emit('returnAllLiveGames', gameService.getAllonlineGames());
-            return;
-          }
-          //TODO:this should prevent showing it on home page screen
-          newGame.isGameOn = true;
-          io.emit('returnAllLiveGames', gameService.getAllonlineGames());
-          newGame.status = 'quest';
-          io.to(newGame._id).emit('quizQuest');
+      function gameSequence(newGame, io) {
+        if (newGame.currQuest === newGame.quiz.quests.length) {
+          console.log('end');
+          handleEndGame(newGame);
+          return;
+        } else if (newGame.status === 'lobby' || newGame.status === 'middle') {
+          console.log('lobb/mid');
+          afterMiddleOrLobby(newGame, io);
         } else if (newGame.status === 'quest') {
-          newGame.status = 'middle';
-          io.to(newGame._id).emit('middleQuiz', newGame);
-          newGame.currQuest++;
-          io.to(newGame._id).emit('questionChange', newGame.currQuest);
+          console.log('quest');
+          afterQuest(newGame, io);
         }
       }
       socket.on('updateAns', answer => {
@@ -85,3 +55,72 @@ function setup(http) {
 module.exports = {
   setup
 };
+
+//Socket Service functions
+
+function startLobbyTimer(gameId) {
+  let lobbyTimer = 30;
+  let lobbyTimerInterval = setInterval(() => {
+    io.to(gameId).emit('sendLobbyTimer', lobbyTimer); //need to send server time insted
+    lobbyTimer--;
+    if (lobbyTimer === 0) clearInterval(lobbyTimerInterval);
+  }, 1000);
+}
+
+function createAndJoinGame(quiz, socket) {
+  let createdGame = gameService.createGame(quiz);
+  socket.join(createdGame._id);
+  io.emit('returnAllLiveGames', gameService.getAllonlineGames());
+  gameService.joinGame(createdGame._id, quiz.creator);
+  return createdGame;
+}
+
+function startGameSequence(gameSequence, timeForPart, newGame, io) {
+  setTimeout(() => {
+    gameInterval = setInterval(gameSequence, timeForPart, newGame, io);
+  }, 21000);
+}
+
+function handleEndGame(newGame) {
+  newGame.currQuest--;
+  newGame.status = 'endGame';
+  io.to(newGame._id).emit('endGame', newGame);
+  clearInterval(gameInterval);
+  //SHOULD SEND TO DATABASE
+  setTimeout(() => {
+    io.to(newGame._id).emit('backToStart');
+  }, 8000);
+  gameService.removeGame(newGame._id);
+  io.emit('returnAllLiveGames', gameService.getAllonlineGames());
+}
+
+function afterQuest(newGame, io) {
+  newGame.status = 'middle';
+  io.to(newGame._id).emit('middleQuiz', newGame);
+  newGame.currQuest++;
+  io.to(newGame._id).emit('questionChange', newGame.currQuest);
+}
+
+function afterMiddleOrLobby(newGame, io) {
+  newGame.isGameOn = true;
+  io.emit('returnAllLiveGames', gameService.getAllonlineGames());
+  newGame.status = 'quest';
+  io.to(newGame._id).emit('quizQuest');
+}
+
+function sendLoggedUsersToClient(io, gameId, game) {
+  io.to(gameId).emit('loggedUsers', game.gamePlayers);
+}
+
+// function gameSequence(newGame, io) {
+//   if (newGame.status === 'lobby' || newGame.status === 'middle') {
+//     if (newGame.currQuest === newGame.quiz.quests.length) {
+//       handleEndGame(newGame);
+//       return;
+//     } else {
+//       afterMiddleOrLobby(newGame, io);
+//     }
+//   } else if (newGame.status === 'quest') {
+//     afterQuest(newGame, io);
+//   }
+// }

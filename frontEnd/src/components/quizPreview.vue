@@ -35,7 +35,7 @@
         <span v-else>30:00</span>
       </div>
       <div class="flex both-align-center">
-        <!-- <button class="card-btn" @click="deleteQuiz(quiz._id)">🗑️</button> -->
+        <button class="card-btn" @click="deleteQuiz(quiz._id)">🗑️</button>
         <button class="card-btn">
           <router-link :to="editUrl">Edit</router-link>
         </button>
