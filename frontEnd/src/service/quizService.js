@@ -5,8 +5,7 @@ export default {
   addQuiz,
   deleteQuiz,
   editQuiz,
-  getById
-  // likeQuiz
+  getById,
 };
 
 async function query() {
@@ -29,7 +28,6 @@ async function getById(id) {
 
 async function addQuiz(NewQuiz) {
   try {
-    console.log(NewQuiz, 'quiz before http service');
     return await httpService.post(`quiz/`, NewQuiz);
   } catch (err) {
     console.log('error in adding quiz', err);
