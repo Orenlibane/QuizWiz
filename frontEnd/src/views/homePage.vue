@@ -1,10 +1,10 @@
 <template>
   <section class="home-page layout-container">
-    <h1 class="white-headline">live games</h1>
+    <h1 class="white-headline">Live games</h1>
     <quiz-list class="live-games" v-if="liveGames.length" :quizes="liveGames"></quiz-list>
-    <h1 class="orange-headline" v-else>no active games currently. . .</h1>
+    <h1 class="orange-headline" v-else>No active games currently. . .</h1>
     <hr>
-    <h1 class="white-headline">all games</h1>
+    <h1 class="white-headline">All games</h1>
     <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>
     <div class="flex both-align-center">
       <!-- <router-link to="/quiz/add">
