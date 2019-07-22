@@ -37,7 +37,7 @@
       <div class="quiz-preview-timer flex space-between align-center">
         <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
         <span v-if="!quiz.gameId"></span>
-        <span v-else>00:30</span>
+        <span v-else>{{countdown}}</span>
       </div>
       <div class="flex both-align-center"></div>
     </div>
@@ -62,7 +62,8 @@ export default {
   },
   data() {
     return {
-      liked: ""
+      liked: "",
+      countdown: 30
     };
   },
   methods: {
@@ -117,7 +118,12 @@ export default {
     //   return this.$store.state.getters.getLobbyTimer;
     // }
   },
-  created() {}
+  created() {
+    this.countdown = 30;
+    setInterval(() => {
+      this.countdown--;
+    }, 1000);
+  }
 };
 </script>
 
