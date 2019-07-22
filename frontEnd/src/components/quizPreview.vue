@@ -1,7 +1,7 @@
 <template>
   <section @click.stop="showDetails" class="quiz-preview-card">
     <!-- IMG RIGHT SIDE WITH BTNS -->
-    <span v-if="quiz.gameId" class="live-badge flex justify-center align-center">live</span>
+    <span v-if="quiz.gameId" class="live-badge pulse flex justify-center align-center">live</span>
     <div
       class="quiz-preview-img-container"
       :style="{ backgroundImage: 'url(' + quiz.imgUrl + ')' }"

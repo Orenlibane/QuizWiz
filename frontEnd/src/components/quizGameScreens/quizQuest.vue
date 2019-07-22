@@ -29,10 +29,11 @@ export default {
       type: Object
     }
   },
+  components: {},
   data() {
     return {
       isAnswered: false,
-      timer: 7,
+      timer: 10,
       timerInterval: null,
       user: {}
     };
@@ -62,7 +63,7 @@ export default {
           res: {
             answerInfo: {
               currAns: true,
-              score: this.timer * 10 
+              score: this.timer * 10
             },
             userId: this.user.userId
           }

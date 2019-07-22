@@ -1,9 +1,6 @@
 <template>
   <section class="game-results">
-    <h1>results</h1>
-    <h1>Your current Score is: {{userTotalScore}}</h1>
-
-    <h3>Here are the following scores:</h3>
+    <h1>Results</h1>
     <score-table :users="sortedUsersTotalScores"></score-table>
     <div class="table-heading flex justify-center align-center"></div>
   </section>
