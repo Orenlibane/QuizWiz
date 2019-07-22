@@ -1,6 +1,5 @@
 <template>
   <section class="game-results">
-    <h1>Results</h1>
     <score-table :users="sortedUsersTotalScores"></score-table>
     <div class="table-heading flex justify-center align-center"></div>
   </section>

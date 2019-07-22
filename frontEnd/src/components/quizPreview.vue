@@ -27,7 +27,7 @@
             </g>
           </svg>
         </button>
-        <span class="quiz-preview-like-count">{{quiz.likesCount}}</span>
+        <span class="quiz-preview-like-count">{{likesCount}}</span>
       </div>
     </div>
     <!-- PREVIEW DETAILS LEFT SIDE -->
@@ -62,8 +62,9 @@ export default {
   },
   data() {
     return {
-      liked: "",
-      countdown: 30
+      liked: String,
+      countdown: Number,
+      likesCount: Number
     };
   },
   methods: {
@@ -79,7 +80,7 @@ export default {
       if (this.liked === "liked-game") return;
       console.log("liking");
       this.liked = "liked-game";
-      this.quiz.likesCount++;
+      this.likesCount++;
     },
     async enterLiveGame() {
       // let nickName = prompt("please enter your name:");
@@ -119,6 +120,7 @@ export default {
     // }
   },
   created() {
+    this.likesCount = this.quiz.likesCount;
     this.countdown = 30;
     setInterval(() => {
       this.countdown--;

@@ -35,6 +35,15 @@
     border-radius: 0.7rem;
     margin-right: 0.2rem;
   }
+
+  select {
+    border-radius: 0.3rem
+  }
+
+  option {
+    border-radius: 0.3rem
+  }
+
   .header {
     margin: 1.3rem;
   }
@@ -62,7 +71,6 @@
   .remove-tag-btn:hover {
     color: lightgrey;
     transition: color 0.5s;
-
   }
 
   .add-img {
