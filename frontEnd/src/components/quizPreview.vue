@@ -6,9 +6,10 @@
       class="quiz-preview-img-container"
       :style="{ backgroundImage: 'url(' + quiz.imgUrl + ')' }"
     >
-      <div class="quiz-preview-btn-container flex">
+      <div class="quiz-preview-btn-container flex" @click.stop="likeQuiz">
         <button class="quiz-preview-like-btn">
           <svg
+            :class="liked"
             width="16px"
             height="14px"
             viewBox="0 0 16 14"
@@ -36,10 +37,9 @@
       <div class="quiz-preview-timer flex space-between align-center">
         <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
         <span v-if="!quiz.gameId"></span>
-        <span v-else>00:30</span>
+        <span v-else>{{countdown}}</span>
       </div>
-      <div class="flex both-align-center">
-      </div>
+      <div class="flex both-align-center"></div>
     </div>
   </section>
 </template>
@@ -62,8 +62,8 @@ export default {
   },
   data() {
     return {
-      imgUrl:
-        "https://images.unsplash.com/photo-1563454758691-702be3d2e2b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80"
+      liked: "",
+      countdown: 30
     };
   },
   methods: {
@@ -71,9 +71,15 @@ export default {
     deleteQuiz(quizId) {
       this.$store.dispatch({ type: "deleteQuiz", quizId });
     },
-    showDetails(){
-      if(!this.quiz.gameId) this.$router.push(`quiz/${this.quiz._id}/game`);
+    showDetails() {
+      if (!this.quiz.gameId) this.$router.push(`quiz/${this.quiz._id}/game`);
       else this.enterLiveGame();
+    },
+    likeQuiz() {
+      if (this.liked === "liked-game") return;
+      console.log("liking");
+      this.liked = "liked-game";
+      this.quiz.likesCount++;
     },
     async enterLiveGame() {
       // let nickName = prompt("please enter your name:");
@@ -95,10 +101,6 @@ export default {
       this.$store.dispatch({ type: "logToLiveGame", infoToLog });
       this.$router.push(`/quiz/${this.quiz._id}/game`);
     }
-    // toggleLike() {
-    //   console.log("give like to", this.quiz._id);
-    //   this.$store.dispatch({type: "likeQuiz", quizId: this.quiz._id})
-    // }
   },
   computed: {
     enterGameUrl() {
@@ -116,7 +118,12 @@ export default {
     //   return this.$store.state.getters.getLobbyTimer;
     // }
   },
-  created() {}
+  created() {
+    this.countdown = 30;
+    setInterval(() => {
+      this.countdown--;
+    }, 1000);
+  }
 };
 </script>
 
