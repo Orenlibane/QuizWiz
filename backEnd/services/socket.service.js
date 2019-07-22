@@ -37,15 +37,15 @@ function setup(http) {
           currGame.status === 'lobby' ||
           currGame.status === 'middle'
         ) {
-          console.log('lobb/mid');
+          console.log('Game Stage: Lobby/Middle');
           afterMiddleOrLobby(currGame, io);
         } else if (currGame.status === 'quest') {
           if (currGame.currQuest === currGame.quiz.quests.length) {
-            console.log('end');
+            console.log('Game Stage: End');
             handleEndGame(currGame, io);
             return;
           } else {
-            console.log('quest');
+            console.log('Game Stage: Quest');
             afterQuest(currGame, io);
           }
         }
