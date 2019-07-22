@@ -1,30 +1,21 @@
 <template>
   <section class="quiz-details layout-container">
-    <!-- <div class="quiz-details-time-score flex space-between">
-      <div class="start-time flex justify-center align-center column">
-        <span>time to start</span>
-        <h2>{{lobbyTime}}</h2>
-      </div>
-      <div class="best-score flex justify-center align-center column">
-        <span>best score</span>
-        <h2>3000</h2>
-      </div>
-    </div> -->
     <div class="quiz-details-header flex justify-center align-center">
-      <div class="quiz-img" :style="{ backgroundImage: 'url(' + info.quiz.imgUrl + ')' }">
-      </div>
+      <div class="quiz-img" :style="{ backgroundImage: 'url(' + info.quiz.imgUrl + ')' }"></div>
     </div>
+
     <div class="quiz-details-action flex justify-center align-center column">
       <span>by {{info.quiz.creatorName}}</span>
       <h2>{{info.quiz.name}}</h2>
-
-      <ul>
-        <li v-for="(user,idx) in loggedUsers" :key="idx">{{user.nickName}} has Joined the Game</li>
-      </ul>
-
+    <div class="flex justify-center align-center column">
+      <h2 class="black-heading">{{lobbyTime}}</h2>
+    </div>
+      <div class="flex justify-center align-center column">
+        <h2 class="black-heading">Joined:</h2>
+        <h2 class="orange-headline" v-for="(user,idx) in loggedUsers" :key="idx">{{user.nickName}}</h2>
+      </div>
       <div class="tags-show flex">
-        Tags:
-        <div v-for="(tag, idx) in info.quiz.tags" :key="idx">{{tag}}-</div>
+        <div v-for="(tag, idx) in info.quiz.tags" :key="idx">{{tag}}</div>
       </div>
     </div>
   </section>
