@@ -7,12 +7,14 @@
     <div class="quiz-details-action flex justify-center align-center column">
       <span>by {{info.quiz.creatorName}}</span>
       <h2>{{info.quiz.name}}</h2>
-    <div class="flex justify-center align-center column">
-      <h2 class="black-heading">{{lobbyTime}}</h2>
-    </div>
+      <div class="flex justify-center align-center column">
+        <h2 class="black-heading">{{lobbyTime}}</h2>
+      </div>
       <div class="flex justify-center align-center column">
         <h2 class="black-heading">Joined:</h2>
-        <h2 class="orange-headline" v-for="(user,idx) in loggedUsers" :key="idx">{{user.nickName}}</h2>
+        <div class="join-list">
+          <div class="orange-headline" v-for="(user,idx) in loggedUsers" :key="idx">{{user.nickName}}</div>
+        </div>
       </div>
       <div class="tags-show flex">
         <div v-for="(tag, idx) in info.quiz.tags" :key="idx">{{tag}}</div>
