@@ -6,15 +6,15 @@
 
     <div class="quiz-details-action flex justify-center align-center column">
       <span>by {{info.quiz.creatorName}}</span>
-      <h2>{{info.quiz.name}}</h2>
+      <h2 class="center">{{info.quiz.name}}</h2>
       <div class="flex justify-center align-center column">
         <h2 class="black-heading">{{lobbyTime}}</h2>
       </div>
       <div class="flex justify-center align-center column">
+        <h2 class="black-heading">Joined:</h2>
         <div class="join-list">
-          <h2 class="black-heading">Joined:</h2>
           <div
-            class="orange-headline"
+            class="orange-headline-join"
             v-for="(user,idx) in loggedUsers"
             :key="idx"
           >{{user.nickName}}</div>
