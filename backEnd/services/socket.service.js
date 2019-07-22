@@ -14,7 +14,7 @@ function setup(http) {
       currGame = gameService.getGameById(infoToLog.gameId);
 
       gameService.joinGame(infoToLog.gameId, infoToLog.user);
-      sendLoggedUsersToClient(io, infoToLog.gameId, currGame);
+      sendLoggedUsersToClient('preGame', io, infoToLog.gameId, currGame);
     });
     socket.on('updateAns', answer => {
       gameService.setAnswer(currGame._id, answer.userId, answer.answerInfo);
@@ -22,14 +22,13 @@ function setup(http) {
 
     socket.on('onCreateGame', quiz => {
       currGame = createAndJoinGame(quiz, socket);
-      sendLoggedUsersToClient(io, currGame._id, currGame);
+      sendLoggedUsersToClient('preGame', io, currGame._id, currGame);
       startLobbyTimer(currGame._id);
 
       let gameInterval;
-      startGameSequence(gameSequence, 7500, currGame, io);
+      startGameSequence(gameSequence, 10000, currGame, io);
 
       function gameSequence(currGame, io) {
-        console.log('CurrGame', currGame);
         if (currGame.currQuest === currGame.quiz.quests.length) {
           console.log('end');
           handleEndGame(currGame, io);
@@ -81,18 +80,18 @@ function createAndJoinGame(quiz, socket) {
 function startGameSequence(gameSequence, timeForPart, newGame, io) {
   setTimeout(() => {
     gameInterval = setInterval(gameSequence, timeForPart, newGame, io);
-  }, 23000);
+  }, 21000);
 }
 
-function handleEndGame(newGame, io) {
-  newGame.currQuest--;
-  newGame.status = 'endGame';
-  io.to(newGame._id).emit('endGame', newGame);
+function handleEndGame(currGame, io) {
+  currGame.currQuest--;
+  currGame.status = 'endGame';
+  io.to(currGame._id).emit('endGame', currGame);
   clearInterval(gameInterval);
   //SHOULD SEND TO DATABASE
 
-  gameService.removeGame(newGame._id);
-
+  gameService.removeGame(currGame._id);
+  sendLoggedUsersToClient('endGame', io, currGame._id);
   io.emit('returnAllLiveGames', gameService.getAllonlineGames());
 }
 
@@ -110,6 +109,10 @@ function afterMiddleOrLobby(newGame, io) {
   io.to(newGame._id).emit('quizQuest');
 }
 
-function sendLoggedUsersToClient(io, gameId, game) {
-  io.to(gameId).emit('loggedUsers', game.gamePlayers);
+function sendLoggedUsersToClient(state, io, gameId, game) {
+  if (state === 'preGame') {
+    io.to(gameId).emit('loggedUsers', game.gamePlayers);
+  } else if (state === 'endGame') {
+    io.to(gameId).emit('loggedUsers', []);
+  }
 }

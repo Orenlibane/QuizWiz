@@ -2,8 +2,7 @@
   <section class="quiz-quest layout-container">
     <div class="question-status flex space-between">
       <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
-      <!-- <span>{{timer}}</span> -->
-      <quest-timer></quest-timer>
+      <span>{{timer}}</span>
     </div>
     <div class="quest-name-container flex justify-center align-center column">
       <h2 class="center">{{currQuest}}</h2>
@@ -34,7 +33,7 @@ export default {
   data() {
     return {
       isAnswered: false,
-      timer: 7,
+      timer: 10,
       timerInterval: null,
       user: {}
     };
@@ -64,7 +63,7 @@ export default {
           res: {
             answerInfo: {
               currAns: true,
-              score: this.timer * 10 
+              score: this.timer * 10
             },
             userId: this.user.userId
           }
