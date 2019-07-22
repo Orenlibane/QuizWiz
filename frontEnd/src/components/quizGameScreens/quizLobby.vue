@@ -11,9 +11,13 @@
         <h2 class="black-heading">{{lobbyTime}}</h2>
       </div>
       <div class="flex justify-center align-center column">
-        <h2 class="black-heading">Joined:</h2>
         <div class="join-list">
-          <div class="orange-headline" v-for="(user,idx) in loggedUsers" :key="idx">{{user.nickName}}</div>
+          <h2 class="black-heading">Joined:</h2>
+          <div
+            class="orange-headline"
+            v-for="(user,idx) in loggedUsers"
+            :key="idx"
+          >{{user.nickName}}</div>
         </div>
       </div>
       <div class="tags-show flex">
