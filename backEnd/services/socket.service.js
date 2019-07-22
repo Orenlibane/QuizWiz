@@ -30,24 +30,15 @@ function setup(http) {
 
       function gameSequence(currGame, io) {
         if (currGame.currQuest === currGame.quiz.quests.length) {
-          console.log('end');
           handleEndGame(currGame, io);
           return;
         } else if (
           currGame.status === 'lobby' ||
           currGame.status === 'middle'
         ) {
-          console.log('Game Stage: Lobby/Middle');
           afterMiddleOrLobby(currGame, io);
         } else if (currGame.status === 'quest') {
-          if (currGame.currQuest === currGame.quiz.quests.length) {
-            console.log('Game Stage: End');
-            handleEndGame(currGame, io);
-            return;
-          } else {
-            console.log('Game Stage: Quest');
-            afterQuest(currGame, io);
-          }
+          afterQuest(currGame, io);
         }
       }
     });
