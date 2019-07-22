@@ -17,8 +17,22 @@
     margin-right:10px;
   }
 }
+.live-badge{
+  position:absolute;
+  border-radius: em(300px);
+  width: em(50px);
+  height: em(50px);
+  z-index: 9;
+  color: white;
+  top:-20px;
+  right: -20px;
+  font-family: "Lilita-One-regular", sans-serif;
+  background-color: $clr2;
+
+}
 .quiz-preview-card {
   padding: rem(8px);
+  position: relative;
   background-color: $clr3;
   border-radius: rem(10px);
   display: flex;

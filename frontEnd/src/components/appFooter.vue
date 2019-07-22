@@ -1,6 +1,6 @@
 <template>
   <footer class="app-footer">
-    <router-link exact to="/score" class="footer-btn">
+    <router-link exact to="/quiz/add" class="footer-btn">
       <svg width="31px" height="36px" viewBox="0 0 31 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <g id="Symbols">
               <g id="winners-empty" transform="translate(-3.000000, 0.000000)">

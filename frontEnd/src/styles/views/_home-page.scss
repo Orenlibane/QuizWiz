@@ -18,3 +18,19 @@
   text-align: center;
   display: flex;
 }
+
+.white-headline{
+  color: white;
+  margin-bottom: em(10px);
+  font-family: "Lilita-One-regular", sans-serif;
+}
+.orange-headline{
+  color: $clr2;
+  margin-bottom: em(10px);
+  font-family: "Lilita-One-regular", sans-serif;
+}
+.black-heading{
+  color: black;
+  margin-bottom: em(20px);
+  font-family: "Lilita-One-regular", sans-serif;
+}

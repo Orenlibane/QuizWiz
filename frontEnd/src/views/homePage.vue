@@ -1,17 +1,15 @@
 <template>
   <section class="home-page layout-container">
-    <!-- <span>{{serverTime}}</span> -->
-
-    <h1 class="caps">live games</h1>
-    <quiz-list v-if="liveGames.length" :quizes="liveGames"></quiz-list>
-    <h1 v-else>No Live Games Currently</h1>
-    <hr />
-    <h1 class="caps">all games</h1>
+    <h1 class="white-headline">live games</h1>
+    <quiz-list class="live-games" v-if="liveGames.length" :quizes="liveGames"></quiz-list>
+    <h1 class="orange-headline" v-else>no active games currently. . .</h1>
+    <hr>
+    <h1 class="white-headline">all games</h1>
     <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>
     <div class="flex both-align-center">
-      <router-link to="/quiz/add">
+      <!-- <router-link to="/quiz/add">
         <button class="addQuizBtn">Add Quiz</button>
-      </router-link>
+      </router-link> -->
     </div>
   </section>
 </template>

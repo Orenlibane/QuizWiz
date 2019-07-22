@@ -1,35 +1,123 @@
 .add-quiz {
-  height: 80vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-}
-li {
-  margin: 0;
-}
+  border-top: 2px solid rgba(252, 255, 77, 0.205);
+  background: rgba(41, 38, 38, 0.74);
+  border-radius: 0.5rem;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  padding-bottom: 20rem;
 
-.add-btns {
-  margin-bottom: 50px;
-}
-.add-btns button {
-  margin: 20px;
-  padding: 10px;
-}
+  label {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: block;
+    padding: 0.5rem;
+  }
 
-.addimg {
-  padding: 20px;
-  border: 1px black solid;
-}
+  button {
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.692);
+    border-radius: 4px;
+  }
 
-.top-options {
-  display: flex;
-  justify-content: space-around;
-  width: 20vw;
-}
+  button:hover {
+    background: rgba(0, 0, 0, 0.918);
+    transition: background 0.5s;
+  }
 
-button {
-  padding: 0;
+  hr {
+    color: black;
+    border: 2px dashed white;
+  }
+
+  input {
+    border-radius: 0.7rem;
+    margin-right: 0.2rem;
+  }
+  .header {
+    margin: 1.3rem;
+  }
+
+  .quests-header {
+    font-size: 1.8rem;
+  }
+
+  .add-tag-btn {
+    width: 40px;
+    height: 40px;
+    color: white;
+    border: 1px solid black;
+  }
+
+  .tag-item {
+    margin-top: 0.3rem;
+  }
+  .remove-tag-btn {
+    background: none;
+    color: white;
+    border: none;
+  }
+
+  .remove-tag-btn:hover {
+    color: lightgrey;
+    transition: color 0.5s;
+
+  }
+
+  .add-img {
+    margin-bottom: 1.4rem;
+  }
+
+  .quest-container {
+    background: rgba(129, 171, 235, 0.692);
+    border-radius: 0.5rem;
+  }
+
+  .quest-container:nth-child(odd) {
+    background: rgba(159, 255, 159, 0.568);
+  }
+
+  .quest-input {
+    width: 20rem;
+  }
+
+  .delete-quest-btn {
+    width: 40px;
+    height: 40px;
+    color: white;
+    border: 1px solid black;
+  }
+
+  .opt-input {
+    margin: 0.3rem;
+  }
+
+  .corr-ans {
+    margin-bottom: 0.3rem;
+    label {
+      display: inline-block;
+    }
+  }
+
+  .add-quest-btn {
+    display: block;
+    color: white;
+    font-weight: bold;
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .submit-quiz-btn {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    width: 240px;
+    height: 80px;
+    border: none;
+    border-radius: 0.5rem;
+  }
 }

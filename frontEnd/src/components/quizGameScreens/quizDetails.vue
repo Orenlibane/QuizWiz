@@ -4,15 +4,15 @@
     <div class="quiz-details-action flex justify-center align-center column">
       <span>by {{info.quiz.creatorName}}</span>
       <h2>{{info.quiz.name}}</h2>
-      <button class="pink-btn" @click="startGame('single')">Single Player</button>
-      <button class="pink-btn" @click="startGame('mult')">Multiplayer</button>
-      <router-link to="/">
-        <button class="pink-btn">back</button>
-      </router-link>
       <div class="tags-show flex">
-        Tags:
-        <div v-for="(tag, idx) in info.quiz.tags" :key="idx">{{tag}}-</div>
+        <div v-for="(tag, idx) in info.quiz.tags" :key="idx">{{tag}}</div>
       </div>
+      <button class="quiz-details-btn" @click="startGame('single')">Single Player</button>
+      <button class="quiz-details-btn" @click="startGame('mult')">Multiplayer</button>
+      <router-link to="/">
+        <button class="quiz-details-btn">back</button>
+      </router-link>
+      
     </div>
   </section>
 </template>

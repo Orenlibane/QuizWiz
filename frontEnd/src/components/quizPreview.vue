@@ -1,6 +1,7 @@
 <template>
   <section @click.stop="showDetails" class="quiz-preview-card">
     <!-- IMG RIGHT SIDE WITH BTNS -->
+    <span v-if="quiz.gameId" class="live-badge flex justify-center align-center">live</span>
     <div
       class="quiz-preview-img-container"
       :style="{ backgroundImage: 'url(' + quiz.imgUrl + ')' }"
@@ -31,26 +32,13 @@
     <!-- PREVIEW DETAILS LEFT SIDE -->
     <div class="quiz-preview-details">
       <p>by {{quiz.creatorName}}</p>
-      <h2>{{quiz.name}}</h2>
+      <h2 class="caps">{{quiz.name}}</h2>
       <div class="quiz-preview-timer flex space-between align-center">
         <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
         <span v-if="!quiz.gameId"></span>
         <span v-else>00:30</span>
       </div>
       <div class="flex both-align-center">
-        <!-- <button class="card-btn" @click.stop="deleteQuiz(quiz._id)">🗑️</button>
-        <button @click.stop="" class="card-btn">
-          <router-link :to="editUrl">Edit</router-link>
-        </button> -->
-
-        <!-- <button class="card-btn">
-          <router-link v-if="!quiz.gameId" :to="enterGameUrl">Enter</router-link>
-          <button v-if="quiz.gameId" @click="enterLiveGame">EnterLiveGame</button>
-        </button> -->
-
-        <!-- <button v-if="!quiz.gameId" @click="showDetails" class="card-btn">enter</button>
-        <button v-if="quiz.gameId" @click="enterLiveGame" class="card-btn">join</button> -->
-
       </div>
     </div>
   </section>
