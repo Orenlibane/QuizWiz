@@ -170,6 +170,8 @@
 <script>
 import scoreTable from "../scoreTable/scoreTable.vue";
 import filters from "@/filters.js";
+import Swal from "sweetalert2";
+
 export default {
   props: {
     gameRes: {
@@ -179,17 +181,17 @@ export default {
       type: Object
     }
   },
-  created() {
+  async created() {
     this.user = this.$store.getters.getUser;
     let allScores = this.$store.getters.getGameScores;
     this.currUserAnswers = allScores.find(
       user => this.user.userId === user.userId
     );
-
-    //TODO: should change -> should depened on server time
-    // setTimeout(() => {
-    //   this.$router.push("/");
-    // }, 7000);
+    var audioWin = new Audio(require("@/assets/sounds/win.mp3"));
+    audioWin.play();
+    await Swal.fire({
+      title: `${this.sortedUsersTotalScores[0].nickName}\nYOU ARE THE NEXT CODING ACDEMY CHAMPION!`
+    });
   },
   destroyed() {
     this.$store.dispatch({ type: "changeGameStage", stage: "quizDetails" });
