@@ -2,7 +2,8 @@
   <section class="quiz-quest layout-container">
     <div class="question-status flex space-between">
       <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
-      <span>{{timer}}</span>
+      <!-- <span>{{timer}}</span> -->
+      <quest-timer></quest-timer>
     </div>
     <div class="quest-name-container flex justify-center align-center column">
       <h2 class="center">{{currQuest}}</h2>
@@ -29,6 +30,7 @@ export default {
       type: Object
     }
   },
+  components: {},
   data() {
     return {
       isAnswered: false,
