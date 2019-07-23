@@ -79,7 +79,7 @@ module.exports = {
 //Socket Service functions
 
 function startLobbyTimer(gameId) {
-  let lobbyTimer = 5;
+  let lobbyTimer = 30;
   let lobbyTimerInterval = setInterval(() => {
     io.to(gameId).emit('sendLobbyTimer', lobbyTimer); //need to send server time insted
     lobbyTimer--;
@@ -94,12 +94,6 @@ function createAndJoinGame(quiz, socket) {
   gameService.joinGame(createdGame._id, quiz.creator);
   return createdGame;
 }
-
-// function startGameSequence(gameSequence, TIME_PER_GAME_PART, newGame, io) {
-//   setTimeout(() => {
-//     gameInterval = setInterval(gameSequence, TIME_PER_GAME_PART, newGame, io);
-//   }, TIMEOUT_FOR_GAME_START);
-// }
 
 function handleEndGame(currGame, io, gameInterval) {
   currGame.currQuest--;
