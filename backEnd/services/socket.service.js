@@ -79,7 +79,7 @@ module.exports = {
 //Socket Service functions
 
 function startLobbyTimer(gameId) {
-  let lobbyTimer = 30;
+  let lobbyTimer = 5;
   let lobbyTimerInterval = setInterval(() => {
     io.to(gameId).emit('sendLobbyTimer', lobbyTimer); //need to send server time insted
     lobbyTimer--;
