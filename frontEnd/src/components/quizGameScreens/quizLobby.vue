@@ -25,11 +25,11 @@
       <div v-if="gameStatus" class="flex justify-center align-center column">
         <h3 class="joined-headline-h2">Joined:</h3>
         <div class="join-list">
-          <div class="orange-headline-join" v-for="(user,idx) in loggedUsers" :key="idx">sergei,</div>
+          <div class="orange-headline-join" v-for="(user,idx) in loggedUsers" :key="idx">{{user.nickName}},</div>
         </div>
       </div>
     </div>
-    <router-link class="back-btn" to="/">
+    <router-link v-if="!gameStatus" class="back-btn" to="/">
       <svg
         version="1.1"
         id="Layer_1"
@@ -99,6 +99,7 @@ export default {
         this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
       }
       this.$store.dispatch({ type: "setGameStatus", status: true });
+      this.userName = "";
     }
   },
   data() {
