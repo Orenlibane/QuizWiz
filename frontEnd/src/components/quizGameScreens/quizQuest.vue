@@ -19,6 +19,8 @@
     </div>
   </section>-->
   <section>
+    <div class="quiz-img" :style="{ backgroundImage: 'url(' + info.quiz.imgUrl + ')' }"></div>
+
     <div class="quest-header flex justify-center align-center column">
       <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
       <h2>{{timer}}</h2>
