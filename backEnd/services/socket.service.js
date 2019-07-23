@@ -52,7 +52,7 @@ module.exports = {
 //Socket Service functions
 
 function startLobbyTimer(gameId) {
-  let lobbyTimer = 30;
+  let lobbyTimer = 5;
   let lobbyTimerInterval = setInterval(() => {
     io.to(gameId).emit('sendLobbyTimer', lobbyTimer); //need to send server time insted
     lobbyTimer--;
@@ -71,7 +71,7 @@ function createAndJoinGame(quiz, socket) {
 function startGameSequence(gameSequence, timeForPart, newGame, io) {
   setTimeout(() => {
     gameInterval = setInterval(gameSequence, timeForPart, newGame, io);
-  }, 21000);
+  }, 5000);
 }
 
 function handleEndGame(currGame, io) {

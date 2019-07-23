@@ -26,13 +26,17 @@
         </g>
       </svg>
       <span>&nbsp; {{user.totalScore}}</span>
+      <span v-if="lastScore">Last Score: {{lastScore}}</span>
     </div>
   </section>
 </template>
 <script>
 export default {
   data() {
-    return {};
+    return {
+      lastScore: null,
+      currentQuestion: null
+    };
   },
   props: ["user", "id"],
   methods: {
@@ -41,6 +45,17 @@ export default {
     },
     setAvatar(nickName) {
       return "https://api.adorable.io/avatars/103/" + nickName + ".png";
+    }
+  },
+  created() {
+    this.currentQuestion = this.$store.getters.currentQuestion;
+    if (this.user.idx < 3) {
+      if (!this.currentQuestion) {
+        this.lastScore = this.user.ans[0].score;
+      } else
+        this.lastScore = this.user.ans[
+          this.currentQuestion.currentQuestion
+        ].score;
     }
   }
 };

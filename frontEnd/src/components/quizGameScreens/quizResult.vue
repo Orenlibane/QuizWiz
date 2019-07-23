@@ -1,5 +1,6 @@
 <template>
   <section class="game-results">
+    <p class="correct-answer fs28 center" v-if="correctAnswer">The correct answer is: {{correctAnswer}}</p>
     <score-table :users="sortedUsersTotalScores"></score-table>
     <div class="table-heading flex justify-center align-center"></div>
   </section>
@@ -8,10 +9,15 @@
 <script>
 import scoreTable from "../scoreTable/scoreTable.vue";
 export default {
-  props: [],
+  props: {
+    info: {
+      type: Object
+    }
+  },
   data() {
     return {
-      user: {}
+      user: {},
+      allScores: []
     };
   },
   computed: {
@@ -37,8 +43,7 @@ export default {
       return this.$store.getters.getGameScores;
     },
     userTotalScore() {
-      let allScores = this.$store.getters.getGameScores;
-      let currentUser = allScores.find(
+      let currentUser = this.allScores.find(
         user => this.user.userId === user.userId
       );
       console.log("this is the user", currentUser);
@@ -49,10 +54,34 @@ export default {
       console.log("this should be the user scores", userTotalScore);
 
       return userTotalScore;
+    },
+    correctOptIdx() {
+      if (this.info.currQuest === 0)
+        return this.info.quiz.quests[this.info.currQuest].correctOptIdx;
+      return this.info.quiz.quests[this.info.currQuest - 1].correctOptIdx;
+    },
+    correctAnswer() {
+      if (this.info.currQuest === 0)
+        return this.info.quiz.quests[this.info.currQuest].opts[
+          this.correctOptIdx
+        ];
+      return this.info.quiz.quests[this.info.currQuest - 1].opts[
+        this.correctOptIdx
+      ];
+    },
+    currentUserScore() {
+      currUserthis.allScores.find(currUser => this.user.userId === user.userId);
     }
+  },
+
+  mounted() {
+    console.log("correct option idx:", this.correctOptIdx);
+    console.log("correct answer", this.correctAnswer);
   },
   created() {
     this.user = this.$store.getters.getUser;
+    this.allScores = this.$store.getters.getGameScores;
+    console.log("after getter", this.allScores);
   },
   components: {
     scoreTable
@@ -67,3 +96,9 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+  .correct-answer{
+    color: white;
+  }
+</style>
