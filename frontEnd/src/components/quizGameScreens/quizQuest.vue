@@ -33,14 +33,22 @@
         :key="idx"
       >
         {{opt}}
-        <span v-if="isAnswered&&correctOptIdx===idx"
-          class="sign-icon-span correct-sign flex justify-center align-center"
-        >
-          <i class="fas fa-check"></i>
-        </span>
-        <span v-if="isAnswered&&correctOptIdx!==idx" class="sign-icon-span wrong-sign flex justify-center align-center">
-          <i class="fas fa-times"></i>
-        </span>
+        <transition name="fade">
+          <span
+            v-if="isAnswered&&correctOptIdx===idx"
+            class="sign-icon-span correct-sign flex justify-center align-center animated bounce delay-2s"
+          >
+            <i class="fas fa-check"></i>
+          </span>
+        </transition>
+        <transition name="fade">
+          <span
+            v-if="isAnswered&&correctOptIdx!==idx"
+            class="sign-icon-span wrong-sign flex justify-center align-center animated bounce delay-2s"
+          >
+            <i class="fas fa-times"></i>
+          </span>
+        </transition>
       </button>
     </div>
   </section>
@@ -49,6 +57,7 @@
 
 <script>
 import global from "@/styles/global.scss";
+
 export default {
   name: "quizQuest",
   props: {
