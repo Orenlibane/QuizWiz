@@ -3,13 +3,13 @@
     <h1 class="white-headline">Live games</h1>
     <quiz-list class="live-games" v-if="liveGames.length" :quizes="liveGames"></quiz-list>
     <h1 class="orange-headline" v-else>No active games currently. . .</h1>
-    <hr>
+    <hr />
     <h1 class="white-headline">All games</h1>
     <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>
     <div class="flex both-align-center">
       <!-- <router-link to="/quiz/add">
         <button class="addQuizBtn">Add Quiz</button>
-      </router-link> -->
+      </router-link>-->
     </div>
   </section>
 </template>

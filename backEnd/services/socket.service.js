@@ -1,5 +1,8 @@
+'use strict';
 const socketIO = require('socket.io');
 const gameService = require('./game-service');
+const TIME_PER_GAME_PART = 10000;
+const TIMEOUT_FOR_GAME_START = 21000;
 
 var io;
 function setup(http) {
@@ -7,7 +10,7 @@ function setup(http) {
 
   io.on('connection', function(socket) {
     let currGame;
-    io.emit('returnAllLiveGames', gameService.getAllonlineGames());
+    socket.emit('returnAllLiveGames', gameService.getAllonlineGames());
 
     socket.on('loggingToGame', infoToLog => {
       socket.join(infoToLog.gameId);
@@ -15,6 +18,10 @@ function setup(http) {
 
       gameService.joinGame(infoToLog.gameId, infoToLog.user);
       sendLoggedUsersToClient('preGame', io, infoToLog.gameId, currGame);
+
+      socket.on('disconnect', function(socket) {
+        // logic for DC of joined USER
+      });
     });
     socket.on('updateAns', answer => {
       gameService.setAnswer(currGame._id, answer.userId, answer.answerInfo);
@@ -26,18 +33,38 @@ function setup(http) {
       startLobbyTimer(currGame._id);
 
       let gameInterval;
-      startGameSequence(gameSequence, 10000, currGame, io);
+      setTimeout(() => {
+        gameInterval = setInterval(
+          gameSequence,
+          TIME_PER_GAME_PART,
+          currGame,
+          io
+        );
+      }, TIMEOUT_FOR_GAME_START);
+
+      socket.on('disconnect', function(socket) {
+        // logic for DC of game Creator
+      });
 
       function gameSequence(currGame, io) {
+        console.log(gameInterval);
         if (currGame.currQuest === currGame.quiz.quests.length) {
-          handleEndGame(currGame, io);
+          console.log('Game Stage - ENDGAME', 'GAME ID', currGame._id);
+          handleEndGame(currGame, io, gameInterval);
           return;
         } else if (
           currGame.status === 'lobby' ||
           currGame.status === 'middle'
         ) {
+          console.log(
+            'Game Stage - after middle/lobby',
+            'GAME ID',
+            currGame._id
+          );
           afterMiddleOrLobby(currGame, io);
         } else if (currGame.status === 'quest') {
+          console.log('Game Stage - after quiz', 'GAME ID', currGame._id);
+
           afterQuest(currGame, io);
         }
       }
@@ -68,13 +95,13 @@ function createAndJoinGame(quiz, socket) {
   return createdGame;
 }
 
-function startGameSequence(gameSequence, timeForPart, newGame, io) {
-  setTimeout(() => {
-    gameInterval = setInterval(gameSequence, timeForPart, newGame, io);
-  }, 21000);
-}
+// function startGameSequence(gameSequence, TIME_PER_GAME_PART, newGame, io) {
+//   setTimeout(() => {
+//     gameInterval = setInterval(gameSequence, TIME_PER_GAME_PART, newGame, io);
+//   }, TIMEOUT_FOR_GAME_START);
+// }
 
-function handleEndGame(currGame, io) {
+function handleEndGame(currGame, io, gameInterval) {
   currGame.currQuest--;
   currGame.status = 'endGame';
   io.to(currGame._id).emit('endGame', currGame);

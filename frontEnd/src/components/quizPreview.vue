@@ -83,8 +83,9 @@ export default {
       this.likesCount++;
     },
     async enterLiveGame() {
-      // let nickName = prompt("please enter your name:");
       let nickName = await Swal.fire({
+        confirmButtonColor: "#2d257c",
+        confirmButtonText: "Lets Go",
         title: "Enter your Guest NickName",
         input: "text"
       });
