@@ -1,5 +1,5 @@
 <template>
-  <section class="quiz-quest layout-container">
+  <!-- <section class="quiz-quest layout-container">
     <div class="question-status flex space-between">
       <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
       <span>{{timer}}</span>
@@ -15,6 +15,32 @@
         v-for="(opt,idx) in currOpts"
         :key="idx"
       >{{opt}}</button>
+    </div>
+  </section>-->
+  <section>
+    <div class="quest-header flex justify-center align-center column">
+      <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
+      <h2>{{timer}}</h2>
+      <h2 class="center">{{currQuest}}</h2>
+    </div>
+    <div class="quest-body">
+      <button
+        class="quest-opt-btn"
+        :class="ansStyle(idx)"
+        @click="chooseAns(idx)"
+        v-for="(opt,idx) in currOpts"
+        :key="idx"
+      >
+        {{opt}}
+        <span v-if="isAnswered&&correctOptIdx===idx"
+          class="sign-icon-span correct-sign flex justify-center align-center"
+        >
+          <i class="fas fa-check"></i>
+        </span>
+        <span v-if="isAnswered&&correctOptIdx!==idx" class="sign-icon-span wrong-sign flex justify-center align-center">
+          <i class="fas fa-times"></i>
+        </span>
+      </button>
     </div>
   </section>
 </template>
@@ -83,8 +109,8 @@ export default {
     },
     ansStyle(idx) {
       if (!this.isAnswered) return "";
-      if (idx === this.correctOptIdx) return "correctAnsStyle";
-      return "wrongAnsStyle";
+      if (idx === this.correctOptIdx) return "correct-ans";
+      return "wrong-ans";
     }
   },
 
