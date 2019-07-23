@@ -101,6 +101,7 @@ export default {
       this.$store.dispatch({ type: "changeGameStage", stage: "quizLobby" });
       this.$store.dispatch({ type: "setUser", infoToLog: infoToLog.user });
       this.$store.dispatch({ type: "logToLiveGame", infoToLog });
+      this.$store.dispatch({ type: "setGameStatus", status: true });
       this.$router.push(`/quiz/${this.quiz._id}/game`);
     }
   },
