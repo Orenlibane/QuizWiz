@@ -26,7 +26,7 @@
         </g>
       </svg>
       <span>&nbsp; {{user.totalScore}}</span>
-      <span v-if="lastScore">Last Score: {{lastScore}}</span>
+      <span class="last-score" v-if="lastScore">+{{lastScore}}</span>
     </div>
   </section>
 </template>
