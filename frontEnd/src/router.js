@@ -47,7 +47,7 @@ export default new Router({
       path: '/score',
       name: 'score',
       component: leaderBoard
-    }
+    },
   ]
 });
 // {
