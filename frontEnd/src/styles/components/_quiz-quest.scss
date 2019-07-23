@@ -28,3 +28,101 @@
   font-size: em(30px);
   padding-top: 10px;
 }
+
+// new version
+.quest-header {
+  background-color: $clr3;
+
+  font-family: "Lilita-One-regular", sans-serif;
+  border-bottom-left-radius: em(70px);
+  border-bottom-right-radius: em(70px);
+  @include for-mobile-layout {
+    padding-top: em(70px);
+    padding-bottom: em(70px);
+    padding-left: em(30px);
+    padding-right: em(30px);
+    font-size: em(20px);
+    margin-bottom: em(70px);
+  }
+  @include for-normal-layout {
+    padding-top: em(80px);
+    padding-bottom: em(80px);
+    padding-left: em(50px);
+    padding-right: em(50px);
+    font-size: em(40px);
+    margin-bottom: em(60px);
+
+  }
+  @include for-narrow-layout {
+    padding-top: em(40px);
+    padding-bottom: em(40px);
+    padding-left: em(50px);
+    padding-right: em(50px);
+    font-size: em(40px);
+    margin-bottom: em(40px);
+
+  }
+}
+
+.quest-body{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: em(20px);
+  row-gap: em(50px);
+  padding-right:em(10px);
+  padding-left:em(10px);
+}
+.quest-opt-btn{
+  padding: em(20px);
+  cursor: pointer;
+  font-family: "Lilita-One-regular", sans-serif;
+  font-size:em(40px);
+  background-color: $clr3;
+  position: relative;
+  border:none;
+  box-sizing: border-box;
+  border-radius: em(20px);
+  outline: none;
+  @include for-mobile-layout {
+    font-size:em(25px);
+  }
+  @include for-normal-layout {
+    font-size:em(40px);
+  }
+  @include for-narrow-layout {
+
+  }
+}
+
+.correct-ans{
+  border:5px solid $correct;
+}
+.wrong-ans{
+  border:5px solid $wrong;
+}
+
+
+
+.sign-icon-span{
+  position: absolute;
+  top:em(-20px);
+  left:0;
+  background-color: white;
+  width: em(50px);
+  height: em(50px);
+  font-size: em(10px);
+  border-radius: em(300px);
+  border:5px solid black;
+}
+.correct-sign{
+  border:5px solid $correct;
+  i{
+    color: $correct;
+  }
+}
+.wrong-sign{
+  border:5px solid $wrong;
+  i{
+    color: $wrong;
+  }
+}
