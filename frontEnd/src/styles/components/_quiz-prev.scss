@@ -4,6 +4,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+  margin-bottom:em(5px);
   background-position: bottom;
   border-radius: rem(10px);
   @include for-normal-layout {
@@ -73,6 +74,7 @@
   width: rem(30px);
   height: rem(30px);
   fill: $clr3;
+  padding-left:em(5px);
   background-color: rgba(0, 0, 0, 0.5);
   border-bottom-left-radius: rem(5px);
   border: none;
@@ -96,6 +98,16 @@
 }
 .quiz-preview-timer span {
   font-size: rem(40px);
+}
+.quiz-name{
+  text-transform: capitalize;
+
+  margin-top: -2px;
+  margin-bottom: 10px;
+
+}
+.creator{
+
 }
 .card-btn {
   background-color: $clr1;

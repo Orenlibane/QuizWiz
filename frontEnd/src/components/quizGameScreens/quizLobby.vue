@@ -1,41 +1,113 @@
 <template>
-  <section class="quiz-details layout-container">
+  <section class="quiz-details justify-center align-center layout-container">
     <div class="quiz-details-header flex justify-center align-center">
       <div class="quiz-img" :style="{ backgroundImage: 'url(' + info.quiz.imgUrl + ')' }"></div>
     </div>
-
     <div class="quiz-details-action flex justify-center align-center column">
-      <span>by {{info.quiz.creatorName}}</span>
       <h2 class="center">{{info.quiz.name}}</h2>
-      <div class="flex justify-center align-center column">
-        <h2 class="black-heading">{{lobbyTime}}</h2>
+      <span class="margin-fix-new">by {{info.quiz.creatorName}}</span>
+      <div v-if="gameStatus" class="flex justify-center align-center column">
+        <h3 class="timer-heading">{{lobbyTime}}</h3>
       </div>
-      <div class="flex justify-center align-center column">
-        <h2 class="black-heading">Joined:</h2>
+      <div v-if="!gameStatus" class="input-name-container">
+        <input
+          v-model="userName"
+          ref="userName"
+          type="text"
+          class="quiz-name-input"
+          placeholder="Your Name"
+          autofocus
+          @keyup.enter="beginTheMagic"
+        />
+        <div class="line"></div>
+      </div>
+      <button v-if="!gameStatus" class="quiz-details-btn" @click.prevent="beginTheMagic">Let's begin</button>
+      <div v-if="gameStatus" class="flex justify-center align-center column">
+        <h3 class="joined-headline-h2">Joined:</h3>
         <div class="join-list">
-          <div
-            class="orange-headline-join"
-            v-for="(user,idx) in loggedUsers"
-            :key="idx"
-          >{{user.nickName}}</div>
+          <div class="orange-headline-join" v-for="(user,idx) in loggedUsers" :key="idx">sergei,</div>
         </div>
       </div>
-      <div class="tags-show flex">
-        <div v-for="(tag, idx) in info.quiz.tags" :key="idx">{{tag}}</div>
-      </div>
     </div>
+    <router-link class="back-btn" to="/">
+      <svg
+        version="1.1"
+        id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        x="0px"
+        y="0px"
+        viewBox="0 0 512.001 512.001"
+        style="enable-background:new 0 0 512.001 512.001;"
+        xml:space="preserve"
+      >
+        <g>
+          <g>
+            <path
+              d="M384.834,180.699c-0.698,0-348.733,0-348.733,0l73.326-82.187c4.755-5.33,4.289-13.505-1.041-18.26
+			c-5.328-4.754-13.505-4.29-18.26,1.041l-82.582,92.56c-10.059,11.278-10.058,28.282,0.001,39.557l82.582,92.561
+			c2.556,2.865,6.097,4.323,9.654,4.323c3.064,0,6.139-1.083,8.606-3.282c5.33-4.755,5.795-12.93,1.041-18.26l-73.326-82.188
+			c0,0,348.034,0,348.733,0c55.858,0,101.3,45.444,101.3,101.3s-45.443,101.3-101.3,101.3h-61.58
+			c-7.143,0-12.933,5.791-12.933,12.933c0,7.142,5.79,12.933,12.933,12.933h61.58c70.12,0,127.166-57.046,127.166-127.166
+			C512,237.745,454.954,180.699,384.834,180.699z"
+            />
+          </g>
+        </g>
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+        <g />
+      </svg>
+    </router-link>
   </section>
 </template>
 
 <script>
 import quizLobby from "@/styles/components/_quiz-lobby.scss";
+import utilService from "@/service/utilService.js";
+
 import Swal from "sweetalert2";
 export default {
   props: ["info"],
   methods: {
     startGame() {
       console.log("Starting game!");
+    },
+    beginTheMagic() {
+      let infoToLog = {
+        userId: utilService.makeId(),
+        nickName: this.userName,
+        ans: []
+      };
+      this.info.quiz.creator = infoToLog;
+      console.log("quizes after adding user:", this.$store.getters.getQuizes);
+      this.$store.dispatch({ type: "setUser", infoToLog });
+      if (this.info.quiz.gameType === "single") {
+        this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
+      } else {
+        this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
+      }
+      this.$store.dispatch({ type: "setGameStatus", status: true });
     }
+  },
+  data() {
+    return {
+      userName: ""
+    };
+  },
+  mounted() {
+    // this.$refs.userName.focus();
   },
   computed: {
     loggedUsers() {
@@ -43,14 +115,10 @@ export default {
     },
     lobbyTime() {
       return this.$store.getters.getLobbyTimer;
+    },
+    gameStatus() {
+      return this.$store.getters.getGameStatus;
     }
-  },
-
-  data() {
-    return {
-      imgUrl:
-        "https://images.unsplash.com/photo-1563454758691-702be3d2e2b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80"
-    };
   }
 };
 </script>

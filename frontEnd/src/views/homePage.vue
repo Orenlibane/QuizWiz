@@ -3,8 +3,8 @@
     <h1 class="white-headline">Live games</h1>
     <quiz-list class="live-games" v-if="liveGames.length" :quizes="liveGames"></quiz-list>
     <h1 class="orange-headline" v-else>No active games currently. . .</h1>
-    <hr />
-    <h1 class="white-headline">All games</h1>
+    <!-- <hr class="margin-fix-top"/> -->
+    <h1 class="white-headline margin-fix margin-fix-bottom margin-fix-top">All games</h1>
     <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>
     <div class="flex both-align-center">
       <!-- <router-link to="/quiz/add">
@@ -48,6 +48,7 @@ export default {
   created() {
     console.log("live games", this.liveGames);
     eventBus.$emit(GAME_OFF);
+    this.$store.dispatch({type:'setGameStatus', status:false});
   }
 };
 </script>

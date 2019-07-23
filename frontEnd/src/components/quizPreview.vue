@@ -32,8 +32,8 @@
     </div>
     <!-- PREVIEW DETAILS LEFT SIDE -->
     <div class="quiz-preview-details">
-      <p>by {{quiz.creatorName}}</p>
-      <h2 class="caps">{{quiz.name}}</h2>
+      <p class="creator">by {{quiz.creatorName}}</p>
+      <h2 class="quiz-name">{{quiz.name}}</h2>
       <div class="quiz-preview-timer flex space-between align-center">
         <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
         <span v-if="!quiz.gameId"></span>

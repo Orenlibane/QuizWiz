@@ -18,16 +18,27 @@
   text-align: center;
   display: flex;
 }
+.margin-fix{
+  margin-top: em(20px);
+}
 
+.margin-fix-bottom{
+  margin-bottom:em(10px);
+}
+.margin-fix-top{
+  margin-top:em(30px);
+}
 .white-headline{
   color: white;
-  margin-bottom: em(10px);
+  // margin-bottom: em(5px);
   font-family: "Lilita-One-regular", sans-serif;
+  letter-spacing: em(1px);
 }
 .orange-headline{
   color: $clr2;
-  margin-bottom: em(10px);
-  font-family: "Lilita-One-regular", sans-serif;
+  // margin-bottom: em(10px);
+  font-family: "Titillium-Web", sans-serif;
+
 }
 .black-heading{
   color: black;

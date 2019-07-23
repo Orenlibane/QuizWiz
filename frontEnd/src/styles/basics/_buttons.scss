@@ -46,12 +46,40 @@
 .quiz-details-btn{
   padding: em(20px);
   border-radius: em(300px);
-  color: $clr2;
+  color: $clr3;
+  letter-spacing: em(1px);
   min-width: em(200px);
   font-size:em(20px);
   margin:em(5px);
   border:none;
+  outline: none;
   font-family: "Lilita-One-regular";
   background-color: $clr1;
   cursor: pointer;
+}
+
+.quiz-name-input{
+  border-top:none;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  text-align: center;
+  background-color: rgba(0,0,0,0.0);
+  font-family: "Titillium-Web",sans-serif;
+  font-size: em(25px);
+  padding: 0;
+  outline: none;
+  // border-bottom: 3.5px solid $clr1;
+}
+.line{
+  height: em(3.5px);
+  background: $clr1;
+  border-top-right-radius: em(100px);
+  border-top-left-radius: em(100px);
+  border-bottom-right-radius: em(100px);
+  border-bottom-left-radius: em(100px);
+}
+
+.input-name-container{
+  margin-bottom: em(60px);
 }

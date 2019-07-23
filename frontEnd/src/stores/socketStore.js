@@ -3,6 +3,7 @@ import socket from '../service/SocketService.js';
 export default {
   state: {
     liveGames: [],
+    gameOn:false,
     serverClock: null,
     gameState: {
       users: [],
@@ -16,6 +17,9 @@ export default {
     }
   },
   mutations: {
+    updateGameOn(state,{status}){
+      state.gameOn = status;
+    },
     updateServerClock(state, { clock }) {
       state.serverClock = clock;
     },
@@ -47,6 +51,9 @@ export default {
     }
   },
   actions: {
+    setGameStatus(context, {status}){
+      context.commit({type:'updateGameOn',status});
+    },
     setUser(context, { infoToLog }) {
       context.commit({ type: 'setUser', infoToLog });
     },
@@ -88,6 +95,9 @@ export default {
     }
   },
   getters: {
+    getGameStatus(state){
+      return state.gameOn;
+    },
     getUser(state) {
       return state.gameState.user;
     },

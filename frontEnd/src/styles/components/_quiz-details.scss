@@ -13,7 +13,8 @@
   border-radius: em(50px);
   z-index: 9;
   @include for-mobile-layout {
-    padding: em(10px);
+    padding-top: em(30px);
+    padding-bottom: em(30px);
     width: 100%;
   }
   @include for-narrow-layout {
@@ -27,10 +28,11 @@
 }
 .quiz-details-action span {
   color: gray;
+  margin-bottom: em(50px);
 }
 .quiz-details-action h2 {
   font-size: em(30px);
-  margin-bottom: em(10px);
+  margin-bottom:em(2px);
 }
 .best-score h2 {
   color: white;
@@ -75,4 +77,19 @@
   text-transform: capitalize;
   font-family: "Lilita-One-regular";
   font-size: em(45px);
+}
+
+.back-btn{
+  width: em(60px);
+  height: em(60px);
+  padding: em(5px);
+  fill:$clr3;
+  background-color: rgba(255,255,255,0.0);
+  border:none;
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+  top:em(20px);
+  left: em(30px);
+
 }

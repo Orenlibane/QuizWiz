@@ -1,16 +1,42 @@
 .join-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  // display: grid;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  // grid-template-columns: 1fr ;
   font-size: em(24px);
-  gap: em(10px);
+  // gap: em(10px);
+  width: em(200px);
+  line-height: em(23px);
 }
 .orange-headline-join{
-    color: $clr2;
-    font-family: "Lilita-One-regular", sans-serif;
-    font-size: em(20px);
+    color: black;
+    font-family: "Titillium-Web", sans-serif;
+    font-size: em(16px);
     text-transform: capitalize;
 }
 
+.joined-headline-h2{
+  font-size: em(30px);
+  font-family: "Lilita-One-regular";
+}
 
+.timer-heading{
+  font-size: em(70px);
+  font-family: "Lilita-One-regular";
+  margin-bottom: em(15px);
+  color: $clr1;
 
+  @include for-mobile-layout {
+    margin-bottom: em(5px);
+  }
+  @include for-narrow-layout {
 
+  }
+  @include for-normal-layout {
+    margin-bottom: em(15px);
+  }
+
+}
