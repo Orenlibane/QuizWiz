@@ -1,20 +1,6 @@
 <template>
   <section class="quiz-filter flex both-align-center">
-    <input type="text" v-model="filterBy.name" @input="setFilter" placeholder="🔍Search Quiz" />
-    <div class="filters">
-      <select v-model="filterBy.tags" @change="setFilter">
-        <option value="All">All</option>
-        <option value="1">1</option>
-        <option value="2">2k</option>
-        <option value="3">3k</option>
-      </select>
-    </div>
-    <div class="filters">
-      <select v-model="filterBy.sortBy" @change="setFilter">
-        <option value="time">CreatedAt</option>
-        <option value="likes">Likes</option>
-      </select>
-    </div>
+    <input type="text" v-model="filterBy.txt" @input="emitSetFilter" placeholder="🔍Search Quiz" />
   </section>
 </template>
 
@@ -26,23 +12,19 @@ export default {
   data() {
     return {
       filterBy: {
-        name: "",
-        tags: "All",
-        createdAt: "",
-        SortBy: ""
+        txt: ""
       }
     };
   },
   computed: {},
   methods: {
-    setFilter() {
-      this.$store.commit("setFilter", this.filterBy);
+    emitSetFilter() {
+      this.$emit("emitSetFilter", this.filterBy);
     }
   },
   components: {}
 };
 </script>
 
-<style scoped>
-</style>
+
 

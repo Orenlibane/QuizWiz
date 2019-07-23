@@ -9,7 +9,6 @@ const gameStore = {
     }
   },
   actions: {
-    //TODO: change name
     setLoggedGamePlayers(context, { gamePlayers }) {
       context.commit({ type: 'setGamePlayers', gamePlayers });
     }

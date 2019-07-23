@@ -19,7 +19,6 @@ export default {
     updateServerClock(state, { clock }) {
       state.serverClock = clock;
     },
-
     updateGameStage(state, { stage }) {
       state.gameState.gameStage = stage;
     },

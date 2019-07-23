@@ -1,6 +1,7 @@
 <template>
   <section class="quiz-quest layout-container">
     <div class="question-status flex space-between">
+      <div v-if="info.quiz.quests.length ===currQuestNum+1">Bonus Round!</div>
       <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
       <span>{{timer}}</span>
     </div>
@@ -57,14 +58,22 @@ export default {
       if (this.isAnswered) return;
       this.isAnswered = true;
       let currAns = idx === this.correctOptIdx;
+      let answerInfo = {
+        currAns: true,
+        score: this.timer * 10
+      };
+      if (this.info.quiz.quests.length === this.currQuestNum + 1) {
+        console.log("should dubble");
+        answerInfo.score = this.timer * 10 * 2;
+        console.log(answerInfo.score);
+      }
       if (currAns) {
+        console.log("sending", answerInfo.score);
+
         this.$store.dispatch({
           type: "updateAns",
           res: {
-            answerInfo: {
-              currAns: true,
-              score: this.timer * 10
-            },
+            answerInfo: answerInfo,
             userId: this.user.userId
           }
         });
