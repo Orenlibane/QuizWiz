@@ -1,6 +1,7 @@
 <template>
-  <section class="quiz-quest layout-container">
+  <!-- <section class="quiz-quest layout-container">
     <div class="question-status flex space-between">
+      <div v-if="info.quiz.quests.length ===currQuestNum+1">Bonus Round!</div>
       <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
       <span>{{timer}}</span>
     </div>
@@ -15,6 +16,32 @@
         v-for="(opt,idx) in currOpts"
         :key="idx"
       >{{opt}}</button>
+    </div>
+  </section>-->
+  <section>
+    <div class="quest-header flex justify-center align-center column">
+      <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
+      <h2>{{timer}}</h2>
+      <h2 class="center">{{currQuest}}</h2>
+    </div>
+    <div class="quest-body">
+      <button
+        class="quest-opt-btn"
+        :class="ansStyle(idx)"
+        @click="chooseAns(idx)"
+        v-for="(opt,idx) in currOpts"
+        :key="idx"
+      >
+        {{opt}}
+        <span v-if="isAnswered&&correctOptIdx===idx"
+          class="sign-icon-span correct-sign flex justify-center align-center"
+        >
+          <i class="fas fa-check"></i>
+        </span>
+        <span v-if="isAnswered&&correctOptIdx!==idx" class="sign-icon-span wrong-sign flex justify-center align-center">
+          <i class="fas fa-times"></i>
+        </span>
+      </button>
     </div>
   </section>
 </template>
@@ -57,14 +84,22 @@ export default {
       if (this.isAnswered) return;
       this.isAnswered = true;
       let currAns = idx === this.correctOptIdx;
+      let answerInfo = {
+        currAns: true,
+        score: this.timer * 10
+      };
+      if (this.info.quiz.quests.length === this.currQuestNum + 1) {
+        console.log("should dubble");
+        answerInfo.score = this.timer * 10 * 2;
+        console.log(answerInfo.score);
+      }
       if (currAns) {
+        console.log("sending", answerInfo.score);
+
         this.$store.dispatch({
           type: "updateAns",
           res: {
-            answerInfo: {
-              currAns: true,
-              score: this.timer * 10
-            },
+            answerInfo: answerInfo,
             userId: this.user.userId
           }
         });
@@ -83,8 +118,8 @@ export default {
     },
     ansStyle(idx) {
       if (!this.isAnswered) return "";
-      if (idx === this.correctOptIdx) return "correctAnsStyle";
-      return "wrongAnsStyle";
+      if (idx === this.correctOptIdx) return "correct-ans";
+      return "wrong-ans";
     }
   },
 

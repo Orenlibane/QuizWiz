@@ -190,7 +190,7 @@ export default {
     var audioWin = new Audio(require("@/assets/sounds/win.mp3"));
     audioWin.play();
     await Swal.fire({
-      title: `${this.sortedUsersTotalScores[0].nickName}\nYOU ARE THE NEXT CODING ACADEMY CHAMPION!`
+      title: `${this.sortedUsersTotalScores[0].nickName}\nYou are the ${this.info.quiz.name} Champion!`
     });
   },
   destroyed() {

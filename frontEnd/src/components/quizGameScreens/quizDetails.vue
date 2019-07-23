@@ -12,7 +12,6 @@
       <router-link to="/">
         <button class="quiz-details-btn">back</button>
       </router-link>
-      
     </div>
   </section>
 </template>
@@ -38,6 +37,8 @@ export default {
       this.$store.dispatch({ type: "changeGameStage", stage: "quizLobby" });
       let nickName = await Swal.fire({
         title: "Enter your Guest NickName",
+        confirmButtonColor: "#2d257c",
+        confirmButtonText: "Lets Go",
         input: "text"
       });
       let infoToLog = {
@@ -59,7 +60,4 @@ export default {
   }
 };
 </script>
-
-<style scoped>
-</style>
 

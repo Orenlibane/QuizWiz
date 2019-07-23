@@ -1,8 +1,8 @@
 <template>
   <div class="quiz-library layout-container">
     <h1 class="white-headline">Quiz Library</h1>
-    <!-- <quiz-filter></quiz-filter> -->
-    <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>
+    <quiz-filter @emitSetFilter="setFilter"></quiz-filter>
+    <quiz-list v-if="filterQuizes" :quizes="filterQuizes"></quiz-list>
   </div>
 </template>
 
@@ -15,8 +15,13 @@ export default {
   props: [],
   components: { quizList, quizFilter },
   computed: {
-    quizes() {
-      return this.$store.getters.getQuizes;
+    filterQuizes() {
+      return this.$store.getters.getFilterQuizes;
+    }
+  },
+  methods: {
+    setFilter(filterBy) {
+      this.$store.dispatch({ type: "setFilter", filterBy: filterBy });
     }
   }
 };

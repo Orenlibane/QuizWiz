@@ -3,9 +3,15 @@ import quizService from '@/service/quizService.js';
 
 const quizStore = {
   state: {
-    quizes: []
+    quizes: [],
+    filterBy: {
+      txt: ''
+    }
   },
   mutations: {
+    setFilter(state, { filterBy }) {
+      state.filterBy.txt = filterBy.txt.toLowerCase();
+    },
     setQuizes(state, { quizes }) {
       state.quizes = quizes;
     },
@@ -27,6 +33,11 @@ const quizStore = {
     getQuizes(state) {
       console.log('getter of quizes returns:', state.quizes);
       return state.quizes;
+    },
+    getFilterQuizes(state) {
+      return state.quizes.filter(quiz =>
+        quiz.name.toLowerCase().includes(state.filterBy.txt)
+      );
     }
   },
 
@@ -63,6 +74,9 @@ const quizStore = {
         console.log('err in editing in store', err);
       }
     },
+    setFilter(context, { filterBy }) {
+      context.commit({ type: 'setFilter', filterBy });
+    }
   }
 };
 
