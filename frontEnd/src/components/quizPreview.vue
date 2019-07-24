@@ -37,7 +37,7 @@
       <div class="quiz-preview-timer flex space-between align-center">
         <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
         <span v-if="!quiz.gameId"></span>
-        <span v-else>{{countdown}}</span>
+        <!-- <span v-else>{{countdown}}</span> -->
       </div>
       <div class="flex both-align-center"></div>
     </div>

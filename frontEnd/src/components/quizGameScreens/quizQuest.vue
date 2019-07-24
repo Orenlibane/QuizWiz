@@ -1,7 +1,6 @@
 <template>
   <!-- <section class="quiz-quest layout-container">
     <div class="question-status flex space-between">
-      <div v-if="info.quiz.quests.length ===currQuestNum+1">Bonus Round!</div>
       <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
       <span>{{timer}}</span>
     </div>
@@ -22,8 +21,10 @@
     <div class="quiz-img" :style="{ backgroundImage: 'url(' + info.quiz.imgUrl + ')' }"></div>
 
     <div class="quest-header flex justify-center align-center column">
+      <h1 v-if="info.quiz.quests.length ===currQuestNum+1">Bonus Round!</h1>
       <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
       <h2>{{timer}}</h2>
+
       <h2 class="center">{{currQuest}}</h2>
     </div>
     <div class="quest-body">
