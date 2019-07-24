@@ -2,7 +2,7 @@
 const socketIO = require('socket.io');
 const gameService = require('./game-service');
 const TIME_PER_GAME_PART = 10000;
-const TIMEOUT_FOR_GAME_START = 21000;
+const TIMEOUT_FOR_GAME_START = 51000;
 
 var io;
 function setup(http) {
@@ -79,7 +79,7 @@ module.exports = {
 //Socket Service functions
 
 function startLobbyTimer(gameId) {
-  let lobbyTimer = 30;
+  let lobbyTimer = 60;
   let lobbyTimerInterval = setInterval(() => {
     io.to(gameId).emit('sendLobbyTimer', lobbyTimer); //need to send server time insted
     lobbyTimer--;

@@ -37,7 +37,6 @@
       <div class="quiz-preview-timer flex space-between align-center">
         <p>{{quiz.tags[0]}} {{quiz.tags[1]}}</p>
         <span v-if="!quiz.gameId"></span>
-        <!-- <span v-else>{{countdown}}</span> -->
       </div>
       <div class="flex both-align-center"></div>
     </div>
@@ -116,10 +115,6 @@ export default {
       let time = moment(this.$store.getters.serverTime).format("mm:ss");
       return time;
     }
-    // lobbyTime() {
-    //   console.log("lobby timer:", this.$store.state.getters.getLobbyTimer);
-    //   return this.$store.state.getters.getLobbyTimer;
-    // }
   },
   created() {
     this.likesCount = this.quiz.likesCount;
