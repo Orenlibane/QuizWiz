@@ -83,3 +83,10 @@
 .input-name-container{
   margin-bottom: em(60px);
 }
+
+.fixed-btn{
+  position: fixed;
+  bottom: em(20px);
+  left:0;
+  right:0;
+}

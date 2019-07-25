@@ -161,7 +161,7 @@
     <!-- scores table -->
     <score-table :users="sortedUsersTotalScores"></score-table>
     <!-- scores table -->
-    <div class="flex both-align-center">
+    <div class="fixed-btn flex justify-center align-center">
       <button class="white-btn" @click.stop="backHome">continue</button>
     </div>
   </section>

@@ -1,26 +1,8 @@
 <template>
-  <!-- <section class="quiz-quest layout-container">
-    <div class="question-status flex space-between">
-      <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
-      <span>{{timer}}</span>
-    </div>
-    <div class="quest-name-container flex justify-center align-center column">
-      <h2 class="center">{{currQuest}}</h2>
-    </div>
-    <div class="quest-answers-container justify-center align-center">
-      <button
-        class="quest-answer-btn"
-        :class="ansStyle(idx)"
-        @click="chooseAns(idx)"
-        v-for="(opt,idx) in currOpts"
-        :key="idx"
-      >{{opt}}</button>
-    </div>
-  </section>-->
   <section>
     <div class="quiz-img" :style="{ backgroundImage: 'url(' + info.quiz.imgUrl + ')' }"></div>
 
-    <div class="quest-header flex justify-center align-center column">
+    <div class="quest-header flex justify-center align-center column" :class="isBunus">
       <h1 v-if="info.quiz.quests.length ===currQuestNum+1">Bonus Round!</h1>
       <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
       <h2>{{timer}}</h2>
@@ -89,6 +71,9 @@ export default {
     },
     correctOptIdx() {
       return this.info.quiz.quests[this.info.currQuest].correctOptIdx;
+    },
+    isBunus() {
+      return this.info.quiz.quests.length === this.currQuestNum + 1 ? "bonus-bg" : "";
     }
   },
   methods: {

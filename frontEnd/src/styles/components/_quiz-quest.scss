@@ -101,7 +101,11 @@
   border:5px solid $wrong;
 }
 
-
+.bonus-text{
+  color: $clr1;
+  font-family: "Lilita-One-regular", sans-serif;
+  
+}
 
 .sign-icon-span{
   position: absolute;
@@ -125,4 +129,8 @@
   i{
     color: $wrong;
   }
+}
+
+.bonus-bg{
+  background-color: $clr2;
 }
