@@ -52,8 +52,6 @@ export default {
   },
   watch: {
     "$store.getters.currentQuestion": function(newVal, oldVal) {
-      console.log(this.cmp.info);
-      console.log("new val", newVal);
       this.cmp.info.currQuest = newVal.currentQuestion;
     }
   },
