@@ -1,6 +1,6 @@
 <template>
   <section class="quiz-filter flex both-align-center">
-    <input type="text" v-model="filterBy.txt" @input="emitSetFilter" placeholder="🔍Search Quiz" />
+    <input class="app-input" type="text" v-model="filterBy.txt" @input="emitSetFilter" placeholder="🔍Search Quiz" />
   </section>
 </template>
 

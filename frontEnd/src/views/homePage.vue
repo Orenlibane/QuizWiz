@@ -35,7 +35,6 @@ export default {
     },
     serverTime() {
       let time = moment(this.$store.getters.serverTime).format("h:mm:ss");
-
       return time;
     }
   },

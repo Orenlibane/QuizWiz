@@ -2,7 +2,7 @@
   <section class="game-results">
     <div class="score-label flex justify-center align-center column">
       <p>Correct Answer</p>
-      <span>{{correctAnswer}}</span>
+      <span class="center">{{correctAnswer}}</span>
     </div>
     <score-table :users="sortedUsersTotalScores"></score-table>
     <div class="table-heading flex justify-center align-center"></div>
