@@ -2,7 +2,7 @@
   <div class="quiz-library layout-container">
     <h1 class="white-headline">Quiz Library</h1>
     <quiz-filter @emitSetFilter="setFilter"></quiz-filter>
-    <quiz-list v-if="filterQuizes" :quizes="filterQuizes"></quiz-list>
+    <quiz-list class="add-margin-bottom" v-if="filterQuizes" :quizes="filterQuizes"></quiz-list>
   </div>
 </template>
 

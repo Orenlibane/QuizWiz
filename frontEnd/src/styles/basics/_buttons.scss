@@ -83,3 +83,31 @@
 .input-name-container{
   margin-bottom: em(60px);
 }
+
+.fixed-btn{
+  position: fixed;
+  bottom: em(20px);
+  left:0;
+  right:0;
+}
+input {
+  padding: 10px;
+}
+
+
+.app-input{
+  outline: none;
+  // border: none;
+  border-top: none;
+  border-right:none;
+  border-left:none;
+  margin-top: em(50px);
+  margin-bottom: em(50px);
+  border-bottom-color: 1px solid white;
+  background-color: rgba(0,0,0,0.0);
+  color:white;
+  font-size: em(16px);
+}
+.app-input::placeholder{
+  color: white;
+}

@@ -161,7 +161,7 @@
     <!-- scores table -->
     <score-table :users="sortedUsersTotalScores"></score-table>
     <!-- scores table -->
-    <div class="flex both-align-center">
+    <div class="fixed-btn flex justify-center align-center">
       <button class="white-btn" @click.stop="backHome">continue</button>
     </div>
   </section>
@@ -190,7 +190,7 @@ export default {
     var audioWin = new Audio(require("@/assets/sounds/win.mp3"));
     audioWin.play();
     await Swal.fire({
-      title: `${this.sortedUsersTotalScores[0].nickName}\nYou are the ${this.info.quiz.name} Champion!`,
+      title: `The Winner is:\n${this.sortedUsersTotalScores[0].nickName}`,
       confirmButtonColor: "#2d257c",
       confirmButtonText: "Ok"
     });

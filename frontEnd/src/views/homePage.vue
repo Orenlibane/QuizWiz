@@ -5,12 +5,7 @@
     <h1 class="orange-headline" v-else>No active games currently. . .</h1>
     <!-- <hr class="margin-fix-top"/> -->
     <h1 class="white-headline margin-fix margin-fix-bottom margin-fix-top">All games</h1>
-    <quiz-list v-if="quizes" :quizes="quizes"></quiz-list>
-    <div class="flex both-align-center">
-      <!-- <router-link to="/quiz/add">
-        <button class="addQuizBtn">Add Quiz</button>
-      </router-link>-->
-    </div>
+    <quiz-list class="add-margin-bottom" v-if="quizes" :quizes="quizes"></quiz-list>
   </section>
 </template>
 
@@ -40,7 +35,6 @@ export default {
     },
     serverTime() {
       let time = moment(this.$store.getters.serverTime).format("h:mm:ss");
-
       return time;
     }
   },

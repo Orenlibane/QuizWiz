@@ -1,9 +1,9 @@
 <template>
   <section class="game-results">
-    <p
-      class="correct-answer fs28 center"
-      v-if="correctAnswer"
-    >The correct answer is: {{correctAnswer}}</p>
+    <div class="score-label flex justify-center align-center column">
+      <p>Correct Answer</p>
+      <span class="center">{{correctAnswer}}</span>
+    </div>
     <score-table :users="sortedUsersTotalScores"></score-table>
     <div class="table-heading flex justify-center align-center"></div>
   </section>

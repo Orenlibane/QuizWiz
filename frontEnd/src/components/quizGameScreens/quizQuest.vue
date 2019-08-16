@@ -2,7 +2,7 @@
   <section>
     <div class="quiz-img" :style="{ backgroundImage: 'url(' + info.quiz.imgUrl + ')' }"></div>
 
-    <div class="quest-header flex justify-center align-center column">
+    <div class="quest-header flex justify-center align-center column" :class="isBunus">
       <h1 v-if="info.quiz.quests.length ===currQuestNum+1">Bonus Round!</h1>
       <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
       <h2>{{timer}}</h2>
@@ -71,6 +71,9 @@ export default {
     },
     correctOptIdx() {
       return this.info.quiz.quests[this.info.currQuest].correctOptIdx;
+    },
+    isBunus() {
+      return this.info.quiz.quests.length === this.currQuestNum + 1 ? "bonus-bg" : "";
     }
   },
   methods: {
