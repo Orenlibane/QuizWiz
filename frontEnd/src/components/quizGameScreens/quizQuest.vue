@@ -2,7 +2,7 @@
   <section>
     <div class="quiz-img" :style="{ backgroundImage: 'url(' + info.quiz.imgUrl + ')' }"></div>
 
-    <div class="quest-header flex justify-center align-center column" :class="isBunus">
+    <div class="quest-header flex justify-center align-center column" :class="isBonus">
       <h1 v-if="info.quiz.quests.length ===currQuestNum+1">Bonus Round!</h1>
       <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
       <h2>{{timer}}</h2>
@@ -56,7 +56,15 @@ export default {
       isAnswered: false,
       timer: 10,
       timerInterval: null,
-      user: {}
+      user: {},
+      rightAnswerInfo: {
+        currAns: true,
+        score: ""
+      },
+      wrongAnswerInfo: {
+        currAns: false,
+        score: 0
+      }
     };
   },
   computed: {
@@ -72,7 +80,7 @@ export default {
     correctOptIdx() {
       return this.info.quiz.quests[this.info.currQuest].correctOptIdx;
     },
-    isBunus() {
+    isBonus() {
       return this.info.quiz.quests.length === this.currQuestNum + 1
         ? "bonus-bg"
         : "";
@@ -83,33 +91,23 @@ export default {
       if (this.isAnswered) return;
       this.isAnswered = true;
       let currAns = idx === this.correctOptIdx;
-      let answerInfo = {
-        currAns: true,
-        score: this.timer * 10
+
+      //Distributing the scores
+      this.info.quiz.quests.length === this.currQuestNum + 1
+        ? (this.rightAnswerInfo.score = this.timer * 10 * 2)
+        : (this.rightAnswerInfo.score = this.timer * 10);
+
+      //Building and Defining the Res the Res
+      let res = {
+        answerInfo: "",
+        userId: this.user.userId
       };
-      if (this.info.quiz.quests.length === this.currQuestNum + 1) {
-        answerInfo.score = this.timer * 10 * 2;
-      }
-      if (currAns) {
-        this.$store.dispatch({
-          type: "updateAns",
-          res: {
-            answerInfo: answerInfo,
-            userId: this.user.userId
-          }
-        });
-      } else {
-        this.$store.dispatch({
-          type: "updateAns",
-          res: {
-            answerInfo: {
-              currAns: false,
-              score: 0
-            },
-            userId: this.user.userId
-          }
-        });
-      }
+
+      currAns
+        ? (res.answerInfo = this.rightAnswerInfo)
+        : (res.answerInfo = this.wrongAnswerInfo);
+
+      this.$store.dispatch({ type: "updateAns", res });
     },
     ansStyle(idx) {
       if (!this.isAnswered) return "";
@@ -121,16 +119,11 @@ export default {
   destroyed() {
     clearInterval(this.timerInterval);
     if (!this.isAnswered) {
-      this.$store.dispatch({
-        type: "updateAns",
-        res: {
-          answerInfo: {
-            currAns: false,
-            score: 0
-          },
-          userId: this.user.userId
-        }
-      });
+      let res = {
+        answerInfo: this.wrongAnswerInfo,
+        userId: this.user.userId
+      };
+      this.$store.dispatch({ type: "updateAns", res });
     }
   },
   created() {
