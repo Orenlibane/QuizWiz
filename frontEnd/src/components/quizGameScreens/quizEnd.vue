@@ -1,10 +1,5 @@
 <template>
   <section class="end-screen">
-    <!-- <router-link to="/">
-      <button class="btn-quiz">
-        <i class="fas fa-backward"></i>
-      </button>
-    </router-link>-->
     <div class="winners-podium-trophy flex justify-center align-center">
       <svg
         width="107px"

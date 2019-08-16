@@ -10,7 +10,6 @@ import quizDetails from "../components/quizGameScreens/quizDetails";
 import quizEnd from "../components/quizGameScreens/quizEnd";
 import quizLobby from "../components/quizGameScreens/quizLobby";
 import quizResult from "../components/quizGameScreens/quizResult";
-import quizReady from "../components/quizGameScreens/quizReady";
 import quizQuest from "../components/quizGameScreens/quizQuest";
 
 //Event bus
@@ -36,7 +35,6 @@ export default {
     quizEnd,
     quizLobby,
     quizResult,
-    quizReady,
     quizQuest
   },
   computed: {

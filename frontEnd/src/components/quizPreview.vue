@@ -67,7 +67,7 @@ export default {
     };
   },
   methods: {
-    // THOSE OPTIONS ARE ONLY FOR TESTING!!! The user won't really be able to delete games.
+    // THOSE OPTIONS ARE ONLY FOR THE Devs!!! The user won't get the option to delete games.
     deleteQuiz(quizId) {
       this.$store.dispatch({ type: "deleteQuiz", quizId });
     },
@@ -101,18 +101,6 @@ export default {
       this.$store.dispatch({ type: "logToLiveGame", infoToLog });
       this.$store.dispatch({ type: "setGameStatus", status: true });
       this.$router.push(`/quiz/${this.quiz._id}/game`);
-    }
-  },
-  computed: {
-    enterGameUrl() {
-      return `quiz/${this.quiz._id}/game`;
-    },
-    editUrl() {
-      return `quiz/edit/${this.quiz._id}`;
-    },
-    serverTime() {
-      let time = moment(this.$store.getters.serverTime).format("mm:ss");
-      return time;
     }
   },
   created() {

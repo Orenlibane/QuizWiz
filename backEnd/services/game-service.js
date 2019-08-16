@@ -13,15 +13,13 @@ module.exports = {
 let onlineGames = [];
 
 function getAllonlineGames() {
-  return onlineGames; //which are isOn:false
+  return onlineGames;
 }
 
 function gamePlayersCount(gameId) {
   const gameById = onlineGames.find(game => game._id === gameId);
   return gameById.gamePlayers.length;
 }
-// Michael: Need to keep going with the code check from here
-//In here - later on we'll have to get the guest nickname and its id from the session.
 function joinGame(
   gameId,
   user = { nickName: 'guest', id: _makeId(), ans: [] }
@@ -30,7 +28,6 @@ function joinGame(
   gameById.gamePlayers.push(user);
   return user;
 }
-//TODO: delete?
 function leaveGame(playerId, gameId) {
   const gameById = onlineGames.find(game => game._id === gameId);
   gameById = gameById.gamePlayers.filter(player => player._id !== playerId);
@@ -44,7 +41,7 @@ function removeGame(gameId) {
   onlineGames = onlineGames.filter(game => game._id !== gameId);
 }
 
-// Setthe curr ans for each one of the players array
+// Set the curr ans for each one of the players array
 function setAnswer(gameId, userId, answer) {
   const currGame = onlineGames.find(game => game._id === gameId);
 

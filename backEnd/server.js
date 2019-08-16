@@ -13,7 +13,7 @@ const quizRoutes = require('./api/quiz/quiz.routes');
 const logger = require('./services/logger.service');
 const socketService = require('./services/socket.service');
 
-//SESSION
+//SESSION - a template for future use
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(

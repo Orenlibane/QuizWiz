@@ -73,7 +73,9 @@ export default {
       return this.info.quiz.quests[this.info.currQuest].correctOptIdx;
     },
     isBunus() {
-      return this.info.quiz.quests.length === this.currQuestNum + 1 ? "bonus-bg" : "";
+      return this.info.quiz.quests.length === this.currQuestNum + 1
+        ? "bonus-bg"
+        : "";
     }
   },
   methods: {
@@ -145,10 +147,4 @@ export default {
 </script>
 
 <style scoped>
-.wrongAnsStyle {
-  background: rgb(173, 55, 55, 0.7);
-}
-.correctAnsStyle {
-  background: rgb(47, 149, 47, 0.7);
-}
 </style>

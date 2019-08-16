@@ -3,7 +3,7 @@ import socket from '../service/SocketService.js';
 export default {
   state: {
     liveGames: [],
-    gameOn:false,
+    gameOn: false,
     serverClock: null,
     gameState: {
       users: [],
@@ -17,7 +17,7 @@ export default {
     }
   },
   mutations: {
-    updateGameOn(state,{status}){
+    updateGameOn(state, { status }) {
       state.gameOn = status;
     },
     updateServerClock(state, { clock }) {
@@ -40,7 +40,6 @@ export default {
       state.liveGames = liveGames;
     },
     setUserScores(state, { res }) {
-      //TODO: CHECK IF CAN COMMENT IT OUT AND USE THE SCORES FROM SET USER
       state.gameState.userScores.push(res.score);
     },
     setUser(state, { infoToLog }) {
@@ -51,8 +50,8 @@ export default {
     }
   },
   actions: {
-    setGameStatus(context, {status}){
-      context.commit({type:'updateGameOn',status});
+    setGameStatus(context, { status }) {
+      context.commit({ type: 'updateGameOn', status });
     },
     setUser(context, { infoToLog }) {
       context.commit({ type: 'setUser', infoToLog });
@@ -95,7 +94,7 @@ export default {
     }
   },
   getters: {
-    getGameStatus(state){
+    getGameStatus(state) {
       return state.gameOn;
     },
     getUser(state) {
@@ -128,7 +127,6 @@ export default {
     getGameScores(state) {
       return state.gameState.scores.gamePlayers;
     },
-    //TODO: Fix lobby Timer
     getLobbyTimer(state) {
       return state.gameState.lobbyTimer;
     }

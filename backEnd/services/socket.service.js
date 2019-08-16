@@ -17,10 +17,6 @@ function setup(http) {
 
       gameService.joinGame(infoToLog.gameId, infoToLog.user);
       sendLoggedUsersToClient('preGame', io, infoToLog.gameId, currGame);
-
-      socket.on('disconnect', function(socket) {
-        // logic for DC of joined USER
-      });
     });
     socket.on('updateAns', answer => {
       gameService.setAnswer(currGame._id, answer.userId, answer.answerInfo);
@@ -49,23 +45,7 @@ function setup(http) {
         );
       }, timeForGameStart);
 
-      socket.on('disconnect', function(socket) {
-        // logic for DC of game Creator
-      });
-
-      console.log('length questions', currGame.quiz.quests.length);
       function gameSequence(currGame, io) {
-        console.log('making choice', 'the current status is', currGame.status);
-        console.log(
-          'Check for ENDGAME for multi',
-          currGame.currQuest === currGame.quiz.quests.length
-        );
-        // console.log(
-        //   'Check for ENDGAME for single',
-        //   currGame.currQuest === currGame.quiz.quests.length - 1
-        // );
-        console.log('curr Question before entering', currGame.currQuest);
-
         if (
           (currGame.currQuest === currGame.quiz.quests.length - 1 &&
             currGame.gameType === 'single') ||
@@ -83,10 +63,6 @@ function setup(http) {
           }
         } else if (currGame.status === 'quest') {
           afterQuest(currGame, io);
-          console.log(
-            'curr Question before entering after quest',
-            currGame.currQuest
-          );
         }
       }
     });

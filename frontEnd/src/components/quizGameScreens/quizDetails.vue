@@ -4,15 +4,9 @@
     <div class="quiz-details-action flex justify-center align-center column">
       <h2 class="center">{{info.quiz.name}}</h2>
       <span>by {{info.quiz.creatorName}}</span>
-      <!-- <div class="tags-show flex">
-        <div v-for="(tag, idx) in info.quiz.tags" :key="idx">{{tag}}</div>
-      </div>-->
 
       <button class="quiz-details-btn" @click="startGame('single')">Single Player</button>
       <button class="quiz-details-btn" @click="startGame('mult')">Multiplayer</button>
-      <!-- <router-link to="/">
-        <button class="quiz-details-btn">back</button>
-      </router-link>-->
     </div>
     <router-link class="back-btn" to="/">
       <svg
@@ -68,10 +62,7 @@ export default {
   computed: {},
   props: ["info"],
   data() {
-    return {
-      imgUrl:
-        "https://images.unsplash.com/photo-1563454758691-702be3d2e2b6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2734&q=80"
-    };
+    return {};
   },
 
   methods: {
@@ -80,11 +71,10 @@ export default {
     },
     async startGame(gameType) {
       this.$store.dispatch({ type: "changeGameStage", stage: "quizLobby" });
-      if (gameType === "single") {
-        this.info.quiz.gameType = "single";
-      } else {
-        this.info.quiz.gameType = "mult";
-      }
+
+      gameType === "single"
+        ? (this.info.quiz.gameType = "single")
+        : (this.info.quiz.gameType = "mult");
     }
   }
 };

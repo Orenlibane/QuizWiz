@@ -17,11 +17,11 @@
           class="quiz-name-input"
           placeholder="Your Name"
           autofocus
-          @keyup.enter="beginTheMagic"
+          @keyup.enter="startGame"
         />
         <div class="line"></div>
       </div>
-      <button v-if="!gameStatus" class="quiz-details-btn" @click.prevent="beginTheMagic">Let's begin</button>
+      <button v-if="!gameStatus" class="quiz-details-btn" @click.prevent="startGame">Let's begin</button>
       <div v-if="gameStatus" class="flex justify-center align-center column">
         <h3 class="joined-headline-h2">Joined:</h3>
         <div class="join-list">
@@ -85,8 +85,7 @@ import Swal from "sweetalert2";
 export default {
   props: ["info"],
   methods: {
-    startGame() {},
-    beginTheMagic() {
+    startGame() {
       let infoToLog = {
         userId: utilService.makeId(),
         nickName: this.userName,
@@ -108,9 +107,7 @@ export default {
       userName: ""
     };
   },
-  mounted() {
-    // this.$refs.userName.focus();
-  },
+  mounted() {},
   computed: {
     loggedUsers() {
       return this.$store.getters.getLoggedUsers;

@@ -50,12 +50,11 @@ export default {
   created() {
     this.currentQuestion = this.$store.getters.currentQuestion;
     if (this.user.idx < 3) {
-      if (!this.currentQuestion) {
-        this.lastScore = this.user.ans[0].score;
-      } else
-        this.lastScore = this.user.ans[
-          this.currentQuestion.currentQuestion
-        ].score;
+      !this.currentQuestion
+        ? (this.lastScore = this.user.ans[0].score)
+        : (this.lastScore = this.user.ans[
+            this.currentQuestion.currentQuestion
+          ].score);
     }
   }
 };

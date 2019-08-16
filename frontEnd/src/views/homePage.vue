@@ -3,7 +3,6 @@
     <h1 class="white-headline">Live games</h1>
     <quiz-list class="live-games" v-if="liveGames.length" :quizes="liveGames"></quiz-list>
     <h1 class="orange-headline" v-else>No active games currently. . .</h1>
-    <!-- <hr class="margin-fix-top"/> -->
     <h1 class="white-headline margin-fix margin-fix-bottom margin-fix-top">All games</h1>
     <quiz-list class="add-margin-bottom" v-if="quizes" :quizes="quizes"></quiz-list>
   </section>
@@ -13,7 +12,6 @@
 import quizList from "../components/quizList";
 import eventBus, { GAME_OFF } from "@/event-bus.js";
 import socketService from "../service/SocketService.js";
-const moment = require("moment");
 
 export default {
   name: "home",
@@ -32,10 +30,6 @@ export default {
     },
     quizes() {
       return this.$store.getters.getQuizes;
-    },
-    serverTime() {
-      let time = moment(this.$store.getters.serverTime).format("h:mm:ss");
-      return time;
     }
   },
 

@@ -62,7 +62,8 @@
 </template>
 
 <script>
-import addQuiz from "@/styles/views/_add-quiz.scss"; //need to edit for its own scss
+//This CMP is for devs, since no logged users -> we dont give the clients the option to edit
+import addQuiz from "@/styles/views/_add-quiz.scss";
 import quizService from "@/service/quizService.js";
 import utilService from "@/service/utilService.js";
 
