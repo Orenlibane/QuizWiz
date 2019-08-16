@@ -38,7 +38,7 @@ export default {
       currentQuestion: null
     };
   },
-  props: ["user", "id"],
+  props: ["user", "users", "id"],
   methods: {
     idxFormat(idx) {
       return idx < 10 ? `0${idx}` : idx;
@@ -49,7 +49,7 @@ export default {
   },
   created() {
     this.currentQuestion = this.$store.getters.currentQuestion;
-    if (this.user.idx < 3) {
+    if (this.user.idx < 1 && this.users > 1) {
       !this.currentQuestion
         ? (this.lastScore = this.user.ans[0].score)
         : (this.lastScore = this.user.ans[
