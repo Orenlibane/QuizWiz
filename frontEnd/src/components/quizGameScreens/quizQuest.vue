@@ -1,22 +1,4 @@
 <template>
-  <!-- <section class="quiz-quest layout-container">
-    <div class="question-status flex space-between">
-      <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
-      <span>{{timer}}</span>
-    </div>
-    <div class="quest-name-container flex justify-center align-center column">
-      <h2 class="center">{{currQuest}}</h2>
-    </div>
-    <div class="quest-answers-container justify-center align-center">
-      <button
-        class="quest-answer-btn"
-        :class="ansStyle(idx)"
-        @click="chooseAns(idx)"
-        v-for="(opt,idx) in currOpts"
-        :key="idx"
-      >{{opt}}</button>
-    </div>
-  </section>-->
   <section>
     <div class="quiz-img" :style="{ backgroundImage: 'url(' + info.quiz.imgUrl + ')' }"></div>
 
@@ -101,13 +83,9 @@ export default {
         score: this.timer * 10
       };
       if (this.info.quiz.quests.length === this.currQuestNum + 1) {
-        console.log("should dubble");
         answerInfo.score = this.timer * 10 * 2;
-        console.log(answerInfo.score);
       }
       if (currAns) {
-        console.log("sending", answerInfo.score);
-
         this.$store.dispatch({
           type: "updateAns",
           res: {
@@ -153,9 +131,12 @@ export default {
   created() {
     this.timerInterval = setInterval(() => {
       this.timer--;
+      if (this.info.quiz.gameType === "single" && this.timer <= 0) {
+        this.timer = 10;
+        this.isAnswered = false;
+      }
     }, 1000);
     this.user = this.$store.getters.getUser;
-    console.log("this.info", this.info);
   }
 };
 </script>

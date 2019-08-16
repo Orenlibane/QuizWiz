@@ -1,6 +1,9 @@
 <template>
   <section class="game-results">
-    <p class="correct-answer fs28 center" v-if="correctAnswer">The correct answer is: {{correctAnswer}}</p>
+    <p
+      class="correct-answer fs28 center"
+      v-if="correctAnswer"
+    >The correct answer is: {{correctAnswer}}</p>
     <score-table :users="sortedUsersTotalScores"></score-table>
     <div class="table-heading flex justify-center align-center"></div>
   </section>
@@ -46,12 +49,10 @@ export default {
       let currentUser = this.allScores.find(
         user => this.user.userId === user.userId
       );
-      console.log("this is the user", currentUser);
       let userTotalScore = currentUser.ans.reduce((acc, userScores) => {
         acc += userScores.score;
         return acc;
       }, 0);
-      console.log("this should be the user scores", userTotalScore);
 
       return userTotalScore;
     },
@@ -74,14 +75,10 @@ export default {
     }
   },
 
-  mounted() {
-    console.log("correct option idx:", this.correctOptIdx);
-    console.log("correct answer", this.correctAnswer);
-  },
+  mounted() {},
   created() {
     this.user = this.$store.getters.getUser;
     this.allScores = this.$store.getters.getGameScores;
-    console.log("after getter", this.allScores);
   },
   components: {
     scoreTable
@@ -98,7 +95,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .correct-answer{
-    color: white;
-  }
+.correct-answer {
+  color: white;
+}
 </style>

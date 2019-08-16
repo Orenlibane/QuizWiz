@@ -43,17 +43,13 @@ export default {
     gameStage() {
       return this.$store.getters.gameStage;
     },
-    gameState() {
-      return this.cmpArr[this.gameState];
-    },
+
     currQuest() {
       return this.$store.getters.currentQuestion;
     }
   },
   watch: {
     "$store.getters.currentQuestion": function(newVal, oldVal) {
-      console.log(this.cmp.info);
-      console.log("new val", newVal);
       this.cmp.info.currQuest = newVal.currentQuestion;
     }
   },
@@ -63,7 +59,8 @@ export default {
     var quiz = await this.$store.dispatch({ type: "getQuiz", quizId });
     this.cmp.info = { quiz, currQuest: 0, timer: null };
     this.cmp.testInfo;
-    //Remove footer and header
+
+    //Event bus which Remove footer and header
     eventBus.$emit(GAME_ON);
   }
 };

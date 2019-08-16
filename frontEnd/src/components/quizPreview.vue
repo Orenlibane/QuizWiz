@@ -77,7 +77,6 @@ export default {
     },
     likeQuiz() {
       if (this.liked === "liked-game") return;
-      console.log("liking");
       this.liked = "liked-game";
       this.likesCount++;
     },

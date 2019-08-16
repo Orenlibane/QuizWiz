@@ -135,12 +135,10 @@ export default {
       this.newQuiz.quests[questIdx].correctOptIdx = parseInt(value - 1);
     },
     addQuiz() {
-      console.log(this.newQuiz);
       if (
         this.newQuiz.quests.length === 0 ||
         this.newQuiz.quests.length === 1
       ) {
-        console.log("cant add quiz with less then 2 questions");
         return;
       }
       var addedQuiz = this.newQuiz;
@@ -149,10 +147,7 @@ export default {
     },
     addTag() {
       if (this.tagToAdd === "") return;
-      console.log(this.newQuiz.tags);
-      console.log(this.tagToAdd);
       this.newQuiz.tags.push(this.tagToAdd);
-      console.log(this.newQuiz.tags);
       this.tagToAdd = "";
     },
     removeTag(idx) {

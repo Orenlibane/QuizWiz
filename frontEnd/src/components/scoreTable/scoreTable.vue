@@ -17,7 +17,6 @@ export default {
   created() {
     for (let i = 0; i < this.users.length; i++) {
       this.users[i].idx = i;
-      console.log("idx is:", i);
     }
   }
 };

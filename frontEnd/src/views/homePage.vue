@@ -46,9 +46,8 @@ export default {
   },
 
   created() {
-    console.log("live games", this.liveGames);
     eventBus.$emit(GAME_OFF);
-    this.$store.dispatch({type:'setGameStatus', status:false});
+    this.$store.dispatch({ type: "setGameStatus", status: false });
   }
 };
 </script>

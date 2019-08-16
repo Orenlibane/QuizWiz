@@ -31,7 +31,6 @@ const quizStore = {
   },
   getters: {
     getQuizes(state) {
-      console.log('getter of quizes returns:', state.quizes);
       return state.quizes;
     },
     getFilterQuizes(state) {

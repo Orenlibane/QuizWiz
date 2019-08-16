@@ -80,15 +80,11 @@ export default {
   async created() {
     const quizId = this.$route.params.id;
     var quiz = await this.$store.dispatch({ type: "getQuiz", quizId });
-    console.log("quiz in the base edit page", quiz);
     this.loadedQuiz = quiz;
-    console.log("quiz in the loaded quiz edit page", this.loadedQuiz);
   },
   methods: {
     addQuest() {
-      console.log('adding quest');
       var quest = { quest: "", opts: ["", "", "", ""] };
-      console.log('trying to push to', this.loadedQuiz.quests);
       this.loadedQuiz.quests.push(quest);
     },
     deleteQuest(questIdx) {
@@ -99,7 +95,6 @@ export default {
       this.loadedQuiz.quests[questIdx].correctAns = value;
     },
     editQuiz() {
-      console.log(this.loadedQuiz, "sent from the edit view");
       this.$store.dispatch({ type: "editQuiz", loadedQuiz: this.loadedQuiz });
       this.$router.push("/");
     },

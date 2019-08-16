@@ -2,7 +2,6 @@
 const socketIO = require('socket.io');
 const gameService = require('./game-service');
 const TIME_PER_GAME_PART = 10000;
-const TIMEOUT_FOR_GAME_START = 51000;
 
 var io;
 function setup(http) {
@@ -30,7 +29,15 @@ function setup(http) {
     socket.on('onCreateGame', quiz => {
       currGame = createAndJoinGame(quiz, socket);
       sendLoggedUsersToClient('preGame', io, currGame._id, currGame);
-      startLobbyTimer(currGame._id);
+
+      let timeForGameStart = null;
+      if (quiz.gameType === 'single') {
+        startLobbyTimer(currGame._id, 10);
+        timeForGameStart = 1000;
+      } else {
+        startLobbyTimer(currGame._id, 60);
+        timeForGameStart = 51000;
+      }
 
       let gameInterval;
       setTimeout(() => {
@@ -40,32 +47,46 @@ function setup(http) {
           currGame,
           io
         );
-      }, TIMEOUT_FOR_GAME_START);
+      }, timeForGameStart);
 
       socket.on('disconnect', function(socket) {
         // logic for DC of game Creator
       });
 
+      console.log('length questions', currGame.quiz.quests.length);
       function gameSequence(currGame, io) {
-        console.log(gameInterval);
-        if (currGame.currQuest === currGame.quiz.quests.length) {
-          console.log('Game Stage - ENDGAME', 'GAME ID', currGame._id);
+        console.log('making choice', 'the current status is', currGame.status);
+        console.log(
+          'Check for ENDGAME for multi',
+          currGame.currQuest === currGame.quiz.quests.length
+        );
+        // console.log(
+        //   'Check for ENDGAME for single',
+        //   currGame.currQuest === currGame.quiz.quests.length - 1
+        // );
+        console.log('curr Question before entering', currGame.currQuest);
+
+        if (
+          (currGame.currQuest === currGame.quiz.quests.length - 1 &&
+            currGame.gameType === 'single') ||
+          (currGame.currQuest === currGame.quiz.quests.length &&
+            currGame.gameType === 'mult')
+        ) {
           handleEndGame(currGame, io, gameInterval);
           return;
         } else if (
           currGame.status === 'lobby' ||
           currGame.status === 'middle'
         ) {
-          console.log(
-            'Game Stage - after middle/lobby',
-            'GAME ID',
-            currGame._id
-          );
-          afterMiddleOrLobby(currGame, io);
+          if (quiz.gameType === 'mult' || currGame.status === 'lobby') {
+            afterMiddleOrLobby(currGame, io);
+          }
         } else if (currGame.status === 'quest') {
-          console.log('Game Stage - after quiz', 'GAME ID', currGame._id);
-
           afterQuest(currGame, io);
+          console.log(
+            'curr Question before entering after quest',
+            currGame.currQuest
+          );
         }
       }
     });
@@ -78,10 +99,9 @@ module.exports = {
 
 //Socket Service functions
 
-function startLobbyTimer(gameId) {
-  let lobbyTimer = 60;
+function startLobbyTimer(gameId, lobbyTimer) {
   let lobbyTimerInterval = setInterval(() => {
-    io.to(gameId).emit('sendLobbyTimer', lobbyTimer); //need to send server time insted
+    io.to(gameId).emit('sendLobbyTimer', lobbyTimer);
     lobbyTimer--;
     if (lobbyTimer === 0) clearInterval(lobbyTimerInterval);
   }, 1000);
@@ -100,7 +120,6 @@ function handleEndGame(currGame, io, gameInterval) {
   currGame.status = 'endGame';
   io.to(currGame._id).emit('endGame', currGame);
   clearInterval(gameInterval);
-  //SHOULD SEND TO DATABASE
 
   gameService.removeGame(currGame._id);
   sendLoggedUsersToClient('endGame', io, currGame._id);
@@ -108,8 +127,10 @@ function handleEndGame(currGame, io, gameInterval) {
 }
 
 function afterQuest(newGame, io) {
-  newGame.status = 'middle';
-  io.to(newGame._id).emit('middleQuiz', newGame);
+  if (newGame.gameType === 'mult') {
+    newGame.status = 'middle';
+    io.to(newGame._id).emit('middleQuiz', newGame);
+  }
   newGame.currQuest++;
   io.to(newGame._id).emit('questionChange', newGame.currQuest);
 }

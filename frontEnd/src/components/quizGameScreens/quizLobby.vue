@@ -25,7 +25,11 @@
       <div v-if="gameStatus" class="flex justify-center align-center column">
         <h3 class="joined-headline-h2">Joined:</h3>
         <div class="join-list">
-          <div class="orange-headline-join" v-for="(user,idx) in loggedUsers" :key="idx">{{user.nickName}},</div>
+          <div
+            class="orange-headline-join"
+            v-for="(user,idx) in loggedUsers"
+            :key="idx"
+          >{{user.nickName}},</div>
         </div>
       </div>
     </div>
@@ -81,9 +85,7 @@ import Swal from "sweetalert2";
 export default {
   props: ["info"],
   methods: {
-    startGame() {
-      console.log("Starting game!");
-    },
+    startGame() {},
     beginTheMagic() {
       let infoToLog = {
         userId: utilService.makeId(),
@@ -91,7 +93,6 @@ export default {
         ans: []
       };
       this.info.quiz.creator = infoToLog;
-      console.log("quizes after adding user:", this.$store.getters.getQuizes);
       this.$store.dispatch({ type: "setUser", infoToLog });
       if (this.info.quiz.gameType === "single") {
         this.$store.dispatch({ type: "onCreateGame", quiz: this.info.quiz });
