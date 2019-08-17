@@ -99,7 +99,7 @@ export default {
 
       //Distributing the scores
       this.info.quiz.quests.length === this.currQuestNum + 1
-        ? (this.rightAnswerInfo.score = this.timer * 10 * 2)
+        ? (this.rightAnswerInfo.score = this.timer * 20)
         : (this.rightAnswerInfo.score = this.timer * 10);
 
       //Building and Defining the Res the Res
@@ -121,7 +121,7 @@ export default {
   destroyed() {
     //handling the answering logic for multiplayer Game
     clearInterval(this.timerInterval);
-    if (!this.isAnswered) {
+    if (!this.isAnswered && this.info.quiz.gameType === "mult") {
       this.res.answerInfo = this.wrongAnswerInfo;
       this.$store.dispatch({ type: "updateAns", res: this.res });
     }
