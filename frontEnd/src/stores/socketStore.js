@@ -2,14 +2,11 @@ import socket from '../service/socketService.js';
 
 export default {
   state: {
-    currentGameUsers: [],
     liveGames: [],
     gameOn: false,
-    serverClock: null,
     gameState: {
-      users: [],
+      currentGameUsers: [],
       gameStage: 'quizDetails',
-      currentQuiz: null,
       currentQuestion: null,
       scores: [],
       userScores: [],
@@ -18,20 +15,17 @@ export default {
     }
   },
   mutations: {
+    setLiveGames(state, { liveGames }) {
+      state.liveGames = liveGames;
+    },
     setGamePlayers(state, { gamePlayers }) {
-      state.currentGameUsers = gamePlayers;
+      state.gameState.currentGameUsers = gamePlayers;
     },
     updateGameOn(state, { status }) {
       state.gameOn = status;
     },
-    updateServerClock(state, { clock }) {
-      state.serverClock = clock;
-    },
     updateGameStage(state, { stage }) {
       state.gameState.gameStage = stage;
-    },
-    firstGameSetting(state, { quiz }) {
-      state.gameState.currentQuiz = quiz;
     },
     updateCurrentQuestion(state, currentQuestion) {
       state.gameState.currentQuestion = currentQuestion;
@@ -39,9 +33,6 @@ export default {
     //setting the game scores from server on emit of stages: middle/end
     setGameScore(state, { gameScores }) {
       state.gameState.scores = gameScores;
-    },
-    setLiveGames(state, { liveGames }) {
-      state.liveGames = liveGames;
     },
     setUserScores(state, { res }) {
       state.gameState.userScores.push(res.score);
@@ -54,6 +45,9 @@ export default {
     }
   },
   actions: {
+    setLoadedGames(context, { liveGames }) {
+      context.commit({ type: 'setLiveGames', liveGames });
+    },
     setLoggedGamePlayers(context, { gamePlayers }) {
       context.commit({ type: 'setGamePlayers', gamePlayers });
     },
@@ -63,23 +57,9 @@ export default {
     setUser(context, { infoToLog }) {
       context.commit({ type: 'setUser', infoToLog });
     },
-    logToLiveGame(context, { infoToLog }) {
-      socket.emit('loggingToGame', infoToLog);
-    },
-    setLoadedGames(context, { liveGames }) {
-      context.commit({ type: 'setLiveGames', liveGames });
-    },
     //getting the game scores from server on emit of stages: middle/end
-    getGameScores(context, { gameScores }) {
+    setGameScores(context, { gameScores }) {
       context.commit({ type: 'setGameScore', gameScores });
-    },
-    //updating the user score array (only score) and emiting to server
-    updateAns(context, { res }) {
-      socket.emit('updateAns', res);
-      context.commit({ type: 'setUserScores', res });
-    },
-    loadGameQuiz(context, { quiz }) {
-      context.commit({ type: 'firstGameSetting', quiz });
     },
     changeGameStage(context, { stage }) {
       context.commit({ type: 'updateGameStage', stage: stage });
@@ -87,8 +67,13 @@ export default {
     changeGameQuestion(context, { currentQuestion }) {
       context.commit({ type: 'updateCurrentQuestion', currentQuestion });
     },
-    serverClock(context, { clock }) {
-      context.commit({ type: 'updateServerClock', clock });
+    //Sockets - emits
+    logToLiveGame(context, { infoToLog }) {
+      socket.emit('loggingToGame', infoToLog);
+    },
+    updateAns(context, { res }) {
+      socket.emit('updateAns', res);
+      context.commit({ type: 'setUserScores', res });
     },
     onCreateGame(context, { quiz }) {
       socket.emit('onCreateGame', quiz);
@@ -101,15 +86,6 @@ export default {
     }
   },
   getters: {
-    getLoggedUsers(state) {
-      return state.currentGameUsers;
-    },
-    getGameStatus(state) {
-      return state.gameOn;
-    },
-    getUser(state) {
-      return state.gameState.user;
-    },
     getLiveGames(state) {
       let liveGames = state.liveGames.map(game => {
         game.quiz.gameId = game._id;
@@ -118,11 +94,14 @@ export default {
       });
       return liveGames;
     },
-    serverTime(state) {
-      return state.serverClock;
+    getLoggedUsers(state) {
+      return state.gameState.currentGameUsers;
     },
-    getGameCountDown(state) {
-      return state.gameState.countdown;
+    getGameStatus(state) {
+      return state.gameOn;
+    },
+    getUser(state) {
+      return state.gameState.user;
     },
     gameStage(state) {
       return state.gameState.gameStage;
@@ -130,10 +109,6 @@ export default {
     currentQuestion(state) {
       return state.gameState.currentQuestion;
     },
-    getQuiz(state) {
-      return state.gameState.currentQuiz;
-    },
-    //getting the game scores from server on emit of stages: middle/end
     getGameScores(state) {
       return state.gameState.scores.gamePlayers;
     },

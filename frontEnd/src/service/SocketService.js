@@ -21,10 +21,6 @@ function emit(trigger, data) {
   socket.emit(trigger, data);
 }
 
-on('serverTime', clock => {
-  store.dispatch({ type: 'serverClock', clock });
-});
-
 on('questionChange', currentQuestion => {
   store.dispatch({ type: 'changeGameQuestion', currentQuestion });
 });
@@ -37,14 +33,14 @@ on('startTheGame', () => {
 });
 on('middleQuiz', gameScores => {
   store.dispatch({ type: 'changeGameStage', stage: 'quizResult' });
-  store.dispatch({ type: 'getGameScores', gameScores: gameScores });
+  store.dispatch({ type: 'setGameScores', gameScores });
 });
 on('quizQuest', () => {
   store.dispatch({ type: 'changeGameStage', stage: 'quizQuest' });
 });
 on('endGame', gameScores => {
   store.dispatch({ type: 'changeGameStage', stage: 'quizEnd' });
-  store.dispatch({ type: 'getGameScores', gameScores });
+  store.dispatch({ type: 'setGameScores', gameScores });
 });
 
 on('returnAllLiveGames', liveGames => {
