@@ -29,7 +29,7 @@
             class="orange-headline-join"
             v-for="(user,idx) in loggedUsers"
             :key="idx"
-          >{{user.nickName}},</div>
+          >{{user.nickName}}</div>
         </div>
       </div>
     </div>
