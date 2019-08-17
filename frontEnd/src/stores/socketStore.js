@@ -1,4 +1,4 @@
-import socket from '../service/SocketService.js';
+import socket from '../service/socketService.js';
 
 export default {
   state: {

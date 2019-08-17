@@ -64,6 +64,10 @@ export default {
       wrongAnswerInfo: {
         currAns: false,
         score: 0
+      },
+      res: {
+        answerInfo: "",
+        userId: ""
       }
     };
   },
@@ -87,6 +91,7 @@ export default {
     }
   },
   methods: {
+    //logic for the choosen Answer
     chooseAns(idx) {
       if (this.isAnswered) return;
       this.isAnswered = true;
@@ -98,16 +103,13 @@ export default {
         : (this.rightAnswerInfo.score = this.timer * 10);
 
       //Building and Defining the Res the Res
-      let res = {
-        answerInfo: "",
-        userId: this.user.userId
-      };
 
       currAns
-        ? (res.answerInfo = this.rightAnswerInfo)
-        : (res.answerInfo = this.wrongAnswerInfo);
+        ? (this.res.answerInfo = this.rightAnswerInfo)
+        : (this.res.answerInfo = this.wrongAnswerInfo);
 
-      this.$store.dispatch({ type: "updateAns", res });
+      console.log(this.res);
+      this.$store.dispatch({ type: "updateAns", res: this.res });
     },
     ansStyle(idx) {
       if (!this.isAnswered) return "";
@@ -117,24 +119,32 @@ export default {
   },
 
   destroyed() {
+    //handling the answering logic for multiplayer Game
     clearInterval(this.timerInterval);
     if (!this.isAnswered) {
-      let res = {
-        answerInfo: this.wrongAnswerInfo,
-        userId: this.user.userId
-      };
-      this.$store.dispatch({ type: "updateAns", res });
+      this.res.answerInfo = this.wrongAnswerInfo;
+      this.$store.dispatch({ type: "updateAns", res: this.res });
     }
   },
   created() {
+    this.user = this.$store.getters.getUser;
+    //creating the basic Response
+    this.res.userId = this.user.userId;
+
+    //handling the client side showen timer
     this.timerInterval = setInterval(() => {
       this.timer--;
       if (this.info.quiz.gameType === "single" && this.timer <= 0) {
+        //handling the answering logic for no answer on single Game
+        if (!this.isAnswered) {
+          this.res.answerInfo = this.wrongAnswerInfo;
+          this.$store.dispatch({ type: "updateAns", res: this.res });
+          console.log(this.res);
+        }
         this.timer = 10;
         this.isAnswered = false;
       }
     }, 1000);
-    this.user = this.$store.getters.getUser;
   }
 };
 </script>

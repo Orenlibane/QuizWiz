@@ -11,7 +11,7 @@
 <script>
 import quizList from "../components/quizList";
 import eventBus, { GAME_OFF } from "@/event-bus.js";
-import socketService from "../service/SocketService.js";
+import socketService from "../service/socketService.js";
 
 export default {
   name: "home",
