@@ -44,17 +44,11 @@ function removeGame(gameId) {
 // Set the curr ans for each one of the players array
 function setAnswer(gameId, userId, answer) {
   const currGame = onlineGames.find(game => game._id === gameId);
-
   try {
     let currUser = currGame.gamePlayers.find(user => user.userId === userId);
     currUser.ans.push(answer);
   } catch (err) {
-    console.log(
-      'failed in setAnswer Function with game id',
-      gameId,
-      'user id',
-      userId
-    );
+    console.log('failed in setAnswer Function');
   }
 }
 

@@ -121,7 +121,7 @@ export default {
   destroyed() {
     //handling the answering logic for multiplayer Game
     clearInterval(this.timerInterval);
-    if (!this.isAnswered && this.info.quiz.gameType === "mult") {
+    if (!this.isAnswered) {
       this.res.answerInfo = this.wrongAnswerInfo;
       this.$store.dispatch({ type: "updateAns", res: this.res });
     }
@@ -134,12 +134,11 @@ export default {
     //handling the client side showen timer
     this.timerInterval = setInterval(() => {
       this.timer--;
-      if (this.info.quiz.gameType === "single" && this.timer <= 0) {
+      if (this.info.quiz.gameType === "single" && this.timer < 1) {
         //handling the answering logic for no answer on single Game
         if (!this.isAnswered) {
           this.res.answerInfo = this.wrongAnswerInfo;
           this.$store.dispatch({ type: "updateAns", res: this.res });
-          console.log(this.res);
         }
         this.timer = 10;
         this.isAnswered = false;
