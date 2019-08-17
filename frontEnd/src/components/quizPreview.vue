@@ -50,7 +50,6 @@ import quizService from "../service/quizService.js";
 import _quizPreview from "../styles/components/_quiz-prev.scss";
 import filters from "../filters.js";
 import utilService from "../service/utilService.js";
-const moment = require("moment");
 const Swal = require("sweetalert2");
 
 export default {
@@ -62,15 +61,10 @@ export default {
   data() {
     return {
       liked: String,
-      countdown: Number,
       likesCount: Number
     };
   },
   methods: {
-    // THOSE OPTIONS ARE ONLY FOR THE Devs!!! The user won't get the option to delete games.
-    deleteQuiz(quizId) {
-      this.$store.dispatch({ type: "deleteQuiz", quizId });
-    },
     showDetails() {
       if (!this.quiz.gameId) this.$router.push(`quiz/${this.quiz._id}/game`);
       else this.enterLiveGame();
@@ -105,10 +99,6 @@ export default {
   },
   created() {
     this.likesCount = this.quiz.likesCount;
-    this.countdown = 30;
-    setInterval(() => {
-      this.countdown--;
-    }, 1000);
   }
 };
 </script>
