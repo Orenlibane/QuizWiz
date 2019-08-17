@@ -6,7 +6,6 @@
       <h1 v-if="info.quiz.quests.length ===currQuestNum+1">Bonus Round!</h1>
       <span>Question {{currQuestNum+1}}/{{info.quiz.quests.length}}</span>
       <h2>{{timer}}</h2>
-
       <h2 class="center">{{currQuest}}</h2>
     </div>
     <div class="quest-body">

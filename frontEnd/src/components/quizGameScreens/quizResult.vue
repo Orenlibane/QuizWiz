@@ -69,9 +69,6 @@ export default {
       return this.info.quiz.quests[this.info.currQuest - 1].opts[
         this.correctOptIdx
       ];
-    },
-    currentUserScore() {
-      currUserthis.allScores.find(currUser => this.user.userId === user.userId);
     }
   },
 
