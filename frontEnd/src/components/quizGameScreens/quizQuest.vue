@@ -104,7 +104,6 @@ export default {
         ? (this.res.answerInfo = this.rightAnswerInfo)
         : (this.res.answerInfo = this.wrongAnswerInfo);
 
-      console.log(this.res);
       this.$store.dispatch({ type: "updateAns", res: this.res });
     },
     ansStyle(idx) {
